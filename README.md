@@ -56,7 +56,7 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 1. #### [django2.2---教程](./python/Djnago2.2.md)
 
-1. #### [Mysql必知必会 To DjangoORM](./Python/Mysql必知必会ToDjangoORM.md)
+1. #### [Mysql必知必会 To DjangoORM](./python/Mysql必知必会ToDjangoORM.md)
 
 2. #### [django_channels,django中使用websocket的方式](./python/django_channels.md)
 
