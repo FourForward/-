@@ -1096,7 +1096,7 @@ import aiomysql
 
 async def execute():
     # 网络IO操作：连接MySQL autocommit=True 修改，插入删除才会执行，
-    conn = await aiomysql.connect(host='127.0.0.1', port=3306, user='root', password='123', db='mysql', autocommit=True)
+    conn = await aiomysql.connect(host='127.0.0.1', port=3306, user='root', password='123', db='mysql')
     # 网络IO操作：创建CURSOR
     cur = await conn.cursor()
     # 网络IO操作：返回该操作会影响的数据表行数
@@ -1104,9 +1104,9 @@ async def execute():
     # 如果明确知道被影响的数据有多少行，就可以加 if 判断
     if res == 1:
         try:
-            await db.commit()
+            await conn.commit()
         except:
-            await db.rollback()
+            await conn.rollback()
     # 网络IO操作：关闭链接
     await cur.close()
     conn.close()
@@ -1114,7 +1114,50 @@ async def execute():
 asyncio.run(execute())
 ```
 
-### 5.3 FastAPI框架
+### 5.3 异步文件读写 aiofiles
+
+```shell
+pip3 install aiofiles
+```
+
+示例:
+
+```python
+# 异步文件操作
+# pip install aiofiles
+
+# 基本用法
+import asyncio
+import aiofiles
+
+
+async def wirte_demo():
+    # 异步方式执行with操作,修改为 async with
+    async with aiofiles.open("text.txt","w",encoding="utf-8") as fp:
+        await fp.write("hello world ")
+        print("数据写入成功")
+
+async def read_demo():
+    async with aiofiles.open("text.txt","r",encoding="utf-8") as fp:
+        content = await fp.read()
+        print(content)
+
+async def read2_demo():
+    async with aiofiles.open("text.txt","r",encoding="utf-8") as fp:
+        # 读取每行
+        async for line in fp:
+            print(line)
+
+
+if __name__ == "__main__":
+    asyncio.run(wirte_demo())
+    asyncio.run(read_demo())
+    asyncio.run(read2_demo())
+```
+
+
+
+### 5.4 FastAPI框架
 
 FastAPI是一款用于构建API的高性能web框架，框架基于Python3.6+的 `type hints`搭建。
 
@@ -1243,7 +1286,7 @@ if __name__ == '__main__':
     uvicorn.run("fast2:app", host="127.0.0.1", port=5000, log_level="info")
 ```
 
-### 5.4 爬虫
+### 5.5 爬虫
 
 在编写爬虫应用时，需要通过网络IO去请求目标数据，这种情况适合使用异步编程来提升性能，接下来我们使用支持异步编程的aiohttp模块来实现。
 
@@ -1253,32 +1296,7 @@ if __name__ == '__main__':
 pip3 install aiohttp
 ```
 
-示例：
-
-```python
-import aiohttp
-import asyncio
-
-
-async def fetch(session, url):
-    print("发送请求：", url)
-    async with session.get(url, verify_ssl=False) as response:
-        text = await response.text()
-        print("得到结果：", url, len(text))
-        
-async def main():
-    async with aiohttp.ClientSession() as session:
-        url_list = [
-            'https://python.org',
-            'https://www.baidu.com',
-            'https://www.pythonav.com'
-        ]
-        tasks = [asyncio.create_task(fetch(session, url)) for url in url_list]
-        await asyncio.wait(tasks)
-        
-if __name__ == '__main__':
-    asyncio.run(main())
-```
+[aiohttp客户端使用手册](./aiohttp部分中文文档.md)
 
 ## 总结
 

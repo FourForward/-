@@ -42,25 +42,25 @@ zip下载链接：https://pan.baidu.com/s/1j-uvqAfS8KYL_LkRZiYDBg
 
 如果无法拖动安装，你可以在`Settings/Preferences... -> Plugins` 里手动安装插件  Ide Eval Reset：
 
-![img](pycharm非常规操作.assets/1835904-20210703174054183-436930022.png)
+![img](img/pycharm非常规操作/1835904-20210703174054183-436930022.png)
 
 ### 使用
 
 插件安装成功后，右下角会提示如下：
 
-![img](pycharm非常规操作.assets/b02454df1919a78583cf89fa618c777b.png)
+![img](img/pycharm非常规操作/b02454df1919a78583cf89fa618c777b.png)
 
 
 
 安装成功之后在菜单栏 `Help` 中会多一个 `Eval Reset` 按钮 
 
-![img](pycharm非常规操作.assets/1835904-20210703174132598-2023511987.png)
+![img](img/pycharm非常规操作/1835904-20210703174132598-2023511987.png)
 
 
 
 点击之后会出现如下界面
 
-![img](pycharm非常规操作.assets/1835904-20210703174232335-1958932479.png)
+![img](img/pycharm非常规操作/1835904-20210703174232335-1958932479.png)
 
 
 

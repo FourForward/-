@@ -260,7 +260,7 @@ value_dict = b'{"api_key":"1234"}
 #需要强调一下，任何从redis取出来的数据，都是二进制，要先进行二进制解码
 value_dict  = value_dict.decode("UTF-8")
 #解码后value_dict的类型是string, 如果想要得到其中字典的值，就需要进行转换
-value_dict = eval(value_dict) # eval可以智能地根据字符串中的数据类型进行转换。
+value_dict = eval(value_dict) # eval可以智能地根据字符串中的数据类型进行转换。s
 
 
 ```

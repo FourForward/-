@@ -1,3 +1,5 @@
+[TOC]
+
 # 列表
 
 查找
@@ -112,6 +114,22 @@ L.[**count(str, beg= 0,end=len(string))**](http://www.runoob.com/python3/python3
 
 ## 修改
 
+split       str.split('str')
+
+```python
+>>> msg='hello    world'
+>>> msg.split(' ')
+['hello', '', '', '', 'world']
+```
+
+拆分字符串,如果不填参数，则是按所有空字符串拆分，并且连续的空字符串会被视为一个空字符串
+
+```python
+>>> msg='hello \t \r\n world'
+>>> msg.split()
+['hello', 'world']
+```
+
 [**replace(old, new [, max\])**](http://www.runoob.com/python3/python3-string-replace.html)
 
 把 将字符串中的 str1 替换成 str2,如果 max 指定，则替换不超过 max 次。
@@ -155,6 +173,35 @@ L.[**count(str, beg= 0,end=len(string))**](http://www.runoob.com/python3/python3
 返回一个原字符串左对齐,并使用 fillchar 填充至长度 width 的新字符串，fillchar 默认为空格。
 
 # 时间
+
+python中部分时间日期的格式化符号
+
+| 格式 | 解释                                      |
+| ---- | ----------------------------------------- |
+| %y   | 两位数的年份表示（00-99）                 |
+| %Y   | 四位数的年份表示（000-9999）              |
+| %m   | 月份（01-12）                             |
+| %d   | 月内中的一天（0-31）                      |
+| %H   | 24小时制小时数（0-23）                    |
+| %I   | 12小时制小时数（01-12）                   |
+| %M   | 分钟数（00-59）                           |
+| %S   | 秒数（00-59）                             |
+| %a   | 本地简化星期名称                          |
+| %A   | 本地完整星期名称                          |
+| %b   | 本地简化的月份名称                        |
+| %B   | 本地完整的月份名称                        |
+| %c   | 本地相应的日期表示和时间表示              |
+| %j   | 年内的一天（001-366）                     |
+| %p   | 本地A.M.或P.M.的等价符                    |
+| %U   | 一年中的星期数（00-53）星期天为星期的开始 |
+| %w   | 星期（0-6），星期天为星期的开始           |
+| %W   | 一年中的星期数（00-53）星期一为星期的开始 |
+| %x   | 本地相应的日期表示                        |
+| %X   | 本地相应的时间表示                        |
+| %Z   | 当前时区的名称                            |
+| %%   | %号本身                                   |
+
+
 
 ## time
 
@@ -293,7 +340,7 @@ t1.strftime(fmt)：同time模块中的format；
 datetime相当于date和time结合起来，年月日是必须参数
 datetime.datetime (year, month, day[ , hour[ , minute[ , second[ , microsecond[ , tzinfo] ] ] ] ] )
 
-静态方法和字段
+#### 静态方法和字段
 
 ```python
 datetime.today()	# 返回一个表示当前本地时间的datetime对象；
@@ -305,32 +352,50 @@ datetime.utcnow()	# 返回一个当前utc时间的datetime对象；#格林威治
 datetime.fromtimestamp(timestamp[, tz])	# 根据时间戮创建一个datetime对象，参数tz指定时区信息；
 datetime.utcfromtimestamp(timestamp)	# 时间戮创建一个datetime对象；
 
-datetime.combine(date, time)			# date和time，创建一个datetime对象；
-datetime.strptime(date_string, format)	# 式字符串转换为datetime对象；
+# date和time，创建一个datetime对象；
+datetime.combine(date, time)
+
+# 式字符串转换为datetime对象；datetime.strptime('2020-01-01 15:30:59', '%Y-%m-%d %H:%M:%S') 超出取值范围或者分隔符号错误都会报错
+datetime.strptime(date_string, format)
+```
+
+#### 实例方法和属性
+
+```python
+dt=datetime.now()  # datetime对象
+# 基础属性
+dt.year、month、day、hour、minute、second、microsecond、tzinfo
 ```
 
 ```python
-# 方法和属性
-
-dt=datetime.now()#datetime对象
-
-dt.year、month、day、hour、minute、second、microsecond、tzinfo：
-
 dt.date()：获取date对象；
 dt.time()：获取time对象；
 
-dt.replace ([ year[ , month[ , day[ , hour[ , minute[ , second[ , microsecond[ , tzinfo] ] ] ] ] ] ] ])：
+dt.replace ([ year[ , month[ , day[ , hour[ , minute[ , second[ , microsecond[ , tzinfo] ] ] ] ] ] ] ])
+```
 
-dt.timetuple ()
+```python
+
+dt.timetuple ()	# time.struct_time(tm_year=2016 ... tm_hour=16,...)获取当前一个包含当前时间的结构体
 dt.utctimetuple ()
-
+dt.timestamp()	# 1463473711.057878  获取当前的时间戳
 dt.toordinal ()
 dt.weekday ()
 dt.isocalendar ()
 dt.isoformat ([ sep] )
 dt.ctime ()	# 返回一个日期时间的C格式字符串，等效于time.ctime(time.mktime(dt.timetuple()))；
-dt.strftime (format)
 ```
+
+````python
+dt.strftime (format)	# 格式化时间
+# 使用方式
+dt.strftime("%Y-%m-%d %H:%M:%S")	# '2021-12-23 14:46:41'
+dt.strftime("%Y/%m/%d-%H:%M:%S")	# '2021/12/23-14:47:09'
+dt.strftime("abc/def/%Y-%m-%d")	# 'abc/def/2021-12-23'	传入的普通字符串会原样返回,django用此方式来实现用户上传文件的储存目录随日期变化的需求 from django/db/models/fields/files.py import generate_filename
+
+````
+
+
 
 datetime 类相互之间的运算
 

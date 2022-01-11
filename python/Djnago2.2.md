@@ -1,23 +1,30 @@
-#  《Django Web框架教学笔记》
+#   《Django Web框架教学笔记》
+
+django常用第三方库:
+
+```python
+django-redis
+djangorestframe
+django-extensions
+```
 
 
-[TOC]
 
 ## Django框架的介绍
 
 ```shell
-django-admin startproject [项目名称]   # 创建项目
-python3 manage.py runserver			 #运行项目
-python3 manage.py startapp [项目名称] #创建应用APP
-python3 manage.py makemigrations	#将你对模型层所做的修改迁移到migrations中
-python3 manage.py migrate			#将migrations中的文件同步回数据库
-python3 manage.py clearsessions 	#该命令可删除已过期的session数据
-python3 manage.py collectstatic 	#执行该命令后，Django将项目里所有静态文件 复制到 STATIC_ROOT 中 ，包括Django内建的静态文件【如admin后台的样式】
-python3 manage.py dumpdata > db.json	#将把整个数据转存到db.json文件中
+django-admin startproject [项目名称]	# 创建项目
+python3 manage.py runserver				# 运行项目
+python3 manage.py startapp [项目名称]	# 创建应用APP
+python3 manage.py makemigrations	# 将你对模型层所做的修改迁移到migrations中
+python3 manage.py migrate			# 将migrations中的文件同步回数据库
+python3 manage.py clearsessions 	# 该命令可删除已过期的session数据
+python3 manage.py collectstatic 	# 执行该命令后，Django将项目里所有静态文件 复制到 STATIC_ROOT 中 ，包括Django内建的静态文件【如admin后台的样式】
+python3 manage.py dumpdata > db.json	# 将把整个数据转存到db.json文件中
 python3 manage.py loaddata goods_data.json	# 把文件中的数据，导入django中
 
-from django.db import connection      # shell 终端里打印最近一条SQL语句。
-connection.queries[-1]['sql']		  # shell 终端里打印最近一条SQL语句。
+from django.db import connection	# shell 终端里打印最近一条SQL语句。
+connection.queries[-1]['sql']		# shell 终端里打印最近一条SQL语句。
 
 QuerySet.exists()					# 返回值是True和False，对象里面有值就返回True
 QuerySet.count()					# 返回QuerySet中的对象数量
@@ -89,7 +96,7 @@ QuerySet.count()					# 返回QuerySet中的对象数量
 
     - Django 2.2.12 支持 3.5，3.6，3.7，3.8
 
-        
+      ​    
 
 ## 创建Django项目 
 
@@ -468,7 +475,7 @@ urlpatterns = [
 - 请求是指浏览器端通过HTTP协议发送给服务器端的数据
 - 响应是指服务器端接收到请求后做相应的处理后再回复给浏览器端的数据
 
-![请求和向应](我的笔记园/小玉的玉/python/images/request_response.png)
+![请求和向应](img/Djnago2.2/request_response.png)
 
 ### HTTP 请求
 
@@ -814,7 +821,7 @@ request.post 针对 表单POST提交可以获取具体的数据
         - V 视图层(View), 用于向用户展示结果
         - C 控制(Controller ，用于处理请求、获取数据、返回结果(重要)
     - MVC模式如图:
-        ![](我的笔记园/小玉的玉/python/images/mvc.png)
+        ![](img/Djnago2.2/mvc.png)
 - MTV 模式
     MTV 代表 Model-Template-View（模型-模板-视图） 模式。这种模式用于应用程序的分层开发
     - 作用: 
@@ -824,7 +831,7 @@ request.post 针对 表单POST提交可以获取具体的数据
         - T -- 模板层(Template)  负责呈现内容到浏览器
         - V -- 视图层(View)  是核心，负责接收请求、获取数据、返回结果
     - MTV模式如图:
-        ![](我的笔记园/小玉的玉/python/images/mtv.png)
+        ![](img/Djnago2.2/mtv.png)
 
 ## 模板 Templates
 
@@ -913,7 +920,7 @@ TEMPLATES = [
 
     - `{{ 函数名 }}`
 
-        
+      ​    
 
 2.视图函数中必须将变量封装到字典中才允许传递到模板上
 
@@ -1166,7 +1173,7 @@ html.escape()
 
 - 模板的继承示例:
 
-    - ![](我的笔记园/小玉的玉/python/images/template_inherit.png)
+    - ![](img/Djnago2.2/template_inherit.png)
 
 ### url 反向解析
 
@@ -1223,6 +1230,8 @@ html.escape()
 
 ## 静态文件
 
+### static
+
 1. 什么是静态文件
 
     - 不能与服务器端做动态交互的文件都是静态文件
@@ -1230,45 +1239,25 @@ html.escape()
 
 2. 静态文件配置
 
-    - 在 settings.py 中配置一下两项内容:
+    ```python
+    # setings.py
+    
+    # 配置静态文件的访问路径
+    STATIC_URL = '/static/'
+    # 配置静态文件的存储路径
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static"),
+    )
+    ```
 
-    1. 配置静态文件的访问路径
+2. 访问静态文件
 
-        - 通过哪个url地址找静态文件
-        - STATIC_URL = '/static/'
-        - 说明:
-            - 指定访问静态文件时是需要通过 /static/xxx或 127.0.0.1:8000/static/xxx
-            - xxx 表示具体的静态资源位置
-
-    2. 配置静态文件的存储路径 `STATICFILES_DIRS`
-
-        - STATICFILES_DIRS保存的是静态文件在服务器端的存储位置
-
-    3. 示例:
-
-        ```python
-        # file: setting.py
-        STATICFILES_DIRS = (
-            os.path.join(BASE_DIR, "static"),
-        )
-        ```
-
-3. 访问静态文件
-
-    1. 使用静态文件的访问路径进行访问
-
-        - 访问路径: STATIC_URL = '/static/'
-
-        - 示例:
-
-            ```python
-            <img src="/static/images/lena.jpg">
-            #这个static不是文件夹，是/static/这个路径所绑定的文件夹
-            <img src="http://127.0.0.1:8000/static/images/lena.jpg">
-            ```
-
+    ```python
+    <img src="http://127.0.0.1:8000/static/images/lena.jpg">
+    ```
+    
 4. 通过 {% static %}标签访问静态文件
-         
+          
     建议使用方式，防止setting配置更改STATIC_URL = '/static/'之后的大量二次修改
         
 
@@ -1281,6 +1270,197 @@ html.escape()
                 - `{% static '静态资源路径' %}`
             - 示例:
                 - `<img src="{% static 'images/lena.jpg' %}">`
+
+###  media
+
+#### 上传文件
+
+- 文件上传必须为POST提交方式
+
+- 表单`<form>`中文件上传时必须有带有`enctype="multipart/form-data"` 时才会包含文件内容数据。
+
+- 表单中用`<input type="file" name="xxx">`标签上传文件
+
+    - 名字`xxx`对应`request.FILES['xxx']` 对应的内存缓冲文件流对象。可通能过`request.FILES['xxx']` 返回的对象获取上传文件数据
+    - `file=request.FILES['xxx']` file 绑定文件流对象，可以通过文件流对象的如下信息获取文件数据
+        file.name 文件名
+        file.file 文件的字节流数据
+
+- 上传文件的表单书写方式
+
+    ```html
+    <!-- file: index/templates/index/upload.html -->
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>文件上传</title>
+    </head>
+    <body>
+        <h3>上传文件</h3>
+        <form method="post" action="/test_upload" enctype="multipart/form-data">
+            <input type="file" name="myfile"/><br>
+            <input type="submit" value="上传">
+        </form>
+    </body>
+    </html>
+    ```
+
+- 在setting.py 中设置MEDIA相关配置；Django把用户上传的文件，统称为media资源
+
+    ```python
+    # file : settings.py
+    
+    # 告诉django什么样的请求是要加载 用户 上传的media资源
+    MEDIA_URL = '/media/'
+    # 上传资源存储目录
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    ```
+
+- 在当前项目文件夹下创建 `media` 文件夹
+
+    ```shell
+    $ mkdir media
+    ```
+
+- 上传文件的视图处理函数  方案1 传统写入
+
+    ```python
+    # file views.py
+    from django.http import HttpResponse
+    from django.conf import settings    #  导入settings的建议路径
+    from django.views.decorators.csrf import csrf_exempt
+    import os
+    
+    @csrf_exempt
+    def upload_view(request):
+        if request.method == 'GET':
+            return render(request, 'test_upload.html')
+        elif request.method == "POST":
+            a_file = request.FILES['myfile']
+            print("上传文件名是:", a_file.name)
+            filename =os.path.join(settings.MEDIA_ROOT, a_file.name)
+            with open(filename, 'wb') as f:
+                data = a_file.file.read()
+                f.write(data)
+            return HttpResponse("接收文件:" + a_file.name + "成功")
+        
+    ```
+
+- 上传文件的视图处理函数  方案2  借助orm
+
+    ```python
+    #test_upload/models.py
+    from django.db import models
+      
+    # Create your models here.
+    class Content(models.Model):
+    
+        desc = models.CharField(max_length=100)
+        myfile = models.FileField(upload_to='myfiles')                                                          # 二级路径，没有的话会创建文件夹
+    
+    #test_upload/views.py
+    from test_upload.models import *
+    from django.views.decorators.csrf import csrf_exempt
+    
+    @csrf_exempt
+    def upload_view_dj(request):
+        if request.method == 'GET':
+            return render(request, 'test_upload.html')
+        elif request.method == 'POST':
+            title = request.POST['title']
+            a_file = request.FILES['myfile']
+            Content.objects.create(desc=title,myfile=a_file)
+            return HttpResponse('----upload is ok-----')
+    ```
+    
+    - 关于模型类的`upload_to`参数:
+    
+        `FileField.upload_to`[¶](https://docs.djangoproject.com/zh-hans/3.2/ref/models/fields/#django.db.models.FileField.upload_to)
+    
+        这个属性提供了一种设置上传目录和文件名的方式，可以有两种设置方式。在这两种情况下，值都会传递给 [`Storage.save()`](https://docs.djangoproject.com/zh-hans/3.2/ref/files/storage/#django.core.files.storage.Storage.save) 方法。
+    
+        如果你指定一个字符串值或一个 [`Path`](https://docs.python.org/3/library/pathlib.html#pathlib.Path)，它可能包含 [`strftime()`](https://docs.python.org/3/library/time.html#time.strftime) 格式，它将被文件上传的日期／时间所代替（这样上传的文件就不会填满指定的目录）。例如：
+    
+        ```python
+        class MyModel(models.Model):
+            # 直接写二级路径目录名称
+            upload = models.FileField(upload_to='uploads/')
+            # 或者
+            # file will be saved to MEDIA_ROOT/uploads/2015/01/30
+            upload = models.FileField(upload_to='uploads/%Y/%m/%d/')
+        ```
+    
+        如果你使用的是默认的 [`FileSystemStorage`](https://docs.djangoproject.com/zh-hans/3.2/ref/files/storage/#django.core.files.storage.FileSystemStorage)，这个字符串的值将被附加到你的 [`MEDIA_ROOT`](https://docs.djangoproject.com/zh-hans/3.2/ref/settings/#std:setting-MEDIA_ROOT) 路径后面，形成本地文件系统中上传文件的存储位置。如果你使用的是不同的存储系统，请检查该存储系统的文档，看看它是如何处理 `upload_to` 的。
+    
+        `upload_to 也可以是一个可调用对象`，如函数。这个函数将被调用以获得上传路径，包括文件名。这个可调用对象必须接受两个参数，并返回一个 Unix 风格的路径（带斜线），以便传给存储系统。这两个参数是：
+    
+        | 参数       | 描述                                                         |
+        | ---------- | ------------------------------------------------------------ |
+        | `instance` | 定义 `FileField` 的模型实例。更具体地说，这是附加当前文件的特定实例。在大多数情况下，这个对象还没有被保存到数据库，所以如果它使用默认的 `AutoField`，*它的主键字段可能还没有一个值*。但是他会拥有该模型其它字段传入的值. |
+        | `filename` | 最初给文件的文件名。在确定最终目标路径时，可能会考虑到，也可能不会考虑到。 |
+        | `返回值`   | 应该返回包含二级路径和文件完整名字的字符串                   |
+    
+        例子：
+    
+        ```python
+        def user_directory_path(instance, filename):
+            return f'{instance.uid}/pic/{filename}'
+        
+        class PartyPic(models.Model):
+            uid = models.BigIntegerField('uid')
+            file = models.ImageField('图片', upload_to=user_directory_path)
+            set_up_time = models.DateTimeField('创建时间', auto_now_add=True)
+        ```
+    
+        
+
+#### 访问文件
+
+- 若要在浏览器中访问 上传的资源，调试模式`debug = true`下，需要在项目的主路由下添加media路由的绑定
+
+    ```python
+    from django.conf import settings
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    
+    # 使用 daphne 之类的服务启动django时,static 资源也需要这样设置,否则无法获取静态资源
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATICFILES_DIRS[0])
+    ```
+
+    浏览器可以访问  http://127.0.0.1:8000/media/xxxx
+
+- 在生产环境下,需要删除 urlpatterns += ...  ,使用nginx来代理静态文件[nginx 配置静态文件路径](#nginx 配置静态文件路径)
+
+- 在视图中使用文件
+
+    当你使用 [`FileField`](https://docs.djangoproject.com/zh-hans/3.2/ref/models/fields/#django.db.models.FileField) 或 [`ImageField`](https://docs.djangoproject.com/zh-hans/3.2/ref/models/fields/#django.db.models.ImageField) 时，Django 提供了一组处理文件的API。
+
+    考虑下面的模型，使用 [`ImageField`](https://docs.djangoproject.com/zh-hans/3.2/ref/models/fields/#django.db.models.ImageField) 来存储照片：
+
+    ```python
+    from django.db import models
+    
+    class Car(models.Model):
+        name = models.CharField(max_length=255)
+        price = models.DecimalField(max_digits=5, decimal_places=2)
+        photo = models.ImageField(upload_to='cars')
+    ```
+
+    任何 `Car` 实例将拥有一个 `photo` 属性，你可以使用它来获取附加照片的详情：
+
+    ```python
+    >>> car = Car.objects.get(name="57 Chevy")
+    >>> car.photo
+    <ImageFieldFile: cars/chevy.jpg>
+    >>> car.photo.name
+    'cars/chevy.jpg'
+    >>> car.photo.path
+    '/media/cars/chevy.jpg'
+    >>> car.photo.url
+    'http://media.example.com/cars/chevy.jpg'
+    ```
+
+
 
 ## Django中的应用 - app
 
@@ -1299,7 +1479,7 @@ html.escape()
     # 如果创建应用失败，提示数据库错误，请查看该文档的模型层部分
     ```
 
-      2. 在settings.py里注册应用
+        2. 在settings.py里注册应用
 
      ```python
     INSTALLED_APPS = [
@@ -1330,7 +1510,7 @@ html.escape()
 
 - Django中，主路由配置文件(urls.py)可以不处理用户具体路由，主路由配置文件的可以做请求的分发(分布式请求处理)。具体的请求可以由各自的应用来进行处理
 - 如图:
-    - ![](我的笔记园/小玉的玉/python/images/urls.png)
+    - ![](img/Djnago2.2/urls.png)
 
 #### include 函数
 
@@ -1412,7 +1592,7 @@ except Exception as e:
 
     - 确保上述两个库已经安装，执行 sudo pip3 install mysqlclient即可 
 
-          
+        ​    
 
 2. 创建 和 配置数据库
 
@@ -1453,7 +1633,7 @@ except Exception as e:
             }
             ```
 
-    3. 关于数据为的SETTING设置
+    3. 关于数据库的SETTING设置
 
         1. ENGINE
 
@@ -1519,8 +1699,6 @@ except Exception as e:
 - ORM 缺点
     1. 对于复杂业务，使用成本较高
     2. 根据对象的操作转换成SQL语句,根据查询的结果转化成对象, 在映射过程中有性能损失.
-- ORM 示意
-    - ![](我的笔记园/小玉的玉/python/images/orm.png)
 
 ### 模型示例
 
@@ -1555,21 +1733,34 @@ except Exception as e:
 
 - 数据库的迁移
 
-    - 迁移是Django同步您对模型所做更改（添加字段，删除模型等） 到您的数据库模式的方式
+    迁移是Django同步您对模型所做更改（添加字段，删除模型等） 到您的数据库模式的方式
 
     1. 生成或更新迁移文件
 
-    ​	将每个应用下的models.py文件生成一个中间文件,并保存在migrations文件夹中
+        ​	将每个应用下的models.py文件生成一个中间文件,并保存在migrations文件夹中
 
-    ​	`python3 manage.py makemigrations`
+        ​	`python3 manage.py makemigrations`
 
     2. 执行迁移脚本程序
 
-        执行迁移程序实现迁移。将每个应用下的migrations目录中的中间文件同步回数据库
+        ​	执行迁移程序实现迁移。将每个应用下的migrations目录中的中间文件同步回数据库
 
-        `python3 manage.py migrate`
+        ​	`python3 manage.py migrate`
 
-        注:  每次修改完模型类再对服务程序运行之前都需要做以上两步迁移操作。
+        ​	注:  每次修改完模型类再对服务程序运行之前都需要做以上两步迁移操作。
+    
+
+### 接管已经存在的`mysql`数据
+
+1. 将`settings.py`中的DATABASES  指向已存在的MySQL数据库
+
+2. 根据数据库去自动生成新的models文件, 使用指令`python3 manage.py inspectdb > models.py`
+
+    这时,在manage.py 同级目录下会看见一个models.py 文件,使用其`覆盖` 应用目录下的models.py文件
+
+    - 如果完成了以上的操作，生成的是一个**不可修改/删除的models**，修改meta class中的**managed = True**则可以去告诉django可以对数据库进行增删改
+
+3. 最后迁移数据库`python3 manage.py migrate`
 
 ### 模型类Models 创建
 
@@ -1604,7 +1795,8 @@ except Exception as e:
 
     - 注意:
 
-        - 必须要指定max_length参数值
+        - 必须要指定`max_length`参数值
+        - `max_length` 代表的是最大`字符串长度`，而非所占`字节数`，这个限制是从django应用层面上的限制，与mysql本身无关，即可以使用其它方式向字段传入超过长度限制的字符串。
 
 3. DateField()
 
@@ -1704,6 +1896,7 @@ except Exception as e:
 3. null
     - 如果设置为True,表示该列值允许为空。
     - 默认为False,如果此选项为False建议加入default选项来设置默认值
+    - `官方不建议将字符字段设置null=True，建议传入空字符串代替`
 4. default
     - 设置所在列的默认值,如果字段选项null=False建议添加此项
 5. db_index
@@ -1714,6 +1907,9 @@ except Exception as e:
     - 指定列的名称,如果不指定的话则采用属性名作为列名
 8. verbose_name
     - 设置此字段在admin界面上的显示名称。
+9. [choices](https://docs.djangoproject.com/zh-hans/3.2/ref/models/fields/#choices)
+    - 为该字段的值提供选择
+
 
 - 示例:
 
@@ -1728,22 +1924,38 @@ except Exception as e:
 
 #### Meta内部类
 
-- 使用内部 Meta类 来给模型赋予属性，Meta类下有很多内建的类属性，可对模型类做一些控制
+使用内部 Meta类 来给模型赋予属性，Meta类下有很多内建的类属性，可对模型类做一些控制
 
-- 示例：
+示例：
 
-    ```python
-    # file : bookstore/models.py
-    from django.db import models
-    
-    class Book(models.Model): 
-        title = models.CharField("书名", max_length=50, default='')
-        price = models.DecimalField('定价', max_digits=7, decimal_places=2, default=0.0)
-        class Meta:
-            db_table = 'book'  #可改变当前模型类对应的表名
-    ```
+```python
+# file : bookstore/models.py
+from django.db import models
 
-    
+class Book(models.Model): 
+    title = models.CharField("书名", max_length=50, default='')
+    price = models.DecimalField('定价', max_digits=7, decimal_places=2, default=0.0)
+    class Meta:
+        db_table = 'book'  #可改变当前模型类对应的表名
+```
+
+建立联合主键,复合主键
+
+```python
+class Orderitems(models.Model):
+    order_num = models.ForeignKey(Orders, on_delete=models.PROTECT)
+    order_item = models.IntegerField()
+    prod_id = models.ForeignKey(Products, on_delete=models.PROTECT)
+    quantity = models.IntegerField()
+    item_price = models.DecimalField(max_digits=8, decimal_places=2)
+
+    class Meta:
+        managed = False
+        db_table = 'orderitems'
+        unique_together = (('order_num', 'order_item'),)	# 将 order_num 和 order_item 作为联合主键
+```
+
+
 
 
 ### 数据库迁移的错误处理方法
@@ -1887,6 +2099,61 @@ except Exception as e:
 
 ## 查询数据
 
+### 查询集
+
+1. 查询集：表示从数据库中获取的模型对象集合
+
+    在管理器上调用过滤器方法会返回查询集
+
+    查询集可以含有0个、一个或多个过滤器
+
+2. 过滤器：基于所给的参数限制查询的结果
+
+    1. 返回数据集的过滤器如下：
+
+        ​	all()：返回所有的数据(以对象形式)
+
+        ​	filter()：返回满足条件的数据
+
+        ​	exclude()：返回满足条件之外的数据，相当于sql语句中where中的not操作符
+
+        ​	order_by()：返回排序后的数据
+
+    2. 返回单个对象的过滤器如下：
+
+        ​	get()：返回单个满足条件的对象
+
+        ​		如果未找到会引发"模型类.DoesNotExist"异常
+
+        ​		如果多条被返回，会引发"模型类.MultipleObjectsReturned"异常
+
+        ​	count()：返回当前查询的总条数
+
+        ​	aggregate()：聚合
+
+        ​	exists()：判断查询集中是否有数据，如果有则返回True，没有则返回False
+
+3. 查询集特点
+
+    1. 惰性执行：创建查询集不会访问数据库，直到在模板中调用数据时，才会访问数据库
+
+        ​	调用数据的情况包括迭代、序列化、与if合用
+
+    2. 缓存：查询集的结果被存下来之后，再次查询相同数据时会使用之前缓存的数据
+
+4. 查询集缓存
+
+    1. 每个查询集都包含一个缓存来最小化对数据库的访问
+    2. 第一次查询数据后，Django会将查询集缓存起来，并返回请求的结果
+    3. 再次查询相同数据时将重用缓存的结果
+
+5. 限制查询集
+
+    1. 查询集返回列表，可以使用切片的方式进行限制，等同于sql中的limit和offset子句
+    2. 注意：不支持负数索引
+    3. 使用下标后返回一个新的查询集，不会立即执行查询
+    4. 如果获取一个对象，直接使用[0]，等同于[0:1].get(),但是如果没有数据，[0]引发IndexError异常，[0:1].get()引发DoesNotExist异常
+
 
 - 数据库的查询需要使用管理器对象进行 
 
@@ -1901,7 +2168,7 @@ except Exception as e:
     | first()/last() | 查询  第一条/最后一条  记录（按主键排序） |
     | ...            |                                           |
 
-1. all()方法
+1. `all`方法
 
     - 方法: all()
 
@@ -1909,9 +2176,8 @@ except Exception as e:
 
     - 作用: 查询MyModel实体中所有的数据
 
-        - 等同于
-            - select * from tabel
-
+        ​			等同于 select * from tabel
+        
     - 返回值: QuerySet容器对象,内部存放 MyModel 实例   返回值是数组
 
     - 示例:
@@ -1922,8 +2188,9 @@ except Exception as e:
         for book in books:
             print("书名", book.title, '出版社:', book.pub)
         ```
-
-2. 在模型类中定义 `def __str__(self): ` 方法可以自定义默认的字符串
+        
+        在模型类中定义 `def __str__(self): ` 方法可以自定义默认的字符串
+        
 
     ```python
     class Book(models.Model):
@@ -1932,7 +2199,7 @@ except Exception as e:
             return "书名: %s, 出版社: %s, 定价: %s" % (self.title, self.pub, self.price)
     ```
 
-3. 查询返回指定列(字典表示)
+2. `values` 查询返回指定列(字典表示)
 
     - 方法: values('列1', '列2')
 
@@ -1940,12 +2207,13 @@ except Exception as e:
 
     - 作用: 查询部分列的数据并返回
 
-        - select 列1,列2 from xxx
+        ​		select 列1,列2 from xxx
 
     - 返回值: QuerySet
 
-        - 返回查询结果容器，容器内存字典，每个字典代表一条数据,
-        - 格式为: {'列1': 值1, '列2': 值2}
+        ​		返回查询结果容器，容器内存字典，每个字典代表一条数据,
+
+        ​		格式为: {'列1': 值1, '列2': 值2}
 
     - 示例:
 
@@ -1957,7 +2225,15 @@ except Exception as e:
             print("book=", book)
         ```
 
-4. 查询返回指定列（元组表示)
+3. `distinct` 对values()的结果进行去重
+
+    ```python
+    XXX.objects.all().values('id','name').distinct()
+    ```
+
+    ​		会对values()中所有列的整体进行去重,无法单独对其中某一列进行
+
+4. `values_list` 查询返回指定列（元组表示)
 
     - 方法:values_list('列1','列2')
 
@@ -1965,11 +2241,11 @@ except Exception as e:
 
     - 作用:
 
-        - 返回元组形式的查询结果
+        ​		返回元组形式的查询结果
 
     - 返回值: QuerySet容器对象,内部存放 `元组`
 
-        - 会将查询出来的数据封装到元组中,再封装到查询集合QuerySet中
+        ​		会将查询出来的数据封装到元组中,再封装到查询集合QuerySet中
 
     - 示例:
 
@@ -1981,7 +2257,7 @@ except Exception as e:
             print("book=", book)  # ('Python', '清华大学出版社')...
         ```
 
-5. 排序查询
+5. `order_by` 排序查询
 
     - 方法:order_by
 
@@ -1989,7 +2265,7 @@ except Exception as e:
 
     - 作用:
 
-        - 与all()方法不同，它会用SQL 语句的ORDER BY 子句对查询结果进行根据某个字段选择性的进行排序
+        ​		与all()方法不同，它会用SQL 语句的ORDER BY 子句对查询结果进行根据某个字段选择性的进行排序
 
     - 说明:
 
@@ -2000,11 +2276,13 @@ except Exception as e:
         ```python
         from bookstore.models import Book
         books = Book.objects.order_by("price")
+        # 默认升序
+        # order_by("-price")为降序
         for book in books:
         print("书名:", book.title, '定价:', book.price)
         ```
 
-6. 条件查询 - filter
+6. `filter` 条件查询
 
     - 方法: filter(条件)
 
@@ -2016,11 +2294,11 @@ except Exception as e:
 
     - 返回值:
 
-        - QuerySet容器对象,内部存放 MyModel 实例
+        ​		QuerySet容器对象,内部存放 MyModel 实例
 
     - 说明:
 
-        - 当多个属性在一起时为"与"关系，即当`Books.objects.filter(price=20, pub="清华大学出版社")` 返回定价为20 `且` 出版社为"清华大学出版社"的全部图书
+        ​		当多个属性在一起时为"与"关系，即当`Books.objects.filter(price=20, pub="清华大学出版社")` 返回定价为20 `且` 出版社为"清华大学出版社"的全部图书
 
     - 示例:
 
@@ -2035,21 +2313,21 @@ except Exception as e:
             authors=Author.objects.filter(name='王老师',age=28)
         ```
 
-7. 条件查询 - exclude
+7. `exclude` 条件查询
 
     - 方法: exclude(条件)
 
     - 语法:
 
-        - MyModel.objects.exclude(条件)
+        ​		MyModel.objects.exclude(条件)
 
     - 作用:
 
-        - 返回不包含此 `条件` 的 全部的数据集
+        ​		返回不包含此 `条件` 的 全部的数据集
 
     - 示例:
 
-        - 查询 `清华大学出版社，定价等于50` 以外的全部图书
+        ​		查询 清华大学出版社，定价等于50 以外的全部图书
 
         ```python
         books = models.Book.objects.exclude(pub="清华大学出版社", price=50)
@@ -2057,7 +2335,7 @@ except Exception as e:
             print(book)
         ```
 
-8. 条件查询 - get
+8. `get` 条件查询
 
     ```python
     #使用get 要使用try:expend，很容易500报错
@@ -2067,15 +2345,15 @@ except Exception as e:
 
     - 语法:
 
-        - MyModel.objects.get(条件)
+        ​		MyModel.objects.get(条件)
 
     - 作用：
 
-        - 返回满足条件的唯一一条数据
+        ​		返回满足条件的唯一一条数据
 
     - 说明:
 
-        - 该方法只能返回一条数据
+        ​		该方法只能返回一条数据
 
   - 查询结果多余一条数据则抛出,Model.MultipleObjectsReturned异常
 
@@ -2083,130 +2361,127 @@ except Exception as e:
 
    - 示例:
 
-     ```python
+     ````python
+     from bookstore.models import Book
      
-     ```
-
-    from bookstore.models import Book
      book = Book.objects.get(id=1)
      print(book.title)
      ```
-
-
-​     
+     ````
 
 ### 查询谓词
 
-- 每一个查询谓词是一个独立的查询功能
+每一个查询谓词是一个独立的查询功能
 
 1. `__exact` : 等值匹配
 
     ```python
     Author.objects.filter(id__exact=1)
     # 等同于select * from author where id = 1
+    # 默认忽视大小写
     ```
 
-2. `__contains` : 包含指定值
+2. `__contains` : 包含指定值   `__icontains` 不区分大小写
 
     ```python
     Author.objects.filter(name__contains='w')
     # 等同于 select * from author where name like '%w%'
     ```
 
-3. `__startswith` : 以 XXX 开始
+3. `__startswith` : 以 XXX 开始(区分大小写), `__istartswith` 不区分大小写
 
-4. `__endswith` : 以 XXX 结束
+    ```python
+    Products.objects.filter(prod_name__istartswith='jet').values_list('prod_name','prod_price')
+    # 等同于 select prod_name,prod_price from products where prod_name like 'jet%'
+    ```
 
-5. `__gt` : 大于指定值
+4. `__endswith` : 以 XXX 结束     `__iendswith`不区分大小写
+
+5. `__regex`:正则表达式匹配       `__iregex`不区分大小写的正则表达式匹配 [mysql正则使用方式](./MySQL.md#正则查询 REGEXP)
+
+6. `__gt` : 大于指定值
 
     ```python
     Author.objects.filer(age__gt=50)
     # 等同于 select * from author where age > 50
     ```
 
-6. `__gte` : 大于等于
+7. `__gte` : 大于等于
 
-7. `__lt` : 小于
+8. `__lt` : 小于
 
-8. `__lte` : 小于等于
+9. `__lte` : 小于等于
 
-9. `__in` : 查找数据是否在指定范围内
+10. `__in` : 查找数据是否在指定范围内
 
-    - 示例
+    ​		示例
 
     ```python
     Author.objects.filter(country__in=['中国','日本','韩国'])
     # 等同于 select * from author where country in ('中国','日本','韩国')
     ```
 
-10. `__range`: 查找数据是否在指定的区间范围内
-
-    ```python
-    # 查找年龄在某一区间内的所有作者
-    Author.objects.filter(age__range=(35,50))
-    # 等同于 SELECT ... WHERE Author BETWEEN 35 and 50;
-    ```
-
-11. **isnull**：是否为null。
-
-     例：查询书名不为空的图书。
+11. `__range`: 查找数据是否在指定的区间范围内
 
      ```python
-    BookInfo.objects.filter(btitle__isnull=False)
+     # 查找年龄在某一区间内的所有作者
+     Author.objects.filter(age__range=(35,50)) # 同时包含两边的边界值
+     # 等同于 SELECT ... WHERE Author BETWEEN 35 and 50;
      ```
 
-12. 日期查询
+12. `__isnull`：是否为null。
 
-     year、month、day、week_day、hour、minute、second：对日期时间类型的属性进行运算。
+      例：查询书名不为空的图书。
 
-     例：查询1980年发表的图书。
+      ```python
+     BookInfo.objects.filter(btitle__isnull=False)
+      ```
 
-     BookInfo.objects.filter(bpub_date__year=1980)
+13. 日期查询
 
-     例：查询1980年1月1日后发表的图书。
+      year、month、day、week_day、hour、minute、second：对日期时间类型的属性进行运算。
 
-     BookInfo.objects.filter(bpub_date__gt=date(1990, 1, 1))
+      例：查询1980年发表的图书。
 
-13. 详细内容参见: <https://docs.djangoproject.com/en/2.2/ref/models/querysets/#field-lookups>
+      BookInfo.objects.filter(bpub_date__year=1980)
 
-- 示例
+      例：查询1980年1月1日后发表的图书。
 
-    ```python
-    MyModel.objects.filter(id__gt=4)
-    # 等同于 SELECT ... WHERE id > 4;
-    ```
+      BookInfo.objects.filter(bpub_date__gt=date(1990, 1, 1))
 
-- 练习:
-
-    1. 查询Book表中price大于等于50的信息
-
-    2. 查询Author表中姓王的人的信息
-
-    3. 查询Author表中Email中包含"w "的人的信息
-
-         
+14. `更多查询谓词内容参见`: <https://docs.djangoproject.com/zh-hans/3.2/ref/models/querysets/#field-lookups>
 
 ### 修改数据
 
 1. 修改单个实体的某些字段值的步骤:
 
     1. 查
-        - 通过 get() 得到要修改的实体对象 
+       
+        ​	通过 get() 得到要修改的实体对象 
+        
     2. 改
-        - 通过 对象.属性 的方式修改数据 
+       
+        ​	通过 对象.属性 的方式修改数据 
+        
     3. 保存
-        - 通过 对象.save() 保存数据
+       
+        ​	通过 对象.save() 保存数据
 
-    - 如:
+    如:
 
-        ```python
-        from bookstore.models import Book
-        abook = Book.objects.get(id=10)
-        abook.market_price = "10.5"
-        abook.save()
-        ```
+    ```python
+    from bookstore.models import Book
+    abook = Book.objects.get(id=10)
+    abook.market_price = "10.5"
+    abook.save()
+    ```
 
-2. 通过 QuerySet 批量修改 对应的全部字段
+2. 如果你只是更新一条记录，不需要对模型对象做任何事情，最有效的方法是：
+
+    - `Entry.objects.filter(id=10).update(comments_on=False)`
+    - 使用 `update()` 还可以防止在加载对象和调用 `save()` 之间的短暂时间内数据库中的某些东西可能发生变化的竞争条件。
+
+3. 通过 QuerySet 批量修改 对应的全部字段
 
     - 直接调用QuerySet的update(属性=值) 实现批量修改
 
@@ -2224,6 +2499,8 @@ except Exception as e:
         #推介使用方式，使用update只执行了一条SQL语句，因为Django采用惰性操作，不调用对象的方法，对象其实都没有被创建
         ```
 
+
+
 ### 删除数据
 
 - 删除记录是指删除数据库中的一条或多条记录
@@ -2233,8 +2510,9 @@ except Exception as e:
 
     - 步骤
 
-        1. 查找查询结果对应的一个数据对象
-        2. 调用这个数据对象的delete()方法实现删除
+        ​		查找查询结果对应的一个数据对象
+
+        ​		调用这个数据对象的delete()方法实现删除
 
     - 示例:
 
@@ -2250,11 +2528,12 @@ except Exception as e:
 
     - 步骤
 
-        1. 查找查询结果集中满足条件的全部QuerySet查询集合对象
-        2. 调用查询集合对象的delete()方法实现删除
-
+        ​		查找查询结果集中满足条件的全部QuerySet查询集合对象
+    
+        ​		调用查询集合对象的delete()方法实现删除
+    
     - 示例:
-
+    
         ```python
         # 删除全部作者中，年龄大于65的全部信息
         auths = Author.objects.filter(age__gt=65)
@@ -2273,20 +2552,18 @@ except Exception as e:
 
     - 聚合函数【需要导入】:
 
-        - 导入方法: `from django.db.models import *`
-        - 聚合函数: 
-            - Sum, Avg, Count, Max, Min
-
+        ​		导入方法: `from django.db.models import Sum, Avg, Count, Max, Min`
+        
     - 语法: 
 
-        - MyModel.objects.aggregate(结果变量名=聚合函数('列'))
+        ​		MyModel.objects.aggregate(结果变量名=聚合函数('列'))
 
     - 返回结果:
 
-        - 由 结果变量名和值组成的字典
-        - 格式为:
-            - `{"结果变量名": 值}
+        ​		由 结果变量名和值组成的字典
 
+        ​		格式为:`{"结果变量名": 值}`
+    
     - 示例:    
 
         ```python
@@ -2304,74 +2581,71 @@ except Exception as e:
         print("result=", result)  # {"mycnt": 10}
         
         ```
+    
+2. 分组聚合 `annotate`
 
-2. 分组聚合
-
-    - 分组聚合是指通过计算查询结果中每一个对象所关联的对象集合，从而得出总计值(也可以是平均值或总和)，即为查询集的每一项生成聚合。
+    分组聚合是指通过计算查询结果中每一个对象所关联的对象集合，从而得出总计值(也可以是平均值或总和)，即为查询集的每一项生成聚合。
 
     - 语法: 
 
-        - QuerySet.annotate(结果变量名=聚合函数('列'))
+        ​		QuerySet.annotate(结果变量名=聚合函数('列'))
 
     - 用法步骤:
 
-        1. 通过先用查询结果MyModel.objects.values 查找查询要分组聚合的列
+        ​		通过先用查询结果MyModel.objects.values 查找查询要分组聚合的列
 
-            - MyModel.objects.values('列1', '列2')
+        MyModel.objects.values('列1', '列2').annotate(名字=Count('列3')).values('列1','列2','名字')
 
-            - 如: 
+        `在 annotate() 之前的 values() 表示需要对哪些字段进行分组, 等同于 group by ...`
 
-                ```python
-                pub_set = Book.objects.values('pub')
-                print(pub_set)  # <QuerySet [{'pub': '清华大学出版社'}, {'pub': '清华大学出版社'}, {'pub_hou {'pub': '机械工业出版社'}, {'pub': '清华大学出版社'}]>
-                
-                ```
-
-        2. 通过返回结果的 QuerySet.annotate 方法分组聚合得到分组结果
-
-            - QuerySet.annotate(名=聚合函数('列'))
-
-            - 返回 QuerySet 结果集,内部存储结果的字典
-
-            - 如:
-
-                ```python
-                pub_count_set = pub_set.annotate(myCount=Count('pub'))
-                print(pub_count_set)  # <QuerySet [{'pub': '清华大学出版社', 'myCount': 7}, {'pub': '机械工业出版社', 'myCount': 3}]>
-                ```
-
+        `在 annotate() 之后的 values() 表示 需要查询的列 等同于 select ..., ..., ... from`
+    
     - 示例:
-
-        - 得到哪个出版社共出版多少本书
+    
+        检索所有客户及每个客户所下的订单数<<mysqk必知必会>>16.3
 
         ```python
-        def test_annotate(request):
-           from django.db.models import Count
-           from . import models
-        
-            # 得到所有出版社的查询集合QuerySet
-            pub_set = models.Book.objects.values('pub')
-            # 根据出版社查询分组，出版社和Count的分组聚合查询集合
-            pub_count_set = pub_set.annotate(myCount=Count('pub'))  # 返回查询集合
-            for item in pub_count_set:
-                print("出版社:", item['pub'], "图书有：", item['myCount'])
-            return HttpResponse('请查看服务器端控制台获取结果')
+        Orders.objects.all().values('cust_id').annotate(num_ord=Count('order_num')).values('num_ord','cust_id',cust_name=F('cust_id__cust_name'))
         ```
 
-### F对象
+3. 过滤分组
 
-- 一个F对象代表数据库中某条记录的字段的信息
+    ​		对分组的过滤筛选 原生mysql里是 `having` 语句
+
+    方法:	对annotate()的结果再次调用filter()
+
+    例:	过滤出两个以上订单的分组,该示例在<<mysql必知必会>>13.3
+
+    ```python
+    from django.db.models import Count
+    
+    Orders.objects.all().values('cust_id').annotate(orders=Count('cust_id')).filter(orders__gte=2)
+    
+    # 基本等同于原生sql语句
+    select cust_id,count(*) as orders from orders group by cust_id having count(*)>=2
+    
+    ```
+
+    
+
+### F 对象
+
+一个F对象代表数据库中某条记录的字段的信息
+
+换句话说就是需要在查询过程中,使用查询结果的某些字段值的时候,就要用到F
 
 1. 作用:
 
-    - 通常是对数据库中的字段值在不获取的情况下进行操作
-    - 用于类属性(字段)之间的比较。
+    ​	通常是对数据库中的字段值在不获取的情况下进行操作
+
+    ​	用于类属性(字段)之间的比较。
+
+    ​	F() 的实例可以在查询中引用字段，来比较同一个 model 实例中两个不同字段的值。
 
 2. 用法
 
-    - F对象在数据包 django.db.models 中，使用时需要先导入
-        - `from django.db.models import F`
-
+    ​	F对象在数据包 django.db.models 中，使用时需要先导入`from django.db.models import F`
+    
 3. 语法:
 
     ```python
@@ -2381,39 +2655,99 @@ except Exception as e:
 
 4. 说明:
 
-    - 一个 F() 对象代表了一个model的字段的值
-    - F对象通常是对数据库中的字段值在不加载到内存中的情况下直接在数据库服务器端进行操作
+    ​	一个 F('字段') 对象代表了一个model的字段的值
+    
+    ​	F对象通常是对数据库中的字段值在不加载到内存中的情况下直接在数据库服务器端进行操作
 
 
 
-5. 示例1
+示例1 `实时修改`
 
-    - 更新Book实例中所有的零售价涨10元
+​		更新Book实例中所有的零售价涨10元
 
-    ```python
-    Book.objects.all().update(market_price=F('market_price')+10)
-    'UPDATE `bookstore_book` SET `market_price` = (`bookstore_book`.`market_price` + 10) 
-    # 以上做法好于如下代码  上面不用把值取出来，直接更改
-    books = Book.objects.all()
-    for book in books:
-        book.market_price=book.marget_price+10
-        book.save()
-    ```
+```python
+Book.objects.all().update(market_price=F('market_price')+10)
+'UPDATE `bookstore_book` SET `market_price` = (`bookstore_book`.`market_price` + 10) 
+# 以上做法好于如下代码  上面不用把值取出来，直接更改
+books = Book.objects.all()
+for book in books:
+    book.market_price=book.marget_price+10
+    book.save()
+```
 
-6. 示例2
+示例1.2 `实时修改Char字段`
 
-    - 对数据库中两个字段的值进行比较，列出哪儿些书的零售价高于定价?
+​		把所有书名后面加上(第一版)
 
-    ```python
-    from django.db.models import F
-    from bookstore.models import Book
-    books = Book.objects.filter(market_price__gt=F('price'))
-    'SELECT * FROM `bookstore_book` WHERE `bookstore_book`.`market_price` > (`bookstore_book`.`price`)
-    for book in books:
-        print(book.title, '定价:', book.price, '现价:', book.market_price)
-    ```
+```python
+from django.db.models.functions import Concat
+from django.db.models import Value
 
-### Q对象
+Book.objects.all().update(title=Concat(F("title"), Value("("), Value("第一版"), Value(")")))
+```
+
+
+
+示例2 `将自身多个字段的计算结果,作为条件`
+
+​		对数据库中两个字段的值进行比较，列出哪儿些书的零售价高于定价?
+
+```python
+from django.db.models import F
+from bookstore.models import Book
+books = Book.objects.filter(market_price__gt=F('price'))
+'SELECT * FROM `bookstore_book` WHERE `bookstore_book`.`market_price` > (`bookstore_book`.`price`)
+for book in books:
+    print(book.title, '定价:', book.price, '现价:', book.market_price)
+```
+
+示例3 `将自身多个字段的计算结果,作为值添加到新的字段`
+
+​		订单表中,包含物品ID,数量,单价,要求输出总价,需要将数量与单价相乘,并赋予新的字段,
+
+​		该示例在<<Mysql必知必会>>10.3
+
+```python
+from django.db.models import F
+Orderitems.objects.filter(order_num=20005).values('prod_id','quantity','item_price',expanded_price=F('quantity')*F('item_price'))
+# 注,新生成的字段必须写在最后,否则会报关键字传参错误
+
+# 等同于sql
+'SELECT prod_id,quantity,item_price,quantity * item_price AS expanded_price FROM orderitems where order_num=20005'
+```
+
+示例3.2 `拼接字段 Char`
+
+示例在<<Mysql必知必会>>10.2
+
+```python
+from django.db.models.functions import Concat
+from django.db.models import Value
+
+Vendors.objects.all().values(vend_title=Concat(F('vend_name'),Value(' ('),F('vend_country'),Value(')')))
+
+# 等同于
+select concat(vend_name,' (',vend_country,')') as vend_title from vendors
+```
+
+示例4 `在分组聚合中使用`
+
+示例在<<Mysql必知必会>>13.4
+
+检索订单价格>=50的订单号和订单总价格
+
+```python
+from django.db.models import F,Sum
+
+Orderitems.objects.all().values('order_num').annotate(ordertotal=Sum(F('quantity')*F('item_price'))).filter(ordertotal__gte=50).order_by('ordertotal')
+
+# 等同于原生sql
+select order_num,sum(quantity*item_price) as ordertotal from orderitems group by order_num having sum(quantity*item_price)>=50 order by ordertotal
+```
+
+
+
+### Q 对象
 
 - 当在获取查询结果集 使用复杂的逻辑或  `|` 、 逻辑非 `~` 等操作时可以借助于 Q对象进行操作
 
@@ -2423,9 +2757,8 @@ except Exception as e:
     Book.objects.filter(Q(price__lt=20)|Q(pub="清华大学出版社"))
     ```
 
-- Q对象在 数据包 django.db.models 中。需要先导入再使用
+- Q对象在 数据包 django.db.models 中。需要先导入再使用`from django.db.models import Q`
 
-    - `from django.db.models import Q`
 
 1. 作用
 
@@ -2455,7 +2788,24 @@ except Exception as e:
     Book.objects.filter(Q(market_price__lt=50) | Q(pub_house='清华大学出版社'))
     # 查找不是机械工业出版社的书且价格低于50的书
     Book.objects.filter(Q(market_price__lt=50) & ~Q(pub_house='机械工业出版社'))
+    
+    # 计算次序问题
+    # 查找价格为10美元(含)以上且由1002或1003制造的所有产品 示例为:<<Msql必知必会>>7.13
+    Products.objects.filter(Q(vend_id=1003)|Q(vend_id=1002)&Q(prod_price__gte=10)).values_list('prod_name','prod_price')	# 该查询会返回7条结果,因为sql会优先处理and操作符
+    # 解决方式是加入括号以提升计算优先级
+    Products.objects.filter((Q(vend_id=1003)|Q(vend_id=1002))&Q(prod_price__gte=10)).values_list('prod_name','prod_price')	# 该查询就只会返回4条数据
+    
     ```
+
+### 查看ORM对应的原生sql语句
+
+```python
+from django.db import connection
+#这里执行一段复杂的查询代码
+connection.queries[-1]['sql']	# 会返回最近一次执行的ORM所对应的原生sql
+```
+
+
 
 ### 原生的数据库操作方法
 
@@ -2465,14 +2815,16 @@ except Exception as e:
 
     1. 语法: 
 
-        - `MyModel.objects.raw(sql语句，[拼接参数])`
+        `MyModel.objects.raw(sql语句，[拼接参数])`
+        
     2. 用法
-
-        - `MyModel.objects.raw('sql语句', [拼接参数])`
+    
+        `MyModel.objects.raw('sql语句', [拼接参数])`
+        
     3. 返回值:
 
-        - RawQuerySet 集合对象 【只支持基础操作，比如循环】
-
+        RawQuerySet 集合对象 【只支持基础操作，比如循环】
+    
     4. 示例
 
 ```python
@@ -2491,26 +2843,24 @@ s2 = Book.objects.raw('select * from bookstore_book where id=%s',['1 or 1=1'])
 
 - 使用django中的游标cursor对数据库进行  增删改查 操作
 
-    - 在Django中跨国模型类直接操作数据库
+    - 在Django中跨过模型类直接操作数据库
 
     - 使用步骤:
 
-        1. 导入cursor所在的包
+        ​		导入cursor所在的包
 
-            - Django中的游标cursor定义在 django.db.connection包中，使用前需要先导入
-            - 如：
-                - `from django.db import connection`
+        ​				Django中的游标cursor定义在 django.db.connection包中，使用前需要先导入`from django.db import connection`
+    
+        ​		用创建cursor类的构造函数创建cursor对象，再使用cursor对象,为保证在出现异常时能释放cursor资源,通常使用with语句进行创建操作
 
-        2. 用创建cursor类的构造函数创建cursor对象，再使用cursor对象,为保证在出现异常时能释放cursor资源,通常使用with语句进行创建操作
+        ​		如:
 
-            - 如:
-
-                ```python
-                from django.db import connection
-                with connection.cursor() as cur:
-                    cur.execute('执行SQL语句', '拼接参数')
-                ```
-
+        ```python
+        from django.db import connection
+        with connection.cursor() as cur:
+            cur.execute('执行SQL语句', '拼接参数')
+        ```
+    
     - 示例
 
         ```python
@@ -2528,6 +2878,405 @@ s2 = Book.objects.raw('select * from bookstore_book where id=%s',['1 or 1=1'])
 
 
 
+
+## 数据表关联关系映射
+
+-   常用的表关联方式有三种:
+    1. 一对一映射
+        - 如: 一个身份证对应一个人
+    2. 一对多映射
+        - 如: 一个班级可以有多个学生
+    3. 多对多映射
+        - 如: 一个学生可以报多个课程，一个课程可以有多个学生学习
+
+### 外键类字段选项
+
+- 特殊字段参数【必须项】:
+
+    - `on_delete`
+
+        on_delete 不会在数据库中创建 SQL 约束。支持数据库级联选项 [可能会在以后实施(3.2文档)](https://code.djangoproject.com/ticket/21961)。
+
+        - models.CASCADE  级联删除。 Django模拟SQL约束ON DELETE CASCADE的行为，并删除包含ForeignKey的对象。django并不是改变了mysql里的RESTRICT属性，级联删除效果是在django的源码里实现的（先把从表的删了，再把主表的删了）。
+        - models.PROTECT 抛出ProtectedError 以阻止被引用对象的删除;[等同于mysql默认的RESTRICT]
+        - models.SET_NULL 设置ForeignKey null；需要指定null=True
+        - models.SET_DEFAULT  将ForeignKey设置为其默认值；必须设置ForeignKey的默认值。
+
+    - `db_constraint`
+
+        - True or False   defult=True
+        - `如果不想在数据库层面创建外键,只想使用django的ORM,那么需要设定为False`
+
+    - `db_column` (通用字段参数,普通字段无需使用),指定列名,不指定的话,创建外键时,会自动在列名后追加 _id 字符串,导致使用原生sql 时会很麻烦
+
+    - 其它参数请参考文档 <https://docs.djangoproject.com/en/2.2/ref/models/fields/#foreignkey>
+
+- 其余常用的字段选项【非必须项】；如:
+
+    null , unique 等
+
+### 一对一映射 OneToOneField
+
+```python
+# 一对一 和 一对多 在sql建表语句上表现出来的差别是，外键有没有unique这个唯一属性
+```
+
+
+
+- 一对一是表示现实事物间存在的一对一的对应关系。
+
+- 如:一个家庭只有一个户主，一个男人有一个妻子，一个人有一个唯一的指纹信息等
+
+    ​    
+
+语法
+
+```python
+class A(model.Model):
+    ...
+class B(model.Model):
+    属性 = models.OneToOneField(A, on_delete=xxx)
+```
+
+
+
+用法示例
+
+1. 创建作家和作家妻子类
+
+    ```python
+    # file : xxxxxxxx/models.py
+    from django.db import models
+    
+    class Author(models.Model):
+        '''作家模型类'''
+        name = models.CharField('作家', max_length=50)
+    
+    class Wife(models.Model):
+        '''作家妻子模型类'''
+        name = models.CharField("妻子", max_length=50)
+        author = models.OneToOneField(Author, on_delete=models.CASCADE)  # 增加一对一属性 
+    ```
+
+2. 创建一对一的数据记录
+
+    ```python
+    from .models import *
+    author1 = Author.objects.create(name='王老师')
+    #方案1
+    wife1 = Wife.objects.create(name='王夫人', author=author1)  # 关联王老师对象
+    #方案2
+    wife1 = Wife.objects.create(name='王夫人', author_id=author1.id)# 关联王老师对象的ID
+    author2 = Author.objects.create(name='小泽老师')  # 一对一可以没有数据对应的数据 
+    ```
+
+3. 数据查询
+
+    1. 正向查询
+
+        - 直接通过关联属性查询即可
+
+        ```python
+        # 通过 wife 找 author
+        from .models import Wife
+        wife = Wife.objects.get(name='王夫人')
+        print(wife.name, '的老公是', wife.author.name)
+        ```
+
+    2. 反向查询
+
+        - 通过反向关联属性查询
+        - 反向关联属性为`实例对象.引用类名(小写)`，如作家的反向引用为`作家对象.wife`
+        - 当反向引用不存在时，则会触发异常
+
+        ```python
+        # 通过 author.wife 关联属性 找 wife,如果没有对应的wife则触发异常
+        author1 = Author.objects.get(name='王老师')
+        print(author1.name, '的妻子是', author1.wife.name)
+        author2 = Author.objects.get(name='小泽老师')
+        try:
+            print(author2.name, '的妻子是', author2.wife.name)
+        except:
+            print(author2.name, '还没有妻子')
+        ```
+
+        
+
+- 作用:  水平分表
+
+    主要在表里数据量过多超过500W条，牛B的公司可以优化到1000W条，就需要水平分表
+
+- 作用:  垂直分表
+
+- 主要是解决常用数据不常用数据的存储问题,把经常加载的一个数据放在主表中，不常用数据放在另一个副表中，这样在访问主表数据时不需要加载副表中的数据以提高访问速度提高效率和节省内存空间,如经常把书的内容和书名建成两张表，因为在网站上经常访问书名等信息，但不需要得到书的内容。
+
+    ```python
+    # 把经常加载的一个数据放在主表中，不常用数据放在另一个副表中
+    ```
+
+      
+
+### 一对多映射 ForeignKey
+
+
+
+一对多是表示现实事物间存在的一对多的对应关系。
+
+如:一个学校有多个班级,一个班级有多个学生, 一本图书只能属于一个出版社,一个出版社允许出版多本图书
+
+1.语法
+
+当一个A类对象可以关联多个B类对象时
+
+```python
+class A(model.Model):
+    ...
+
+class B(model.Model):
+    属性 = models.ForeignKey("str"一的模型类名, on_delete=xx, db_column='指定列名否则会自动在列名后面追加 _id,导致使用原生sql时非常麻烦')
+# ForeignKey('建表的时候这里是所关联的模型类，create的时候这里是所关联模型类的对象')
+
+    
+```
+
+2.用法示例
+
+​		有二个出版社对应五本书的情况.
+
+​		1.清华大学出版社 有书
+​						C++ , Java , Python
+
+​		2.北京大学出版社 有书
+​						西游记 , 水浒
+
+3.创建模型类
+
+```python
+# file: otm/models.py
+from django.db import models
+    
+class Publisher(models.Model):
+	'''出版社【一】'''
+	name = models.CharField('名称', max_length=50, unique=True)
+    
+class Book(models.Model):
+	'''书【多】'''
+	title = models.CharField('书名', max_length=50)
+	publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+        
+```
+
+4.创建数据
+
+```python
+#先创建 '一' ，再创建 '多'
+from .models import *
+pub1 = Publisher.objects.create(name='清华大学出版社')
+Book.objects.create(title='C++', publisher=pub1)
+Book.objects.create(title='Java', publisher_id=1)
+
+#高级创建 - 利用 反向属性
+pub2 = Publisher.objects.create(name='北京大学出版社')
+pub2.book_set.create(title='西游记')
+```
+
+
+
+5.数据查询
+
+通过 Book 查询 Publisher【正向】
+
+```python
+通过 publisher 属性查询即可
+book.publisher
+ 
+abook = Book.objects.get(id=1)
+print(abook.title, '的出版社是:', abook.publisher.name)
+```
+
+通过 Publisher 查询 对应的所有的 Book 【反向】
+
+```python
+Django会在Publisher中增加一个属性来表示对对应的Book们的查询引用
+属性:book_set  等价于 objects
+
+# 通过出版社查询对应的书
+pub1 = Publisher.objects.get(name='清华大学出版社')
+books = pub1.book_set.all()  # 通过book_set 获取pub1对应的多个Book数据对象
+#books = Book.objects.filter(publisher=pub1)  # 也可以采用此方式获取
+print("清华大学出版社的书有:")
+for book in books:
+   print(book.title)
+```
+
+### 多对多映射 ManyToManyField
+
+- 多对多表达对象之间多对多复杂关系，如: 每个人都有不同的学校(小学，初中，高中,...),每个学校都有不同的学生...
+
+1. 语法
+
+    - 在关联的两个类中的任意一个类中,增加:
+
+    ```python
+    属性 = models.ManyToManyField(MyModel)
+    ```
+
+2. 用法示例
+
+    - 一个作者可以出版多本图书
+    - 一本图书可以被多名作者同时编写
+
+    ```python
+    class Author(models.Model):
+        ...
+    
+    class Book(models.Model):
+        ...
+        authors = models.ManyToManyField(Author)
+    ```
+
+3. 创建模型类
+
+    ```python
+    class Author(models.Model):
+        '''作家模型类'''
+        name = models.CharField('作家', max_length=50)
+        def __str__(self):
+            return self.name
+        
+    class Book(models.Model):
+        '''书模型类'''
+        title = models.CharField('书名', max_length=50)
+        authors = models.ManyToManyField(Author)
+        def __str__(self):
+       		return self.title 
+    ```
+
+4. 创建数据
+
+    ```python
+    方案1 先创建 author 再关联 book
+        author1 = Author.objects.create(name='吕老师')
+        author2 = Author.objects.create(name='王老师')
+        # 吕老师和王老师同时写了一本Python
+        book11 = author1.book_set.create(title="Python")
+        author2.book_set.add(book11) 
+        
+    方案2 先创建 book 再关联 author
+        book = Book.objects.create(title='python1')
+        #郭小闹和吕老师都参与了 python1 的 创作
+        author3 = book.authors.create(name='guoxiaonao')
+        book.authors.add(author1)
+    ```
+
+    
+
+5. 数据查询
+
+    1. 通过 Book 查询对应的所有的 Author【正向】
+
+    ```python
+    book.authors.all() -> 获取 book 对应的所有的author的信息
+    book.authors.filter(age__gt=80) -> 获取book对应的作者中年龄大于80岁的作者的信息
+    ```
+
+    2. 通过 Author 查询对应的所有的Book【反向】
+
+    - Django会生成一个反向属性 book_set 用于表示对对应的book的查询对象相关操作
+
+    ```python
+    author.book_set.all()
+    author.book_set.filter()
+    ```
+
+### 自关联映射(特殊的映射关系)
+
+表内自关联是指表内数据相关联的对象和表是相同字段，这样我们就直接用表内关联将外键关联设置成自身表的字段。同样表内关联也分一对多字段和多对多字段
+例如：对于微博评论，每条评论都可能有子评论，但每条评的字段内容应该都是相同的，并且每条评论都只有一个父评论，这就满足了，一对多的情形。父评论为关联字段，可以对应多个子评论，这就是一对多的自关联。
+
+#### 一对多的情形
+
+在django项目的models中创建评论表。
+
+```python
+#评论表
+class Comment(models.Model):
+    #评论的内容字段
+    content=models.CharField(max_length=255)
+    #评论的发布时间
+    push_time=models.DateTimeField(auto_now_add=True)
+    #关联父评论的id，可以为空
+    pcomment = models.ForeignKey(to='self',null=True) 
+    def __str__(self):
+        return self.content
+
+```
+
+添加数据，第一条数据关联字段为空，说明是父评论，第二条数据关联了第一条数据说明是第一条数据的字评论，同样后两条数据是是第二条数据的子评论
+
+![img](img/Djnago2.2/1456462-20181109173302412-2052132748.png)
+
+接下来查找第一条数据的子评论：
+
+```python
+#第一条数据的id是1，可以通过筛选父评论关联字段等于1的对象
+print(Comment.objects.filter(pcomment_id=1))
+
+#根据子评论关联id正向查找父评论的内容
+print(Comment.objects.filter(pcomment_id=2).values('pcomment__content'))
+
+#根据父评论的id反向查找子评论
+print(Comment.objects.filter(id=1).values('comment__id'))
+
+```
+
+注意：外键关联是在子评论中，有关联字段的是子评论，子评论查父评论是正向，父评论查子评论是反向。
+
+#### 多对多的情形
+
+建立一张表，表字段为姓名以及朋友多对多字段，一个人可有多个朋友，也可以是多个人的朋友，找一个人的朋友是正向查找，找是某个人的朋友是反向查找。
+
+```python
+class Person(models.Model):
+    name = models.CharField(max_length=12)
+    #人和人交朋友
+    friends = models.ManyToManyField(to='self',symmetrical=False,related_name='ship')
+    def __str__(self):
+        return self.name
+
+```
+
+添加数据:
+
+![img](img/Djnago2.2/1456462-20181109191837816-1643214849.png)
+
+![img](img/Djnago2.2/1456462-20181109191847610-470700540.png)
+
+```python
+# 查找沁阳的基友
+#正向查找关联字段__name
+print(Person.objects.filter(name='沁阳').values('friends__name'))
+
+# 反向查找沁阳的基友
+# print(Person.objects.all().filter(ship__name='沁阳'))
+
+# 查找王帅的基友
+# 正向查找关联字段__name，王帅是沁阳的朋友但王帅的朋友是空，因为王帅没有关联别人
+print(Person.objects.get(name='王帅').friends.all())
+
+#反向查找是王帅朋友的人，也是空
+print(Person.objects.filter(ship__name='王帅'))
+
+
+# 基友是沁阳的那个人反向查找
+print(Person.objects.get(name='沁阳').ship.all())
+#基友是王帅的那个人反向查找
+# print(Person.objects.get(name='王帅').ship.all())
+
+# 基友含有沁阳的人反向
+print(Person.objects.filter(name='沁阳').values('ship__name'))
+
+```
 
 
 
@@ -2744,301 +3493,6 @@ s2 = Book.objects.raw('select * from bookstore_book where id=%s',['1 or 1=1'])
     - 删除最后一条添加的记录 - Author
 
 
-
-## 数据表关联关系映射
-
--   常用的表关联方式有三种:
-    1. 一对一映射
-        - 如: 一个身份证对应一个人
-    2. 一对多映射
-        - 如: 一个班级可以有多个学生
-    3. 多对多映射
-        - 如: 一个学生可以报多个课程，一个课程可以有多个学生学习
-
-### 一对一映射
-
-```python
-# 一对一 和 一对多 在sql建表语句上表现出来的差别是，外键有没有unique这个唯一属性
-```
-
-
-
-- 一对一是表示现实事物间存在的一对一的对应关系。
-
-- 如:一个家庭只有一个户主，一个男人有一个妻子，一个人有一个唯一的指纹信息等
-
-    
-
-语法
-
-```python
-class A(model.Model):
-    ...
-class B(model.Model):
-    属性 = models.OneToOneField(A, on_delete=xxx)
-```
-
-外键类字段选项
-
-- 特殊字段参数【必须项】:
-    - on_delete
-        1. models.CASCADE  级联删除。 Django模拟SQL约束ON DELETE CASCADE的行为，并删除包含ForeignKey的对象。django并不是改变了mysql里的RESTRICT属性，级联删除效果是在django的源码里实现的（先把从表的删了，再把主表的删了）。
-        2. models.PROTECT 抛出ProtectedError 以阻止被引用对象的删除;[等同于mysql默认的RESTRICT]
-        3. models.SET_NULL 设置ForeignKey null；需要指定null=True
-        4. models.SET_DEFAULT  将ForeignKey设置为其默认值；必须设置ForeignKey的默认值。
-        5. ... 其它参请参考文档 <https://docs.djangoproject.com/en/2.2/ref/models/fields/#foreignkey>
-
-- 其余常用的字段选项【非必须项】；如:
-    1. null
-    2. unique 等
-
-用法示例
-
-1. 创建作家和作家妻子类
-
-    ```python
-    # file : xxxxxxxx/models.py
-    from django.db import models
-    
-    class Author(models.Model):
-        '''作家模型类'''
-        name = models.CharField('作家', max_length=50)
-    
-    class Wife(models.Model):
-        '''作家妻子模型类'''
-        name = models.CharField("妻子", max_length=50)
-        author = models.OneToOneField(Author, on_delete=models.CASCADE)  # 增加一对一属性 
-    ```
-
-2. 创建一对一的数据记录
-
-    ```python
-    from .models import *
-    author1 = Author.objects.create(name='王老师')
-    #方案1
-    wife1 = Wife.objects.create(name='王夫人', author=author1)  # 关联王老师对象
-    #方案2
-    wife1 = Wife.objects.create(name='王夫人', author_id=author1.id)# 关联王老师对象的ID
-    author2 = Author.objects.create(name='小泽老师')  # 一对一可以没有数据对应的数据 
-    ```
-
-3. 数据查询
-
-    1. 正向查询
-
-        - 直接通过关联属性查询即可
-
-        ```python
-        # 通过 wife 找 author
-        from .models import Wife
-        wife = Wife.objects.get(name='王夫人')
-        print(wife.name, '的老公是', wife.author.name)
-        ```
-
-    2. 反向查询
-
-        - 通过反向关联属性查询
-        - 反向关联属性为`实例对象.引用类名(小写)`，如作家的反向引用为`作家对象.wife`
-        - 当反向引用不存在时，则会触发异常
-
-        ```python
-        # 通过 author.wife 关联属性 找 wife,如果没有对应的wife则触发异常
-        author1 = Author.objects.get(name='王老师')
-        print(author1.name, '的妻子是', author1.wife.name)
-        author2 = Author.objects.get(name='小泽老师')
-        try:
-            print(author2.name, '的妻子是', author2.wife.name)
-        except:
-            print(author2.name, '还没有妻子')
-        ```
-
-        
-
-- 作用:  水平分表
-
-    主要在表里数据量过多超过500W条，牛B的公司可以优化到1000W条，就需要水平分表
-
-- 作用:  垂直分表
-
-- 主要是解决常用数据不常用数据的存储问题,把经常加载的一个数据放在主表中，不常用数据放在另一个副表中，这样在访问主表数据时不需要加载副表中的数据以提高访问速度提高效率和节省内存空间,如经常把书的内容和书名建成两张表，因为在网站上经常访问书名等信息，但不需要得到书的内容。
-
-    ```python
-    # 把经常加载的一个数据放在主表中，不常用数据放在另一个副表中
-    ```
-
-      
-
-### 一对多映射
-
-- 一对多是表示现实事物间存在的一对多的对应关系。
-- 如:一个学校有多个班级,一个班级有多个学生, 一本图书只能属于一个出版社,一个出版社允许出版多本图书
-
-1. 语法
-
-    - 当一个A类对象可以关联多个B类对象时
-
-    ```python
-    class A(model.Model):
-        ...
-    
-    class B(model.Model):
-        属性 = models.ForeignKey("一"的模型类, on_delete=xx)
-        # ForeignKey('建表的时候这里是所关联的模型类，create的时候这里是所关联模型类的对象')
-    ```
-
-```
-    
-3. 用法示例
-    - 有二个出版社对应五本书的情况.
-        1. `清华大学出版社` 有书
-            1. C++
-            2. Java
-            3. Python
-
-        2. `北京大学出版社` 有书
-            1. 西游记
-            2. 水浒
-    
-3. 创建模型类
-
-    ```python
-    # file: otm/models.py
-    from django.db import models
-    
-    class Publisher(models.Model):
-    	'''出版社【一】'''
-        name = models.CharField('名称', max_length=50, unique=True)
-    
-    class Book(models.Model):
-        '''书【多】'''
-        title = models.CharField('书名', max_length=50)
-        publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
-        
-```
-
-4. 创建数据
-
-    ```python
-    #先创建 '一' ，再创建 '多'
-    from .models import *
-    pub1 = Publisher.objects.create(name='清华大学出版社')
-    Book.objects.create(title='C++', publisher=pub1)
-    Book.objects.create(title='Java', publisher_id=1)
-    
-    #高级创建 - 利用 反向属性
-    pub2 = Publisher.objects.create(name='北京大学出版社')
-    pub2.book_set.create(title='西游记')
-    ```
-
-    
-
-5. 数据查询
-
-    通过 Book 查询 Publisher【正向】
-
-    ```python
-    通过 publisher 属性查询即可
-    book.publisher
-     
-    abook = Book.objects.get(id=1)
-    print(abook.title, '的出版社是:', abook.publisher.name)
-    ```
-
-    通过 Publisher 查询 对应的所有的 Book 【反向】
-
-    ```python
-    Django会在Publisher中增加一个属性来表示对对应的Book们的查询引用
-    属性:book_set  等价于 objects
-    
-    # 通过出版社查询对应的书
-    pub1 = Publisher.objects.get(name='清华大学出版社')
-    books = pub1.book_set.all()  # 通过book_set 获取pub1对应的多个Book数据对象
-    #books = Book.objects.filter(publisher=pub1)  # 也可以采用此方式获取
-    print("清华大学出版社的书有:")
-    for book in books:
-       print(book.title)
-    ```
-
-
-### 多对多映射
-
-- 多对多表达对象之间多对多复杂关系，如: 每个人都有不同的学校(小学，初中，高中,...),每个学校都有不同的学生...
-
-1. 语法
-
-    - 在关联的两个类中的任意一个类中,增加:
-
-    ```python
-    属性 = models.ManyToManyField(MyModel)
-    ```
-
-2. 用法示例
-
-    - 一个作者可以出版多本图书
-    - 一本图书可以被多名作者同时编写
-
-    ```python
-    class Author(models.Model):
-        ...
-    
-    class Book(models.Model):
-        ...
-        authors = models.ManyToManyField(Author)
-    ```
-
-3. 创建模型类
-
-    ```python
-    class Author(models.Model):
-        '''作家模型类'''
-        name = models.CharField('作家', max_length=50)
-        def __str__(self):
-            return self.name
-        
-    class Book(models.Model):
-        '''书模型类'''
-        title = models.CharField('书名', max_length=50)
-        authors = models.ManyToManyField(Author)
-        def __str__(self):
-       		return self.title 
-    ```
-
-4. 创建数据
-
-    ```python
-    方案1 先创建 author 再关联 book
-        author1 = Author.objects.create(name='吕老师')
-        author2 = Author.objects.create(name='王老师')
-        # 吕老师和王老师同时写了一本Python
-        book11 = author1.book_set.create(title="Python")
-        author2.book_set.add(book11) 
-        
-    方案2 先创建 book 再关联 author
-        book = Book.objects.create(title='python1')
-        #郭小闹和吕老师都参与了 python1 的 创作
-        author3 = book.authors.create(name='guoxiaonao')
-        book.authors.add(author1)
-    ```
-
-    
-
-5. 数据查询
-
-    1. 通过 Book 查询对应的所有的 Author【正向】
-
-    ```python
-    book.authors.all() -> 获取 book 对应的所有的author的信息
-    book.authors.filter(age__gt=80) -> 获取book对应的作者中年龄大于80岁的作者的信息
-    ```
-
-    2. 通过 Author 查询对应的所有的Book【反向】
-
-    - Django会生成一个反向属性 book_set 用于表示对对应的book的查询对象相关操作
-
-    ```python
-    author.book_set.all()
-    author.book_set.filter()
-    ```
 
 
 
@@ -3414,7 +3868,7 @@ urlpatterns = [
 
 ### 浏览器中的缓存    
 
-![浏览器缓存](我的笔记园/小玉的玉/python/images/浏览器缓存.png)
+![浏览器缓存](img/Djnago2.2/浏览器缓存.png)
 
 浏览器缓存分类：
 
@@ -3526,9 +3980,9 @@ MIDDLEWARE = [
     #【洋葱图】
     ```
 
-    ![](我的笔记园/小玉的玉/python/images/yangcong.jpg)
+    ![](img/Djnago2.2/yangcong.jpg)
 
-    - ![](我的笔记园/小玉的玉/python/images/middleware.jpeg)
+    - ![](img/Djnago2.2/middleware.jpeg)
 
 
 - 练习
@@ -3732,118 +4186,7 @@ def make_csv_view(request):
 
 - 对于CSV文件中的每一行，调用`writer.writerow`，传递一个可迭代对象，如列表或元组。
 
-    
-
-## 文件上传
-
-- 文件上传必须为POST提交方式
-
-- 表单`<form>`中文件上传时必须有带有`enctype="multipart/form-data"` 时才会包含文件内容数据。
-
-- 表单中用`<input type="file" name="xxx">`标签上传文件
-
-    - 名字`xxx`对应`request.FILES['xxx']` 对应的内存缓冲文件流对象。可通能过`request.FILES['xxx']` 返回的对象获取上传文件数据
-    - `file=request.FILES['xxx']` file 绑定文件流对象，可以通过文件流对象的如下信息获取文件数据
-        file.name 文件名
-        file.file 文件的字节流数据
-
-- 上传文件的表单书写方式
-
-    ```html
-    <!-- file: index/templates/index/upload.html -->
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <title>文件上传</title>
-    </head>
-    <body>
-        <h3>上传文件</h3>
-        <form method="post" action="/test_upload" enctype="multipart/form-data">
-            <input type="file" name="myfile"/><br>
-            <input type="submit" value="上传">
-        </form>
-    </body>
-    </html>
-    ```
-
-- 在setting.py 中设置MEDIA相关配置；Django把用户上传的文件，统称为media资源
-
-    ```python
-    # file : settings.py
-    # 告诉django什么样的请求是要加载 用户 上传的media资源
-    MEDIA_URL = '/media/'
-    # 上传资源存储目录
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    ```
-
-- 在当前项目文件夹下创建 `media` 文件夹
-
-    ```shell
-    $ mkdir media
-    ```
-
-- 上传文件的视图处理函数  方案1 传统写入
-
-    ```python
-    # file views.py
-    from django.http import HttpResponse
-    from django.conf import settings    #  导入settings的建议路径
-    from django.views.decorators.csrf import csrf_exempt
-    import os
-    
-    @csrf_exempt
-    def upload_view(request):
-        if request.method == 'GET':
-            return render(request, 'test_upload.html')
-        elif request.method == "POST":
-            a_file = request.FILES['myfile']
-            print("上传文件名是:", a_file.name)
-            filename =os.path.join(settings.MEDIA_ROOT, a_file.name)
-            with open(filename, 'wb') as f:
-                data = a_file.file.read()
-                f.write(data)
-            return HttpResponse("接收文件:" + a_file.name + "成功")
-        
-    ```
-
-- 上传文件的视图处理函数  方案2  借助orm
-
-    ```python
-    #test_upload/models.py
-    from django.db import models
-      
-    # Create your models here.
-    class Content(models.Model):
-    
-        desc = models.CharField(max_length=100)
-        myfile = models.FileField(upload_to='myfiles')                                                          # 二级路径，没有的话会创建文件夹
-    
-    #test_upload/views.py
-    from test_upload.models import *
-    from django.views.decorators.csrf import csrf_exempt
-    
-    @csrf_exempt
-    def upload_view_dj(request):
-        if request.method == 'GET':
-            return render(request, 'test_upload.html')
-        elif request.method == 'POST':
-            title = request.POST['title']
-            a_file = request.FILES['myfile']
-            Content.objects.create(desc=title,myfile=a_file)
-            return HttpResponse('----upload is ok-----')
-    ```
-
-- 若要在浏览器中访问 上传的资源，runserver环境下，需要在项目得主路由下添加media路由的绑定
-
-    ```python
-    from django.conf import settings
-    from django.conf.urls.static import static
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-    ```
-
-    浏览器可以访问  http://127.0.0.1:8000/media/xxxx
-
-
+  ​    
 
 ## Django中的用户认证 (使用Django认证系统)
 
@@ -4276,7 +4619,7 @@ daphne myasgi.asgi:application
     #注意 此配置路径为 存放所有正式环境中需要的静态文件
     ```
 
-- 进入项目，执行  **python3 manage.py collectstatic** 。执行该命令后，Django将项目重所有静态文件 复制到 STATIC_ROOT 中 ，包括Django内建的静态文件【如admin后台的样式】
+- 进入项目，执行  **python3 manage.py collectstatic** 。执行该命令后，Django将项目中所有静态文件 复制到 STATIC_ROOT 中 ，包括Django内建的静态文件【如admin后台的样式】
 
 - Nginx配置中添加新配置
 
@@ -4409,7 +4752,7 @@ backend -   用于存储消息/任务结果，如果需要跟踪和查询任务�
 
 worker - 工作者 - 消费/执行broker中消息/任务的进程
 
-![1566233784792](我的笔记园/小玉的玉/python/images/1566233784792.png)
+![1566233784792](img/Djnago2.2/1566233784792.png)
 
 
 
@@ -4440,7 +4783,7 @@ celery -A tasks worker --loglevel=info
 #执行后终端显示如下，证明成功！   --loglevel=info 指明日志级别
 ```
 
-![1572965411915](我的笔记园/小玉的玉/python/images/1572965411915.png)
+![1572965411915](img/Djnago2.2/1572965411915.png)
 
 #### 	2,创建生产者 - 推送任务
 
@@ -4452,7 +4795,7 @@ task_test.delay()
 #执行后，worker终端中现如如下
 ```
 
-![1572965545212](我的笔记园/小玉的玉/python/images/1572965545212.png)
+![1572965545212](img/Djnago2.2/1572965545212.png)
 
 #### 	存储执行结果
 
@@ -4481,7 +4824,7 @@ tasks_result.py 同级目录终端中-启动celery worker
 celery -A tasks_result worker --loglevel=info
 ```
 
-![1572966007255](我的笔记园/小玉的玉/python/images/1572966007255.png)
+![1572966007255](img/Djnago2.2/1572966007255.png)
 
 在相同目录下 打开终端创建生产者 - 同【上步】；执行成功后，可调用如下方法取得执行结果
 
@@ -4753,11 +5096,11 @@ celery -A test_celery worker -l info  #注意是项目名
 
 8，浏览器中执行对应url
 
-![1572968646168](我的笔记园/小玉的玉/python/images/1572968646168.png)
+![1572968646168](img/Djnago2.2/1572968646168.png)
 
 worker终端中显示
 
-![1572968687718](我的笔记园/小玉的玉/python/images/1572968687718.png)
+![1572968687718](img/Djnago2.2/1572968687718.png)
 
 
 
@@ -5360,6 +5703,7 @@ token 的 **KEY** 存在setting里面，用的时候去导入
 
 ```shell
 MD5 -->32位
+# 哈希算法
 sha1 -->40位
 sha256 -->64位
 sha512 -->128位
@@ -5392,6 +5736,9 @@ s = hashlib.sha256() #创建sha256对象
 s.update(b'xxxx')  #添加欲hash的内容，类型为 bytes
 s.digest()  #获取最终结果
 s.hexdigest() #十六进制结果
+
+# 或者直接上
+text = hashlib.sha256(data.encode('utf-8')).hexdigest()
 ```
 
 	3，HMAC-SHA256 是一种通过特别计算方式之后产生的消息认证码，使用**散列算法**同时结合一个**加密密钥**。它可以用来保证数据的完整性，同时可以用来作某个消息的身份验证
@@ -5511,9 +5858,9 @@ print(type(s1['z']))
 
 #### [让pyjwt在token将要过期时给出提示](../python/pyjwt在token将要过期时给出提示.md)
 
-# 3， CORS - Cross-origin resource sharing - 跨域资源共享
+# 3， CORS  - 跨域资源共享
 
-## 1，什么是CORS
+## 1，什么是CORS  Cross-origin resource sharing
 
 		允许浏览器向跨源(协议 + 域名 + 端口)服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制
 
@@ -5652,9 +5999,9 @@ django-cors-headers官网 https://pypi.org/project/django-cors-headers/
 ```
 
 
-# 4，RESTful -Representational State Transfer
+# 4，RESTful 
 
-## 4.1，什么是RESTful
+## 4.1，什么是RESTful  -Representational State Transfer
 
 	1，资源 **（Resources）**
 	
@@ -5789,10 +6136,3 @@ https://api.example.com/v1/animals
     
 
     
-
-
-
-
-
-
-

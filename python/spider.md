@@ -2159,9 +2159,9 @@ if __name__ == '__main__':
         # 请求头中最常见的需要检查的三个键
     ```
 
-![](spider.assets/F_0BJ`423ZC.png)
+![](img/spider/F_0BJ`423ZC.png)
 
-![](spider.assets/I7I1CBR`2PT7BO.png)
+![](img/spider/I7I1CBR`2PT7BO.png)
 
 ## **控制台抓包**
 
@@ -3250,7 +3250,7 @@ driver.find_element_by_link_text('高级搜索').click()
     		webdriver.Firefox(executable_path='/User/xxx/geckodriver')
     ```
 
-    ![](spider.assets/EDfdsffs.png)
+    ![](img/spider/EDfdsffs.png)
 
 - **示例代码**
 

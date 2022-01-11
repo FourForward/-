@@ -72,11 +72,11 @@ class Connect(AsyncWebsocketConsumer):
 
 发送：
 
-![image-20211125213216937](django-channels如何向组内特定成员推送信息的解决方案.assets/image-20211125213216937.png)
+![image-20211125213216937](img/django-channels如何向组内特定成员推送信息的解决方案/image-20211125213216937.png)
 
 接收：
 
-![image-20211125213228890](django-channels如何向组内特定成员推送信息的解决方案.assets/image-20211125213228890.png)
+![image-20211125213228890](img/django-channels如何向组内特定成员推送信息的解决方案/image-20211125213228890.png)
 
 
 

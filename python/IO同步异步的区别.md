@@ -96,26 +96,26 @@ while true
 
 最广泛的模型是阻塞I/O模型，默认情况下，所有套接口都是阻塞的。 进程调用recvfrom系统调用，整个过程是阻塞的，直到数据复制到进程缓冲区时才返回（当然，系统调用被中断也会返回）。
 
-![](IO同步异步的区别.assets/1)
+![](img/IO同步异步的区别/1)
 
 ## 2、非阻塞I/O模型
 
 当我们把一个套接口设置为非阻塞时，就是在告诉内核，当请求的I/O操作无法完成时，不要将进程睡眠，而是返回一个错误。当数据没有准备好时，内核立即返回EWOULDBLOCK错误，第四次调用系统调用时，数据已经存在，这时将数据复制到进程缓冲区中。这其中有一个操作时轮询（polling）。
 
-![](IO同步异步的区别.assets/2)
+![](img/IO同步异步的区别/2)
 
 ## 3、I/O复用模型
 
 此模型用到select和poll函数，这两个函数也会使进程阻塞，select先阻塞，有活动套接字才返回，但是和阻塞I/O不同的是，**这两个函数可以同时阻塞多个I/O操作**，而且可以同时对多个读操作，多个写操作的I/O函数进行检测，直到有数据可读或可写（**就是监听多个socket**）。select被调用后，进程会被阻塞，内核监视所有select负责的socket，当有任何一个socket的数据准备好了，select就会返回套接字可读，我们就可以调用recvfrom处理数据。
 **正因为阻塞I/O只能阻塞一个I/O操作，而I/O复用模型能够阻塞多个I/O操作，所以才叫做多路复用。**
 
-![](IO同步异步的区别.assets/3)
+![](img/IO同步异步的区别/3)
 
 ## 4、信号驱动I/O模型（signal driven I/O， SIGIO）
 
 　　首先我们允许套接口进行信号驱动I/O,并安装一个信号处理函数，进程继续运行并不阻塞。当数据准备好时，进程会收到一个SIGIO信号，可以在信号处理函数中调用I/O操作函数处理数据。当数据报准备好读取时，内核就为该进程产生一个SIGIO信号。我们随后既可以在信号处理函数中调用recvfrom读取数据报，并通知主循环数据已准备好待处理，也可以立即通知主循环，让它来读取数据报。无论如何处理SIGIO信号，这种模型的优势在于等待数据报到达(第一阶段)期间，进程可以继续执行，不被阻塞。免去了select的阻塞与轮询，当有活跃套接字时，由注册的handler处理。
 
-![](IO同步异步的区别.assets/4)
+![](img/IO同步异步的区别/4)
 
 ## 5、异步I/O模型(AIO, asynchronous I/O)
 
@@ -125,7 +125,7 @@ while true
 
 这种模型和前一种模型区别在于：信号驱动I/O是由内核通知我们何时可以启动一个I/O操作，而异步I/O模型是由内核通知我们I/O操作何时完成。
 
-![](IO同步异步的区别.assets/5)
+![](img/IO同步异步的区别/5)
 
 # 四、高性能IO模型浅析
 
@@ -151,7 +151,7 @@ while true
 
 同步阻塞IO模型是最简单的IO模型，用户线程在内核进行IO操作时被阻塞。
 
-![](IO同步异步的区别.assets/6)
+![](img/IO同步异步的区别/6)
 
 图1 同步阻塞IO
 
@@ -177,7 +177,7 @@ process(buffer);
 
 同步非阻塞IO是在同步阻塞IO的基础上，将socket设置为NONBLOCK。这样做用户线程可以在发起IO请求后可以立即返回。
 
-![](IO同步异步的区别.assets/7)
+![](img/IO同步异步的区别/7)
 
 图2 同步非阻塞IO
 
@@ -203,7 +203,7 @@ process(buffer);
 
 IO多路复用模型是建立在内核提供的多路分离函数select基础之上的，使用select函数可以避免同步非阻塞IO模型中轮询等待的问题。
 
-![](IO同步异步的区别.assets/8)
+![](img/IO同步异步的区别/8)
 
 图3 多路分离函数select
 
@@ -246,13 +246,13 @@ while(1) {
 
 IO多路复用模型使用了Reactor设计模式实现了这一机制。
 
-![](IO同步异步的区别.assets/9)
+![](img/IO同步异步的区别/9)
 
 图4 Reactor设计模式
 
 如图4所示，EventHandler抽象类表示IO事件处理器，它拥有IO文件句柄Handle（通过get_handle获取），以及对Handle的操作handle_event（读/写等）。继承于EventHandler的子类可以对事件处理器的行为进行定制。Reactor类用于管理EventHandler（注册、删除等），并使用handle_events实现事件循环，不断调用同步事件多路分离器（一般是内核）的多路分离函数select，只要某个文件句柄被激活（可读/写等），select就返回（阻塞），handle_events就会调用与文件句柄关联的事件处理器的handle_event进行相关操作。
 
-![](IO同步异步的区别.assets/10)
+![](img/IO同步异步的区别/10)
 
 图5 IO多路复用
 
@@ -316,13 +316,13 @@ IO多路复用是最常使用的IO模型，但是其异步程度还不够“彻�
 
 异步IO模型使用了Proactor设计模式实现了这一机制。
 
-![](IO同步异步的区别.assets/11)
+![](img/IO同步异步的区别/11)
 
 图6 Proactor设计模式
 
 如图6，Proactor模式和Reactor模式在结构上比较相似，不过在用户（Client）使用方式上差别较大。Reactor模式中，用户线程通过向Reactor对象注册感兴趣的事件监听，然后事件触发时调用事件处理函数。而Proactor模式中，用户线程将AsynchronousOperation（读/写等）、Proactor以及操作完成时的CompletionHandler注册到AsynchronousOperationProcessor。AsynchronousOperationProcessor使用Facade模式提供了一组异步操作API（读/写等）供用户使用，当用户线程调用异步API后，便继续执行自己的任务。AsynchronousOperationProcessor 会开启独立的内核线程执行异步操作，实现真正的异步。当异步IO操作完成时，AsynchronousOperationProcessor将用户线程与AsynchronousOperation一起注册的Proactor和CompletionHandler取出，然后将CompletionHandler与IO操作的结果数据一起转发给Proactor，Proactor负责回调每一个异步操作的事件完成处理函数handle_event。虽然Proactor模式中每个异步操作都可以绑定一个Proactor对象，但是一般在操作系统中，Proactor被实现为Singleton模式，以便于集中化分发操作完成事件。
 
-![](IO同步异步的区别.assets/12)
+![](img/IO同步异步的区别/12)
 
 图7 异步IO
 

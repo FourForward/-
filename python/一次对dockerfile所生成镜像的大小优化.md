@@ -38,7 +38,7 @@ CMD ["sh", "-c", "uwsgi -i /home/PMIP/PMIP/uwsgi.ini && nginx -g 'daemon off;'"]
 
 当前镜像大小为522M
 
-![image-20200809221051121](一次对dockerfile所生成镜像的大小优化.assets/image-20200809221051121.png)
+![image-20200809221051121](img/一次对dockerfile所生成镜像的大小优化/image-20200809221051121.png)
 
 接下来我们把RUN合成一条
 
@@ -63,7 +63,7 @@ ADD PMIP.tar.gz /home/
 CMD ["sh", "-c", "uwsgi -i /home/PMIP/PMIP/uwsgi.ini && nginx -g 'daemon off;'"]
 ```
 
-![image-20200809223918694](一次对dockerfile所生成镜像的大小优化.assets/image-20200809223918694.png)
+![image-20200809223918694](img/一次对dockerfile所生成镜像的大小优化/image-20200809223918694.png)
 
 合并之后依然有５１８M，结果显示　RUN　合并后对镜像大小并没有什么影响
 
@@ -132,9 +132,9 @@ ADD PMIP.tar.gz /home/
 CMD ["sh", "-c", "uwsgi -i /home/PMIP/PMIP/uwsgi.ini && nginx -g 'daemon off;'"]
 ```
 
-![image-20200809232155864](一次对dockerfile所生成镜像的大小优化.assets/image-20200809232155864.png)
+![image-20200809232155864](img/一次对dockerfile所生成镜像的大小优化/image-20200809232155864.png)
 
-![image-20200809232220485](一次对dockerfile所生成镜像的大小优化.assets/image-20200809232220485.png)
+![image-20200809232220485](img/一次对dockerfile所生成镜像的大小优化/image-20200809232220485.png)
 
 **经本地测试镜像可用，大小为249M，缩减一半以上**
 
@@ -170,7 +170,7 @@ RUN sed -i s@/archive.ubuntu.com/@/mirrors.aliyun.com/@g /etc/apt/sources.list &
 COPY default /etc/nginx/sites-enabled/
 ```
 
-![image-20200810171632485](一次对dockerfile所生成镜像的大小优化.assets/image-20200810171632485.png)
+![image-20200810171632485](img/一次对dockerfile所生成镜像的大小优化/image-20200810171632485.png)
 
 结果显示没有任何鸟用，说明猜测错误
 
@@ -202,7 +202,7 @@ COPY default /etc/nginx/sites-enabled/
 CMD ["sh", "-c", "uwsgi -i /home/PMIP/PMIP/uwsgi.ini && nginx -g 'daemon off;'"]
 ```
 
-![image-20200810233020611](一次对dockerfile所生成镜像的大小优化.assets/image-20200810233020611.png)
+![image-20200810233020611](img/一次对dockerfile所生成镜像的大小优化/image-20200810233020611.png)
 
 可以看出镜像又缩小了几十兆
 

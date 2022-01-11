@@ -2,13 +2,13 @@
 
 原版地址：[pycharm 中文指南](https://pycharm.iswbm.com/)
 
-![bg00001](pycharm完全使用指南.assets/bg00001.jpg)
+![bg00001](img/pycharm完全使用指南/bg00001.jpg)
 
 我在此基础上做了部分删改，作为个人笔记使用
 
 由于 Mac 和 Windows 的键盘布局不同，有些快捷键我只给出了 Mac 版本的，不过不要紧，你只要 掌握下面这个规律，就能轻松切换
 
-![bg00003](pycharm完全使用指南.assets/bg00003.jpg)
+![bg00003](img/pycharm完全使用指南/bg00003.jpg)
 
 # 第一章：下载与安装
 
@@ -26,7 +26,7 @@ Jetbrain 公司是一家专业的 IDE 生产商，只要是市面上主流的编
 
 可以看出专业版比社区版多了 科学工具，web开发，python web 框架，python代码分析，远程开发调试，数据库支持。
 
-![image-20211127133347822](pycharm完全使用指南.assets/image-20211127133347822.png)
+![image-20211127133347822](img/pycharm完全使用指南/image-20211127133347822.png)
 
 ## 1.2 【安装使用 01】下载使用专业版
 
@@ -38,17 +38,17 @@ Jetbrain 公司是一家专业的 IDE 生产商，只要是市面上主流的编
 
 选好路径后，点击 Next ，创建桌面快捷方式等一系列选项参照下图勾选
 
-![image-20211127133949469](pycharm完全使用指南.assets/image-20211127133949469.png)
+![image-20211127133949469](img/pycharm完全使用指南/image-20211127133949469.png)
 
 耐心的等待两分钟左右。 之后就会得到下面的安装完成的界面
 
-![image-20211127134043835](pycharm完全使用指南.assets/image-20211127134043835.png)
+![image-20211127134043835](img/pycharm完全使用指南/image-20211127134043835.png)
 
 点击Finish，Pycharm安装完成。 
 
 接下来对Pycharm进行配置，双击运行桌面上的Pycharm图标，进入下图界面：
 
-![image-20211127134704095](pycharm完全使用指南.assets/image-20211127134704095.png)
+![image-20211127134704095](img/pycharm完全使用指南/image-20211127134704095.png)
 
 选择Do not import settings，之后选择OK，进入下一步。
 
@@ -58,7 +58,7 @@ Jetbrain 公司是一家专业的 IDE 生产商，只要是市面上主流的编
 
 -> 点击Next:Featured plugins
 
-![image-20211127134745165](pycharm完全使用指南.assets/image-20211127134745165.png)
+![image-20211127134745165](img/pycharm完全使用指南/image-20211127134745165.png)
 
 建议选择Darcula主题，该主题更有利于保护眼睛。
 
@@ -108,7 +108,7 @@ Jetbrains 鼓励开源，只要你拥有一个符合条件的开源项目，你�
 
 按表单要求填写即可。
 
-![image1](pycharm完全使用指南.assets/image-20200901215241077.png)
+![image1](img/pycharm完全使用指南/image-20200901215241077.png)
 
 等待个一天左右，你的邮箱估计就能收到激活码了。
 
@@ -124,11 +124,11 @@ PyCharm 只是提供一个集成开发环境，你在执行 Python 程序时，�
 
 打开设置，搜索 Interpreter （如下图），就可以添加你的 Python 解释器了。
 
-![image1](pycharm完全使用指南.assets/20210325205317.png)
+![image1](img/pycharm完全使用指南/20210325205317.png)
 
 设置完成后，在主界面就可以看到这里多了这么块内容。你以后想读一些内置模块的代码，可以直接从这里点进去。
 
-![image2](pycharm完全使用指南.assets/20210325212827.png)
+![image2](img/pycharm完全使用指南/20210325212827.png)
 
 
 
@@ -157,7 +157,7 @@ if __name__ == '__main__':
 
 就会出现如下的运行按钮，点击第一个就是 Run 。
 
-![image6](pycharm完全使用指南.assets/20210326084930.png)
+![image6](img/pycharm完全使用指南/20210326084930.png)
 
 **第四种**
 
@@ -191,11 +191,11 @@ python main.py init --local
 
 对于刚使用 Pycharm 的同学，可能并不知道 Pycharm 也是可以指定参数的。点击下图位置
 
-![image1](pycharm完全使用指南.assets/FmfL3r0iWx_srT_xMASBEp1ZaaId.png)
+![image1](img/pycharm完全使用指南/FmfL3r0iWx_srT_xMASBEp1ZaaId.png)
 
 进入设置面板，在 `Script parameters` 中填入参数即可。
 
-![image2](pycharm完全使用指南.assets/FujczKwTUPa8l5EEmS0eoh-zL1Nk.png)
+![image2](img/pycharm完全使用指南/FujczKwTUPa8l5EEmS0eoh-zL1Nk.png)
 
 ## 2.3 【调试技巧 01】超详细图文教你调试代码
 
@@ -211,7 +211,7 @@ python main.py init --local
 
 首先第一步和第二步，我用下面这张图表示
 
-![image1](pycharm完全使用指南.assets/20200823134911.png)
+![image1](img/pycharm完全使用指南/20200823134911.png)
 
 点击上图中的小蜘蛛，开启调试模式后，在 PyCharm 下方会弹出一个选项卡。
 
@@ -222,7 +222,7 @@ python main.py init --local
 3. 线程控制窗口
 4. 程序控制窗口
 
-![image2](pycharm完全使用指南.assets/20200823140008.png)
+![image2](img/pycharm完全使用指南/20200823140008.png)
 
 在变量查看窗口，你可以查看当前程序进行到该断点处，所有的普通变量和特殊变量，你每往下执行一行代码，这些变量都有可能跟着改变。
 
@@ -244,11 +244,11 @@ python main.py init --local
 
 看这张图就行了（下面第6点有误，应该是运行到光标处，而不是下一断点处）
 
-![image3](pycharm完全使用指南.assets/20200823143211.png)
+![image3](img/pycharm完全使用指南/20200823143211.png)
 
 在程序控制窗口，共有 6 个按钮，他们的作用分别又是什么呢？同时看下面这张图就行了。
 
-![image4](pycharm完全使用指南.assets/20200823143535.png)
+![image4](img/pycharm完全使用指南/20200823143535.png)
 
 ### 2. 调试相关的快捷键
 
@@ -281,25 +281,25 @@ python main.py init --local
 
 假如我在调试如下几行简单的代码。在第 3 行处打了个断点。然后点击图示位置 `Show Python Prompt` 按钮。
 
-![image1](pycharm完全使用指南.assets/Fi3N02x9OeOPatGdaReam_icn9G_.png)
+![image1](img/pycharm完全使用指南/Fi3N02x9OeOPatGdaReam_icn9G_.png)
 
 就进入了 `Python Shell` 的界面，这个Shell 环境和我们当前运行的程序环境是打通的，变量之间可以互相访问，这下你可以轻松地进行调试了。
 
-![image2](pycharm完全使用指南.assets/Fj1W53Txj0iFs5eYhFYh_dHlPtIL.png)
+![image2](img/pycharm完全使用指南/Fj1W53Txj0iFs5eYhFYh_dHlPtIL.png)
 
 上面我们打了个断点，是为了方便说明这个效果。并不是说一定要打断点。如果不打断点，在脚本执行完成后，也仍然可以在这个界面查看并操作所有变量。
 
-![image3](pycharm完全使用指南.assets/FlMsB7B1x6ET9mLOgydTWuTEXuOe.png)
+![image3](img/pycharm完全使用指南/FlMsB7B1x6ET9mLOgydTWuTEXuOe.png)
 
 现在我们已经可以满足我们的调试的需求，但是每次运行脚本，都要手动点击 `Show Python Prompt` ，有点麻烦。嗯？其实这个有地方可以设置默认打开的。这个开关还比较隐秘，一般人还真发现不了。
 
 你需要点击图示位置 `Edit Configurations` 处。
 
-![image4](pycharm完全使用指南.assets/FmfL3r0iWx_srT_xMASBEp1ZaaId.png)
+![image4](img/pycharm完全使用指南/FmfL3r0iWx_srT_xMASBEp1ZaaId.png)
 
 然后在这里打勾选中。
 
-![image5](pycharm完全使用指南.assets/FiNCYpVlI93gk1zhOdQn4c0A8FMX.png)
+![image5](img/pycharm完全使用指南/FiNCYpVlI93gk1zhOdQn4c0A8FMX.png)
 
 设置上之后，之后你每次运行后脚本后，都会默认为你存储所有变量的值，并为你打开 console 命令行调试界面。
 
@@ -307,11 +307,11 @@ python main.py init --local
 
 使用方法就是，在你打了断点后，在图示位置处，点击右键使用 `Evaluate Expression`
 
-![image6](pycharm完全使用指南.assets/FrAq1tVRM7Bz948wRqZFzU2PQnI0.png)
+![image6](img/pycharm完全使用指南/FrAq1tVRM7Bz948wRqZFzU2PQnI0.png)
 
 就弹出了一个 `Evaluate Expression` 窗口，这里 可以运行命令表达式，直接操作变量。
 
-![image7](pycharm完全使用指南.assets/Fo2aEraqbj_2KqDt44EzJTVe8pEf.png)
+![image7](img/pycharm完全使用指南/Fo2aEraqbj_2KqDt44EzJTVe8pEf.png)
 
 ## 2.5 【调试技巧 03】7 步实现远程代码调试
 
@@ -334,20 +334,20 @@ python main.py init --local
 
 首先，要在Pycharm中新建一个空的项目，后面我们拉服务器上的项目代码就会放置在这个项目目录下。我这边的名字是 NOVA，你可以自己定义。
 
-![image1](pycharm完全使用指南.assets/20190113104817.png)
+![image1](img/pycharm完全使用指南/20190113104817.png)
 
 ### 2. 配置连接服务器
 
 Tools -> Deployment -> configuration
 
-![image2](pycharm完全使用指南.assets/20190113105512.png)
+![image2](img/pycharm完全使用指南/20190113105512.png)
 
 添加一个`Server`
 
 - Name：填你的服务器的IP
 - Type：设定为SFTP
 
-![image3](pycharm完全使用指南.assets/20190113105858.png)
+![image3](img/pycharm完全使用指南/20190113105858.png)
 
 点击`OK`后，进入如下界面，你可以按我的备注，填写信息：
 
@@ -360,35 +360,35 @@ Tools -> Deployment -> configuration
 
 这里请注意，要确保你的电脑可以ssh连接到你的服务器，不管是密钥登陆还是密码登陆，如果开启了白名单限制要先解除。
 
-![image4](pycharm完全使用指南.assets/20190113105931.png)
+![image4](img/pycharm完全使用指南/20190113105931.png)
 
 填写完成后，切换到`Mappings`选项卡，在箭头位置，填写`\`
 
-![image5](pycharm完全使用指南.assets/20190113110928.png)
+![image5](img/pycharm完全使用指南/20190113110928.png)
 
 以上服务器信息配置，全部正确填写完成后，点击`OK`
 
 接下来，我们要连接远程服务器了。 Tools -> Deployment -> Browse Remote Host
 
-![image6](pycharm完全使用指南.assets/20190113111042.png)
+![image6](img/pycharm完全使用指南/20190113111042.png)
 
 ### 3. 下载项目代码
 
 如果之前填写的服务器登陆信息准确无误的话，现在就可以看到远程的项目代码。
 
-![image7](pycharm完全使用指南.assets/20190113111151.png)
+![image7](img/pycharm完全使用指南/20190113111151.png)
 
 选择下载远程代码要本地。
 
-![image8](pycharm完全使用指南.assets/20190113111217.png)
+![image8](img/pycharm完全使用指南/20190113111217.png)
 
 下载完成提示。
 
-![image9](pycharm完全使用指南.assets/20190113111248.png)
+![image9](img/pycharm完全使用指南/20190113111248.png)
 
 现在的IDE界面应该是这样子的。
 
-![image10](pycharm完全使用指南.assets/20190113111307.png)
+![image10](img/pycharm完全使用指南/20190113111307.png)
 
 ### 4. 下载远程解释器
 
@@ -398,11 +398,11 @@ Tools -> Deployment -> configuration
 
 进入 File -> Settings 按图示，添加远程解释器。
 
-![image11](pycharm完全使用指南.assets/20190113111747.png)
+![image11](img/pycharm完全使用指南/20190113111747.png)
 
 填写远程服务器信息，跟之前的一样，不再赘述。
 
-![image12](pycharm完全使用指南.assets/20190113111828.png)
+![image12](img/pycharm完全使用指南/20190113111828.png)
 
 点击`OK`后，会自动下载远程解释器。如果你的项目比较大，这个时间可能会比较久，请耐心等待。
 
@@ -434,17 +434,17 @@ WantedBy=multi-user.target
 
 看到那个`ExecStart`没有？那个就是我们程序的入口。 我们只要将其拷贝至我们的Pycharm中，并向远程同步该文件。
 
-![image13](pycharm完全使用指南.assets/20190113112004.png)
+![image13](img/pycharm完全使用指南/20190113112004.png)
 
 ### 6. 调试前设置
 
 开启代码自动同步，这样，我们对代码的修改Pycharm都能识别，并且为我们提交到远程服务器。
 
-![image14](pycharm完全使用指南.assets/20190113112055.png)
+![image14](img/pycharm完全使用指南/20190113112055.png)
 
 开启 `Gevent compatible`，如果不开启，在调试过程中，很可能出现无法调试，或者无法追踪/查看变量等问题。
 
-![image15](pycharm完全使用指南.assets/20190113113211.png)
+![image15](img/pycharm完全使用指南/20190113113211.png)
 
 ### 7. 开始调试代码
 
@@ -452,11 +452,11 @@ WantedBy=multi-user.target
 
 如果你的程序入口，需要引入参数，这是经常有的事，可以的这里配置。
 
-![image16](pycharm完全使用指南.assets/20190113112456.png)
+![image16](img/pycharm完全使用指南/20190113112456.png)
 
 配置完点击保存即可。
 
-![image17](pycharm完全使用指南.assets/20190113112649.png)
+![image17](img/pycharm完全使用指南/20190113112649.png)
 
 ### 8. 友情提醒
 
@@ -480,7 +480,7 @@ vagrant 下载地址：https://www.vagrantup.com/downloads
 
 在下载的时候，会提示你选择虚拟化软件，在这里我们选择 virtualbox （注意：请提前安装 virtualbox），既免费又轻量。
 
-![image1](pycharm完全使用指南.assets/20210327092117.png)
+![image1](img/pycharm完全使用指南/20210327092117.png)
 
 ### 2. 初始化项目
 
@@ -488,7 +488,7 @@ vagrant 下载地址：https://www.vagrantup.com/downloads
 
 最后，直接用这条命令 `vagrant up` 启动虚拟机
 
-![image2](pycharm完全使用指南.assets/20210327095217.png)
+![image2](img/pycharm完全使用指南/20210327095217.png)
 
 虚拟机启动之后，就可以使用 `vagrant ssh` 直接 ssh 进入虚拟机（明哥注：Windows 只能使用远程登陆软件登陆 127.0.0.1:2222，比如 Xshell，或者使用 Tools -> Start SSH Session）。
 
@@ -496,7 +496,7 @@ vagrant 下载地址：https://www.vagrantup.com/downloads
 
 虚拟机里的 `/vagrant/` 目录就对应你宿主机上的 项目根目录
 
-![image3](pycharm完全使用指南.assets/20210327095433.png)
+![image3](img/pycharm完全使用指南/20210327095433.png)
 
 如果你想添加更多的文件夹映射，可以编辑 Vagrantfile 文件，在 end 前，添加下面这一行
 
@@ -512,23 +512,23 @@ PyCharm 不愧是最专业的 Python IDE ，它对 Vagrant 也提供了非常好
 
 首先，确保你的 vagrant 插件已经安装
 
-![image4](pycharm完全使用指南.assets/20210327093327.png)
+![image4](img/pycharm完全使用指南/20210327093327.png)
 
 然后，在 Tools -> Vagrant 中配置 vagrant 的信息
 
-![image5](pycharm完全使用指南.assets/20210327093615.png)
+![image5](img/pycharm完全使用指南/20210327093615.png)
 
 最后，再在 Project -> Python Interpreter 里添加 Vagrant 虚拟机里的 Python 解释器
 
-![image6](pycharm完全使用指南.assets/20210327095106.png)
+![image6](img/pycharm完全使用指南/20210327095106.png)
 
 配置完了后，无论在 Setting 里面
 
-![image7](pycharm完全使用指南.assets/20210327095516.png)
+![image7](img/pycharm完全使用指南/20210327095516.png)
 
 还是在项目界面里看到的 Python 解释器都是 Vagrant 里的 Python
 
-![image8](pycharm完全使用指南.assets/20210327095554.png)
+![image8](img/pycharm完全使用指南/20210327095554.png)
 
 在这样的一个环境下，你新建的所有 Python 项目文件，都会被同步到 Vagrant 虚拟机中的 `/vagrant/` 目录下，你在本地运行 Python 项目，其实都是在 Vagrant 虚拟机中运行。
 
@@ -544,25 +544,25 @@ PyCharm 不愧是最专业的 Python IDE ，它对 Vagrant 也提供了非常好
 
 file ---> setting ---> Project:demo ---> Project Interpreter ---> 设置按钮 ---> add
 
-![image-20210726205257450](pycharm完全使用指南.assets/image-20210726205257450.png)
+![image-20210726205257450](img/pycharm完全使用指南/image-20210726205257450.png)
 
-![image-20210726205329752](pycharm完全使用指南.assets/image-20210726205329752.png)
+![image-20210726205329752](img/pycharm完全使用指南/image-20210726205329752.png)
 
 选择一个python的版本，点击ok，等待环境安装完毕
 
-![image-20210726205501575](pycharm完全使用指南.assets/image-20210726205501575.png)
+![image-20210726205501575](img/pycharm完全使用指南/image-20210726205501575.png)
 
 
 
 完毕后会看见项目目录下多出了一个venv的文件夹
 
-![image-20210726205802354](pycharm完全使用指南.assets/image-20210726205802354.png)
+![image-20210726205802354](img/pycharm完全使用指南/image-20210726205802354.png)
 
 ### 3、进入虚拟环境
 
 此时点击Terminal，进入命令行，会看见前面有一个 (venv) 的标识，代表已处于虚拟环境中，若没有这个标识，则需要手动进入， cd venv\Scripts  中，执行 activate，手动进入虚拟环境。
 
-![image-20210726210730870](pycharm完全使用指南.assets/image-20210726210730870.png)
+![image-20210726210730870](img/pycharm完全使用指南/image-20210726210730870.png)
 
 ### 4、安装需要的库
 
@@ -578,7 +578,7 @@ file ---> setting ---> Project:demo ---> Project Interpreter ---> 设置按钮 -
 
 当你从官网上下载下来一个 PyCharm 后，若你不对其进行一些个性化设置，相信你一定无法容忍默认的丑陋界面，就像下面这样子。
 
-![image1](pycharm完全使用指南.assets/20200823105736.png)
+![image1](img/pycharm完全使用指南/20200823105736.png)
 
 上面这个界面，有很多可以吐槽的地方，我全部标了出来：
 
@@ -595,27 +595,27 @@ file ---> setting ---> Project:demo ---> Project Interpreter ---> 设置按钮 -
 
 点击 File - Setting 进入如下界面，按图中设置对应参数。
 
-![image2](pycharm完全使用指南.assets/20200831113012.png)
+![image2](img/pycharm完全使用指南/20200831113012.png)
 
 设置完成，点击 Apply 或者 OK，看下效果图，是不是舒服多了。
 
-![image3](pycharm完全使用指南.assets/20200831113110.png)
+![image3](img/pycharm完全使用指南/20200831113110.png)
 
 再来解决第四个问题。
 
 点击 File - Setting 进入如下界面，按图中设置对应参数。
 
-![image4](pycharm完全使用指南.assets/20200831113244.png)
+![image4](img/pycharm完全使用指南/20200831113244.png)
 
-![image5](pycharm完全使用指南.assets/20200831113421.png)
+![image5](img/pycharm完全使用指南/20200831113421.png)
 
 设置完这个后，你的代码就会有一种黑客即视感。
 
-![image6](pycharm完全使用指南.assets/20200823105947.png)
+![image6](img/pycharm完全使用指南/20200823105947.png)
 
 当然，你如果对这个高亮的颜色不是很满意，你还可以进行定制。修改完后，下面会有预览窗口。非常方便。
 
-![image7](pycharm完全使用指南.assets/20200823105956.png)
+![image7](img/pycharm完全使用指南/20200823105956.png)
 
 ### 3. 主题下载
 
@@ -625,15 +625,15 @@ Pycharm 给我们提供的主题很有限，只有几个。但是提供定制功
 
 支持 JetBrains全系列主题下载，包括:InteliJ IDEA, PhpStorm, PyCharm, RubyMine, WebStorm and AppCode.
 
-![image8](pycharm完全使用指南.assets/20200823110134.png)
+![image8](img/pycharm完全使用指南/20200823110134.png)
 
 下载下来后，是一个`jar`包。 你需要通过 File - Import Settings 导入。
 
-![image9](pycharm完全使用指南.assets/20200823110516.png)
+![image9](img/pycharm完全使用指南/20200823110516.png)
 
 最后，在 File - Setting - Editor - Colors & Fonts 里选择导入的主题。
 
-![image10](pycharm完全使用指南.assets/20200831113606.png)
+![image10](img/pycharm完全使用指南/20200831113606.png)
 
 
 
@@ -645,7 +645,7 @@ PyCharm 打开一个文件，就占用一个标签面。
 
 你有没有发现，不知不觉地，打开的文件越来越多，多到一行标签都装不下，装不下的标签页 PyCharm 会将其隐藏起来，并以数字的形式告诉你隐藏了几个文件。
 
-![image1](pycharm完全使用指南.assets/20190629223534.png)
+![image1](img/pycharm完全使用指南/20190629223534.png)
 
 点击数字5，你才可以查看隐藏了哪些文件。
 
@@ -655,11 +655,11 @@ PyCharm 打开一个文件，就占用一个标签面。
 
 如下图，将单行显示取消勾选即可。
 
-![image2](pycharm完全使用指南.assets/20190629224229.png)
+![image2](img/pycharm完全使用指南/20190629224229.png)
 
 设置完后，有哪些文件就非常清晰了。
 
-![image3](pycharm完全使用指南.assets/20190629224430.png)
+![image3](img/pycharm完全使用指南/20190629224430.png)
 
 
 
@@ -675,7 +675,7 @@ PyCharm 打开一个文件，就占用一个标签面。
 
 那怎么开启呢？右击标签页，会有如下两个选项，点击即可。
 
-![image3](pycharm完全使用指南.assets/20200829225550.png)
+![image3](img/pycharm完全使用指南/20200829225550.png)
 
 
 
@@ -683,7 +683,7 @@ PyCharm 打开一个文件，就占用一个标签面。
 
 点击右键，勾选 `Soft-Wrap` 选项，就可以开启自动换行
 
-![image2](pycharm完全使用指南.assets/image-20210226223823548.png)
+![image2](img/pycharm完全使用指南/image-20210226223823548.png)
 
 
 
@@ -695,7 +695,7 @@ PyCharm 打开一个文件，就占用一个标签面。
 
 效果如下：
 
-![image1](pycharm完全使用指南.assets/Kapture 2020-08-29 at 15.25.11.gif)
+![image1](img/pycharm完全使用指南/Kapture 2020-08-29 at 15.25.11.gif)
 
 ## 4.3 【高效编辑 03】重写父类方法的正确姿势
 
@@ -703,7 +703,7 @@ PyCharm 打开一个文件，就占用一个标签面。
 
 效果如下：
 
-![image0](pycharm完全使用指南.assets/Kapture 2020-08-29 at 17.39.16.gif)
+![image0](img/pycharm完全使用指南/Kapture 2020-08-29 at 17.39.16.gif)
 
 ## 4.4 【高效编辑 04】快速开启新的一行
 
@@ -737,7 +737,7 @@ PyCharm 打开一个文件，就占用一个标签面。
 
 效果如下：
 
-![image2](pycharm完全使用指南.assets/Kapture 2020-08-29 at 18.05.47.gif)
+![image2](img/pycharm完全使用指南/Kapture 2020-08-29 at 18.05.47.gif)
 
 ## 4.7 【高效编辑 07】删除与剪切的技巧
 
@@ -755,13 +755,13 @@ PyCharm 打开一个文件，就占用一个标签面。
 
 只要你按住 `Ctrl + Shift + V` 就可以调出像下面这样的剪切板。
 
-![img](pycharm完全使用指南.assets/20191211210012.png)
+![img](img/pycharm完全使用指南/20191211210012.png)
 
 ## 4.10 【高效编辑 10】自动纠正与自动补全
 
 快捷键：Ctrl + Shift + ↩，自动结束代码，行末自动添加冒号
 
-![image0](pycharm完全使用指南.assets/Kapture 2020-08-29 at 18.42.49.gif)
+![image0](img/pycharm完全使用指南/Kapture 2020-08-29 at 18.42.49.gif)
 
 快捷键：Alt + ↩，也称万能键，显示意向动作和快速修复代码
 
@@ -778,25 +778,25 @@ print(member)
 
 这时候可以在输出窗口点击右键，选择 `Show as JSON`， PyCharm 就会新开一个临时文件显示被格式化过的 JSON 字符串
 
-![image1](pycharm完全使用指南.assets/20200826084710.png)
+![image1](img/pycharm完全使用指南/20200826084710.png)
 
 ## 4.12 【高效编辑 12】显示上下文信息
 
 如果一个类的定义写得非常的长，就像下面这样子。
 
-![image0](pycharm完全使用指南.assets/20200829201942.png)
+![image0](img/pycharm完全使用指南/20200829201942.png)
 
 你处在这样一个位置，对框架代码不熟悉的人，根本不知道自己目前处在哪个类中。
 
 PyCharm 提供了一个快捷键： Alt + Q，用来显示上下文信息。
 
-![image1](pycharm完全使用指南.assets/20200829202251.png)
+![image1](img/pycharm完全使用指南/20200829202251.png)
 
 如果视野再往下来一点，你连在哪个函数都不知道呢？
 
 按下这组快捷键：Windows 是 Alt + Q，就会显示当前处在哪个函数里。
 
-![image2](pycharm完全使用指南.assets/20200829202412.png)
+![image2](img/pycharm完全使用指南/20200829202412.png)
 
 
 
@@ -810,11 +810,11 @@ Ctrl + 鼠标左键 ，可以实现函数跳转查看源码， 这几乎是每�
 
 假如我们在使用这个类的时候，忘记了这个用法，可以按住 Ctrl + Q，在当前页面就可以快速预览 LocalStack 的接口文档。
 
-![image2](pycharm完全使用指南.assets/20190507152840.png)
+![image2](img/pycharm完全使用指南/20190507152840.png)
 
 同样的，如果你对这个类或者函数的代码逻辑感兴趣，也可以使用快速预览的方式在当前页面展示源代码。快捷键是：Ctrl + shift + i 。效果如下
 
-![image3](pycharm完全使用指南.assets/20190507153847.png)
+![image3](img/pycharm完全使用指南/20190507153847.png)
 
 # 第五章：快捷与效率
 
@@ -834,7 +834,7 @@ Ctrl + 鼠标左键 ，可以实现函数跳转查看源码， 这几乎是每�
 2. 按住 Ctrl + Alt + T
 3. 选择 `try/except` 模板
 
-![image1](pycharm完全使用指南.assets/Kapture 2020-08-29 at 11.11.37.gif)
+![image1](img/pycharm完全使用指南/Kapture 2020-08-29 at 11.11.37.gif)
 
 从下拉的选项来看，除了 try/except 和 try/finally 外，还有：
 
@@ -856,27 +856,27 @@ if __name__ == '__main__':
 
 再比如说，我通常会定义简单的装饰器代码
 
-![image1](pycharm完全使用指南.assets/20200723161209.png)
+![image1](img/pycharm完全使用指南/20200723161209.png)
 
 这样当我要定义一个最简单的装饰器时，只要输入 `deco` 再直接敲入回车就行啦。
 
-![image2](pycharm完全使用指南.assets/20200723161307.png)
+![image2](img/pycharm完全使用指南/20200723161307.png)
 
 ## 5.6 【提高效率 06】代码模板，效率编码
 
 Pycharm 提供的这个代码模板，可以说是相当实用的一个功能了。它可以在你新建一个文件时，按照你预设的模板给你生成一段内容，比如解释器路径，编码方法，作者详细信息等
 
-![image1](pycharm完全使用指南.assets/20190323225704.png)
+![image1](img/pycharm完全使用指南/20190323225704.png)
 
 按照上图模板，生成的效果如下。
 
-![image2](pycharm完全使用指南.assets/20190323225631.png)
+![image2](img/pycharm完全使用指南/20190323225631.png)
 
 除了新建文件时可以初始化文件，在开发编写代码时，也同样使用 Pycharm 中自带的实用的代码模板，提高你的编码效率。
 
 当你在键盘中敲入 Ctrl + J 时，就可以调出一个面板，从下图可以看出里面有许多预设的模板。
 
-![image3](pycharm完全使用指南.assets/20190323232017.png)
+![image3](img/pycharm完全使用指南/20190323232017.png)
 
 
 
@@ -909,7 +909,7 @@ Pycharm 提供的这个代码模板，可以说是相当实用的一个功能了
 
 整体的操作过程，如下图
 
-![image1](pycharm完全使用指南.assets/requests_headers.gif)
+![image1](img/pycharm完全使用指南/requests_headers.gif)
 
 
 
@@ -957,21 +957,21 @@ Pycharm 提供的这个代码模板，可以说是相当实用的一个功能了
 
 在你要打书签的位置，按下 Ctrl + F11 ，你可以给这个位置加个序号，可以是数字也可以是字母，假如在下面这个位置 加了 `1` 这个序号，下次你就可以使用 Ctrl + 1 直接跳转到这个位置。
 
-![image1](pycharm完全使用指南.assets/20190324111429.png)
+![image1](img/pycharm完全使用指南/20190324111429.png)
 
 当然你也可以不加，不加的话就是匿名书签了。你可以使用 `Shift` + `F11` 展示所有的书签，再进行跳转。
 
 同时，你可以为书签加一段描述文字，表明这块代码是什么的
 
-![image2](pycharm完全使用指南.assets/image-20200829165817279.png)
+![image2](img/pycharm完全使用指南/image-20200829165817279.png)
 
 我写入如下信息
 
-![image3](pycharm完全使用指南.assets/image-20200829165841514.png)
+![image3](img/pycharm完全使用指南/image-20200829165841514.png)
 
 然后再使用快捷键：Shift + F11，就可以列出所有的书签了
 
-![image4](pycharm完全使用指南.assets/image-20200829165950576.png)
+![image4](img/pycharm完全使用指南/image-20200829165950576.png)
 
 ## 6.3 【搜索技巧 03】无死角搜索：搜索的八种姿势
 
@@ -1021,17 +1021,35 @@ Pycharm 提供的这个代码模板，可以说是相当实用的一个功能了
 - 指定文件中搜索项目结构：直接在项目结构中输入你要搜索的结构名（可以是类、函数、变量等），若要清空以往输入，可以按 esc 清空。
 - 精准定位到某行：快捷键 Ctrl+G，如下图定位到第510行第9个字符处。
 
+### 禁用double shift 的方式
+
+- 2021 之前的版本：
+
+1. 双击shift，打开 search anywhere 窗口，输入Registry。
+
+2. 打开搜索到的Registry，下拉找到 ide.suppress.duble.click.handler 选项，选中后边的复选框，点击 Close即可完成禁用双击shift的设置。
+
+    ![img](img/pycharm完全使用指南/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTM5OTIzMzA=,size_16,color_FFFFFF,t_70.png)
+
+    
+
+- 2021 之后的版本：
+
+![img](img/pycharm完全使用指南/1813563-20210825194634118-235734490.png)
+
+
+
 ## 6.4 【搜索技巧 04】搜索时过滤测试文件
 
 接下来，介绍一个，我看框架源码的时的一个小技巧，可能只适用一小部分人吧。
 
 我平时会看的框架是 OpenStack ，我不知道其他框架是怎样的，但在 OpenStack 里面带有大量（真的很多）的单元测试文件。这给我在使用 `Find in Path` 时带来了不小的困扰，你可以从下图的搜索结果中感受一下，搜索一个函数，test 文件里的结果比 正常文件要多很多。
 
-![image1](pycharm完全使用指南.assets/FlXynbyxh8tTrCpc4tVLqycL7JQm.png)
+![image1](img/pycharm完全使用指南/FlXynbyxh8tTrCpc4tVLqycL7JQm.png)
 
 这些测试文件的搜索结果，对于我们看源代码不仅没有任何帮助的，更重要的是还干扰视线。于是我就研究了一下，从文件名入手，只要在 `File mask` 里填写 `!test*` 可以将这些test文件过滤掉。搜索结果一下子清晰很多。
 
-![image2](pycharm完全使用指南.assets/FiD91PR1hUu0Ruc6cmZ7EGNM6Be_.png)
+![image2](img/pycharm完全使用指南/FiD91PR1hUu0Ruc6cmZ7EGNM6Be_.png)
 
 ## 6.5 【搜索技巧 05】当前文件替换与全局替换
 
@@ -1073,7 +1091,7 @@ Pycharm 提供的这个代码模板，可以说是相当实用的一个功能了
 
 不防试试快捷键： Ctrl + E ，可以直接调出你曾经打开过的文件，甚至可以点击如下按钮选择有修改过的文件。
 
-![image1](pycharm完全使用指南.assets/image-20200829143014675.png)
+![image1](img/pycharm完全使用指南/image-20200829143014675.png)
 
 ## 6.13 【导航技巧 06】快速跳转到有 ERROR 的行
 
@@ -1107,7 +1125,7 @@ PyCharm 原生切换到左/右标签页的快捷键是
 - Ctrl + [：跳到上一级代码块开始的地方
 - Ctrl + ]：跳到上一级代码块结束的地方
 
-![image1](pycharm完全使用指南.assets/Kapture 2020-08-29 at 16.22.46.gif)
+![image1](img/pycharm完全使用指南/Kapture 2020-08-29 at 16.22.46.gif)
 
 ## 6.18 【导航技巧 11】善用 TODO 记录待办事项
 
@@ -1123,41 +1141,41 @@ PyCharm 原生切换到左/右标签页的快捷键是
 
 点击 `VCS` -> `Git` -> `Clone`
 
-![image1](pycharm完全使用指南.assets/20191211100048.png)
+![image1](img/pycharm完全使用指南/20191211100048.png)
 
 填写git仓库相关信息
 
-![image2](pycharm完全使用指南.assets/20191211100657.png)
+![image2](img/pycharm完全使用指南/20191211100657.png)
 
 点击 `Test`，会尝试连接 git 服务器，中间会让你输入登陆的帐号和密码。
 
-![image3](pycharm完全使用指南.assets/20191211101706.png)
+![image3](img/pycharm完全使用指南/20191211101706.png)
 
 点击`OK` 后，若一切正常会提示连接成功。
 
-![image4](pycharm完全使用指南.assets/20191211101845.png)
+![image4](img/pycharm完全使用指南/20191211101845.png)
 
 点击 `OK` 后，PyCharm 需要你选择如何打开这个 Git 仓库目录，是在当前窗口中打开，还是新建一个窗口？
 
 由于我在一个 PyCharm 下会有多个 Git 仓库，为了方便，我选择在当前窗口中打开（注意勾选 `Add to currently opened projects`）。
 
-![image5](pycharm完全使用指南.assets/20191211102501.png)
+![image5](img/pycharm完全使用指南/20191211102501.png)
 
 至此，Git 配置完成。
 
 此时你可以 `VCS` -> `Git` 查看，发现之前这些灰色不可用的按钮都可以使用了。
 
-![image6](pycharm完全使用指南.assets/20191211102826.png)
+![image6](img/pycharm完全使用指南/20191211102826.png)
 
 本篇重在讲解 PyCharm 的配置，关于Git 的操作，不属于本篇重点，就不再展开讲了。
 
 若你想对已配置的Git仓库进行修改，可点击 `File` -> `Setting` -> `Version Control` 调出如下界面。
 
-![image7](pycharm完全使用指南.assets/20191211133836.png)
+![image7](img/pycharm完全使用指南/20191211133836.png)
 
 不得不说 PyCharm 的这 UI 做得可以，随便改了个东西提交一下
 
-![image8](pycharm完全使用指南.assets/20191211143510.png)
+![image8](img/pycharm完全使用指南/20191211143510.png)
 
 ### 与 VSC 有关的快捷键
 
@@ -1179,7 +1197,7 @@ Ctrl + Shift + K ：Push 到远程
 
 在有文本变动的位置，PyCharm 会有提示，如下红色箭头标识处，点击它就可以直接查看，还可以快速回滚。
 
-![image3](pycharm完全使用指南.assets/20200420090428.png)
+![image3](img/pycharm完全使用指南/20200420090428.png)
 
 ## 7.3 【版本管理 03】媲美beyond compare 的差异对比功能
 
@@ -1193,7 +1211,7 @@ Ctrl + Shift + K ：Push 到远程
 
 对比示例，可以查看下面这张图，UI做的还是挺好看的。
 
-![image1](pycharm完全使用指南.assets/20190721125739.png)
+![image1](img/pycharm完全使用指南/20190721125739.png)
 
 
 
@@ -1203,11 +1221,11 @@ Ctrl + Shift + K ：Push 到远程
 
 那怎么查看这些记录呢？在编辑框的左边右键，然后选择 `Annotate`
 
-![image1](pycharm完全使用指南.assets/image-20200826215417743.png)
+![image1](img/pycharm完全使用指南/image-20200826215417743.png)
 
 就会出来如下图所示的界面。
 
-![image2](pycharm完全使用指南.assets/image-20200826215342363.png)
+![image2](img/pycharm完全使用指南/image-20200826215342363.png)
 
 在这里界面里记录着，哪个人在哪一天修改了该文件的哪一行，commit 号是多少？
 
@@ -1221,7 +1239,7 @@ Ctrl + Shift + K ：Push 到远程
 
 太巧的是，今天我打开 PyCharm ，就给我推了这条 tip，使用 Alt + Shift +C 就可以快速查看最近修改的内容
 
-![image1](pycharm完全使用指南.assets/20190614235120.png)
+![image1](img/pycharm完全使用指南/20190614235120.png)
 
 
 
@@ -1237,7 +1255,7 @@ Ctrl + Shift + K ：Push 到远程
 
 而现在，JetBrains 官方自己出了汉化插件，名字就叫： chinese，在插件市场里一搜，排名第一便是它，下载量已经 40 万，对比排名第二的民间汉化插件，简直不是量级的。
 
-![image1](pycharm完全使用指南.assets/20200822204523.png)
+![image1](img/pycharm完全使用指南/20200822204523.png)
 
 ## 8.3 【插件神器 03】在 PyCharm 中写 Markdown
 
@@ -1245,19 +1263,21 @@ Ctrl + Shift + K ：Push 到远程
 
 ## 8.4 【插件神器 04】正则表达式测试：Regex Tester【爬虫必备】
 
+【测试评价：写复杂的分组表达式时不好用】
+
 Regex Tester是PyCharm的第三方插件，可以测试正则表达式。
 
 安装 Regex Tester 插件：
 
 安装完成后，无需重启 PyCharm ，点击 PyCharm 界面左下方的小矩形按钮，就能找到 Regex Tester 选项。
 
-![image2](pycharm完全使用指南.assets/20200826221243.png)
+![image2](img/pycharm完全使用指南/20200826221243.png)
 
 点击进入后，就出现了如下界面。我随手写了个匹配手机号码的正则（不一定准确），匹配到的字符串背景会被高亮。右上方还有一些选项如大小写敏感，多行模式等，可根据需要进行选择。Regex Tester 还提供了Split，Replace功能等。
 
 使用效果如下：
 
-![image3](pycharm完全使用指南.assets/20200826221837.png)
+![image3](img/pycharm完全使用指南/20200826221837.png)
 
 ## 8.5 【绝佳工具 01】在Windows上使用 Bash 命令 【无效】
 
@@ -1267,9 +1287,39 @@ Regex Tester是PyCharm的第三方插件，可以测试正则表达式。
 
 对于像我这样熟悉 Linux 的开发者来说，Windows 的 那些 CMD 命令带来的糟糕体验是无法忍受的。
 
-![image1](pycharm完全使用指南.assets/20191211212546.png)
+![image1](img/pycharm完全使用指南/20191211212546.png)
 
 在弹出的 Bash 窗口，你可以敲入你想使用的 Linux 命令，是不是舒服多了。
+
+## 8.6 【绝佳工具 02】代码不规范？试试自动化 PEP8
+
+【实测好用，原版推荐是autopep8，但是那个效果非常差，这个 `black`效果非常好】
+
+`pep8` 是Python 语言的一个代码编写规范。如若你是新手，目前只想快速掌握基础，而不想过多去注重代码的的编写风格（虽然这很重要），那你可以尝试一下这个工具 - `black`
+
+首先在全局环境中（不要在虚拟环境中安装），安装一下这个工具。
+
+```shell
+pip3 install black
+```
+
+然后在 PyCharm 导入这个工具，具体设置如下图
+
+```shell
+Name: Black	# 随意起名
+Description: Black is the uncompromising Python code formatter	# 描述随意写
+Program: black	# 固定写法
+Arguments: $FilePath$	# 参数，只需传入文件地址即可，根据需要加入其它参数，具体查看 black -h
+Working directory: $ProjectFileDir$	# 固定写法，工作目录
+```
+
+![屏幕截图 2021-12-19 220414](img/pycharm完全使用指南/屏幕截图 2021-12-19 220414.jpg)
+
+
+
+然后将该操作绑定一个自定义的快捷键，注意尽量不要和已有的快捷键冲突
+
+![image-20211220135457140](img/pycharm完全使用指南/image-20211220135457140.png)
 
 ## 8.8 【绝佳工具 04】选择执行：Execute Selection in Console
 
@@ -1284,7 +1334,7 @@ Regex Tester是PyCharm的第三方插件，可以测试正则表达式。
 
 只要在当前文件中，写好代码，然后光标选择后，右键点击 `Execute Selection in Python Console` 或者 使用快捷键 option + shift + E (windows 上是 alt + shift + E)。
 
-![image1](pycharm完全使用指南.assets/20200825083349.png)
+![image1](img/pycharm完全使用指南/20200825083349.png)
 
 
 
@@ -1298,11 +1348,11 @@ $ pip install jupyter
 
 然后按照下图指示新建一个 Notebook ，就可以开始运作了。
 
-![image1](pycharm完全使用指南.assets/20200827204703.png)
+![image1](img/pycharm完全使用指南/20200827204703.png)
 
 这个界面感觉和 Jupyter 的风格不太符
 
-![image2](pycharm完全使用指南.assets/20200827204918.png)
+![image2](img/pycharm完全使用指南/20200827204918.png)
 
 但是使用上是没有什么区别的，记住三个快捷键就好(下面指的是 Mac 上的，Windows 上的有所不同)
 
@@ -1310,11 +1360,11 @@ $ pip install jupyter
 - Option + shift + ↩：调试该 cell
 - Shift + ↩：插入一个新的 cell
 
-![image3](pycharm完全使用指南.assets/20200827205529.png)
+![image3](img/pycharm完全使用指南/20200827205529.png)
 
 只要你安装了 Jupyter 后，你使用 Python Console 也会自动变成 Jupyter 的模式
 
-![image4](pycharm完全使用指南.assets/20200827205742.png)
+![image4](img/pycharm完全使用指南/20200827205742.png)
 
 ## 8.12 【插件神器 05】快捷键管理大师：Key Promoter X
 
@@ -1337,7 +1387,7 @@ $ pip install jupyter
 
 要想在 PyCharm 中使用这个预览滚动条，只要装上 `CodeGlance` 这个插件。使用效果如下
 
-![image1](pycharm完全使用指南.assets/image-20201226190221392.png)
+![image1](img/pycharm完全使用指南/image-20201226190221392.png)
 
 
 
@@ -1345,11 +1395,11 @@ $ pip install jupyter
 
 在开发过程中，经常会把校验一串 JSON 字符串是否合法，在以前我的做法都是打开 https://tool.lu/json/ 这个在线网站，直接美化来校验，只有 JSON 格式都正确无误合法的，才能够美化。
 
-![img](pycharm完全使用指南.assets/image-20201226184407028.png)
+![img](img/pycharm完全使用指南/image-20201226184407028.png)
 
 直到后来发现在 PyCharm 有一个插件专门来做这个事，那就是 `JSON Parser`，在插件市场安装后，重启 PyCharm ，就能在右侧边栏中看到它。
 
-![img](pycharm完全使用指南.assets/image-20201226184631883.png)
+![img](img/pycharm完全使用指南/image-20201226184631883.png)
 
 ## 8.15 【绝佳工具 08】使用 PyCharm 进行SSH 远程登陆
 
@@ -1363,25 +1413,25 @@ $ pip install jupyter
 
 点击 `Tools` -> `Start SSH Session`，弹出如下选项，选择 `Edit Credentials...`
 
-![image1](pycharm完全使用指南.assets/20210327105612.png)
+![image1](img/pycharm完全使用指南/20210327105612.png)
 
 输入主机的信息，点击 OK
 
-![image2](pycharm完全使用指南.assets/20210327105844.png)
+![image2](img/pycharm完全使用指南/20210327105844.png)
 
 就连接成功啦
 
-![image3](pycharm完全使用指南.assets/20210327105931.png)
+![image3](img/pycharm完全使用指南/20210327105931.png)
 
 通过上面开启连接是无法保存的，下次你再运行还是要手动输入ip port password。
 
 如果要保存 ssh 的连接信息，可以在如下位置添加
 
-![image4](pycharm完全使用指南.assets/image-20210327111036942.png)
+![image4](img/pycharm完全使用指南/image-20210327111036942.png)
 
 在这里添加后，你在 `Tools` -> `Start SSH Session` 就可以看到啦
 
-![image5](pycharm完全使用指南.assets/20210327111151.png)
+![image5](img/pycharm完全使用指南/20210327111151.png)
 
 ## 2. SSH Vagrant 虚拟机
 
@@ -1389,11 +1439,11 @@ $ pip install jupyter
 
 还不会配置的，请看本书 第二章：【开发环境 01】使用Vagrant 搭建一劳永逸开发环境
 
-![image6](pycharm完全使用指南.assets/20210327111349.png)
+![image6](img/pycharm完全使用指南/20210327111349.png)
 
 直接进入本项目的 Vagrant 虚拟机
 
-![image7](pycharm完全使用指南.assets/20210327111417.png)
+![image7](img/pycharm完全使用指南/20210327111417.png)
 
 # 第九章：常用的技巧
 
@@ -1403,7 +1453,7 @@ $ pip install jupyter
 
 此时你可以在你的项目目录里，点击右键，有个 `Local History` 的选项，再点击子选项 `Show History`，你可以看到这里有个记录板。如果你想恢复删除的文件，就在删除的记录项点击右键，选择 `Revert` 即可恢复。
 
-![image1](pycharm完全使用指南.assets/20190323153643.png)
+![image1](img/pycharm完全使用指南/20190323153643.png)
 
 ## 9.3 【必学技巧 03】智能补全，忽略大小写
 
@@ -1415,13 +1465,13 @@ $ pip install jupyter
 
 只要在配置中关闭大小写匹配即可。
 
-![image2](pycharm完全使用指南.assets/20190721141653.png)
+![image2](img/pycharm完全使用指南/20190721141653.png)
 
 ## 9.4 【必学技巧 04】以列为单位的块编辑
 
 如果你使用的是旧版本的 PyCharm ，当你按住 alt，然后使用鼠标进行选择，你会发现这样一件神奇的事情。
 
-![image3](pycharm完全使用指南.assets/5d3401410087b61815.gif)
+![image3](img/pycharm完全使用指南/5d3401410087b61815.gif)
 
 如若上面的快捷键不生效，说明你的 PyCharm 是新版本，在较新版本中，有两种方法开启列选择模式
 
@@ -1439,7 +1489,7 @@ $ pip install jupyter
 
 在图示位置打勾即可开启自动检测。（默认自动开启的）
 
-![image1](pycharm完全使用指南.assets/20190423162328.png)
+![image1](img/pycharm完全使用指南/20190423162328.png)
 
 上面是对一个旧的 Python 模块进行修改时，如何决定当前编辑的缩进方式。
 
@@ -1447,7 +1497,7 @@ $ pip install jupyter
 
 如下图，若在 `Use tab character` 打上勾，则你新建一个 Python 后，就会使用 TAB 进行缩进，反之，则使用四个空格进行缩进。
 
-![image2](pycharm完全使用指南.assets/20190423163341.png)
+![image2](img/pycharm完全使用指南/20190423163341.png)
 
 ## 9.8 【必学技巧 08】脱离鼠标的代码区域选择：Extend Selection
 
@@ -1484,15 +1534,15 @@ PyCharm 在配置了解释器后，下方会列出你的该环境下所有已安
 
 点击 `+` 按钮
 
-![image1](pycharm完全使用指南.assets/20200826114256.png)
+![image1](img/pycharm完全使用指南/20200826114256.png)
 
 搜索 `parse` ，并点击右下角进行安装
 
-![image2](pycharm完全使用指南.assets/20200826113951.png)
+![image2](img/pycharm完全使用指南/20200826113951.png)
 
 退回包管理界面，已经安装成功了。
 
-![image3](pycharm完全使用指南.assets/20200826113926.png)
+![image3](img/pycharm完全使用指南/20200826113926.png)
 
 ## 9.11 【必学技巧 11】显示类继承关系图：Show Diagrams
 
@@ -1502,11 +1552,11 @@ PyCharm 在配置了解释器后，下方会列出你的该环境下所有已安
 
 在你想查看继承关系的 类 中，右键选择 `Diagrams` -> `Show Diagram`
 
-![image1](pycharm完全使用指南.assets/image-20200826133115567.png)
+![image1](img/pycharm完全使用指南/image-20200826133115567.png)
 
 就会新增一个窗口，使用 UML 为你展示该类的继承关系。
 
-![image2](pycharm完全使用指南.assets/image-20200826133133564.png)
+![image2](img/pycharm完全使用指南/image-20200826133133564.png)
 
 ## 9.13 【必学技巧 13】把文件设置为只读：Read-Only
 
@@ -1514,7 +1564,7 @@ PyCharm 在配置了解释器后，下方会列出你的该环境下所有已安
 
 方法很简单，只要点击右下角的 `小锁` 锁上该文件就可以。
 
-![image1](pycharm完全使用指南.assets/20200826224900.png)
+![image1](img/pycharm完全使用指南/20200826224900.png)
 
 
 
@@ -1528,47 +1578,47 @@ PyCharm 在配置了解释器后，下方会列出你的该环境下所有已安
 
 首先在你的 PyCharm 的右边边栏里点击 Database ，然后再点击左上角的 `+` 号 -> `Data Source` -> `MySQL`
 
-![image1](pycharm完全使用指南.assets/20210306195505.png)
+![image1](img/pycharm完全使用指南/20210306195505.png)
 
 弹出如下界面，输入 ip，port，password 等信息后，点击 `Test Connection` 测试一下是否能连接，如果可以凡点 `OK` 保存，以便下次复用。
 
-![image2](pycharm完全使用指南.assets/20210327132323.png)
+![image2](img/pycharm完全使用指南/20210327132323.png)
 
 如果左下角有提示下载驱动，点击安装就好啦~
 
-![image3](pycharm完全使用指南.assets/20210327132408.png)
+![image3](img/pycharm完全使用指南/20210327132408.png)
 
 连接成功后，会自动弹出一个 MySQL Console 的查询界面，你可以在这个界面里运行 SQL 命令
 
-![image4](pycharm完全使用指南.assets/20210327133122.png)
+![image4](img/pycharm完全使用指南/20210327133122.png)
 
 ## 10.2 【数据库操作 02】切换数据库
 
 在 Console 中写 sql 语句的时候，是不用使用 `use <db>` 来选择数据库的，默认选中的就是 mysql，如果你想切换数据库，可以点如下图的位置，进行切换。
 
-![image1](pycharm完全使用指南.assets/20210327140428.png)
+![image1](img/pycharm完全使用指南/20210327140428.png)
 
 
 
 ## 10.3 【数据库操作 03】查询结果格式化
 
-## 表格形式
+### 表格形式
 
 查询结果默认显示以表格的形式打印，你可以很方便的复制到 Excel 上
 
-![image1](pycharm完全使用指南.assets/20210327140812.png)
+![image1](img/pycharm完全使用指南/20210327140812.png)
 
-## JSON格式
+### JSON格式
 
 如果你需要将结果展示成 JSON 的格式，点击切换到 `Tree`
 
-![image2](pycharm完全使用指南.assets/20210327140647.png)
+![image2](img/pycharm完全使用指南/20210327140647.png)
 
-## CSV 格式
+### CSV 格式
 
 如果你需要将结果展示成 CSV 的格式，点击切换到 `Text`
 
-![image3](pycharm完全使用指南.assets/20210327140942.png)
+![image3](img/pycharm完全使用指南/20210327140942.png)
 
 
 
@@ -1576,7 +1626,7 @@ PyCharm 在配置了解释器后，下方会列出你的该环境下所有已安
 
 PyCharm 不仅提供了数据导出的功能，而且做得近乎极致，它支持各种格式的导出：csv, xlsx, json, html , xml , sql 等等
 
-![image1](pycharm完全使用指南.assets/20210327143544.png)
+![image1](img/pycharm完全使用指南/20210327143544.png)
 
 导出为 csv 或者 xlsx 格式，方便用于二次加工
 
@@ -1592,4 +1642,6 @@ PyCharm 不仅提供了数据导出的功能，而且做得近乎极致，它支
 
 你不仅 可以在 PyCharm 上进行数据的查询，对查询出来的数据可以进行可视化的修改，不用再使用 UPDATE 的 sql 语句去更新。
 
-![image1](pycharm完全使用指南.assets/20210401082022.png)
+![image1](img/pycharm完全使用指南/20210401082022.png)
+
+11

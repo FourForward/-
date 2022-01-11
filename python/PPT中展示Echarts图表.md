@@ -4,7 +4,7 @@
 
 ​	加载项中有一个Web Viewer，但是该方式只支持https，而且ssl证书必须被信任，所以自建的网站服务很难成功使用该功能。如果是打开别人的大型网站，该方式是首选方式，注：添加该加载项时，可能会需要搭梯子。
 
-![image-20201125184359777](PPT 中展示Echarts 图表.assets/image-20201125184359777.png)
+![image-20201125184359777](img/PPT 中展示Echarts 图表/image-20201125184359777.png)
 
 ## 方式二
 
@@ -12,9 +12,9 @@
 
 ### 2.打开ppt  开发工具  控件  其他控件  选择Microsoft web browser
 
-![image-20201125184544573](PPT 中展示Echarts 图表.assets/image-20201125184544573.png)
+![image-20201125184544573](img/PPT 中展示Echarts 图表/image-20201125184544573.png)
 
-![image-20201125184700036](PPT 中展示Echarts 图表.assets/image-20201125184700036.png)
+![image-20201125184700036](img/PPT 中展示Echarts 图表/image-20201125184700036.png)
 
 2.0大概率添加失败，点击确定发现无法插入activex插件，下述修改两处注册表键值
 
@@ -24,7 +24,7 @@
 
 将值修改为0
 
-![image-20201125185541300](PPT 中展示Echarts 图表.assets/image-20201125185541300.png)
+![image-20201125185541300](img/PPT 中展示Echarts 图表/image-20201125185541300.png)
 
 2.3 右键查找，\{8856F961-340A-11D0-A96B-00C04FD705A2}
 
@@ -32,9 +32,9 @@
 
 查找结果路径类似于（不同版本的office该路径会略有不同，所以采用搜索方式定位）：计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Office\ClickToRun\REGISTRY\MACHINE\Software\Microsoft\Office\16.0\Common\COM Compatibility\{8856F961-340A-11D0-A96B-00C04FD705A2}
 
-![image-20201125185814304](PPT 中展示Echarts 图表.assets/image-20201125185814304.png)
+![image-20201125185814304](img/PPT 中展示Echarts 图表/image-20201125185814304.png)
 
-![image-20201125190227880](PPT 中展示Echarts 图表.assets/image-20201125190227880.png)
+![image-20201125190227880](img/PPT 中展示Echarts 图表/image-20201125190227880.png)
 
 完成后重新打开ppt，添加控件
 
@@ -58,7 +58,7 @@ End Sub
 # Slide166，中的166是根据上一个页面的名称来命名的，如果你上一个页面是Slide1，那么模块的页面就需要改成Slide1
 ```
 
-![image-20201125190924711](PPT 中展示Echarts 图表.assets/image-20201125190924711.png)
+![image-20201125190924711](img/PPT 中展示Echarts 图表/image-20201125190924711.png)
 
 然后关闭代码窗口，回到ppt界面即可
 
@@ -80,7 +80,7 @@ End Sub
 
 其它选项  兼容IE８　　　一定要选，其它的看自己的需求
 
-![image-20201125192718129](PPT 中展示Echarts 图表.assets/image-20201125192718129.png)
+![image-20201125192718129](img/PPT 中展示Echarts 图表/image-20201125192718129.png)
 
 完成后会给一个Echarts的JS文件
 
@@ -153,7 +153,7 @@ var console = {
 
 最后效果图:
 
-![image-20201125193730778](PPT 中展示Echarts 图表.assets/image-20201125193730778.png)
+![image-20201125193730778](img/PPT 中展示Echarts 图表/image-20201125193730778.png)
 
 
 

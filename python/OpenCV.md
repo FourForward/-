@@ -35,7 +35,7 @@ cv2.waitKey()  # 等待用户按键反馈 cv2.destroyAllWindows()  # 销毁所
 
 执行结果
 
-![](OpenCV.assets/1.jpg)
+![](img/OpenCV/1.jpg)
 
 ## 2. 图像色彩操作
 
@@ -63,7 +63,7 @@ cv2.destroyAllWindows()  # 销毁所有创建的窗口
 
 执行结果
 
-![](OpenCV.assets/2.jpg)
+![](img/OpenCV/2.jpg)
 
 ### 2）色彩通道操作
 
@@ -99,7 +99,7 @@ cv2.destroyAllWindows()
 
 执行结果
 
-![](OpenCV.assets/3.jpg)
+![](img/OpenCV/3.jpg)
 
 ### 3）灰度直方图均衡化
 
@@ -144,7 +144,7 @@ cv2.destroyAllWindows()
 
 执行结果
 
-![](OpenCV.assets/4.jpg)
+![](img/OpenCV/4.jpg)
 
 ### 4）彩色亮度直方图均衡化
 
@@ -175,7 +175,7 @@ cv2.destroyAllWindows()
 
 执行结果
 
-![](OpenCV.assets/5.jpg)
+![](img/OpenCV/5.jpg)
 
 ### 5）色彩提取
 
@@ -234,7 +234,7 @@ cv2.destroyAllWindows()
 
 执行结果
 
-![](OpenCV.assets/6.jpg)
+![](img/OpenCV/6.jpg)
 
 ### 6）二值化与反二值化
 
@@ -266,7 +266,7 @@ cv.destroyAllWindows()
 
 执行结果
 
-![](OpenCV.assets/7.jpg)
+![](img/OpenCV/7.jpg)
 
 ## 3. 图像形态操作
 
@@ -297,7 +297,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/8.jpg)
+![](img/OpenCV/8.jpg)
 
 ### 2）图像位置变换
 
@@ -369,7 +369,7 @@ if __name__ == "__main__":
 
 ```
 
-![](OpenCV.assets/9.jpg)
+![](img/OpenCV/9.jpg)
 
 ### 3）图像缩放
 
@@ -408,7 +408,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/10.jpg)
+![](img/OpenCV/10.jpg)
 
 ### 4）图像裁剪
 
@@ -450,7 +450,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/11.jpg)
+![](img/OpenCV/11.jpg)
 
 ### 5）图像相加
 
@@ -478,7 +478,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/12.jpg)
+![](img/OpenCV/12.jpg)
 
 ### 6）图像相减
 
@@ -501,7 +501,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/13.jpg)
+![](img/OpenCV/13.jpg)
 
 ### 7）透视变换
 
@@ -548,7 +548,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/14.jpg)
+![](img/OpenCV/14.jpg)
 
 ### 8）图像腐蚀
 
@@ -576,7 +576,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/15.jpg)
+![](img/OpenCV/15.jpg)
 
 ### 9）图像膨胀
 
@@ -601,7 +601,7 @@ cv2.waitKey()
 
 ```
 
-![](OpenCV.assets/16.jpg)
+![](img/OpenCV/16.jpg)
 
 ### 10）图像开运算
 
@@ -631,7 +631,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/17.jpg)
+![](img/OpenCV/17.jpg)
 
 ### 11）图像闭运算
 
@@ -663,7 +663,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/18.jpg)
+![](img/OpenCV/18.jpg)
 
 ### 12）形态学梯度
 
@@ -686,7 +686,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/19.jpg)
+![](img/OpenCV/19.jpg)
 
 ## 4. 图像梯度处理
 
@@ -738,7 +738,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/20.jpg)
+![](img/OpenCV/20.jpg)
 
 ### 2）图像锐化处理
 
@@ -778,7 +778,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/21.jpg)
+![](img/OpenCV/21.jpg)
 
 ### 3）边沿检测
 
@@ -817,7 +817,7 @@ cv.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/22.jpg)
+![](img/OpenCV/22.jpg)
 
 ## 5. 轮廓处理
 
@@ -927,7 +927,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/23.jpg)
+![](img/OpenCV/23.jpg)
 
 ### 2）绘制矩形包围框
 
@@ -991,7 +991,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/24.jpg)
+![](img/OpenCV/24.jpg)
 
 ### 3）绘制圆形包围圈
 
@@ -1040,7 +1040,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/25.jpg)
+![](img/OpenCV/25.jpg)
 
 ### 4）绘制最佳拟合椭圆
 
@@ -1142,7 +1142,7 @@ cv2.destroyAllWindows()
 
 ```
 
-![](OpenCV.assets/27.jpg)
+![](img/OpenCV/27.jpg)
 
 ## 6.视频基本处理 
 
@@ -1236,7 +1236,7 @@ cv2.destroyAllWindows()
 
 我们对图像中的目标进行分析和检测时，目标往往具有一定的倾斜角度，自然条件下拍摄的图像，完全平正是很少的。因此，需要将倾斜的目标“扶正”的过程就就叫做图像矫正。该案例中使用的原始图像如下：
 
-![](OpenCV.assets/28.jpg)
+![](img/OpenCV/28.jpg)
 
 ### 2）代码
 
@@ -1328,7 +1328,7 @@ cv2.destroyAllWindows()
 
 ### 3）执行结果
 
-![](OpenCV.assets/29.jpg)
+![](img/OpenCV/29.jpg)
 
 ## **2.** 利用OpenCV检测芯片瑕疵
 
@@ -1336,7 +1336,7 @@ cv2.destroyAllWindows()
 
 利用图像技术，检测出芯片镀盘区域瑕疵。样本图像中，粉红色区域为镀盘区域，镀盘内部空洞为瑕疵区域，利用图像技术检测镀盘是否存在瑕疵，如果存在则将瑕疵区域标记出来。
 
-![](OpenCV.assets/30.jpg)
+![](img/OpenCV/30.jpg)
 
 ### 2）代码
 
@@ -1413,4 +1413,4 @@ cv2.destroyAllWindows()
 
 ### 3）执行结果
 
-![image-20211127192855849](OpenCV.assets/image-20211127192855849.png)
+![image-20211127192855849](img/OpenCV/image-20211127192855849.png)

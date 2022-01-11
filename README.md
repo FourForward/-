@@ -22,6 +22,10 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 4. ###  [常用函数](./python/Python常用函数.md)
 
+4. ### [pyton黑魔法](./python/python黑魔法.md)
+
+4. ### [python标准库官方文档](https://docs.python.org/3/library/functions.html)
+
 
 
 
@@ -51,6 +55,8 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ### django
 
 1. #### [django2.2---教程](./python/Djnago2.2.md)
+
+1. #### [Mysql必知必会 To DjangoORM](./Python/Mysql必知必会ToDjangoORM.md)
 
 2. #### [django_channels,django中使用websocket的方式](./python/django_channels.md)
 
@@ -112,13 +118,17 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # 前端相关
 
-1. ###  [基础网页标签元素](./前端/基础网页标签元素.md)
+##  [基础网页标签元素](./前端/基础网页标签元素.md)
 
-2. ###  [css](./前端/css.md)
+## CSS
 
-3. ###  [js基础](./前端/js基础.md)
+1. ### [css 基础](./前端/css.md)
 
-3. [jQuery](./前端/jQuery.md)
+2. ### [flex布局详解](./前端/flex布局详解.md)
+
+##  [js基础](./前端/js基础.md)
+
+## [jQuery](./前端/jQuery.md)
 
 
 
@@ -156,8 +166,6 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 2. ### [pycharm非常规操作](./python/pycharm非常规操作.md)
 
     
-
-
 
 # 杂项
 

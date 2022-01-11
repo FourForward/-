@@ -30,7 +30,7 @@
 > 3. 确定技术整体思路和使用框架模型
 > 4. 形成概要文档指导开发流程
 
-![](git基础.assets/visio.jpg)
+![](img/git基础/visio.jpg)
 
 * 项目计划 ： 确定项目开发的时间轴和流程
 
@@ -39,7 +39,7 @@
 > 3. 人员分工 
 > 4. 形成甘特图和思维导图等辅助内容
 
-![](git基础.assets/gt.jpg)
+![](img/git基础/gt.jpg)
 
 * 详细设计 ： 项目的具体实现
 
@@ -106,7 +106,7 @@
 
     * git 拥有更好的分支支持，方便多人协调
 
-        ![](git基础.assets/分布.jpg)
+        ![](img/git基础/分布.jpg)
 
         
 
@@ -129,11 +129,11 @@ sudo apt install git
 	下载下来之后直接安装，除了下图选第一个，其他的不用改，直接next就行。
 	选这个`use git from git bash only`
 
-![img](git基础.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NjY3MTcw,size_16,color_FFFFFF,t_70.png)
+![img](img/git基础/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NjY3MTcw,size_16,color_FFFFFF,t_70.png)
 
 安装完成后我的电脑上是显示了这么三个东西的。
 
-![这里写图片描述](git基础.assets/format,png.png)
+![这里写图片描述](img/git基础/format,png.png)
 
 Git CMD：
 　　		Git CMD我并没用过，但是我查了一下它是什么。据别人说，Git中的Bash是基于CMD的，在CMD的基础上增添一些新的命令与功能。所以建议在使用的时候，用Bash更加方便（原网址）。
@@ -146,7 +146,7 @@ Git Bash：
 
 ### 2.2 GIT使用
 
-![git结构](git基础.assets/git.jpeg)
+![git结构](img/git基础/git.jpeg)
 
 * 基本概念
     * 工作区：项目所在操作目录，实际操作项目的区域
@@ -415,7 +415,7 @@ git tag -d  [tag]
 
     * 防止误操作对其他开发者的影响
 
-        ![](git基础.assets/fz.jpg)
+        ![](img/git基础/fz.jpg)
 
 #### 2.5.2 基本操作
 
@@ -468,7 +468,7 @@ git tag -d  [tag]
      git branch -D [branch]  删除没有被合并的分支
     ```
 
-    ![分支合并](git基础.assets/merge.png)
+    ![分支合并](img/git基础/merge.png)
 
 #### 2.5.3 分支冲突问题
 
@@ -478,7 +478,7 @@ git tag -d  [tag]
 
     此时合并可能会出现:
 
-    ![](git基础.assets/merge1.png)
+    ![](img/git基础/merge1.png)
 
     此时只要先摁 **ctrl-o** 写入，然后回车，再摁**ctrl-x** 离开就可以了。
 
@@ -490,7 +490,7 @@ git tag -d  [tag]
 
     此时会出现：
 
-    ![](git基础.assets/merge2.png)
+    ![](img/git基础/merge2.png)
 
     这种冲突不太好解决需要自己进入文件进行修改后，再直行add ，commit操作提交
 
@@ -517,11 +517,11 @@ git tag -d  [tag]
 
 - 在左上角搜索栏搜索想要的获取的项目
 
-![](git基础.assets/1.png)
+![](img/git基础/1.png)
 
 - 选择项目后复制项目git地址
 
-![](git基础.assets/2.png)
+![](img/git基础/2.png)
 
 - 在本地使用git clone方法即可获取
 
@@ -540,15 +540,15 @@ git clone https://github.com/xxxxxxxxx
 
 - 点击右上角加号下拉菜单，选择新的仓库
 
-![](git基础.assets/4.png)
+![](img/git基础/4.png)
 
 - 填写相应的项目信息即可
 
-    ![](git基础.assets/0.png)
+    ![](img/git基础/0.png)
 
 - github仓库相对本地主机就是一个远程仓库通过remote连接
 
-    ![](git基础.assets/7.png)
+    ![](img/git基础/7.png)
 
     
 
@@ -623,7 +623,7 @@ git clone https://github.com/xxxxxxxxx
     还会向你展示你的秘钥长啥样
     ```
 
-    ![img](git基础.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NjY3MTcw,size_16,color_FFFFFF,t_70.png)
+    ![img](img/git基础/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NjY3MTcw,size_16,color_FFFFFF,t_70.png)
 
     
 
@@ -633,9 +633,9 @@ git clone https://github.com/xxxxxxxxx
 
     将公钥【id_rsa.pub】内容添加进去，并且起一个标题名字，点击添加
 
-    ![](git基础.assets/8.png)
+    ![](img/git基础/8.png)
 
-    ![](git基础.assets/9.png)
+    ![](img/git基础/9.png)
 
     
 
@@ -643,8 +643,8 @@ git clone https://github.com/xxxxxxxxx
 
 - 如果是自己的仓库需要删除，则选择自己的仓库选择settings，在最后可以选择删除仓库。
 
-![](git基础.assets/5.jpg)
-![](git基础.assets/6.jpg)
+![](img/git基础/5.jpg)
+![](img/git基础/6.jpg)
 
 
 

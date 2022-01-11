@@ -1,3 +1,5 @@
+[TOC]
+
 # **程序结构**
 
 ## **模块 Module**
@@ -148,7 +150,7 @@ from 包名 import *
 
 from 包名.模块名 import *
 
-![image-20211005140123110](Python 高级语法.assets/image-20211005140123110.png)
+![image-20211005140123110](img/Python 高级语法/image-20211005140123110.png)
 
 ## **\__init__.py** **文件**
 
@@ -284,7 +286,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
     
 
-![](Python 高级语法.assets/1111111.png)
+![](img/Python 高级语法/1111111.png)
 
 ## **raise** **语句**
 
@@ -294,7 +296,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
 3. <font color='red'>有抛出就有接收，否则毫无意义</font>
 
-    ![image-20211005142035585](Python 高级语法.assets/image-20211005142035585.png)
+    ![image-20211005142035585](img/Python 高级语法/image-20211005142035585.png)
 
 # **迭代**
 
@@ -330,7 +332,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
         break
     ```
 
-    ![image-20211005142821948](Python 高级语法.assets/image-20211005142821948.png)
+    ![image-20211005142821948](img/Python 高级语法/image-20211005142821948.png)
 
     
 
@@ -338,7 +340,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
     ​     根据需求写代码
 
-    ![image-20211005142937133](Python 高级语法.assets/image-20211005142937133.png)
+    ![image-20211005142937133](img/Python 高级语法/image-20211005142937133.png)
 
 ## **迭代器对象iterator**
 
@@ -370,7 +372,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
 <font color='red'>for 循环的本质</font> ：
 
-![111](Python 高级语法.assets/111.png)
+![111](img/Python 高级语法/111.png)
 
 # 生成器generator
 
@@ -392,7 +394,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
   要返回一个数据时用return
 
-![image-20211005150157372](Python 高级语法.assets/image-20211005150157372.png)
+![image-20211005150157372](img/Python 高级语法/image-20211005150157372.png)
 
 ## **生成器函数**
 
@@ -449,15 +451,15 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
 2.   语法：变量 = ( 表达式 for 变量 in 可迭代对象 [if 真值表达式] )
 
-​          ![image-20211005151621727](Python 高级语法.assets/image-20211005151621727.png)                     
+​          ![image-20211005151621727](img/Python 高级语法/image-20211005151621727.png)                     
 
  
 
-​		 ![image-20211005151633761](Python 高级语法.assets/image-20211005151633761.png)
+​		 ![image-20211005151633761](img/Python 高级语法/image-20211005151633761.png)
 
-​		 ![image-20211005151648600](Python 高级语法.assets/image-20211005151648600.png)	
+​		 ![image-20211005151648600](img/Python 高级语法/image-20211005151648600.png)	
 
-![image-20211005151700541](Python 高级语法.assets/image-20211005151700541.png)
+![image-20211005151700541](img/Python 高级语法/image-20211005151700541.png)
 
 # **函数式编程**
 
@@ -471,7 +473,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
  高阶函数：将函数作为参数或返回值的函数。
 
-## **函数作为参数**
+## 函数作为参数
 
 ​	将核心逻辑传入方法体，使该方法的适用性更广，体现了面向对象的开闭原则。
 
@@ -507,7 +509,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
  
 
-### **内置高阶函数**
+### 内置高阶函数
 
 1. map（函数，可迭代对象）：使用可迭代对象中的每个元素调用函数，将返回值作为新可迭代对象元素；返回值为新可迭代对象。
 
@@ -519,13 +521,13 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
 5.   min(可迭代对象，key = 函数)：根据函数获取可迭代对象的最小值。
 
-## **函数作为返回值**
+## 函数作为返回值
 
 逻辑连续，当内部函数被调用时，不脱离当前的逻辑。
 
 
 
-**闭包**
+### **闭包**
 
 1. 三要素：
 
@@ -569,7 +571,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
 
 
-## 函数装饰器decorator
+### 函数装饰器decorator
 
 1. 定义：在不改变原函数的调用以及内部代码情况下，为其添加新功能的函数。
 
@@ -594,9 +596,6 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
     return内嵌函数
     ```
 
-    
-
-
 
 3. 本质：
 
@@ -604,109 +603,12 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
 
     原函数名称 = 函数装饰器名称（原函数名称）
 
-    ![image-20211005153315231](Python 高级语法.assets/image-20211005153315231.png)
+    ![image-20211005153315231](img/Python 高级语法/image-20211005153315231.png)
 
-4. 实际应用：
+    
 
-    使用装饰器，模拟 `python3.10` 中`case` 的语句用法
+    
 
-    ```python
-    import functools
-    
-    
-    def value_dispatch(func):
-        """
-        按参数值进行分派
-        Like singledispatch() but dispatches by value of the first arg.
-             singledispatch() 是按参数类型进行分派
-        Example:
-          @value_dispatch
-          def eat(fruit):
-              return f"I don't want a {fruit}..."
-          @eat.register('apple')
-          def _eat_apple(fruit):
-              return "I love apples!"
-          @eat.register('eggplant')
-          @eat.register('squash')
-          def _eat_what(fruit):
-              return f"I didn't know {fruit} is a fruit!"
-        An alternative to applying multuple `register` decorators is to
-        use the `register_for_all` helper:
-          @eat.register_for_all({'eggplant', 'squash'})
-          def _eat_what(fruit):
-              return f"I didn't know {fruit} is a fruit!"
-        """
-    
-        registry = {}
-    
-        @functools.wraps(func)
-        def wrapper(arg0, *args, **kwargs):
-            try:
-                delegate = registry[arg0]
-            except KeyError:
-                pass
-            else:
-                return delegate(arg0, *args, **kwargs)
-    
-            return func(arg0, *args, **kwargs)
-    
-        def register(value):
-            def wrap(func):
-                if value in registry:
-                    raise ValueError(
-                        f'@value_dispatch: there is already a handler '
-                        f'registered for {value!r}'
-                    )
-                registry[value] = func
-                return func
-    
-            return wrap
-    
-        def register_for_all(values):
-            def wrap(func):
-                for value in values:
-                    if value in registry:
-                        raise ValueError(
-                            f'@value_dispatch: there is already a handler '
-                            f'registered for {value!r}'
-                        )
-                    registry[value] = func
-                return func
-    
-            return wrap
-    
-        wrapper.register = register
-        wrapper.register_for_all = register_for_all
-        return wrapper
-    
-    
-    if __name__ == '__main__':
-        @value_dispatch
-        def eat(fruit):
-            return f"I don't want a {fruit}..."
-    
-    
-        @eat.register('apple')
-        def _eat_apple(fruit):
-            return fruit
-    
-    
-        @eat.register('squash')
-        def _eat_what(fruit):
-            return fruit
-    
-    
-        @eat.register('eggplant')
-        def _eat_what(fruit):
-            return fruit
-    
-        print(eat('eggplant'))
-    ----------------------------------------------------
-    >>>	eggplant
-    ```
-    
-    
-    
 4. 装饰器链：
 
     一个函数可以被多个装饰器修饰
@@ -715,7 +617,7 @@ finally:	# 负责处理收尾工作,无论是否发生异常都会执行的语�
     2. <font color='red'>添加在主函数之前的逻辑  由外向内  执行</font>
     3. <font color='red'>添加在主函数之后的逻辑  由内向外执行</font>
 
-    ![image-20211005193745189](Python 高级语法.assets/image-20211005193745189.png)
+    ![image-20211005193745189](img/Python 高级语法/image-20211005193745189.png)
 
 
 
@@ -763,5 +665,106 @@ end_02
 end_01
 
 # set_02,set_01是在构建 say_hi 函数的时候就执行了，与最后运行say_hi()函数没有任何关系
+```
+
+## 实际应用 按值分派函数
+
+使用装饰器，模拟 `python3.10` 中`case` 的语句用法
+
+
+
+```python
+import functools
+
+
+def value_dispatch(func):
+    """
+    按参数值进行分派
+    Like singledispatch() but dispatches by value of the first arg.
+         singledispatch() 是按参数类型进行分派
+    Example:
+      @value_dispatch
+      def eat(fruit):
+          return f"I don't want a {fruit}..."
+      @eat.register('apple')
+      def _eat_apple(fruit):
+          return "I love apples!"
+      @eat.register('eggplant')
+      @eat.register('squash')
+      def _eat_what(fruit):
+          return f"I didn't know {fruit} is a fruit!"
+    An alternative to applying multuple `register` decorators is to
+    use the `register_for_all` helper:
+      @eat.register_for_all({'eggplant', 'squash'})
+      def _eat_what(fruit):
+          return f"I didn't know {fruit} is a fruit!"
+    """
+
+    registry = {}
+
+    @functools.wraps(func)
+    def wrapper(arg0, *args, **kwargs):
+        try:
+            delegate = registry[arg0]
+        except KeyError:
+            pass
+        else:
+            return delegate(arg0, *args, **kwargs)
+
+        return func(arg0, *args, **kwargs)
+
+    def register(value):
+        def wrap(func):
+            if value in registry:
+                raise ValueError(
+                    f'@value_dispatch: there is already a handler '
+                    f'registered for {value!r}'
+                )
+            registry[value] = func
+            return func
+
+        return wrap
+
+    def register_for_all(values):
+        def wrap(func):
+            for value in values:
+                if value in registry:
+                    raise ValueError(
+                        f'@value_dispatch: there is already a handler '
+                        f'registered for {value!r}'
+                    )
+                registry[value] = func
+            return func
+
+        return wrap
+
+    wrapper.register = register
+    wrapper.register_for_all = register_for_all
+    return wrapper
+
+
+if __name__ == '__main__':
+    @value_dispatch
+    def eat(fruit):
+        return f"I don't want a {fruit}..."
+
+
+    @eat.register('apple')
+    def _eat_apple(fruit):
+        return fruit
+
+
+    @eat.register('squash')
+    def _eat_what(fruit):
+        return fruit
+
+
+    @eat.register('eggplant')
+    def _eat_what(fruit):
+        return fruit
+
+    print(eat('eggplant'))
+----------------------------------------------------
+>>>	eggplant
 ```
 

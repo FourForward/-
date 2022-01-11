@@ -12,7 +12,7 @@
 
 <font color='red'>记录器和处理器中的日志事件信息流程如下图所示：</font>
 
-![../_images/logging_flow.png](djagno日志的参数传递.assets/logging_flow.png)	
+![../_images/logging_flow.png](img/djagno日志的参数传递/logging_flow.png)	
 
 翻译如下：
 

@@ -10,11 +10,11 @@ MySQL数据库
 
 [TOC]
 
-# 3. 数据库
+# Mysql数据库
 
 
 
-## 3.1概述
+## 1概述
 
 * 数据存储
 
@@ -38,7 +38,7 @@ MySQL数据库
 
 数据库的应用领域几乎涉及到了需要数据管理的方方面面，融机构、游戏网站、购物网站、论坛网站 ... ...都需要数据库进行数据存储管理。 
 
-![](MySQL.assets/view.jpg)
+![](img/MySQL/view.jpg)
 
 * 基本概念
 
@@ -48,7 +48,7 @@ MySQL数据库
 
     * 数据库系统 ： 由数据库和数据库管理系统，开发工具等组成的集合 。
 
-![](MySQL.assets/数据库系统.png)
+![](img/MySQL/数据库系统.png)
 
 * 数据库分类和常见数据库
 
@@ -62,15 +62,15 @@ MySQL数据库
     > 开源：MySQL、SQLite、MongoDB
     > 非开源：Oracle、DB2、SQL_Server
 
-    ![](MySQL.assets/databases.jpg)
+    ![](img/MySQL/databases.jpg)
 
-## 3.2 MySQL
+## 2 MySQL
 
 1996年，MySQL 1.0发布,作者Monty Widenius, 为一个叫TcX的公司打工，当时只是内部发布。到了96年10月，MySQL 3.11.1发布了，一个月后，Linux版本出现了。真正的MySQL关系型数据库于1998年1月发行第一个版本。MySQL是个开源数据库，后来瑞典有了专门的MySQL开发公司，将该数据库发展壮大，在之后被Sun收购，Sun又被Oracle收购。
 
 官网地址：[https://www.mysql.com/](https://www.mysql.com/)
 
-![](MySQL.assets/mysql.jpg)
+![](img/MySQL/mysql.jpg)
 
 * MySQL特点
     1. 是开源数据库，使用C和C++编写 
@@ -85,14 +85,14 @@ MySQL数据库
 
 >数据元素 --> 记录 -->数据表 --> 数据库
 
-![](MySQL.assets/库结构.png)
+![](img/MySQL/库结构.png)
 
 * 基本概念解析
     * 数据表（table） ： 存放数据的表格 
     * 字段（column）： 每个列，用来表示该列数据的含义
     * 记录（row）： 每个行，表示一组完整的数据
 
-![](MySQL.assets/表结构.png)
+![](img/MySQL/表结构.png)
 
 
 
@@ -191,7 +191,7 @@ pip3 install mycli
 
 
 
-## 3.3 SQL语言
+## 3 SQL语言
 
 * 什么是SQL
 
@@ -205,7 +205,7 @@ pip3 install mycli
 
 
 
-## 3.4 数据库管理
+## 4 数据库管理
 
 1. 查看已有库
 
@@ -251,21 +251,21 @@ drop database test;
 
 
 
-## 3.5 数据表管理
+## 5 数据表管理
 
 * 基本思考过程
     1. 确定存储内容
     2. 明确字段构成
     3. 确定字段数据类型
 
-### 3.5.1 基础数据类型
+### 5.1 基础数据类型
 
 * 数字类型：
     * 整数类型：INT，SMALLINT，TINYINT，MEDIUMINT，BIGINT
     * 浮点类型：FLOAT，DOUBLE，DECIMAL
     * 比特值类型：BIT
 
-![](MySQL.assets/整型.png)
+![](img/MySQL/整型.png)
 
 > 注意：
 >
@@ -281,7 +281,7 @@ drop database test;
     * 存储二进制数据： BLOB
     * 存储选项型数据：ENUM，SET
 
-![](MySQL.assets/字符串.png)
+![](img/MySQL/字符串.png)
 
 > 注意：
 >
@@ -301,202 +301,14 @@ drop database test;
 
 
 
-### 3.5.2 表的基本操作
-
-* 创建表
-
->create table 表名(字段名 数据类型,字段名 数据类型,...字段名 数据类型);
-
-* 字段约束
-    * 如果你想设置数字为无符号则加上 unsigned
-    * 如果你不想字段为 NULL 可以设置字段的属性为 NOT NULL， 在操作数据库时如果输入该字段的数据为NULL ，就会报错。
-    * DEFAULT 表示设置一个字段的默认值
-    * AUTO_INCREMENT定义列为自增的属性，一般用于主键，数值会自动加1。（如果在某次 insert 时手动指定了一个数值，则接下来的插入会在该值上 +1）      select last_insert_id()   返回最近一个自增值
-    * PRIMARY KEY 关键字用于定义列为主键。主键的值不能重复,且不能为空。
-    * if not exists   仅在该表名不存在时可以创建（跟在表名之后）
-
-```sql
-e.g.  创建班级表
-create table class_1 (id int primary key auto_increment,name varchar(32) not null,age tinyint unsigned not null,sex enum('w','m'),score float default 0.0);
-
-e.g. 创建兴趣班表
-create table interest (id int primary key auto_increment,name varchar(32) not null,hobby set('sing','dance','draw'),level char not null,price decimal(6,2),remark text);
-```
-
-* 查看数据表
-
-> show tables；
-
-* 查看表结构
-
->desc 表名;
-
-* 删除表
-
->drop table 表名;
-
-
-
-## 3.6 表数据基本操作
-
-### 3.6.1 插入(insert)
-
-插入语句尽量指定 列名，不指定列名的 insert 语句在表结构发生变化之后一定会报错
-
-```SQL
-insert into 表名 values(值1),(值2),...;
-insert into 表名(字段1,...) values(值1),...;
-```
-
-```sql
-e.g. 
-insert into class_1 values (2,'Baron',10,'m',91),(3,'Jame',9,'m',90);
-
-insert into class_1 (name,age,sex,score) values ('Lucy',17,'w',81);
-
-```
-
-**查询插入**
-
-把 A 表的数据插入 B 表
-
-```mysql
-insert into 表1(字段1,字段2,……) select 字段1,字段2,…… from 表2 where ……
-# 两个表的字段取得是位置对应关系
-```
-
-
-
-### 3.6.2 查询(select)
-
-```SQL
-select * from 表名 [where 条件];
-select 字段1,字段2 from 表名 [where 条件];
-```
-
-```sql
-e.g. 
-select * from class_1;
-select name,age from class_1;
-```
-
-
-
-### 3.6.3 where子句
-
-where子句在sql语句中扮演了重要角色，主要通过一定的运算条件进行数据的筛选，在查询，删除，修改中都有使用。
-
-* 算数运算符
-
-![](MySQL.assets/算数.png)
-
-```sql
-e.g.
-select * from class_1 where age % 2 = 0;
-```
-
-* 比较运算符
-
-![](MySQL.assets/比较.png)
-
-```sql
-e.g.
-select * from class_1 where age > 8;
-select * from class_1 where between 8 and 10;
-# in 一般比 or 更快
-select * from class_1 where age in (8,9);
-```
-
-* 逻辑运算符
-
-* and 的优先级比 or 高
-
-    
-
-![](MySQL.assets/逻辑.png)
-
-```sql
-e.g.
-select * from class_1 where sex='m' and age>9;
-```
-
-数字越大优先级越高
-
-![](MySQL.assets/运算符.png)
-
-
-
-### 3.6.4 更新表记录(update)
-
-```SQL
-update 表名 set 字段1=值1,字段2=值2,... where 条件;
-
-注意:update语句后如果不加where条件,所有记录全部更新
-```
-
-```sql
-e.g.
-update class_1 set age=11 where name='Abby';
-```
-
-**更新多行数据时，如果 update 后面跟 ignor ，则其中一行报错不会导致回档（不加的话默认是事务级的提交）**就是不写回滚（未测试）
-
-```mysql
-# MySQL 在语句中调用自己，原子级操作，不会把数据先取出来，再更改后存回去，相当于django的 F
-UPDATE `bookstore_book` SET `market_price` = (`bookstore_book`.`market_price` + 10) 
-```
-
-
-
-### 3.6.5 删除表记录（delete）
-
-```SQL
-delete from 表名 where 条件;
-
-注意:delete语句后如果不加where条件,所有记录全部清空
-```
-
-```sql
-e.g.
-delete from class_1 where name='Abby';
-```
-
-在执行 update 和 delete 时，应该先使用 select 确认 where 的结果是否是想要的，以免错删数据
-
-### 3.6.6 字段的操作(alter)
-
-```SQL
-语法 ：alter table 表名 执行动作;
-
-* 添加字段(add)
-    alter table 表名 add 字段名 数据类型;
-    alter table 表名 add 字段名 数据类型 first;
-    alter table 表名 add 字段名 数据类型 after 字段名;
-* 删除字段(drop)
-    alter table 表名 drop 字段名;
-* 修改数据类型(modify)
-    alter table 表名 modify 字段名 新数据类型;
-* 修改字段名(change)
-    alter table 表名 change 旧字段名 新字段名 新数据类型;   --数据类型不能加括号
-* 表重命名(rename)
-    alter table 表名 rename 新表名;
-```
-
-```sql
-e.g. 
-alter table interest add tel char(11) after name;
-```
-
-
-
-### 3.5.7 时间类型数据
+### 时间类型数据
 
 * 日期 ： DATE
 * 日期时间： DATETIME，TIMESTAMP
 * 时间： TIME
 * 年份 ：YEAR
 
-![](MySQL.assets/时间.png)
+![](img/MySQL/时间.png)
 
 * 时间格式
 
@@ -554,143 +366,361 @@ select * from 表 where Year(datetime字段) = 2000 and Month(datetime字段) = 
 
 
 
-## 3.7 高级查询语句
+### 5.2 表的基本操作
 
-* 模糊查询和正则查询
+* 创建表
 
-    1. 模糊查询
+>create table 表名(字段名 数据类型,字段名 数据类型,...字段名 数据类型);
 
-        LIKE用于在where子句中进行模糊查询，SQL LIKE 子句中使用百分号 ` %` 来表示任意0个或多个字符，下划线 `_` 表示任意一个字符。
+* 字段约束
+    * 如果你想设置数字为无符号则加上 unsigned
+    * 如果你不想字段为 NULL 可以设置字段的属性为 NOT NULL， 在操作数据库时如果输入该字段的数据为NULL ，就会报错。
+    * DEFAULT 表示设置一个字段的默认值
+    * AUTO_INCREMENT定义列为自增的属性，一般用于主键，数值会自动加1。（如果在某次 insert 时手动指定了一个数值，则接下来的插入会在该值上 +1）      select last_insert_id()   返回最近一个自增值
+    * PRIMARY KEY 关键字用于定义列为主键。主键的值不能重复,且不能为空。
+    * if not exists   仅在该表名不存在时可以创建（跟在表名之后）
 
-        like 语句查询速度最慢，如果必须使用通配符，不能把他们用在搜索模式的开始处
+```sql
+e.g.  创建班级表
+create table class_1 (id int primary key auto_increment,name varchar(32) not null,age tinyint unsigned not null,sex enum('w','m'),score float default 0.0);
 
-        如果 like 后的值在列中完全匹配的出现，则 like 不能返回这行数据，但是正则可以
+e.g. 创建兴趣班表
+create table interest (id int primary key auto_increment,name varchar(32) not null,hobby set('sing','dance','draw'),level char not null,price decimal(6,2),remark text);
+```
 
-    ```sql
-    SELECT field1, field2,...fieldN 
-    FROM table_name
-    WHERE field1 LIKE condition1
-    ```
+* 查看数据表
+
+> show tables；
+
+* 查看表结构
+
+>desc 表名;
+
+* 删除表
+
+>drop table 表名;
+
+
+
+## 6 表数据基本操作
+
+### 6.1 插入(insert)
+
+插入语句尽量指定 列名，不指定列名的 insert 语句在表结构发生变化之后一定会报错
+
+```SQL
+insert into 表名 values(值1),(值2),...;
+insert into 表名(字段1,...) values(值1),...;
+```
+
+```sql
+e.g. 
+insert into class_1 values (2,'Baron',10,'m',91),(3,'Jame',9,'m',90);
+
+insert into class_1 (name,age,sex,score) values ('Lucy',17,'w',81);
+
+```
+
+**查询插入**
+
+把 A 表的数据插入 B 表
+
+```mysql
+insert into 表1(字段1,字段2,……) select 字段1,字段2,…… from 表2 where ……
+# 两个表的字段取得是位置对应关系
+```
+
+
+
+### 6.2 查询(select)
+
+```SQL
+select * from 表名 [where 条件];
+select 字段1,字段2 from 表名 [where 条件];
+```
+
+```sql
+e.g. 
+select * from class_1;
+select name,age from class_1;
+```
+
+
+
+### 6.3 where子句
+
+where子句在sql语句中扮演了重要角色，主要通过一定的运算条件进行数据的筛选，在查询，删除，修改中都有使用。
+
+* 算数运算符
+
+![](img/MySQL/算数.png)
+
+```sql
+e.g.
+select * from class_1 where age % 2 = 0;
+```
+
+* 比较运算符
+
+![](img/MySQL/比较.png)
+
+```sql
+e.g.
+select * from class_1 where age > 8;
+select * from class_1 where between 8 and 10;
+# in 一般比 or 更快
+select * from class_1 where age in (8,9);
+```
+
+* 逻辑运算符
+
+* and 的优先级比 or 高
+
+    
+
+![](img/MySQL/逻辑.png)
+
+```sql
+e.g.
+select * from class_1 where sex='m' and age>9;
+```
+
+数字越大优先级越高
+
+![](img/MySQL/运算符.png)
+
+
+
+### 6.4 更新表记录(update)
+
+```SQL
+update 表名 set 字段1=值1,字段2=值2,... where 条件;
+
+注意:update语句后如果不加where条件,所有记录全部更新
+```
+
+```sql
+e.g.
+update class_1 set age=11 where name='Abby';
+```
+
+**更新多行数据时，如果 update 后面跟 ignor ，则其中一行报错不会导致回档（不加的话默认是事务级的提交）**就是不写回滚（未测试）
+
+```mysql
+# MySQL 在语句中调用自己，原子级操作，不会把数据先取出来，再更改后存回去，相当于django的 F
+UPDATE `bookstore_book` SET `market_price` = (`bookstore_book`.`market_price` + 10) 
+```
+
+
+
+### 6.5 删除表记录（delete）
+
+```SQL
+delete from 表名 where 条件;
+
+注意:delete语句后如果不加where条件,所有记录全部清空
+```
+
+```sql
+e.g.
+delete from class_1 where name='Abby';
+```
+
+在执行 update 和 delete 时，应该先使用 select 确认 where 的结果是否是想要的，以免错删数据
+
+### 6.6 字段的操作(alter)
+
+```SQL
+语法 ：alter table 表名 执行动作;
+
+* 添加字段(add)
+    alter table 表名 add 字段名 数据类型;
+    alter table 表名 add 字段名 数据类型 first;
+    alter table 表名 add 字段名 数据类型 after 字段名;
+* 删除字段(drop)
+    alter table 表名 drop 字段名;
+* 修改数据类型(modify)
+    alter table 表名 modify 字段名 新数据类型;
+* 修改字段名(change)
+    alter table 表名 change 旧字段名 新字段名 新数据类型;   --数据类型不能加括号
+* 表重命名(rename)
+    alter table 表名 rename 新表名;
+```
+
+```sql
+e.g. 
+alter table interest add tel char(11) after name;
+```
+
+
+
+## 7 高级查询语句
+
+
+
+### 模糊查询 LIKE
+
+LIKE用于在where子句中进行模糊查询，SQL LIKE 子句中使用百分号 ` %` 来表示任意0个或多个字符，下划线 `_` 表示任意一个字符。
+
+like 语句查询速度最慢，如果必须使用通配符，不能把他们用在搜索模式的开始处
+
+如果 like 后的值在列中完全匹配的出现，则 like 不能返回这行数据，但是正则可以
+
+```sql
+SELECT field1, field2,...fieldN 
+FROM table_name
+WHERE field1 LIKE condition1
+```
 
 ```sql
 	e.g. 
 	mysql> select * from class_1 where name like 'A%';
 ```
 
-	2. 正则查询
-	
-	   mysql中对正则表达式的支持有限，只支持部分正则元字符:
-	
-	```sql
+### 正则查询 REGEXP
 
-SELECT field1, field2,...fieldN 
-	FROM table_name
-	WHERE field1 REGEXP condition1
-	```
-	
+支持的元字符:
 
-	```sql
-	e.g. 
-	select * from class_1 where name regexp '^B.+';
-	```
+| `元字符`                 | 说明                                                    |
+| ------------------------ | ------------------------------------------------------- |
+| .                        | 匹配任意字符                                            |
+| [123]     [1-9]    [a-z] | 匹配字符集中出现的字符,1或2或3,1到9的数字,小写的a到z    |
+|                          |                                                         |
+| `重复元字符`             | 说明                                                    |
+| *                        | 0个或多个匹配                                           |
+| +                        | 1个或多个匹配  # 等于{1,}                               |
+| ?                        | 0个或1个匹配  # 等于{0,1}                               |
+| {n}                      | 指定数目的匹配                                          |
+| {n,}                     | 不少于指定数目的匹配                                    |
+| {n,m}                    | 匹配数目的范围  m不超过255                              |
+|                          |                                                         |
+| `定位元字符`             | 说明                                                    |
+| ^                        | 文本开始                                                |
+| $                        | 文本结尾                                                |
+| [[:<:]]                  | 词的开始                                                |
+| [[:>:]]                  | 词的结尾                                                |
+|                          |                                                         |
+| `字符类`                 | 说明    `预定义字符集`                                  |
+| [:alnum:]                | 字母和数字  同 [a-zA-Z0-9]                              |
+| [:alpha:]                | 字母   同[a-zA-Z]                                       |
+| [:lower:]                | 小写字母   同[a-z]                                      |
+| [:upper:]                | 大写字母   同[A-Z]                                      |
+| [:digit:]                | 数字    同[0-9]                                         |
+| [:xdigit:]               | 16进制数字    同[a-fA-F0-9]                             |
+| [:blank:]                | 空格和制表  同[\\\t]                                    |
+| [:space:]                | 包括空格在内的任意空白字符    同 [\\\f\\\n\\\r\\\t\\\v] |
+| [:cntrl:]                | ASCII控制字符    ASCII 0到31和127                       |
+| [:print:]                | 可打印字符                                              |
+| [:graph:]                | 与 [:print:] 相同,但不包括空格                          |
+| [:punct:]                | 既不在 [:alnum:] 也不在 [:cntrl:] 中的字符              |
+|                          |                                                         |
+| `特殊字符`               | 匹配特殊字符需要加上两个反斜杠`\\.`  `\\(`   `\\)`      |
 
-* as 用法
+```sql
+# 匹配连在一起的4个数字
+select prod_name from products where prod_name regexp '[[:digit:]]{4}'
 
-    在sql语句中as用于给字段或者表重命名
-
-     ```sql
-    select name as 姓名,age as 年龄 from class_1;
-    select * from class_1 as c where c.age > 17;
-     ```
-
-* 排序
-
-    ORDER BY 子句来设定你想按哪个字段哪种方式来进行排序，再返回搜索结果。
-
-    使用 ORDER BY 子句将查询数据排序后再返回数据：
-
-    ```sql
-    SELECT field1, field2,...fieldN from table_name1 where field1
-    ORDER BY field1 [ASC [DESC]]
-    ```
-
-    默认情况ASC表示升序，DESC表示降序
-
-    ```sql
-    select * from class_1 where sex='m' order by age desc;
-    ```
-
-    复合排序：对多个字段排序，即当第一排序项相同时按照第二排序项排序
-
-    ```sql
-    select * from class_1 order by score desc,age;
-    ```
+```
 
 
 
-* 限制
+### as 用法
 
-    LIMIT 子句用于限制由 SELECT 语句返回的数据数量 或者 UPDATE,DELETE语句的操作数量
+在sql语句中as用于给字段或者表重命名
 
-    **limit 3,5  从第3行开始返回接下来的5行（从0行开始）**
+```sql
+select name as 姓名,age as 年龄 from class_1;
+select * from class_1 as c where c.age > 17;
+```
 
-    带有 LIMIT 子句的 SELECT 语句的基本语法如下：
+### 排序 ORDER BY 
 
-    ```sql
-    SELECT column1, column2, columnN 
-    FROM table_name
-    WHERE field
-    LIMIT [num]
-    ```
+ORDER BY 子句来设定你想按哪个字段哪种方式来进行排序，再返回搜索结果。
 
-* 联合查询（并集查询）
+使用 ORDER BY 子句将查询数据排序后再返回数据：
 
-    UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。多个 SELECT 	语句会删除重复的数据。
+```sql
+SELECT field1, field2,...fieldN from table_name1 where field1
+ORDER BY field1 [ASC [DESC]]
+```
 
-    UNION 操作符语法格式：
+默认情况ASC表示升序，DESC表示降序
 
-    ```sql
-    SELECT expression1, expression2, ... expression_n
-    FROM tables
-    [WHERE conditions]
-    UNION [ALL | DISTINCT]
-    SELECT expression1, expression2, ... expression_n
-    FROM tables
-    [WHERE conditions];
-    ```
+```sql
+select * from class_1 where sex='m' order by age desc;
+```
 
-    默认UNION后跟 DISTINCT表示删除结果集中重复的数据。如果使用ALL则返回所有结果集，	包含重复数据。
+复合排序：对多个字段排序，即当第一排序项相同时按照第二排序项排序
+
+```sql
+select * from class_1 order by score desc,age;
+```
+
+
+
+### 限制 LIMIT 
+
+LIMIT 子句用于限制由 SELECT 语句返回的数据数量 或者 UPDATE,DELETE语句的操作数量
+
+**limit 3,5  从第3行开始返回接下来的5行（从0行开始）**
+
+带有 LIMIT 子句的 SELECT 语句的基本语法如下：
+
+```sql
+SELECT column1, column2, columnN 
+FROM table_name
+WHERE field
+LIMIT [num]
+```
+
+### 联合查询（并集查询）UNION 
+
+UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。多个 SELECT 	语句会删除重复的数据。
+
+UNION 操作符语法格式：
+
+```sql
+SELECT expression1, expression2, ... expression_n
+FROM tables
+[WHERE conditions]
+UNION [ALL | DISTINCT]
+SELECT expression1, expression2, ... expression_n
+FROM tables
+[WHERE conditions];
+```
+
+默认UNION后跟 DISTINCT表示删除结果集中重复的数据。如果使用ALL则返回所有结果集，	包含重复数据。
 
 ```sql
 select * from class_1 where sex='m' UNION ALL select * from class_1 where age > 9;
 ```
 
-* 子查询
+### 子查询 select ... select...
 
-    * 定义 ： 当一个select语句中包含另一个select 查询语句，则称之为有子查询的语句
+* 定义 ： 当一个select语句中包含另一个select 查询语句，则称之为有子查询的语句
 
-    * 子查询出现的位置：
+* 子查询出现的位置：
 
-        1. from 之后 ，此时子查询的内容作为一个新的表内容，再进行外层select查询
+    1. from 之后 ，此时子查询的内容作为一个新的表内容，再进行外层select查询
 
-        ```sql
-        select name from (select * from class_1 where sex='m') as s where s.score > 90;
-        ```
+    ```sql
+    select name from (select * from class_1 where sex='m') as s where s.score > 90;
+    ```
 
-        >注意：  需要将子查询结果集重命名一下，方便where子句中的引用操作
+    >注意：  需要将子查询结果集重命名一下，方便where子句中的引用操作
 
 
         2. where字句中，此时select查询到的内容作为外层查询的条件值
-
+    
         ```sql
          	select *  from class_1 where age = (select age from class_1 where name='Tom');
         ```
-
+    
         > 注意：子句结果作为一个值使用时，返回的结果需要一个明确值，不能是多行或者多列。如果子句结果作为一个集合使用即where子句中是in操作则结果可以是一个字段的多个记录。
 
 
 
-## 3.8 聚合操作
+## 8 聚合操作
 
 聚合操作指的是在数据查找基础上对数据的进一步整理筛选行为，在认识聚合之前先看一个更完整的sql语句
 
@@ -709,7 +739,7 @@ select * from class_1 where sex='m' UNION ALL select * from class_1 where age > 
 (10)    LIMIT <limit_number>          --限制  limit 3,5  从第3行开始返回接下来的5行（从0行开始）
 ```
 
-### 3.8.1 聚合函数
+### 8.1 聚合函数
 
 | 方法          | 功能                                                         |
 | ------------- | ------------------------------------------------------------ |
@@ -742,7 +772,7 @@ select count(*) from sanguo where attack > 200;
 
 
 
-### 3.8.2 聚合分组
+### 8.2 聚合分组
 
 - **group by**
 - 分组的结果看起来是有序的，但是当需求一个有序的分组时，必须在后面使用 order by 语句重新排序
@@ -775,7 +805,7 @@ limit 2;
 >
 >  注： 如果是多表链接查询，select 后的字段k可以使用表名.其余字段名，有可能报错
 
-### 3.8.3 聚合筛选
+### 8.3 聚合筛选
 
 - **having语句**
 
@@ -797,7 +827,7 @@ limit 2;
 
 
 
-### 3.8.4 去重语句
+### 8.4 去重语句
 
 - **distinct语句**
 
@@ -816,7 +846,7 @@ eg2 : 计算一共有多少个国家
 
 
 
-### 3.8.5 聚合运算
+### 8.5 聚合运算
 
 - **查询表记录时做数学运算**
 
@@ -831,9 +861,9 @@ eg2: 更新蜀国所有英雄攻击力 * 2
 
 
 
-## 3.9 索引操作
+## 9 索引操作
 
-### 3.9.1 概述
+### 9.1 概述
 
 - **定义**
 
@@ -846,7 +876,7 @@ eg2: 更新蜀国所有英雄攻击力 * 2
 
 
 
-### 3.9.2 索引分类
+### 9.2 索引分类
 
 一个数据库内所有索引不能同名
 
@@ -864,7 +894,7 @@ eg2: 更新蜀国所有英雄攻击力 * 2
 
 
 
-### 3.9.3 索引创建
+### 9.3 索引创建
 
 
 
@@ -936,9 +966,9 @@ primary key（uid,pid）
 
 
 
-## 3.10 外键约束和表关联关系
+## 10 外键约束和表关联关系
 
-### 3.10.1 外键约束    以外部为参考的键
+### 10.1 外键约束    以外部为参考的键
 
 * 约束 : 约束是一种限制，它通过对表的行或列的数据做出限制，来确保表的数据的完整性、唯一性
 * foreign key 功能 : 建立表与表之间的某种约束的关系，由于这种关系的存在，能够让表与表之间的数据，更加的完整，关连性更强，为了具体说明创建如下部门表和人员表。
@@ -981,28 +1011,30 @@ CREATE TABLE `person` (
     该语法可以在 CREATE TABLE 和 ALTER TABLE 时使用
 
 
-    ```sql
-    # 创建表时直接简历外键
-    CREATE TABLE `person` (
-      `id` int PRIMARY KEY AUTO_INCREMENT,
-      `name` varchar(32) NOT NULL,
-      `age` tinyint DEFAULT 0,
-      `sex` enum('m','w','o') DEFAULT 'o',
-      `salary` decimal(10,2) DEFAULT 250.00,
-      `hire_date` date NOT NULL,
-      `dept_id` int DEFAULT NULL,
-       constraint dept_fk foreign key(dept_id) references dept(id));
-    ```
+~~~sql
+```sql
+# 创建表时直接简历外键
+CREATE TABLE `person` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(32) NOT NULL,
+  `age` tinyint DEFAULT 0,
+  `sex` enum('m','w','o') DEFAULT 'o',
+  `salary` decimal(10,2) DEFAULT 250.00,
+  `hire_date` date NOT NULL,
+  `dept_id` int DEFAULT NULL,
+   constraint dept_fk foreign key(dept_id) references dept(id));
 
-    ```sql
-    # 建立表后增加外键
-    alter table person add constraint dept_fk foreign key(dept_id) references dept(id);
-    ```
 
-    > 注意：
-    >
-    > 1. 并不是任何情况表关系都需要建立外键来约束，如果没有类似上面的约束关系时也可以不	建立。
-    > 2. 从表的外键字段数据类型与指定的主表主键应该相同。
+
+# 建立表后增加外键
+alter table person add constraint dept_fk foreign key(dept_id) references dept(id);
+
+
+> 注意：
+>
+> 1. 并不是任何情况表关系都需要建立外键来约束，如果没有类似上面的约束关系时也可以不	建立。
+> 2. 从表的外键字段数据类型与指定的主表主键应该相同。
+~~~
 
 
 
@@ -1030,7 +1062,7 @@ CREATE TABLE `person` (
 
     
 
-### 3.10.2 表关联设计
+### 10.2 表关联设计
 
 当我们应对复杂的数据关系的时候，数据表的设计就显得尤为重要，认识数据之间的依赖关系是更加合理创建数据表关联性的前提。常见的数据关系如下：
 
@@ -1112,7 +1144,7 @@ CREATE TABLE `athlete_item` (
 
 
 
-### 3.10.3 E-R模型
+### 10.3 E-R模型
 
 * **定义**		
 
@@ -1155,9 +1187,9 @@ E-R模型(Entry-Relationship)即 实体-关系 数据模型,用于数据库设�
 矩形框代表实体,菱形框代表关系,椭圆形代表属性
 
 
-![](MySQL.assets/er.PNG)
+![](img/MySQL/er.PNG)
 
-### 3.10.4 表关联整理
+### 10.4 表关联整理
 
 如果多个表存在一定关联关系，可以多表在一起进行查询操作，其实表的关联整理与外键约束之间并没有必然联系，但是基于外键约束设计的具有关联性的表往往会更多使用关联查询查找数据。
 
@@ -1178,7 +1210,7 @@ select * from dept,person where dept.id = person.dept_id;
 
 内连接查询只会查找到符合条件的记录，其实结果和表关联查询是一样的,官方更推荐使用内连接查询。
 
-![](MySQL.assets/inner.PNG)
+![](img/MySQL/inner.PNG)
 
 ```sql
 SELECT 字段列表
@@ -1202,7 +1234,7 @@ select * from person inner join  dept;
 
 - 左连接  : 左表为主表，显示右表中与左表匹配的项
 
-![](MySQL.assets/left.PNG)
+![](img/MySQL/left.PNG)
 
 ```sql
 SELECT 字段列表
@@ -1216,7 +1248,7 @@ select * from person left join  dept  on  person.dept_id =dept.id;
 
 - 右连接 ：右表为主表，显示左表中与左表匹配的项
 
-![](MySQL.assets/right.PNG)
+![](img/MySQL/right.PNG)
 
 ```sql
 SELECT 字段列表
@@ -1234,7 +1266,7 @@ select * from person right join  dept  on  person.dept_id =dept.id;
 
 
 
-## 3.11 视图
+## 11 视图
 
 * 视图概念
 
@@ -1316,11 +1348,11 @@ create view  c1 as select name,age from class_1;
 
 
 
-## 3.12 函数和存储过程
+## 12 函数和存储过程
 
 存储过程和函数是事先经过编译并存储在数据库中的一段sql语句集合，调用存储过程和函数可以简化应用开发工作，提高数据处理的效率。
 
-### 3.12.1 函数创建
+### 12.1 函数创建
 
 ```sql
 delimiter 自定义符号　　-- 如果函数体只有一条语句, begin和end可以省略, 同时delimiter也可以省略
@@ -1378,7 +1410,7 @@ select queryNameById(1);
 
 
 
-### 3.12.2存储过程创建
+### 12.2存储过程创建
 
 创建存储过程语法与创建函数基本相同，但是没有返回值。
 
@@ -1444,7 +1476,7 @@ call p_out(@num)
 
 
 
-### 3.12.3 存储过程和存储函数操作
+### 12.3 存储过程和存储函数操作
 
 1. 调用存储过程
 
@@ -1498,7 +1530,7 @@ DROP {PROCEDURE | FUNCTION} [IF EXISTS] sp_name
 
 
 
-### 3.12.4 函数和存储过程区别
+### 12.4 函数和存储过程区别
 
 1. 函数有且只有一个返回值，而存储过程不能有返回值。
 2. 函数只能有输入参数，而存储过程可以有in,out,inout多个类型参数。
@@ -1507,9 +1539,9 @@ DROP {PROCEDURE | FUNCTION} [IF EXISTS] sp_name
 
 
 
-## 3.13 事务控制
+## 13 事务控制
 
-### 3.13.1 事务概述
+### 13.1 事务概述
 
 MySQL 事务主要用于处理操作量大，复杂度高的数据。比如说，在人员管理系统中，你删除一个人员，既需要删除人员的基本资料，也要删除和该人员相关的信息，如信箱，文章等等，如果操作就必须同时操作成功，如果有一个不成功则所有数据都不动。这时候数据库操作语句就构成一个事务。事务主要处理数据的增删改操作。
 
@@ -1523,7 +1555,7 @@ MySQL 事务主要用于处理操作量大，复杂度高的数据。比如说�
 > 确保数据操作过程中的安全。
 
 
-### 3.13.2 事务操作
+### 13.2 事务操作
 
 
 1. 开启事务
@@ -1543,7 +1575,7 @@ MySQL 事务主要用于处理操作量大，复杂度高的数据。比如说�
 
 
 
-### 3.13.3 事务四大特性
+### 13.3 事务四大特性
 
 1. 原子性（atomicity）
 
@@ -1565,7 +1597,7 @@ MySQL 事务主要用于处理操作量大，复杂度高的数据。比如说�
 
 
 
-###  3.13.4 事务隔离级别
+###  13.4 事务隔离级别
 
 事务四大特性中的隔离性是在使用事务时最为需要注意的特性，因为隔离级别不同带来的操作现象也有区别
 
@@ -1609,13 +1641,13 @@ MySQL 事务主要用于处理操作量大，复杂度高的数据。比如说�
         > 这种级别可以避免“幻像读”，每一次读取的都是数据库中真实存在数据，事务A与事务B串行，而不并发
 
 
-![](MySQL.assets/隔离.png)
+![](img/MySQL/隔离.png)
 
-## 3.14 数据库优化
+## 14 数据库优化
 
 
 
-### 3.14.1 数据库设计范式
+### 14.1 数据库设计范式
 
 设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式。
 
@@ -1636,7 +1668,7 @@ MySQL 事务主要用于处理操作量大，复杂度高的数据。比如说�
 
 
 
-### 3.14.2  MySQL存储引擎
+### 14.2  MySQL存储引擎
 
 * **定义**： mysql数据库管理系统中用来处理表的处理器
 
@@ -1692,7 +1724,7 @@ PRIMARY KEY (`id`)
 
 
 
-### 3.14.3 字段数据类型选择
+### 14.3 字段数据类型选择
 
 - 优先程度   数字 >  时间日期 > 字符串
 - 同一级别   占用空间小的 > 占用空间多的
@@ -1707,7 +1739,7 @@ PRIMARY KEY (`id`)
 
 
 
-### 3.14.4 键的设置
+### 14.4 键的设置
 
 - Innodb如果不设置主键也会自己设置隐含的主键，所以最好自己设置
 - 尽量设置占用空间小的字段为主键
@@ -1716,7 +1748,7 @@ PRIMARY KEY (`id`)
 
 
 
-### 3.14.5 explain语句
+### 14.5 explain语句
 
 使用 EXPLAIN 关键字可以模拟优化器执行SQL查询语句，从而知道MySQL是如何处理你的SQL语句的。这可以帮你分析你的查询语句或是表结构的性能瓶颈。通过explain命令可以得到:
 
@@ -1759,7 +1791,7 @@ type中包含的值：
 
 
 
-### 3.14.6 SQL优化
+### 14.6 SQL优化
 
 -  尽量选择数据类型占空间少，在where ，group by，order by中出现的频率高的字段建立索引
 -  尽量避免使用 select * ...;用具体字段代替 * ,不要返回用不到的任何字段 
@@ -1781,7 +1813,7 @@ type中包含的值：
 
 
 
-### 3.14.7 表的拆分
+### 14.7 表的拆分
 
 垂直拆分 ： 表中列太多，分为多个表，每个表是其中的几个列。将常查询的放到一起，blob或者text类型字段放到另一个表
 
@@ -1789,14 +1821,14 @@ type中包含的值：
 
 
 
-## 3.15 数据库备份和用户管理
+## 15 数据库备份和用户管理
 
 
 
-### 3.15.1 表的复制
+### 15.1 表的复制
 
 1、表能根据实际需求复制数据
-2、复制表时不会把KEY属性复制过来
+		2、复制表时不会把KEY属性复制过来
 
 **语法**
 
@@ -1806,7 +1838,7 @@ create table 表名 select 查询命令;
 
 
 
-### 3.15.2 数据备份
+### 15.2 数据备份
 
 1. 备份命令格式
 
@@ -1818,7 +1850,7 @@ create table 表名 select 查询命令;
 
 
 
-### 3.15.3 用户权限管理
+### 15.3 用户权限管理
 
 **开启MySQL远程连接**
 
@@ -1875,7 +1907,7 @@ all privileges 、select 、insert ，update，delete，alter等。
 
 
 
-## 3.16 pymysql模块
+## 16 pymysql模块
 
 pymysql是一个第三方库，如果自己的计算机上没有可以在终端使用命令进行安装。
 
@@ -1901,6 +1933,9 @@ sudo pip3 install pymysql
 ```python
 db = pymysql.connect(参数列表)
 功能: 链接数据库
+示例：
+db = pymysql.connect(host=db_conf['HOST'], port=db_conf['PORT'], user=db_conf['USER'],
+                         password=db_conf['PASSWORD'], db=db_conf['NAME'])
 
 host ：主机地址,本地 localhost
 port ：端口号,默认3306
@@ -1927,7 +1962,7 @@ cur.execute(sql,list_)
       list_  列表，用于给sql语句传递参量
       
 cur.executemany(sql命令,list_)
-功能： 多次执行SQL命令，执行次数由列表中元组数量决定
+功能： 多次执行SQL命令，执行次数由列表中元z数量决定
 参数： sql sql语句
       list_  列表中包含元组 每个元组用于给sql语句传递参量，一般用于写操作。批量插入和修改
 ```
