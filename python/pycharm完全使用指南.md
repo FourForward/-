@@ -564,6 +564,37 @@ file ---> setting ---> Project:demo ---> Project Interpreter ---> 设置按钮 -
 
 ![image-20210726210730870](img/pycharm完全使用指南/image-20210726210730870.png)
 
+### 3.1如果 activate 执行失败
+
+```shell
+error:
+
+PS C:\Users\55363\Desktop\my_project\giant_data_spider\venv\Scripts> activate
+activate : 无法加载文件 C:\Users\55363\Desktop\my_project\giant_data_spider\venv\Scripts\activate.ps1，因为在此系统上禁止运行脚本。有关详细信息，
+请参阅 https:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
+
+```
+
+原因是： 首次在计算机上启动 Windows PowerShell 时，现用执行策略很可能是 Restricted（默认设置）。Restricted 策略不允许任何脚本运行。
+那么就需要收到开启运行脚本：
+
+- win+x 打开PowerShell（管理员）
+
+- set-ExecutionPolicy RemoteSigned //设置为打开
+
+- 键入Y或者A,同意
+
+![image-20220207101654715](img/pycharm完全使用指南/image-20220207101654715.png)
+
+- 执行get-executionpolicy查看是否更改成功，为RemoteSigned表示成功
+
+一般到这里就可以执行问题了。
+上面这个一般就可以解决问题了，下面这个可能有的人需要
+
+如果回到原来目录下执行还是原来的问题，可能是原来目录下和当前设置的并没有同步，还是保持原来的设置。
+那么可以在powershell中找到相应命令行，进行运行脚本，即可执行。
+
+
 ### 4、安装需要的库
 
 在虚拟环境下直接pip3 install 即可
@@ -816,6 +847,18 @@ Ctrl + 鼠标左键 ，可以实现函数跳转查看源码， 这几乎是每�
 
 ![image3](img/pycharm完全使用指南/20190507153847.png)
 
+
+
+## 4.14 【高效编辑 14】打开/关闭 函数参数提示
+
+在编码时输入一个函数,会自动提示函数的形参,这本是一件好事,但是有时遇到参数描述过多的函数时,整个界面都会被提示占据,就很不快乐
+
+比如 输入 `with open()`之后,参数的提示界面会占满整个屏幕...,这时可以按下`ESC`键关闭参数提示,
+
+手动打开参数提示 `CTRL + P`
+
+
+
 # 第五章：快捷与效率
 
 ## 5.4 【提高效率 04】使用模板，快速捕获异常
@@ -898,10 +941,9 @@ Pycharm 提供的这个代码模板，可以说是相当实用的一个功能了
 
 2. 按住Ctrl + R （windows 是 ctrl + r）填写正则匹配表达式
 
-    ```
-    第一行【查找】：  (.*?):(.*)
-    第二行【替换】：  '$1':'$2',
-    ```
+    第一行【查找】：`(.*?): (.*)`
+
+    第二行【替换】： ` '$1':'$2',`
 
 3. 勾选上`.*` 这个选项，开启正则匹配
 

@@ -1,7 +1,7 @@
 """
-百度坐标系已经失效
+百度坐标系现已经失效 2021
 
-火星坐标系为高德地图坐标系
+高德地图与腾讯地图现均采用火星坐标系 2022
 """
 import math
 
@@ -11,7 +11,7 @@ OFFSET = 0.00669342162296594323
 X_PI = PI * 3000.0 / 180.0
 
 
-# GCJ - 02 = > BD09     火星坐标系 = > 百度坐标系
+# GCJ-02 -> BD09     火星坐标系 -> 百度坐标系
 def gcj2BD09(glat, glon):
     x = glon
     y = glat
@@ -23,7 +23,7 @@ def gcj2BD09(glat, glon):
     return latlon
 
 
-# BD09=>GCJ-02      百度坐标系=>火星坐标系
+# BD09 -> GCJ-02      百度坐标系 -> 火星坐标系
 def bd092GCJ(glat, glon):
     x = glon - 0.0065
     y = glat - 0.006
@@ -35,45 +35,45 @@ def bd092GCJ(glat, glon):
     return latlon
 
 
-# BD09=>WGS84   百度坐标系=>地球坐标系
+# BD09 -> WGS84   百度坐标系 -> 地球坐标系
 def bd092WGS(glat, glon):
     latlon = bd092GCJ(glat, glon)
     return gcj2WGS(latlon[0], latlon[1])
 
 
-# WGS84=》BD09   地球坐标系=>百度坐标系
+# WGS84 -> BD09   地球坐标系 -> 百度坐标系
 def wgs2BD09(wgLat, wgLon):
     latlon = wgs2GCJ(wgLat, wgLon)
     return gcj2BD09(latlon[0], latlon[1])
 
 
-# WGS84=》GCJ02   地球坐标系=>火星坐标系
+# WGS84 -> GCJ02   地球坐标系 -> 火星坐标系
 def wgs2GCJ(wgLat, wgLon):
     latlon = []
-    if outOfChina(wgLat, wgLon):
+    if _outOfChina(wgLat, wgLon):
         latlon.append(wgLat)
         latlon.append(wgLon)
         return latlon
-    deltaD = delta(wgLat, wgLon)
+    deltaD = _delta(wgLat, wgLon)
     latlon.append(wgLat + deltaD[0])
     latlon.append(wgLon + deltaD[1])
     return latlon
 
 
-# GCJ02=>WGS84   火星坐标系=>地球坐标系(粗略)
+# GCJ02 -> WGS84   火星坐标系 -> 地球坐标系(粗略)
 def gcj2WGS(glat, glon):
     latlon = []
-    if outOfChina(glat, glon):
+    if _outOfChina(glat, glon):
         latlon.append(glat)
         latlon.append(glon)
         return latlon
-    deltaD = delta(glat, glon)
+    deltaD = _delta(glat, glon)
     latlon.append(glat - deltaD[0])
     latlon.append(glon - deltaD[1])
     return latlon
 
 
-# GCJ02=>WGS84   火星坐标系=>地球坐标系（精确）
+# GCJ02 -> WGS84   火星坐标系 -> 地球坐标系（精确）
 def gcj2WGSExactly(gcjLat, gcjLon):
     initDelta = 0.01
     threshold = 0.000000001
@@ -117,14 +117,25 @@ def distance(latA, logA, latB, logB):
     if s < -1:
         s = -1
     alpha = math.acos(s)
-    distance = alpha * earthR
-    return distance
+    return alpha * earthR
 
 
-def delta(wgLat, wgLon):
+# semicircles -> WGS84  GPS(圆度值) -> 地球坐标系
+def semicircles2WGS84(semicircles):
+    # 佳明 fit 文件里的坐标单位就是用的圆度值
+    return semicircles * (180 / 2 ** 31)
+
+
+# WGS84 -> semicircles  地球坐标系 -> GPS(圆度值)
+def wgs2Semicircles(degrees):
+    return degrees * (2 ** 31 / 180)
+
+
+# 以下是私有方法
+def _delta(wgLat, wgLon):
     latlng = []
-    dLat = transformLat(wgLon - 105.0, wgLat - 35.0)
-    dLon = transformLon(wgLon - 105.0, wgLat - 35.0)
+    dLat = _transformLat(wgLon - 105.0, wgLat - 35.0)
+    dLon = _transformLon(wgLon - 105.0, wgLat - 35.0)
     radLat = wgLat / 180.0 * PI
     magic = math.sin(radLat)
     magic = 1 - OFFSET * magic * magic
@@ -136,7 +147,7 @@ def delta(wgLat, wgLon):
     return latlng
 
 
-def outOfChina(lat, lon):
+def _outOfChina(lat, lon):
     if lon < 72.004 or lon > 137.8347:
         return True
     if lat < 0.8293 or lat > 55.8271:
@@ -144,7 +155,7 @@ def outOfChina(lat, lon):
     return False
 
 
-def transformLat(x, y):
+def _transformLat(x, y):
     ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * math.sqrt(abs(x))
     ret += (20.0 * math.sin(6.0 * x * PI) + 20.0 * math.sin(2.0 * x * PI)) * 2.0 / 3.0
     ret += (20.0 * math.sin(y * PI) + 40.0 * math.sin(y / 3.0 * PI)) * 2.0 / 3.0
@@ -152,7 +163,7 @@ def transformLat(x, y):
     return ret
 
 
-def transformLon(x, y):
+def _transformLon(x, y):
     ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * math.sqrt(abs(x))
     ret += (20.0 * math.sin(6.0 * x * PI) + 20.0 * math.sin(2.0 * x * PI)) * 2.0 / 3.0
     ret += (20.0 * math.sin(x * PI) + 40.0 * math.sin(x / 3.0 * PI)) * 2.0 / 3.0

@@ -1,4 +1,8 @@
-# aiohttp 部分中文文档（客户端部分）
+# aiohttp 部分中文文档(客户端 + 服务端)
+
+官方文档:
+
+[Welcome to AIOHTTP — aiohttp 3.8.1 documentation](https://docs.aiohttp.org/en/stable/)
 
 # 客户端使用
 
@@ -731,3 +735,37 @@ loop.close()
 合适的时间因应用程序而异。
 
 当asyncio内部的运行机制改变时就可以让aiohttp去等待底层连接关闭在退出啦，上面这种额外的方法总会废弃啦。你也可以跟进问题[#1925](https://github.com/aio-libs/aiohttp/issues/1925)来参与改进。
+
+# 服务端使用:
+
+## websocket
+
+[Web Server Quickstart — aiohttp 3.8.1 documentation](https://docs.aiohttp.org/en/stable/web_quickstart.html#websockets)
+
+使用aiohttp 创建一个简易的websocket 服务端
+
+```python
+# 可在IDE 直接启动
+
+async def websocket_handler(request):
+    ws = web.WebSocketResponse()
+    await ws.prepare(request)
+    async for msg in ws:
+        if msg.type == aiohttp.WSMsgType.TEXT:
+            if msg.data == 'close':
+                await ws.close()
+            else:
+                await ws.send_str(msg.data + '/answer')
+        elif msg.type == aiohttp.WSMsgType.ERROR:
+            print('ws connection closed with exception %s' % ws.exception())
+
+    print('websocket connection closed')
+    return ws
+
+
+if __name__ == '__main__':
+    app = web.Application()
+    app.add_routes([web.get('/ws', websocket_handler)])
+    web.run_app(app, host='localhost', port=5536)
+```
+

@@ -77,7 +77,16 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## ⑥  爬虫相关
 
-1. ###  [Spider  教学文档](./python/spider.md)
+###  [Spider  教学文档](./python/spider.md)
+
+### [在网页的JS中注入Hook](./python/在网页的JS中注入Hook.md)
+
+### 骑行相关整合
+
+1. [Garmin-fit 解析方案](./python/Garmin-fit-parse方案.md)
+1. [捷安特骑行app爬虫](./python/捷安特骑行app爬虫.md)
+1. [捷安特骑行app逆向](./python/捷安特骑行app逆向.md)
+1. [行者web爬虫](./python/行者web爬虫.md)
 
 
 
