@@ -1,3 +1,5 @@
+## 使用RPC技术hook web端JS
+
 ## 骑行app某者web端爬虫
 
 2022.2
@@ -158,6 +160,9 @@ client_sekiro.registerAction( :
 然后编写python文件对该hook进行验证:
 
 ```python
+import requests
+
+
 host = ''
 headers = {}
 

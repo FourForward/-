@@ -31,19 +31,24 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## ②  数据处理——数据库
 
-1. ### [文件处理](./python/文件处理.md)
+### [文件处理](./python/文件处理.md)
 
-2. ### [正则表达式](./python/正则表达式.md)
+### [正则表达式](./python/正则表达式.md)
 
-3. ### [MySQL](./python/MySQL.md)
+### Mysql
 
-4. ### [Redis](./python/redis基础教程.md)
+- [MySQL-基础](./python/MySQL.md)
+- [SQL_To_Everything](./python/SQL_To_Everything.md)
+
+
+
+### [Redis](./python/redis基础教程.md)
 
 ## ③  并发编程
 
-1. ###  [socket，TCP，udp，线程，进程，IO多路复用](./python/网络并发编程.md)
+1. ###  [socket,TCP,udp,线程,进程,IO多路复用](./python/网络并发编程.md)
 
-2. ###  [IO多路复用,同步，异步，阻塞和非阻塞 区别(转)](./python/IO同步异步的区别.md)
+2. ###  [IO多路复用,同步,异步,阻塞和非阻塞 区别(转)](./python/IO同步异步的区别.md)
 
 3. ###  [协程——asyncio](./python/协程——async.md)
 
@@ -55,8 +60,6 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ### django
 
 1. #### [django2.2---教程](./python/Djnago2.2.md)
-
-1. #### [Mysql必知必会 To DjangoORM](./python/Mysql必知必会ToDjangoORM.md)
 
 2. #### [django_channels,django中使用websocket的方式](./python/django_channels.md)
 
@@ -179,8 +182,7 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 # 杂项
 
 - [在ppt中展示百度 echars 图表](./python/PPT中展示Echarts图表.md)
-
 - [esp32-cam 面部识别门禁系统](./python/esp32cam人脸识别门禁系统.md)
-
 - [华为鸿蒙深度解析——兴业证券](./information/华为鸿蒙深度解析.pdf)
+- [关于奖金压缩的一种算法](./python/关于奖金压缩的一种算法.md)
 
