@@ -1,4 +1,4 @@
-## 将<<Mysql必知必会>> 里面的sql 语句转为各种类型语句
+# 将<<Mysql必知必会>> 里面的sql 语句转为各种类型语句
 
 目前已有 Django-ORM, Pandas
 
@@ -53,15 +53,58 @@ vendors = pd.read_sql('select * from vendors', conn)
 
 ```
 
+## 数据说明: 各表,各字段解释
+
+| 表名           | 列名         | 说明                                                    |
+| -------------- | ------------ | ------------------------------------------------------- |
+| `vendors`      | vend_id      | 唯一的供应商ID (主键)                                   |
+| 存储销售产品   | vend_name    | 供应商名                                                |
+| 的供应商的信息 | vend_address | 供应商地址                                              |
+|                | vend_city    | 供应商城市                                              |
+|                | vend_state   | 供应商州                                                |
+|                | vend_zip     | 供应商邮编                                              |
+|                | vend_country | 供应商国家                                              |
+|                |              |                                                         |
+| `products`     | prod_id      | 唯一产品ID  (主键)                                      |
+| 存储产品信息   | vend_id      | 供应商ID  (关联到`vendors`中的vend_id)                  |
+|                | prod_name    | 产品名称                                                |
+|                | prod_price   | 产品价格                                                |
+|                | prod_desc    | 产品描述                                                |
+|                |              |                                                         |
+| `customers`    | cust_id      | 唯一的顾客ID  (主键)                                    |
+| 存储所有顾客   | cust_name    | 顾客名                                                  |
+| 的信息         | cust_address | 顾客的地址                                              |
+|                | cust_city    | 顾客的城市                                              |
+|                | cust_state   | 顾客的州                                                |
+|                | cust_zip     | 顾客的邮编                                              |
+|                | cust_country | 顾客的国家                                              |
+|                | cust_contact | 顾客的联系名                                            |
+|                | cust_email   | 顾客的邮件地址                                          |
+|                |              |                                                         |
+| `orders`       | order_num    | 唯一订单号  (主键)                                      |
+| 存储客户订单   | order_date   | 订单日期                                                |
+|                | cust_id      | 订单顾客  (关联到`customers`中的cust_id)                |
+|                |              |                                                         |
+| `orderitems`   | order_num    | 订单号  (关联到`orders`中的order_num)                   |
+| 存储每个订单中 | order_item   | 订单物品号  (在某个订单中的顺序)(与order_num作复合主键) |
+| 的实际物品     | prod_id      | 产品ID  (关联到`products`中的prod_id)                   |
+|                | quantity     | 物品数量                                                |
+|                | item_price   | 物品价格                                                |
+|                |              |                                                         |
+| `productnotes` | note_id      | 唯一注释ID  (主键)                                      |
+| 存储与特定产品 | prod_id      | 产品ID  (关联到`products`中的prod_id)                   |
+| 相关的注释     | note_date    | 增加注释的日期                                          |
+|                | note_text    | 注释文本                                                |
+
 
 
 ## 4.检索数据
 
-4.2 检索单列
+### 4.2 检索单列
 
 ```sql
 # sql
-select prod_name from products
+select prod_name from products ijlIL
 ```
 
 ```python
@@ -76,7 +119,7 @@ products['prod_name']
 
 
 
-4.3 检索多列
+### 4.3 检索多列
 
 ```sql
 # sql
@@ -95,7 +138,7 @@ products[['prod_id','prod_price','prod_name']]
 
 
 
-4.4 检索所有列
+### 4.4 检索所有列
 
 ```sql
 # sql
@@ -114,7 +157,7 @@ products
 
 
 
-4.5 检索不同的行(去重)
+### 4.5 检索不同的行(去重)
 
 ```sql
 # sql
@@ -146,7 +189,7 @@ products.drop_duplicates(subset=['vend_id'], keep='last')['vend_id']	# 对DataFr
 
 
 
-4.6 限制结果
+### 4.6 限制结果
 
 ```sql
 # sql
@@ -169,7 +212,7 @@ products['prod_name'][:5]
 
 ## 5.排序数据
 
-5.1 排序数据
+### 5.1 排序数据
 
 ```sql
 # sql
@@ -190,7 +233,7 @@ products.sort_values(['prod_name'])['prod_name']	# 对 DataFram 按值排序
 
 
 
-5.2 按多个列排序
+### 5.2 按多个列排序
 
 ```sql
 # sql
@@ -210,7 +253,7 @@ products.sort_values(['prod_price','prod_name'], ignore_index=True)[['prod_id','
 
 
 
-5.3 指定排序方向
+### 5.3 指定排序方向
 
 ```sql
 # sql
@@ -234,7 +277,7 @@ products.sort_values(['prod_price'], ascending=False, ignore_index=True)[['prod_
 
 ## 6.过滤数据
 
-6.1 使用where子句
+### 6.1 使用where子句
 
 ```sql
 # sql
@@ -253,7 +296,7 @@ products.loc[products['prod_price']==2.50,['prod_name','prod_price']]
 
 
 
-6.2.2 不匹配查询
+### 6.2.2 不匹配查询
 
 ```sql
 # sql
@@ -274,7 +317,7 @@ products.loc[products['vend_id']!=1003,['vend_id','prod_name']]
 
 
 
-6.2.3 范围值查询
+### 6.2.3 范围值查询
 
 ```sql
 # sql
@@ -307,7 +350,7 @@ inclusive : {"both", "neither", "left", "right"}	默认为 "both" 左闭右闭
 
 ## 7.数据过滤
 
-7.1.1 AND 操作符
+### 7.1.1 AND 操作符
 
 ```sql
 # sql
@@ -326,7 +369,7 @@ products.loc[(products['vend_id']==1003) & (products['prod_price']<=10),['prod_i
 
 
 
-7.1.2 OR操作符
+### 7.1.2 OR操作符
 
 ```sql
 # sql
@@ -345,7 +388,7 @@ products.loc[(products['vend_id']==1002) | (products['vend_id']==1003),['prod_pr
 
 
 
-7.2 IN操作符
+### 7.2 IN操作符
 
 ```sql
 # sql
@@ -364,7 +407,7 @@ products.loc[products['vend_id'].isin([1002,1003]),['prod_price','prod_name']].s
 
 
 
-7.3 NOT 操作符
+### 7.3 NOT 操作符
 
 ```sql
 # sql
@@ -391,7 +434,7 @@ products.loc[~products['vend_id'].isin([1002, 1003]), ['prod_price', 'prod_name'
 
 ## 8.用通配符进行过滤
 
-8.1 LIKE 操作符
+### 8.1 LIKE 操作符
 
 ```sql
 # sql
@@ -416,7 +459,7 @@ products.loc[products['prod_name'].str.contains('(?i)jet')][['prod_id','prod_nam
 
 ## 9.使用正则表达式进行搜索
 
-9.2.1 基本字符匹配
+### 9.2.1 基本字符匹配
 
 ```sql
 # sql
@@ -437,7 +480,7 @@ products.loc[products['prod_name'].str.extract('(1000)',expand=False).notnull(),
 
 
 
-9.2.2 进行OR匹配
+### 9.2.2 进行OR匹配
 
 ```sql
 # sql
@@ -462,7 +505,7 @@ products.loc[products['prod_name'].str.extract('(1000|2000)',expand=False).notnu
 
 ## 10.创建计算字段
 
-10.2 拼接字段
+### 10.2 拼接字段
 
 ```sql
 # sql
@@ -487,7 +530,7 @@ vendors['vend_name'].sort_values().str.cat(' (' + vendors['vend_country'] + ')')
 
 
 
-10.3 执行算数运算
+### 10.3 执行算数运算
 
 检索订单号为20005中所有的物品,并汇总物品价格
 
@@ -514,7 +557,7 @@ df
 
 Django-ORM的数据处理都在 `from django.db.models.functions import XXX` 
 
-11.2.1 将文本转换为大写
+### 11.2.1 将文本转换为大写
 
 ```sql
 # sql
@@ -535,7 +578,7 @@ df
 
 
 
-11.2.2 时间函数
+### 11.2.2 时间函数
 
 检索出2005年9月下的所有订单
 
@@ -560,7 +603,7 @@ orders.loc[(s.dt.year==2005)&(s.dt.month==9),['cust_id','order_num']]
 
 ## 12.聚集函数
 
-12.1.1 AVG()函数
+### 12.1.1 AVG()函数
 
 查询prodcts表中所有产品的平均价格
 
@@ -584,7 +627,7 @@ products['prod_price'].agg({'prod_price':'mean'})
 
 
 
-12.1.2 COUNT()函数
+### 12.1.2 COUNT()函数
 
 查询customers中客户的总数
 
@@ -614,7 +657,7 @@ customers['cust_id'].count()
 
 12.1.5 SUM()函数	 (略)
 
-12.2 聚集不同的值
+### 12.2 聚集不同的值
 
 查询特定供应商提供的产品的平均价格,只考虑各个不同的价格
 
@@ -636,7 +679,7 @@ products.loc[products['vend_id']==1003,['prod_price']].drop_duplicates(subset=['
 
 
 
-12.3 组合聚集函数
+### 12.3 组合聚集函数
 
 ```sql
 # sql
@@ -662,7 +705,7 @@ pd.DataFrame([[products.shape[0],products['prod_price'].min(),products['prod_pri
 
 ## 13.分组数据
 
-13.2创建分组
+### 13.2创建分组
 
 查询每个供应商的产品数量
 
@@ -683,7 +726,7 @@ products.groupby(['vend_id'])['prod_id'].count()
 
 
 
-13.3 过滤分组
+### 13.3 过滤分组
 
 ```sql
 # sql
@@ -703,7 +746,7 @@ s.loc[s>=2]
 
 
 
-13.3  同时使用 where 和 having
+### 13.3  同时使用 where 和 having
 
 查询具有2(含)个以上,价格为10(含)以上的产品的供应商
 
@@ -725,7 +768,7 @@ s.loc[s>=2]
 
 
 
-13.4 分组和排序
+### 13.4 分组和排序
 
 检索总计订单价格>=50的订单,的订单号和总价,并按总计价格排序
 
@@ -757,7 +800,7 @@ df.groupby(['order_num']).filter(lambda x: x['ordertotal'].sum() >= 50)
 
 ## 14.使用子查询
 
-14.2 利用子查询进行过滤
+### 14.2 利用子查询进行过滤
 
 查询订购物品 TNT2 的所有客户
 
@@ -778,7 +821,7 @@ customers.loc[customers['cust_id'].isin(orders.loc[orders['order_num'].isin(orde
 
 
 
-14.3 作为计算字段使用子查询
+### 14.3 作为计算字段使用子查询
 
 对每个客户的订单进行计数
 
@@ -809,7 +852,7 @@ df3
 
 ## 15.联结表
 
-15.2 创建联结
+### 15.2 创建联结
 
 所要查询的列不在一个表中
 
@@ -835,7 +878,7 @@ pd.merge(left=vendors,right=products,on='vend_id',how='inner')[['vend_name','pro
 
 
 
-15.2.2 内部联结
+### 15.2.2 内部联结
 
 ```sql
 # sql 内联结
@@ -854,7 +897,7 @@ pd.merge(left=vendors,right=products,on='vend_id',how='inner')[['vend_name','pro
 
 
 
-15.2.3 联结多个表
+### 15.2.3 联结多个表
 
 查询编号为20005的订单中的物品
 
@@ -882,7 +925,7 @@ df.loc[df['order_num']==20005,['prod_name', 'vend_name', 'prod_price', 'quantity
 
 
 
-15.2.3 第二示例
+### 15.2.3 第二示例
 
 查询订购物品 TNT2 的所有客户
 
@@ -906,7 +949,7 @@ df.loc[df['prod_id'] == 'TNT2', ['cust_name', 'cust_contact']]
 
 ## 16.创建高级联结
 
-16.1 使用表别名
+### 16.1 使用表别名
 
 ```sql
 # sql
@@ -925,7 +968,7 @@ select cust_name,cust_contact from customers as c,orders as o,orderitems as oi w
 
 
 
-16.2.1 自联结
+### 16.2.1 自联结
 
 假如你发现某物品(其ID为DTNTR)存在问题,因此想知道生产该物品的供应商旗下的其它物品是否也存在这些问题
 
@@ -968,7 +1011,7 @@ pd.merge(left=products,right=products.loc[products['prod_id']=='DTNTR',['vend_id
 
 
 
-16.2.3 外部联结
+### 16.2.3 外部联结
 
 检索客户和他们的订单,包括没有订单的客户
 
@@ -986,13 +1029,13 @@ Customers.objects.all().values('cust_id',order_num=F('orders__order_num'))
 
 ```python
 # pandas
-# 作为合并条件的列,合并之后只会留下一列,取值时不必加后缀
+# 作为合并条件的列,合并之后只会留下一列,取列时不必加后缀
 pd.merge(left=customers, right=orders, on=['cust_id'], how='left')[['cust_id', 'order_num']]
 ```
 
 
 
-16.3 使用带聚集函数的联结
+### 16.3 使用带聚集函数的联结
 
 检索所有客户及每个客户所下的订单数
 
@@ -1034,7 +1077,7 @@ pd.merge(left=customers, right=orders, on=['cust_id'], how='left')[['cust_id', '
 
 ## 17.组合查询
 
-17.2.1 使用 UNION
+### 17.2.1 使用 UNION
 
 查询价格小于等于5的所有商品,并且包括供应商1001,1002的所有商品(不考虑价格)
 
@@ -1058,7 +1101,7 @@ pd.concat((products.loc[products['prod_price'] <= 5, ['vend_id', 'prod_id', 'pro
 
 
 
-17.2.3 包含重复的行
+### 17.2.3 包含重复的行
 
 ```sql
 # sql
@@ -1076,7 +1119,7 @@ pd.concat((products.loc[products['prod_price'] <= 5, ['vend_id', 'prod_id', 'pro
 
 
 
-17.2.4 对组合查询结果排序
+### 17.2.4 对组合查询结果排序
 
 在使用UNION组合查询时,只能使用一条ORDER BY 子句,它必须出现在最后一条SELECT语句之后,对于结果集,不存在用一种方式排序一部分,用另一种方式排序另一部分的情况
 
@@ -1097,16 +1140,19 @@ pd.concat((products.loc[products['prod_price'] <= 5, ['vend_id', 'prod_id', 'pro
 
 
 
-## 18.全文本搜索
+18.全文本搜索
 
-Django-ORM中没找到 Match()和Against()这两个函数...
+19.插入数据
 
-## 19.插入数据
+20.更新和删除数据
 
-## 20.更新和删除数据
+21.创建和操纵表
 
-## 21.创建和操纵表
+22.使用视图
 
-## 22.使用视图
+23.使用存储过程
 
-## 23.使用存储过程
+
+
+
+

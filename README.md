@@ -1,4 +1,6 @@
-# [Python的新变化 — 更新到Python 3.10.0 ](https://docs.python.org/zh-cn/3.10/whatsnew/index.html)
+# Python笔记汇总
+
+[**Python的新变化 — 更新到Python 3.10.0** ](https://docs.python.org/zh-cn/3.10/whatsnew/index.html)
 
 ```shell
 # pip3 永久换源：
@@ -14,17 +16,17 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## ①  语法
 
-1. ###  [python基础语法](./python/python3.6基础语法.md)
+### [python基础语法](./python/python3.6基础语法.md)
 
-2. ###  [面向对象](./python/面向对象.md)
+### [面向对象](./python/面向对象.md)
 
-3. ###  [python高级语法](./python/Python高级语法.md)
+### [python高级语法](./python/Python高级语法.md)
 
-4. ###  [常用函数](./python/Python常用函数.md)
+### [常用函数](./python/Python常用函数.md)
 
-4. ### [pyton黑魔法](./python/python黑魔法.md)
+### [pyton黑魔法](./python/python黑魔法.md)
 
-4. ### [python标准库官方文档](https://docs.python.org/3/library/functions.html)
+### [python标准库官方文档](https://docs.python.org/3/library/functions.html)
 
 
 
@@ -33,12 +35,17 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ### [文件处理](./python/文件处理.md)
 
+
+
 ### [正则表达式](./python/正则表达式.md)
+
+
 
 ### Mysql
 
-- [MySQL-基础](./python/MySQL.md)
-- [SQL_To_Everything](./python/SQL_To_Everything.md)
+#### [MySQL-基础](./python/MySQL.md)
+
+#### [SQL_To_Everything](./python/SQL_To_Everything.md)
 
 
 
@@ -46,11 +53,11 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## ③  并发编程
 
-1. ###  [socket,TCP,udp,线程,进程,IO多路复用](./python/网络并发编程.md)
+###  [socket,TCP,udp,线程,进程,IO多路复用](./python/网络并发编程.md)
 
-2. ###  [IO多路复用,同步,异步,阻塞和非阻塞 区别(转)](./python/IO同步异步的区别.md)
+###  [IO多路复用,同步,异步,阻塞和非阻塞 区别(转)](./python/IO同步异步的区别.md)
 
-3. ###  [协程——asyncio](./python/协程——async.md)
+###  [协程——asyncio](./python/协程——async.md)
 
 
 
@@ -59,21 +66,21 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ### django
 
-1. #### [django2.2---教程](./python/Djnago2.2.md)
+#### [django2.2---教程](./python/Djnago2.2.md)
 
-2. #### [django_channels,django中使用websocket的方式](./python/django_channels.md)
+#### [django_channels,django中使用websocket的方式](./python/django_channels.md)
 
-3. ####  [djagno日志的参数传递](./python/djagno日志的参数传递.md)
+####  [djagno日志的参数传递](./python/djagno日志的参数传递.md)
 
-4. ####  [Django 官网中文文档 ](https://docs.djangoproject.com/zh-hans/3.2/)
+####  [Django 官网中文文档 ](https://docs.djangoproject.com/zh-hans/3.2/)
 
 
 
 ### aiohttp
 
-1. ####  [aiohttp stable 官网](https://docs.aiohttp.org/en/stable/)
+####  [aiohttp stable 官网](https://docs.aiohttp.org/en/stable/)
 
-2. ####  [aiohttp部分中文文档(客户端部分)](./python/aiohttp部分中文文档.md)
+####  [aiohttp部分中文文档(客户端部分)](./python/aiohttp部分中文文档.md)
 
 
 
@@ -84,46 +91,54 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ### [在网页的JS中注入Hook](./python/在网页的JS中注入Hook.md)
 
-### 骑行相关整合
+### 骑行数据相关整合
 
 1. [Garmin-fit 解析方案](./python/Garmin-fit-parse方案.md)
 1. [捷安特骑行app爬虫](./python/捷安特骑行app爬虫.md)
 1. [捷安特骑行app逆向](./python/捷安特骑行app逆向.md)
-1. [行者web爬虫](./python/行者web爬虫.md)
+1. [RPC-JS  Sekiro 使用详情  行者web爬虫](./python/行者web爬虫.md)
 
+### 猿人学系列
 
+[猿人学01](./python/猿人学01.md)
+
+[猿人学02_ob混淆](./python/猿人学02_ob混淆.md)
+
+[猿人学03_headers顺序](./python/猿人学03.md)
+
+[猿人学04_css干扰](./python/猿人学04_css干扰.md)
 
 
 ## ⑦  数据结构——算法相关
 
-1. ###  [数据结构 and 算法  教学文档](./python/数据结构.md)
+###  [数据结构 and 算法  教学文档](./python/数据结构.md)
 
-2. ###  [推荐算法](./python/部分算法文档/推荐算法——向量空间__陈煜文.pptx)
+###  [推荐算法](./python/部分算法文档/推荐算法——向量空间__陈煜文.pptx)
 
 
 
 
 ## ⑧  数据分析相关
 
-1. ###  [数据分析  教学文档](./python/数据分析.md)
+###  [数据分析  教学文档](./python/数据分析.md)
 
-2. ###  [jieba 中文文档](./python/jieba.md)
+###  [jieba 中文文档](./python/jieba.md)
 
 
 
 
 ## ⑨ 机器学习相关
 
-1. ### [机器学习  教学文档](./python/机器学习.md)
+### [机器学习  教学文档](./python/机器学习.md)
 
 
 
 
 ## ⑩  深度学习相关
 
-1. ###  深度学习	教学文档因格式原因，请进入文件夹自行查看
+###  深度学习	教学文档因格式原因，请进入文件夹自行查看
 
-2. ###  [OpenCV](./python/OpenCV.md)
+###  [OpenCV](./python/OpenCV.md)
 
 
 
@@ -134,9 +149,9 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## CSS
 
-1. ### [css 基础](./前端/css.md)
+### [css 基础](./前端/css.md)
 
-2. ### [flex布局详解](./前端/flex布局详解.md)
+### [flex布局详解](./前端/flex布局详解.md)
 
 ##  [js基础](./前端/js基础.md)
 
@@ -148,21 +163,21 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## ① Docker
 
-1. ### [Docker基础](./python/Docker手册.md)
+### [Docker基础](./python/Docker手册.md)
 
-2. ### [一次对dockerfile所生成镜像的大小优化](./python/一次对dockerfile所生成镜像的大小优化.md)
+### [一次对dockerfile所生成镜像的大小优化](./python/一次对dockerfile所生成镜像的大小优化.md)
 
 
 ## ②Linux
 
-1. ### [Linux基础](./python/Linux基础.md)
+### [Linux基础](./python/Linux基础.md)
 
-2. ### [Linux常用命令](./python/linux常用命令.md)
+### [Linux常用命令](./python/linux常用命令.md)
 
 
 ## ③git
 
-1. ### [git基本操作](./python/git基础.md)
+### [git基本操作](./python/git基础.md)
 
 
 
@@ -173,11 +188,11 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## ① pycharm
 
-1. ### [pycharm使用指南](./python/pycharm完全使用指南.md)
+### [pycharm使用指南](./python/pycharm完全使用指南.md)
 
-2. ### [pycharm非常规操作](./python/pycharm非常规操作.md)
+### [pycharm非常规操作](./python/pycharm非常规操作.md)
 
-    
+ 
 
 # 杂项
 

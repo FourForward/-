@@ -6,6 +6,7 @@
 import functools
 
 
+# 适用于同步函数
 def value_dispatch(func):
     """
     适用于同步函数
@@ -31,6 +32,7 @@ def value_dispatch(func):
     return wrapper
 
 
+# 适用于异步函数
 def value_dispatch_async(func):
     """
         适用于异步函数
@@ -56,6 +58,7 @@ def value_dispatch_async(func):
     return wrapper
 
 
+# 适用于同步的实例方法
 def value_dispatch_class(func):
     """
         适用于同步的实例方法
@@ -81,6 +84,7 @@ def value_dispatch_class(func):
     return wrapper
 
 
+# 适用于异步的实例方法
 def value_dispatch_class_async(func):
     """
         适用于异步的实例方法

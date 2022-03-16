@@ -4644,9 +4644,9 @@ driver.find_element_by_link_text('高级搜索').click()
 
 
 
-# **Day06回顾**
+# Day06回顾
 
-## **scrapy框架**
+## scrapy框架
 
 - **五大组件+工作流程+常用命令**
 
@@ -4789,7 +4789,7 @@ driver.find_element_by_link_text('高级搜索').click()
         存入json文件时候需要添加变量(settings.py) : FEED_EXPORT_ENCODING = 'utf-8'
     ```
 
-# **Day07笔记**
+# Day07笔记
 
 ## **分布式爬虫**
 

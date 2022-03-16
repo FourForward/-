@@ -1,6 +1,10 @@
-## 使用RPC技术hook web端JS
+# 使用RPC技术hook web端JS
 
-## 骑行app某者web端爬虫
+一位大佬写的偏原理向的详细教程:	[RPC 技术及其框架 Sekiro 在爬虫逆向中的应用，加密数据一把梭！ ](https://mp.weixin.qq.com/s/9uKho4LY5fbrnHdJiPZ3KA)
+
+以下的教程只讲使用方式,不讲原理
+
+# 骑行app某者web端爬虫
 
 2022.2
 
@@ -40,8 +44,6 @@
 
 decode 函数上面的那行代码 `window.hook = o` 就是后面添加用来暴露 decode接口的
 
-超详细教程(原理):	[RPC 技术及其框架 Sekiro 在爬虫逆向中的应用，加密数据一把梭！ ](https://mp.weixin.qq.com/s/9uKho4LY5fbrnHdJiPZ3KA)
-
 
 
 ![image-20220223155557836](img/行者web爬虫/image-20220223155557836.png)
@@ -58,7 +60,7 @@ decode 函数上面的那行代码 `window.hook = o` 就是后面添加用来暴
 
 阿里云:https://www.aliyundrive.com/s/yybi9BWJ44K
 
-运行: Windows：`bin/sekiro.bat`
+`运行`: Windows：`bin/sekiro.bat`
 
 ### sekiro_web_client.js 上半部分
 

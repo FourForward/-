@@ -109,8 +109,8 @@ def gcj2WGSExactly(gcjLat, gcjLon):
 # 两点距离
 def distance(latA, logA, latB, logB):
     earthR = 6371000
-    x = math.cos(latA * math.PI / 180) * math.cos(latB * math.PI / 180) * math.cos((logA - logB) * math.PI / 180)
-    y = math.sin(latA * math.PI / 180) * math.sin(latB * math.PI / 180)
+    x = math.cos(latA * PI / 180) * math.cos(latB * PI / 180) * math.cos((logA - logB) * PI / 180)
+    y = math.sin(latA * PI / 180) * math.sin(latB * PI / 180)
     s = x + y
     if s > 1:
         s = 1
