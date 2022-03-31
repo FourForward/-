@@ -87,9 +87,15 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## ⑥  爬虫相关
 
-###  [Spider  教学文档](./python/spider.md)
+###  [Spider  教学文档-达内](./python/spider.md)
 
-### [在网页的JS中注入Hook](./python/在网页的JS中注入Hook.md)
+### [Python3WebSpider - 崔庆才](./python/Python3WebSpider/0-目录.md)
+
+### [在网页的JS中注入Hook的方式](./python/在网页的JS中注入Hook.md)
+
+### [各种 web-js-hook](./python/js-hook.md)
+
+### [web自动化工具 playwright-docs-api 英文文档](./python/playwright-docs-api.md)
 
 ### 骑行数据相关整合
 
@@ -107,6 +113,10 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 [猿人学03_headers顺序](./python/猿人学03.md)
 
 [猿人学04_css干扰](./python/猿人学04_css干扰.md)
+
+[猿人学05_hook任意cookie被设置的瞬间](./python/猿人学第5题.md)
+
+
 
 
 ## ⑦  数据结构——算法相关
@@ -188,7 +198,7 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ## ① pycharm
 
-### [pycharm使用指南](./python/pycharm完全使用指南.md)
+### [pycharm完全使用指南](./python/pycharm完全使用指南.md)
 
 ### [pycharm非常规操作](./python/pycharm非常规操作.md)
 
