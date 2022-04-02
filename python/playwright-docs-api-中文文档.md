@@ -10,7 +10,7 @@ language: Python
 
 拷贝完整度: > 99%
 
-翻译完整度: < 4%
+机翻: >90%
 
 翻译: 有道词典, 小玉的玉
 
@@ -72,17 +72,17 @@ asyncio.run(main())
 终止这个剧作家实例，以防它是绕过Python上下文管理器创建的。这在REPL应用程序中非常有用。
 
 ```python
->>> from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright
 
->>> playwright = sync_playwright().start()
+playwright = sync_playwright().start()
 
->>> browser = playwright.chromium.launch()
->>> page = browser.new_page()
->>> page.goto("http://whatsmyuseragent.org/")
->>> page.screenshot(path="example.png")
->>> browser.close()
+browser = playwright.chromium.launch()
+page = browser.new_page()
+page.goto("http://whatsmyuseragent.org/")
+page.screenshot(path="example.png")
+browser.close()
 
->>> playwright.stop()
+playwright.stop()
 ```
 
 ## playwright.chromium<a name="playwright-chromium">#</a>
@@ -345,7 +345,7 @@ asyncio.run(main())
 
 - `url_or_request` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Request](#request)> 获取所有参数的目标URL或请求.<a name="api-request-context-fetch-option-url-or-request">#</a>
 - `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type` 将被设置为 `application/json` ,否则，如果没有显式设置， `content-type` 将被设置为 `application/octet-stream` .<a name="api-request-context-fetch-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-fetch-option-fail-on-status-code">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码排除。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-fetch-option-fail-on-status-code">#</a>
 - `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form，并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-fetch-option-form">#</a>
 - `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-fetch-option-headers">#</a>
 - `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-fetch-option-ignore-https-errors">#</a>
@@ -363,7 +363,7 @@ asyncio.run(main())
 ## api_request_context.get(url, **kwargs)<a name="api-request-context-get">#</a>
 
 - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标 URL.<a name="api-request-context-get-option-url">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-get-option-fail-on-status-code">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码排除。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-get-option-fail-on-status-code">#</a>
 - `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-get-option-headers">#</a>
 - `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-get-option-ignore-https-errors">#</a>
 - `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 查询参数.<a name="api-request-context-get-option-params">#</a>
@@ -375,7 +375,7 @@ asyncio.run(main())
 ## api_request_context.head(url, **kwargs)<a name="api-request-context-head">#</a>
 
 - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标  URL.<a name="api-request-context-head-option-url">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-head-option-fail-on-status-code">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码排除。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-head-option-fail-on-status-code">#</a>
 - `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-head-option-headers">#</a>
 - `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-head-option-ignore-https-errors">#</a>
 - `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]>查询参数.<a name="api-request-context-head-option-params">#</a>
@@ -388,7 +388,7 @@ asyncio.run(main())
 
 - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标 URL.<a name="api-request-context-patch-option-url">#</a>
 - `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type` 将被设置为 `application/json` ,否则，如果没有显式设置， `content-type` 将被设置为 `application/octet-stream` .<a name="api-request-context-patch-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-patch-option-fail-on-status-code">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码排除。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-patch-option-fail-on-status-code">#</a>
 - `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form，并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-patch-option-form">#</a>
 - `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-patch-option-headers">#</a>
 - `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-patch-option-ignore-https-errors">#</a>
@@ -406,7 +406,7 @@ asyncio.run(main())
 
 - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>目标 URL.<a name="api-request-context-post-option-url">#</a>
 - `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type` 将被设置为 `application/json` ,否则，如果没有显式设置， `content-type` 将被设置为 `application/octet-stream` .<a name="api-request-context-post-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-post-option-fail-on-status-code">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码排除。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-post-option-fail-on-status-code">#</a>
 - `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form，并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-post-option-form">#</a>
 - `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]>  允许设置HTTP头.<a name="api-request-context-post-option-headers">#</a>
 - `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-post-option-ignore-https-errors">#</a>
@@ -424,7 +424,7 @@ asyncio.run(main())
 
 - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标 URL.<a name="api-request-context-put-option-url">#</a>
 - `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type` 将被设置为 `application/json` ,否则，如果没有显式设置， `content-type` 将被设置为 `application/octet-stream` .<a name="api-request-context-put-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-put-option-fail-on-status-code">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码排除。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-put-option-fail-on-status-code">#</a>
 - `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]>提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form，并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-put-option-form">#</a>
 - `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-put-option-headers">#</a>
 - `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-put-option-ignore-https-errors">#</a>
@@ -533,7 +533,7 @@ asyncio.run(main())
 
 返回响应体的JSON表示。
 
-如果响应体不能通过 `JSON.parse`进行解析，则该方法将抛出.
+如果响应体不能通过 `JSON.parse`进行解析，则该方法将排除.
 
 ## api_response.ok<a name="api-response-ok">#</a>
 
@@ -2954,15 +2954,15 @@ browser = await playwright.chromium.launch( # or "firefox" or "webkit".
 
 - extends: [EventEmitter](https://pyee.readthedocs.io/en/latest/#pyee.BaseEventEmitter)
 
-The `CDPSession` instances are used to talk raw Chrome Devtools Protocol:
+`CDPSession` 实例用于谈论原始的Chrome Devtools协议:
 
-- protocol methods can be called with `session.send` method.
-- protocol events can be subscribed to with `session.on` method.
+- 协议方法可以用会话调用 `session.send` .
+- 协议事件可以通过会话订阅 `session.on` 上的方法.
 
-Useful links:
+有用的链接:
 
-- Documentation on DevTools Protocol can be found here: [DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/).
-- Getting Started with DevTools Protocol: https://github.com/aslushnikov/getting-started-with-cdp/blob/master/README.md
+- DevTools协议的文档可以在这里找到: [DevTools Protocol Viewer](https://chromedevtools.github.io/devtools-protocol/).
+- 开始使用DevTools协议: https://github.com/aslushnikov/getting-started-with-cdp/blob/master/README.md
 
 - Sync
 
@@ -2997,12 +2997,12 @@ await client.send("Animation.setPlaybackRate", {
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="cdp-session-detach-return">#</a>
 
-Detaches the CDPSession from the target. Once detached, the CDPSession object won't emit any events and can't be used to send messages.
+将CDPSession与目标分离。一旦分离，CDPSession对象将不会发出任何事件，也不能用于发送消息.
 
 ## cdp_session.send(method, **kwargs)<a name="cdp-session-send">#</a>
 
-- `method` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> protocol method name<a name="cdp-session-send-option-method">#</a>
-- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Optional method parameters<a name="cdp-session-send-option-params">#</a>
+- `method` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 协议方法名<a name="cdp-session-send-option-method">#</a>
+- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 可选方法参数<a name="cdp-session-send-option-params">#</a>
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="cdp-session-send-return">#</a>
 
 
@@ -3011,7 +3011,7 @@ Detaches the CDPSession from the target. Once detached, the CDPSession object wo
 
 # ConsoleMessage
 
-[ConsoleMessage](#consolemessage) objects are dispatched by page via the [page.on("console")](#page-event-console) event.
+[ConsoleMessage](#consolemessage) 对象通过 [page.on("console")](#page-event-console) 事件调度.
 
 - [console_message.args](#console-message-args)
 - [console_message.location](#console-message-location)
@@ -3022,26 +3022,26 @@ Detaches the CDPSession from the target. Once detached, the CDPSession object wo
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[JSHandle](#jshandle)]><a name="console-message-args-return">#</a>
 
-List of arguments passed to a `console` function call. See also [page.on("console")](#page-event-console).
+传递给 `console` 函数调用的参数列表。参见 [page.on("console")](#page-event-console).
 
 ## console_message.location<a name="console-message-location">#</a>
 
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="console-message-location-return">#</a>
-    - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> URL of the resource.
-    - `lineNumber` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 0-based line number in the resource.
-    - `columnNumber` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 0-based column number in the resource.
+    - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 资源的url.
+    - `lineNumber` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 0-based 资源的行号.
+    - `columnNumber` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 0-based 资源的列号.
 
 ## console_message.text<a name="console-message-text">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="console-message-text-return">#</a>
 
-The text of the console message.
+控制台消息的文本.
 
 ## console_message.type<a name="console-message-type">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="console-message-type-return">#</a>
 
-One of the following values: `'log'`, `'debug'`, `'info'`, `'error'`, `'warning'`, `'dir'`, `'dirxml'`, `'table'`, `'trace'`, `'clear'`, `'startGroup'`, `'startGroupCollapsed'`, `'endGroup'`, `'assert'`, `'profile'`, `'profileEnd'`, `'count'`, `'timeEnd'`.
+以下值之一: `'log'`, `'debug'`, `'info'`, `'error'`, `'warning'`, `'dir'`, `'dirxml'`, `'table'`, `'trace'`, `'clear'`, `'startGroup'`, `'startGroupCollapsed'`, `'endGroup'`, `'assert'`, `'profile'`, `'profileEnd'`, `'count'`, `'timeEnd'`.
 
 
 
@@ -3049,9 +3049,9 @@ One of the following values: `'log'`, `'debug'`, `'info'`, `'error'`, `'warning'
 
 # Dialog
 
-[Dialog](#dialog) objects are dispatched by page via the [page.on("dialog")](#page-event-dialog) event.
+[Dialog](#dialog) 对象通过 [page.on("dialog")](#page-event-dialog) 事件分配.
 
-An example of using `Dialog` class:
+使用 `Dialog`类的一个例子:
 
 - Sync
 
@@ -3100,7 +3100,7 @@ asyncio.run(main())
 
 > NOTE
 >
-> Dialogs are dismissed automatically, unless there is a [page.on("dialog")](#page-event-dialog) listener. When listener is present, it **must** either [dialog.accept(**kwargs)](#dialog-accept) or [dialog.dismiss()](#dialog-dismiss) the dialog - otherwise the page will [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#never_blocking) waiting for the dialog, and actions like click will never finish.
+> 除非有 [page.on("dialog")](#page-event-dialog) 监听器，否则对话框会自动被驳回。当监听器存在时，它必须要么 [dialog.accept(**kwargs)](#dialog-accept) 要么[dialog.dismiss()](#dialog-dismiss) 否则页面将[冻结](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#never_blocking)等待对话框，像click这样的动作将永远不会结束.
 
 - [dialog.accept(**kwargs)](#dialog-accept)
 - [dialog.default_value](#dialog-default-value)
@@ -3110,44 +3110,44 @@ asyncio.run(main())
 
 ## dialog.accept(**kwargs)<a name="dialog-accept">#</a>
 
-- `prompt_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A text to enter in prompt. Does not cause any effects if the dialog's `type` is not prompt. Optional.<a name="dialog-accept-option-prompt-text">#</a>
+- `prompt_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 提示符中要输入的文本。如果对话框的类型不是提示符，则不会造成任何影响。可选的.<a name="dialog-accept-option-prompt-text">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="dialog-accept-return">#</a>
 
-Returns when the dialog has been accepted.
+当对话框被接受时返回.
 
 ## dialog.default_value<a name="dialog-default-value">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="dialog-default-value-return">#</a>
 
-If dialog is prompt, returns default prompt value. Otherwise, returns empty string.
+如果对话框是提示符，则返回默认的提示值。否则，返回空字符串.
 
 ## dialog.dismiss()<a name="dialog-dismiss">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="dialog-dismiss-return">#</a>
 
-Returns when the dialog has been dismissed.
+当对话框被驳回时返回.
 
 ## dialog.message<a name="dialog-message">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="dialog-message-return">#</a>
 
-A message displayed in the dialog.
+对话框中显示的消息.
 
 ## dialog.type<a name="dialog-type">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="dialog-type-return">#</a>
 
-Returns dialog's type, can be one of `alert`, `beforeunload`, `confirm` or `prompt`.
+返回对话框的类型，可以是`alert`, `beforeunload`, `confirm` or `prompt`.
 
 
 
 # Download
 
-[Download](#download) objects are dispatched by page via the [page.on("download")](#page-event-download) event.
+[Download](#download) 对象通过 [page.on("download")](#page-event-download) 事件被页面分派.
 
-All the downloaded files belonging to the browser context are deleted when the browser context is closed.
+当浏览器上下文关闭时，属于浏览器上下文的所有下载文件将被删除.
 
-Download event is emitted once the download starts. Download path becomes available once download completes:
+一旦下载开始，就会触发Download事件。下载完成后，下载路径变为可用:
 
 - Sync
 
@@ -3182,52 +3182,52 @@ path = await download.path()
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="download-cancel-return">#</a>
 
-Cancels a download. Will not fail if the download is already finished or canceled. Upon successful cancellations, `download.failure()` would resolve to `'canceled'`.
+取消下载。如果下载已经完成或取消，则不会失败。成功取消后, `download.failure()` 将解析为 `'canceled'`.
 
 ## download.delete()<a name="download-delete">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="download-delete-return">#</a>
 
-Deletes the downloaded file. Will wait for the download to finish if necessary.
+删除下载的文件。如果需要，将等待下载完成.
 
 ## download.failure()<a name="download-failure">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="download-failure-return">#</a>
 
-Returns download error if any. Will wait for the download to finish if necessary.
+如果有，返回下载错误。如果需要，将等待下载完成.
 
 ## download.page<a name="download-page">#</a>
 
 - returns: \<[Page](#page)><a name="download-page-return">#</a>
 
-Get the page that the download belongs to.
+获取下载文件所属的页面.
 
 ## download.path()<a name="download-path">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[pathlib.Path](https://realpython.com/python-pathlib/)><a name="download-path-return">#</a>
 
-Returns path to the downloaded file in case of successful download. The method will wait for the download to finish if necessary. The method throws when connected remotely.
+如果下载成功，返回下载文件的路径。如果需要，该方法将等待下载完成。该方法在远程连接时排除.
 
-Note that the download's file name is a random GUID, use [download.suggested_filename](#download-suggested-filename) to get suggested file name.
+请注意，下载的文件名是一个随机的GUID，使用 [download.suggested_filename](#download-suggested-filename) 获取建议文件名.
 
 ## download.save_as(path)<a name="download-save-as">#</a>
 
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path where the download should be copied.<a name="download-save-as-option-path">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 下载应该被复制的路径.<a name="download-save-as-option-path">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="download-save-as-return">#</a>
 
-Copy the download to a user-specified path. It is safe to call this method while the download is still in progress. Will wait for the download to finish if necessary.
+将下载文件复制到用户指定的路径。在下载过程中调用此方法是安全的。如果需要，将等待下载完成.
 
 ## download.suggested_filename<a name="download-suggested-filename">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="download-suggested-filename-return">#</a>
 
-Returns suggested filename for this download. It is typically computed by the browser from the [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) response header or the `download` attribute. See the spec on [whatwg](https://html.spec.whatwg.org/#downloading-resources). Different browsers can use different logic for computing it.
+返回此下载的建议文件名。它通常是由浏览器从 [`Content-Disposition`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Disposition) 响应头或下载属性计算出来的。看规范是什么。不同的浏览器可以使用不同的逻辑来计算它 .
 
 ## download.url<a name="download-url">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="download-url-return">#</a>
 
-Returns downloaded url.
+返回下载url.
 
 
 
@@ -3237,11 +3237,12 @@ Returns downloaded url.
 
 - extends: [JSHandle](#jshandle)
 
-ElementHandle represents an in-page DOM element. ElementHandles can be created with the [page.query_selector(selector, **kwargs)](#page-query-selector) method.
+ElementHandle 表示一个页面内的DOM元素。可以用页面创建 [page.query_selector(selector, **kwargs)](#page-query-selector) 方法.
 
-##### DISCOURAGED
-
-The use of ElementHandle is discouraged, use [Locator](#locator) objects and web-first assertions instead.
+> DISCOURAGED
+>
+> 不鼓励使用ElementHandle，而是使用 [Locator](#locator) 对象和 web优先断言.
+>
 
 - Sync
 
@@ -3347,18 +3348,18 @@ await locator.click()
 ## element_handle.bounding_box()<a name="element-handle-bounding-box">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="element-handle-bounding-box-return">#</a>
-    - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> the x coordinate of the element in pixels.
-    - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> the y coordinate of the element in pixels.
-    - `width` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> the width of the element in pixels.
-    - `height` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> the height of the element in pixels.
+    - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 元素的 X 坐标像素.
+    - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 元素的Y坐标，以像素为单位.
+    - `width` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 元素的宽度，以像素为单位.
+    - `height` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 元素的高度，以像素为单位.
 
-This method returns the bounding box of the element, or `null` if the element is not visible. The bounding box is calculated relative to the main frame viewport - which is usually the same as the browser window.
+此方法返回元素的边界框，如果元素不可见，则返回`null`。边界框是相对于主帧视口计算的——主帧视口通常与浏览器窗口相同.
 
-Scrolling affects the returned bonding box, similarly to [Element.getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect). That means `x` and/or `y` may be negative.
+滚动会影响返回的绑定框，类似于  [Element.getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) , 这意味着x和/或y可能是负的.
 
-Elements from child frames return the bounding box relative to the main frame, unlike the [Element.getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect).
+与 [Element.getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) 不同，子frame 中的元素返回相对于主frame 的边界框.
 
-Assuming the page is static, it is safe to use bounding box coordinates to perform input. For example, the following snippet should click the center of the element.
+假设页面是静态的，使用边界框坐标执行输入是安全的。例如，下面的代码片段应该单击元素的中心.
 
 - Sync
 
@@ -3376,53 +3377,53 @@ await page.mouse.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2
 
 ## element_handle.check(**kwargs)<a name="element-handle-check">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-check-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-check-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="element-handle-check-option-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-check-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-check-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="element-handle-check-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-check-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="element-handle-check-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-check-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="element-handle-check-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-check-return">#</a>
 
-This method checks the element by performing the following steps:
+这个方法通过执行以下步骤来检查元素:
 
-1. Ensure that element is a checkbox or a radio input. If not, this method throws. If the element is already checked, this method returns immediately.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to click in the center of the element.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-6. Ensure that the element is now checked. If not, this method throws.
+1. 确保元素是一个复选框或单选输入。如果不是，则抛出此方法。如果元素已被选中，则该方法立即返回.
+2. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+3. 如果需要，将元素滚动到视图中.
+4. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+6. 确保元素现在被选中。如果不是，则排除此方法.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## element_handle.click(**kwargs)<a name="element-handle-click">#</a>
 
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="element-handle-click-option-button">#</a>
-- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> defaults to 1. See [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="element-handle-click-option-click-count">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="element-handle-click-option-delay">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-click-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="element-handle-click-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-click-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="element-handle-click-option-position">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="element-handle-click-option-button">#</a>
+- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 默认为1,详情查看  [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="element-handle-click-option-click-count">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="element-handle-click-option-delay">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-click-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="element-handle-click-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-click-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="element-handle-click-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-click-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="element-handle-click-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-click-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="element-handle-click-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-click-return">#</a>
 
-This method clicks the element by performing the following steps:
+该方法执行以下步骤单击元素:
 
-1. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-2. Scroll the element into view if needed.
-3. Use [page.mouse](#page-mouse) to click in the center of the element, or the specified `position`.
-4. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
+1. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+2. 如果需要，将元素滚动到视图中.
+3. 使用 [page.mouse](#page-mouse) 单击元素的中心, or the specified `position`.
+4. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## element_handle.content_frame()<a name="element-handle-content-frame">#</a>
 
@@ -3432,28 +3433,28 @@ Returns the content frame for element handles referencing iframe nodes, or `null
 
 ## element_handle.dblclick(**kwargs)<a name="element-handle-dblclick">#</a>
 
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="element-handle-dblclick-option-button">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="element-handle-dblclick-option-delay">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-dblclick-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="element-handle-dblclick-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-dblclick-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="element-handle-dblclick-option-position">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="element-handle-dblclick-option-button">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="element-handle-dblclick-option-delay">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-dblclick-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="element-handle-dblclick-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-dblclick-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="element-handle-dblclick-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-dblclick-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="element-handle-dblclick-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-dblclick-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="element-handle-dblclick-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-dblclick-return">#</a>
 
-This method double clicks the element by performing the following steps:
+该方法执行以下步骤双击元素:
 
-1. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-2. Scroll the element into view if needed.
-3. Use [page.mouse](#page-mouse) to double click in the center of the element, or the specified `position`.
-4. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set. Note that if the first click of the `dblclick()` triggers a navigation event, this method will throw.
+1. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+2. 如果需要，将元素滚动到视图中.
+3. 使用 [page.mouse](#page-mouse) 方法,双击元素中心位置.
+4. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.该方法执行以下步骤双击元素, 注意，如果`dblclick()`的第一次单击触发了一个导航事件，则该方法将抛出.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 > NOTE
 >
@@ -3461,11 +3462,11 @@ When all steps combined have not finished during the specified `timeout`, this m
 
 ## element_handle.dispatch_event(type, **kwargs)<a name="element-handle-dispatch-event">#</a>
 
-- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> DOM event type: `"click"`, `"dragstart"`, etc.<a name="element-handle-dispatch-event-option-type">#</a>
-- `event_init` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional event-specific initialization properties.<a name="element-handle-dispatch-event-option-event-init">#</a>
+- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> DOM事件类型:`"click"`， `"dragstart"`等.<a name="element-handle-dispatch-event-option-type">#</a>
+- `event_init` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 可选的特定于事件的初始化属性.<a name="element-handle-dispatch-event-option-event-init">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-dispatch-event-return">#</a>
 
-The snippet below dispatches the `click` event on the element. Regardless of the visibility state of the element, `click` is dispatched. This is equivalent to calling [element.click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click).
+下面的代码片段分派元素上的`单击`事件。无论元素的可见性状态如何，单击都将被分派。这相当于调用[element.click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click).
 
 - Sync
 
@@ -3479,9 +3480,9 @@ element_handle.dispatch_event("click")
 await element_handle.dispatch_event("click")
 ```
 
-Under the hood, it creates an instance of an event based on the given `type`, initializes it with `event_init` properties and dispatches it on the element. Events are `composed`, `cancelable` and bubble by default.
+在底层，它根据给定的类型创建一个事件实例，使用`event_init`属性初始化它，并在元素上分派它。默认情况下，事件是组合的、可取消的和冒泡的.
 
-Since `event_init` is event-specific, please refer to the events documentation for the lists of initial properties:
+由于`event_init`是特定于事件的，请参考事件文档中的初始属性列表:
 
 - [DragEvent](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/DragEvent)
 - [FocusEvent](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/FocusEvent)
@@ -3491,7 +3492,7 @@ Since `event_init` is event-specific, please refer to the events documentation f
 - [TouchEvent](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/TouchEvent)
 - [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event)
 
-You can also specify `JSHandle` as the property value if you want live objects to be passed into the event:
+如果你想要将活动对象传递到事件中，你也可以指定`jhandle`作为属性值:
 
 - Sync
 
@@ -3511,16 +3512,16 @@ await element_handle.dispatch_event("#source", "dragstart", {"dataTransfer": dat
 
 ## element_handle.eval_on_selector(selector, expression, **kwargs)<a name="element-handle-eval-on-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="element-handle-eval-on-selector-option-selector">#</a>
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="element-handle-eval-on-selector-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="element-handle-eval-on-selector-option-arg">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="element-handle-eval-on-selector-option-selector">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="element-handle-eval-on-selector-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="element-handle-eval-on-selector-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="element-handle-eval-on-selector-return">#</a>
 
-Returns the return value of `expression`.
+返回表达式的返回值.
 
 The method finds an element matching the specified selector in the `ElementHandle`s subtree and passes it as a first argument to `expression`. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more details. If no elements match the selector, the method throws an error.
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [element_handle.eval_on_selector(selector, expression, **kwargs)](#element-handle-eval-on-selector) would wait for the promise to resolve and return its value.
+如果`expression`返回[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)，那么 [element_handle.eval_on_selector(selector, expression, **kwargs)](#element-handle-eval-on-selector) 将等待promise解析并返回它的值.
 
 Examples:
 
@@ -3542,16 +3543,16 @@ assert await tweet_handle.eval_on_selector(".retweets", "node => node.innerText"
 
 ## element_handle.eval_on_selector_all(selector, expression, **kwargs)<a name="element-handle-eval-on-selector-all">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="element-handle-eval-on-selector-all-option-selector">#</a>
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="element-handle-eval-on-selector-all-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="element-handle-eval-on-selector-all-option-arg">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="element-handle-eval-on-selector-all-option-selector">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="element-handle-eval-on-selector-all-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="element-handle-eval-on-selector-all-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="element-handle-eval-on-selector-all-return">#</a>
 
-Returns the return value of `expression`.
+返回表达式的返回值.
 
 The method finds all elements matching the specified selector in the `ElementHandle`'s subtree and passes an array of matched elements as a first argument to `expression`. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more details.
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [element_handle.eval_on_selector_all(selector, expression, **kwargs)](#element-handle-eval-on-selector-all) would wait for the promise to resolve and return its value.
+如果`expression`返回[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)，那么 [element_handle.eval_on_selector_all(selector, expression, **kwargs)](#element-handle-eval-on-selector-all) 将等待promise解析并返回它的值.
 
 Examples:
 
@@ -3579,14 +3580,14 @@ assert await feed_handle.eval_on_selector_all(".tweet", "nodes => nodes.map(n =>
 ## element_handle.fill(value, **kwargs)<a name="element-handle-fill">#</a>
 
 - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Value to set for the `\<input>`, `\<textarea>` or `[contenteditable]` element.<a name="element-handle-fill-option-value">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-fill-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-fill-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-fill-option-timeout">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-fill-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-fill-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-fill-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-fill-return">#</a>
 
-This method waits for [actionability](https://playwright.dev/python/docs/actionability) checks, focuses the element, fills it and triggers an `input` event after filling. Note that you can pass an empty string to clear the input field.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查，聚焦元素，填充它，并在填充后触发一个输入事件。请注意，您可以传递一个空字符串来清除输入字段.
 
-If the target element is not an `\<input>`, `\<textarea>` or `[contenteditable]` element, this method throws an error. However, if the element is inside the `\<label>` element that has an associated [control](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control), the control will be filled instead.
+如果目标元素不是 `\<input>`, `\<textarea>` or `[contenteditable]`, 此方法将抛出一个错误。但是，如果该元素位于`\<label>`元素中，且该元素具有关联控件，则该控件将被填充.
 
 To send fine-grained keyboard events, use [element_handle.type(text, **kwargs)](#element-handle-type).
 
@@ -3598,32 +3599,32 @@ Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus
 
 ## element_handle.get_attribute(name)<a name="element-handle-get-attribute">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Attribute name to get the value for.<a name="element-handle-get-attribute-option-name">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 属性名.<a name="element-handle-get-attribute-option-name">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="element-handle-get-attribute-return">#</a>
 
-Returns element attribute value.
+返回元素属性值.
 
 ## element_handle.hover(**kwargs)<a name="element-handle-hover">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-hover-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="element-handle-hover-option-modifiers">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="element-handle-hover-option-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-hover-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="element-handle-hover-option-modifiers">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="element-handle-hover-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-hover-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="element-handle-hover-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-hover-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="element-handle-hover-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-hover-return">#</a>
 
-This method hovers over the element by performing the following steps:
+该方法通过执行以下步骤悬停在元素上:
 
-1. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-2. Scroll the element into view if needed.
-3. Use [page.mouse](#page-mouse) to hover over the center of the element, or the specified `position`.
-4. Wait for initiated navigations to either succeed or fail, unless `noWaitAfter` option is set.
+1. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+2. 如果需要，将元素滚动到视图中.
+3. 使鼠标停在元素中心或指定位置上.
+4. 等待发起的导航成功或失败，除非设置了`noWaitAfter`选项.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## element_handle.inner_html()<a name="element-handle-inner-html">#</a>
 
@@ -3639,46 +3640,46 @@ Returns the `element.innerText`.
 
 ## element_handle.input_value(**kwargs)<a name="element-handle-input-value">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-input-value-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-input-value-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="element-handle-input-value-return">#</a>
 
-Returns `input.value` for `\<input>` or `\<textarea>` or `\<select>` element. Throws for non-input elements.
+返回输入 `\<input>` or `\<textarea>` or `\<select>`  元素的值, 排除非输入元素.
 
 ## element_handle.is_checked()<a name="element-handle-is-checked">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="element-handle-is-checked-return">#</a>
 
-Returns whether the element is checked. Throws if the element is not a checkbox or radio input.
+返回元素是否被选中。如果元素不是复选框或单选输入则排除.
 
 ## element_handle.is_disabled()<a name="element-handle-is-disabled">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="element-handle-is-disabled-return">#</a>
 
-Returns whether the element is disabled, the opposite of [enabled](https://playwright.dev/python/docs/actionability#enabled).
+返回该元素是否被禁用，与启用[enabled](https://playwright.dev/python/docs/actionability#enabled)相反.
 
 ## element_handle.is_editable()<a name="element-handle-is-editable">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="element-handle-is-editable-return">#</a>
 
-Returns whether the element is [editable](https://playwright.dev/python/docs/actionability#editable).
+返回元素是否可编辑[editable](https://playwright.dev/python/docs/actionability#editable).
 
 ## element_handle.is_enabled()<a name="element-handle-is-enabled">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="element-handle-is-enabled-return">#</a>
 
-Returns whether the element is [enabled](https://playwright.dev/python/docs/actionability#enabled).
+返回元素是否被启用[enabled](https://playwright.dev/python/docs/actionability#enabled).
 
 ## element_handle.is_hidden()<a name="element-handle-is-hidden">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="element-handle-is-hidden-return">#</a>
 
-Returns whether the element is hidden, the opposite of [visible](https://playwright.dev/python/docs/actionability#visible).
+返回元素是否隐藏，与可见 [visible](https://playwright.dev/python/docs/actionability#visible)相反.
 
 ## element_handle.is_visible()<a name="element-handle-is-visible">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="element-handle-is-visible-return">#</a>
 
-Returns whether the element is [visible](https://playwright.dev/python/docs/actionability#visible).
+返回元素是否可见[visible](https://playwright.dev/python/docs/actionability#visible).
 
 ## element_handle.owner_frame()<a name="element-handle-owner-frame">#</a>
 
@@ -3688,84 +3689,84 @@ Returns the frame containing the given element.
 
 ## element_handle.press(key, **kwargs)<a name="element-handle-press">#</a>
 
-- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the key to press or a character to generate, such as `ArrowLeft` or `a`.<a name="element-handle-press-option-key">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `keydown` and `keyup` in milliseconds. Defaults to 0.<a name="element-handle-press-option-delay">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-press-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-press-option-timeout">#</a>
+- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要按下的`键名`或要生成的字符，如`ArrowLeft`或'a'.<a name="element-handle-press-option-key">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `keydown`和`keyup`之间的等待时间，单位是毫秒。默认为0.<a name="element-handle-press-option-delay">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-press-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-press-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-press-return">#</a>
 
-Focuses the element, and then uses [keyboard.down(key)](#keyboard-down) and [keyboard.up(key)](#keyboard-up).
+聚焦元素，然后使用 [keyboard.down(key)](#keyboard-down) and [keyboard.up(key)](#keyboard-up).
 
-`key` can specify the intended [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value or a single character to generate the text for. A superset of the `key` values can be found [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values). Examples of the keys are:
+key可以指定想要的 [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) 或是单个字符生成的文本,这里可以找到键值的超集。键的例子如下:
 
 `F1` - `F12`, `Digit0`- `Digit9`, `KeyA`- `KeyZ`, `Backquote`, `Minus`, `Equal`, `Backslash`, `Backspace`, `Tab`, `Delete`, `Escape`, `ArrowDown`, `End`, `Enter`, `Home`, `Insert`, `PageDown`, `PageUp`, `ArrowRight`, `ArrowUp`, etc.
 
-Following modification shortcuts are also supported: `Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
+还支持以下快捷键:`Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
 
-Holding down `Shift` will type the text that corresponds to the `key` in the upper case.
+按住`Shift`键将输入与大写键对应的文本.
 
-If `key` is a single character, it is case-sensitive, so the values `a` and `A` will generate different respective texts.
+如果`key`是单个字符，它是区分大小写的，因此值`a`和`A`将生成不同的文本.
 
-Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported as well. When specified with the modifier, modifier is pressed and being held while the subsequent key is being pressed.
+也支持快捷键，如键:“Control+o”或键:“Control+Shift+T”。当用修饰符指定时，修饰符被按下并被保持，而随后的键被按下.
 
 ## element_handle.query_selector(selector)<a name="element-handle-query-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="element-handle-query-selector-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="element-handle-query-selector-option-selector">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[ElementHandle](#elementhandle)><a name="element-handle-query-selector-return">#</a>
 
 The method finds an element matching the specified selector in the `ElementHandle`'s subtree. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more details. If no elements match the selector, returns `null`.
 
 ## element_handle.query_selector_all(selector)<a name="element-handle-query-selector-all">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="element-handle-query-selector-all-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="element-handle-query-selector-all-option-selector">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]><a name="element-handle-query-selector-all-return">#</a>
 
 The method finds all elements matching the specified selector in the `ElementHandle`s subtree. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more details. If no elements match the selector, returns empty array.
 
 ## element_handle.screenshot(**kwargs)<a name="element-handle-screenshot">#</a>
 
-- `animations` \<"disabled"> When set to `"disabled"`, stops CSS animations, CSS transitions and Web Animations. Animations get different treatment depending on their duration:<a name="element-handle-screenshot-option-animations">#</a>
-    - finite animations are fast-forwarded to completion, so they'll fire `transitionend` event.
-    - infinite animations are canceled to initial state, and then played over after the screenshot.
-- `mask` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Locator](#locator)]> Specify locators that should be masked when the screenshot is taken. Masked elements will be overlayed with a pink box `#FF00FF` that completely covers its bounding box.<a name="element-handle-screenshot-option-mask">#</a>
-- `omit_background` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Hides default white background and allows capturing screenshots with transparency. Not applicable to `jpeg` images. Defaults to `false`.<a name="element-handle-screenshot-option-omit-background">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> The file path to save the image to. The screenshot type will be inferred from file extension. If `path` is a relative path, then it is resolved relative to the current working directory. If no path is provided, the image won't be saved to the disk.<a name="element-handle-screenshot-option-path">#</a>
-- `quality` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> The quality of the image, between 0-100. Not applicable to `png` images.<a name="element-handle-screenshot-option-quality">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-screenshot-option-timeout">#</a>
-- `type` \<"png"|"jpeg"> Specify screenshot type, defaults to `png`.<a name="element-handle-screenshot-option-type">#</a>
+- `animations` \<"disabled"> 当设置为`"disabled"`时，停止CSS动画，CSS转换和Web动画。动画根据其持续时间得到不同的处理:<a name="element-handle-screenshot-option-animations">#</a>
+    - 有限动画是快进到完成，所以他们会触发`transitionend`事件.
+    - 无限动画被取消到初始状态，然后在屏幕截图后播放.
+- `mask` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Locator](#locator)]> 指定在截屏时应该被屏蔽的定位器。被屏蔽的元素将被一个粉红色的框覆盖#FF00FF，完全覆盖该元素.<a name="element-handle-screenshot-option-mask">#</a>
+- `omit_background` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 隐藏默认的白色背景，并允许透明捕捉屏幕截图。不适用于`jpeg`图像。默认值为`false`.<a name="element-handle-screenshot-option-omit-background">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 保存镜像的文件路径, 屏幕截图类型将从文件扩展名推断。如果path是一个相对路径，那么它是相对于当前工作目录解析的。如果没有提供路径，映像将不会被保存到磁盘.<a name="element-handle-screenshot-option-path">#</a>
+- `quality` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 图像的质量，在0-100之间。不适用于png图像.<a name="element-handle-screenshot-option-quality">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-screenshot-option-timeout">#</a>
+- `type` \<"png"|"jpeg">指定截图类型，默认为`png`.<a name="element-handle-screenshot-option-type">#</a>
 - returns: \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)><a name="element-handle-screenshot-return">#</a>
 
-Returns the buffer with the captured screenshot.
+返回带有捕获的截图的缓冲区.
 
-This method waits for the [actionability](https://playwright.dev/python/docs/actionability) checks, then scrolls element into view before taking a screenshot. If the element is detached from DOM, the method throws an error.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查，然后在截屏之前将元素滚动到视图中。如果元素与DOM分离，该方法将抛出一个错误.
 
 ## element_handle.scroll_into_view_if_needed(**kwargs)<a name="element-handle-scroll-into-view-if-needed">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-scroll-into-view-if-needed-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-scroll-into-view-if-needed-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-scroll-into-view-if-needed-return">#</a>
 
-This method waits for [actionability](https://playwright.dev/python/docs/actionability) checks, then tries to scroll element into view, unless it is completely visible as defined by [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)'s `ratio`.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查，然后尝试滚动元素到视图中，除非它是完全可见的，由 [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)的比率定义.
 
 Throws when `elementHandle` does not point to an element [connected](https://developer.mozilla.org/en-US/docs/Web/API/Node/isConnected) to a Document or a ShadowRoot.
 
 ## element_handle.select_option(**kwargs)<a name="element-handle-select-option">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-select-option-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-select-option-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-select-option-option-timeout">#</a>
-- `element` \<[ElementHandle](#elementhandle)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]> Option elements to select. Optional.<a name="element-handle-select-option-option-element">#</a>
-- `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]> Options to select by index. Optional.<a name="element-handle-select-option-option-index">#</a>
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Options to select by value. If the `\<select>` has the `multiple` attribute, all given options are selected, otherwise only the first option matching one of the passed options is selected. Optional.<a name="element-handle-select-option-option-value">#</a>
-- `label` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Options to select by label. If the `\<select>` has the `multiple` attribute, all given options are selected, otherwise only the first option matching one of the passed options is selected. Optional.<a name="element-handle-select-option-option-label">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-select-option-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-select-option-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-select-option-option-timeout">#</a>
+- `element` \<[ElementHandle](#elementhandle)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]> 要选择的选项。可选的.<a name="element-handle-select-option-option-element">#</a>
+- `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]> 按索引进行选择的选项。可选的.<a name="element-handle-select-option-option-index">#</a>
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 按值选择的选项。如果`\<select>`具有多个属性，则选择所有给定的选项，否则只选择与传递的选项之一匹配的第一个选项。可选的.<a name="element-handle-select-option-option-value">#</a>
+- `label` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 按标签进行选择的选项。如果`\<select>`具有多个属性，则选择所有给定的选项，否则只选择与传递的选项之一匹配的第一个选项。可选的.<a name="element-handle-select-option-option-label">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="element-handle-select-option-return">#</a>
 
-This method waits for [actionability](https://playwright.dev/python/docs/actionability) checks, waits until all specified options are present in the `\<select>` element and selects these options.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查，直到所有指定的选项都出现在`\<select>`元素中，然后选择这些选项.
 
-If the target element is not a `\<select>` element, this method throws an error. However, if the element is inside the `\<label>` element that has an associated [control](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control), the control will be used instead.
+如果目标元素不是`\<select>`元素，此方法将抛出一个错误。但是，如果该元素位于`\<label>`元素中，且该元素具有关联控件，则将使用该控件.
 
 Returns the array of option values that have been successfully selected.
 
-Triggers a `change` and `input` event once all the provided options have been selected.
+一旦选择了所有提供的选项，就触发一个更改和输入事件.
 
 - Sync
 
@@ -3804,35 +3805,35 @@ handle.select_option(value="blue", { index: 2 }, "red")
 
 ## element_handle.select_text(**kwargs)<a name="element-handle-select-text">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-select-text-option-force">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-select-text-option-timeout">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-select-text-option-force">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-select-text-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-select-text-return">#</a>
 
-This method waits for [actionability](https://playwright.dev/python/docs/actionability) checks, then focuses the element and selects all its text content.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查, then focuses the element and selects all its text content.
 
 ## element_handle.set_checked(checked, **kwargs)<a name="element-handle-set-checked">#</a>
 
-- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to check or uncheck the checkbox.<a name="element-handle-set-checked-option-checked">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-set-checked-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-set-checked-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="element-handle-set-checked-option-position">#</a>
+- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否选中或不选中复选框.<a name="element-handle-set-checked-option-checked">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-set-checked-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-set-checked-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="element-handle-set-checked-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-set-checked-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="element-handle-set-checked-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-set-checked-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="element-handle-set-checked-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-set-checked-return">#</a>
 
-This method checks or unchecks an element by performing the following steps:
+这个方法通过执行以下步骤检查或取消检查一个元素:
 
 1. Ensure that element is a checkbox or a radio input. If not, this method throws.
-2. If the element already has the right checked state, this method returns immediately.
-3. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-4. Scroll the element into view if needed.
-5. Use [page.mouse](#page-mouse) to click in the center of the element.
-6. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-7. Ensure that the element is now checked or unchecked. If not, this method throws.
+2. 如果元素已经具有正确的选中状态，则该方法立即返回.
+3. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+4. 如果需要，将元素滚动到视图中.
+5. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+6. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+7. 确保元素现在被选中或取消选中。如果不是，则抛出此方法.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## element_handle.set_input_files(files, **kwargs)<a name="element-handle-set-input-files">#</a>
 
@@ -3840,36 +3841,36 @@ When all steps combined have not finished during the specified `timeout`, this m
     - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
     - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
     - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-set-input-files-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-set-input-files-option-timeout">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-set-input-files-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-set-input-files-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-set-input-files-return">#</a>
 
 This method expects `elementHandle` to point to an [input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
 
-Sets the value of the file input to these file paths or files. If some of the `filePaths` are relative paths, then they are resolved relative to the the current working directory. For empty array, clears the selected files.
+将文件输入的值设置为这些文件路径或文件。如果某些`filepath`是相对路径，那么它们将相对于当前工作目录进行解析。对于空数组，清除选定的文件.
 
 ## element_handle.tap(**kwargs)<a name="element-handle-tap">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-tap-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="element-handle-tap-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-tap-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="element-handle-tap-option-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-tap-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="element-handle-tap-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-tap-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="element-handle-tap-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-tap-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="element-handle-tap-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-tap-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="element-handle-tap-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-tap-return">#</a>
 
-This method taps the element by performing the following steps:
+这个方法通过执行以下步骤点击元素:
 
-1. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-2. Scroll the element into view if needed.
-3. Use [page.touchscreen](#page-touchscreen) to tap the center of the element, or the specified `position`.
-4. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
+1. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+2. 如果需要，将元素滚动到视图中.
+3. 点击页面中心或指定位置.
+4. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 > NOTE
 >
@@ -3883,13 +3884,13 @@ Returns the `node.textContent`.
 
 ## element_handle.type(text, **kwargs)<a name="element-handle-type">#</a>
 
-- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A text to type into a focused element.<a name="element-handle-type-option-text">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between key presses in milliseconds. Defaults to 0.<a name="element-handle-type-option-delay">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-type-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-type-option-timeout">#</a>
+- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要输入到焦点元素中的文本.<a name="element-handle-type-option-text">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 按键之间的等待时间，单位是毫秒。默认为0.<a name="element-handle-type-option-delay">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-type-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-type-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-type-return">#</a>
 
-Focuses the element, and then sends a `keydown`, `keypress`/`input`, and `keyup` event for each character in the text.
+聚焦元素，然后为文本中的每个字符发送 `keydown`, `keypress`/`input`, and `keyup`  事件.
 
 To press a special key, like `Control` or `ArrowDown`, use [element_handle.press(key, **kwargs)](#element-handle-press).
 
@@ -3927,32 +3928,32 @@ await element_handle.press("Enter")
 
 ## element_handle.uncheck(**kwargs)<a name="element-handle-uncheck">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="element-handle-uncheck-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="element-handle-uncheck-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="element-handle-uncheck-option-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="element-handle-uncheck-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="element-handle-uncheck-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="element-handle-uncheck-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-uncheck-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="element-handle-uncheck-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-uncheck-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="element-handle-uncheck-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-uncheck-return">#</a>
 
-This method checks the element by performing the following steps:
+这个方法通过执行以下步骤来检查元素:
 
-1. Ensure that element is a checkbox or a radio input. If not, this method throws. If the element is already unchecked, this method returns immediately.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to click in the center of the element.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-6. Ensure that the element is now unchecked. If not, this method throws.
+1. 确保元素是一个复选框或单选输入。如果不是，则抛出此方法。如果元素已被选中，则此方法立即返回.
+2. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+3. 如果需要，将元素滚动到视图中.
+4. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+6. 确保元素现在是未选中的。如果不是，则排除此方法.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## element_handle.wait_for_element_state(state, **kwargs)<a name="element-handle-wait-for-element-state">#</a>
 
 - `state` \<"visible"|"hidden"|"stable"|"enabled"|"disabled"|"editable"> A state to wait for, see below for more details.<a name="element-handle-wait-for-element-state-option-state">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-wait-for-element-state-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-wait-for-element-state-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="element-handle-wait-for-element-state-return">#</a>
 
 Returns when the element satisfies the `state`.
@@ -3970,14 +3971,14 @@ If the element does not satisfy the condition for the `timeout` milliseconds, th
 
 ## element_handle.wait_for_selector(selector, **kwargs)<a name="element-handle-wait-for-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="element-handle-wait-for-selector-option-selector">#</a>
-- `state` \<"attached"|"detached"|"visible"|"hidden"> Defaults to `'visible'`. Can be either:<a name="element-handle-wait-for-selector-option-state">#</a>
-    - `'attached'` - wait for element to be present in DOM.
-    - `'detached'` - wait for element to not be present in DOM.
-    - `'visible'` - wait for element to have non-empty bounding box and no `visibility:hidden`. Note that element without any content or with `display:none` has an empty bounding box and is not considered visible.
-    - `'hidden'` - wait for element to be either detached from DOM, or have an empty bounding box or `visibility:hidden`. This is opposite to the `'visible'` option.
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="element-handle-wait-for-selector-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="element-handle-wait-for-selector-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="element-handle-wait-for-selector-option-selector">#</a>
+- `state` \<"attached"|"detached"|"visible"|"hidden"> 默认为`"visible"`。可以是:<a name="element-handle-wait-for-selector-option-state">#</a>
+    - `'attached'` - 等待元素出现在DOM中.
+    - `'detached'` - 等待元素在DOM中不存在.
+    - `'visible'` - 等待元素有非空的边界框 且 没有 `visibility:hidden`.注意，没有任何内容或带有`display:none` 的元素有一个空的边界框，因此不被认为是可见的.
+    - `'hidden'` - 等待元素从DOM中分离出来, 或有一个空的边界框或' visibility:hidden '。这与`“visible”`选项相反.
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="element-handle-wait-for-selector-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="element-handle-wait-for-selector-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[ElementHandle](#elementhandle)><a name="element-handle-wait-for-selector-return">#</a>
 
 Returns element specified by selector when it satisfies `state` option. Returns `null` if waiting for `hidden` or `detached`.
@@ -4014,7 +4015,7 @@ span = await div.wait_for_selector("span", state="attached")
 
 - extends: [Exception](https://docs.python.org/3/library/exceptions.html#Exception)
 
-Error is raised whenever certain operations are terminated abnormally, e.g. browser closes while [page.evaluate(expression, **kwargs)](#page-evaluate) is running. All Playwright exceptions inherit from this class.
+当某些操作异常终止时将引发错误，例如浏览器在运行时关闭 [page.evaluate(expression, **kwargs)](#page-evaluate),  所有playwright 的 Exception都继承自这个类
 
 - [error.message](#error-message)
 - [error.name](#error-name)
@@ -4024,25 +4025,25 @@ Error is raised whenever certain operations are terminated abnormally, e.g. brow
 
 - type: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-Message of the error.
+错误消息.
 
 ## error.name<a name="error-name">#</a>
 
 - type: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-Name of the error which got thrown inside the browser. Optional.
+浏览器内部抛出的错误的名称。可选的.
 
 ## error.stack<a name="error-stack">#</a>
 
 - type: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-Stack of the error which got thrown inside the browser. Optional.
+浏览器内部抛出的错误堆栈。可选的.
 
 
 
 # FileChooser
 
-[FileChooser](#filechooser) objects are dispatched by the page in the [page.on("filechooser")](#page-event-file-chooser) event.
+[FileChooser](#filechooser) 对象由 [page.on("filechooser")](#page-event-file-chooser) 事件中的页面调度.
 
 - Sync
 
@@ -4071,45 +4072,45 @@ await file_chooser.set_files("myfile.pdf")
 
 - returns: \<[ElementHandle](#elementhandle)><a name="file-chooser-element-return">#</a>
 
-Returns input element associated with this file chooser.
+返回与此文件选择器关联的输入元素.
 
 ## file_chooser.is_multiple()<a name="file-chooser-is-multiple">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="file-chooser-is-multiple-return">#</a>
 
-Returns whether this file chooser accepts multiple files.
+返回此文件选择器是否接受多个文件.
 
 ## file_chooser.page<a name="file-chooser-page">#</a>
 
 - returns: \<[Page](#page)><a name="file-chooser-page-return">#</a>
 
-Returns page this file chooser belongs to.
+返回此文件选择器所属的页面.
 
 ## file_chooser.set_files(files, **kwargs)<a name="file-chooser-set-files">#</a>
 
 - `files` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[List](https://docs.python.org/3/library/typing.html#typing.List)[[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="file-chooser-set-files-option-files">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
-    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
-    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="file-chooser-set-files-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="file-chooser-set-files-option-timeout">#</a>
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件名
+    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件类型
+    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 文件内容
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为 `false`.<a name="file-chooser-set-files-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="file-chooser-set-files-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="file-chooser-set-files-return">#</a>
 
-Sets the value of the file input this chooser is associated with. If some of the `filePaths` are relative paths, then they are resolved relative to the the current working directory. For empty array, clears the selected files.
+设置与此选择器关联的文件输入的值。如果某些 `filePaths` 是相对路径，那么它们将相对于当前工作目录进行解析。对于空数组，清除选定的文件.
 
 
 
 # Frame
 
-At every point of time, page exposes its current frame tree via the [page.main_frame](#page-main-frame) and [frame.child_frames](#frame-child-frames) methods.
+在每个时间点，页面都会通过 [page.main_frame](#page-main-frame) and [frame.child_frames](#frame-child-frames) 方法.
 
-[Frame](#frame) object's lifecycle is controlled by three events, dispatched on the page object:
+[Frame](#frame) 对象的生命周期由三个事件控制，在页面对象中分配:
 
-- [page.on("frameattached")](#page-event-frame-attached) - fired when the frame gets attached to the page. A Frame can be attached to the page only once.
-- [page.on("framenavigated")](#page-event-frame-navigated) - fired when the frame commits navigation to a different URL.
-- [page.on("framedetached")](#page-event-frame-detached) - fired when the frame gets detached from the page. A Frame can be detached from the page only once.
+- [page.on("frameattached")](#page-event-frame-attached) - 当框架被附加到页面时触发. 一个框架只能附加到页面一次.
+- [page.on("framenavigated")](#page-event-frame-navigated) -当帧提交导航到另一个URL时触发
+- [page.on("framedetached")](#page-event-frame-detached) - 当框架从页面分离时触发. Frame只能从页面分离一次.
 
-An example of dumping frame tree:
+一个倾倒框架树的例子:
 
 - Sync
 
@@ -4214,51 +4215,51 @@ asyncio.run(main())
 
 ## frame.add_script_tag(**kwargs)<a name="frame-add-script-tag">#</a>
 
-- `content` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Raw JavaScript content to be injected into frame.<a name="frame-add-script-tag-option-content">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to the JavaScript file to be injected into frame. If `path` is a relative path, then it is resolved relative to the current working directory.<a name="frame-add-script-tag-option-path">#</a>
-- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Script type. Use 'module' in order to load a Javascript ES6 module. See [script](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) for more details.<a name="frame-add-script-tag-option-type">#</a>
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> URL of a script to be added.<a name="frame-add-script-tag-option-url">#</a>
+- `content` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要注入帧的原始JavaScript内容.<a name="frame-add-script-tag-option-content">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 要注入帧的JavaScript文件的路径,如果`path`是一个相对路径，那么它是相对于当前工作目录解析的.<a name="frame-add-script-tag-option-path">#</a>
+- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 脚本类型。使用“module”来加载一个Javascript ES6模块。详情请参阅 [script](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) .<a name="frame-add-script-tag-option-type">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要添加的脚本的url.<a name="frame-add-script-tag-option-url">#</a>
 - returns: \<[ElementHandle](#elementhandle)><a name="frame-add-script-tag-return">#</a>
 
-Returns the added tag when the script's onload fires or when the script content was injected into frame.
+当脚本的onload触发或脚本内容被注入帧时，返回添加的标签.
 
-Adds a `\<script>` tag into the page with the desired url or content.
+添加一个 `\<script>` 标签到页面所需的url或内容.
 
 ## frame.add_style_tag(**kwargs)<a name="frame-add-style-tag">#</a>
 
-- `content` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Raw CSS content to be injected into frame.<a name="frame-add-style-tag-option-content">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to the CSS file to be injected into frame. If `path` is a relative path, then it is resolved relative to the current working directory.<a name="frame-add-style-tag-option-path">#</a>
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> URL of the `\<link>` tag.<a name="frame-add-style-tag-option-url">#</a>
+- `content` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 原始的CSS内容注入到帧.<a name="frame-add-style-tag-option-content">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 要注入帧的CSS文件的路径, 如果path是一个相对路径，那么它是相对于当前工作目录解析的.<a name="frame-add-style-tag-option-path">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> `\<link>`标签的url.<a name="frame-add-style-tag-option-url">#</a>
 - returns: \<[ElementHandle](#elementhandle)><a name="frame-add-style-tag-return">#</a>
 
-Returns the added tag when the stylesheet's onload fires or when the CSS content was injected into frame.
+当样式表的onload触发时，或者当CSS内容被注入框架时，返回添加的标签.
 
-Adds a `\<link rel="stylesheet">` tag into the page with the desired url or a `\<style type="text/css">` tag with the content.
+添加一个 `\<link rel="stylesheet">` 标签到页面所需的url或 `\<style type="text/css">`标签的内容.
 
 ## frame.check(selector, **kwargs)<a name="frame-check">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-check-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-check-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-check-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="frame-check-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-check-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-check-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-check-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="frame-check-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-check-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-check-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="frame-check-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-check-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-check-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="frame-check-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-check-return">#</a>
 
-This method checks an element matching `selector` by performing the following steps:
+这个方法通过以下步骤检查元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Ensure that matched element is a checkbox or a radio input. If not, this method throws. If the element is already checked, this method returns immediately.
-3. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-4. Scroll the element into view if needed.
-5. Use [page.mouse](#page-mouse) to click in the center of the element.
-6. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-7. Ensure that the element is now checked. If not, this method throws.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 确保匹配的元素是一个复选框或单选输入。如果不是，则排除此方法。如果元素已被选中，则该方法立即返回.
+3. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+4. 如果需要，将元素滚动到视图中.
+5. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+6. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+7. 确保元素现在被选中。如果不是，则排除此方法.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## frame.child_frames<a name="frame-child-frames">#</a>
 
@@ -4266,77 +4267,77 @@ When all steps combined have not finished during the specified `timeout`, this m
 
 ## frame.click(selector, **kwargs)<a name="frame-click">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-click-option-selector">#</a>
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="frame-click-option-button">#</a>
-- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> defaults to 1. See [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="frame-click-option-click-count">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="frame-click-option-delay">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-click-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="frame-click-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-click-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="frame-click-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-click-option-selector">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="frame-click-option-button">#</a>
+- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 默认为1. 查看[UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="frame-click-option-click-count">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="frame-click-option-delay">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-click-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="frame-click-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-click-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="frame-click-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-click-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-click-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="frame-click-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-click-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-click-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="frame-click-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-click-return">#</a>
 
-This method clicks an element matching `selector` by performing the following steps:
+这个方法通过执行以下步骤点击元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to click in the center of the element, or the specified `position`.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+3. 如果需要，将元素滚动到视图中.
+4. 使用 [page.mouse](#page-mouse) 单击元素的中心, or the specified `position`.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## frame.content()<a name="frame-content">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-content-return">#</a>
 
-Gets the full HTML contents of the frame, including the doctype.
+获取框架的完整HTML内容，包括文档类型.
 
 ## frame.dblclick(selector, **kwargs)<a name="frame-dblclick">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-dblclick-option-selector">#</a>
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="frame-dblclick-option-button">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="frame-dblclick-option-delay">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-dblclick-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="frame-dblclick-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-dblclick-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="frame-dblclick-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-dblclick-option-selector">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="frame-dblclick-option-button">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="frame-dblclick-option-delay">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-dblclick-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="frame-dblclick-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-dblclick-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="frame-dblclick-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-dblclick-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-dblclick-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="frame-dblclick-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-dblclick-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-dblclick-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="frame-dblclick-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-dblclick-return">#</a>
 
-This method double clicks an element matching `selector` by performing the following steps:
+该方法通过执行以下步骤双击元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to double click in the center of the element, or the specified `position`.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set. Note that if the first click of the `dblclick()` triggers a navigation event, this method will throw.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+3. 如果需要，将元素滚动到视图中.
+4. 使用 [page.mouse](#page-mouse) 方法,双击元素中心位置.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.该方法执行以下步骤双击元素, 注意，如果`dblclick()`的第一次单击触发了一个导航事件，则该方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 > NOTE
 >
-> `frame.dblclick()` dispatches two `click` events and a single `dblclick` event.
+> `frame.dblclick()` 分发两个`click`事件和一个`dblclick`事件.
 
 ## frame.dispatch_event(selector, type, **kwargs)<a name="frame-dispatch-event">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-dispatch-event-option-selector">#</a>
-- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> DOM event type: `"click"`, `"dragstart"`, etc.<a name="frame-dispatch-event-option-type">#</a>
-- `event_init` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional event-specific initialization properties.<a name="frame-dispatch-event-option-event-init">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-dispatch-event-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-dispatch-event-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-dispatch-event-option-selector">#</a>
+- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> DOM事件类型:`"click"`， `"dragstart"`等.<a name="frame-dispatch-event-option-type">#</a>
+- `event_init` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 可选的特定于事件的初始化属性.<a name="frame-dispatch-event-option-event-init">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-dispatch-event-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-dispatch-event-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-dispatch-event-return">#</a>
 
-The snippet below dispatches the `click` event on the element. Regardless of the visibility state of the element, `click` is dispatched. This is equivalent to calling [element.click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click).
+下面的代码片段分派元素上的`单击`事件。无论元素的可见性状态如何，单击都将被分派。这相当于调用[element.click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click).
 
 - Sync
 
@@ -4350,9 +4351,9 @@ frame.dispatch_event("button#submit", "click")
 await frame.dispatch_event("button#submit", "click")
 ```
 
-Under the hood, it creates an instance of an event based on the given `type`, initializes it with `event_init` properties and dispatches it on the element. Events are `composed`, `cancelable` and bubble by default.
+在底层，它根据给定的类型创建一个事件实例，使用`event_init`属性初始化它，并在元素上分派它。默认情况下，事件是组合的、可取消的和冒泡的.
 
-Since `event_init` is event-specific, please refer to the events documentation for the lists of initial properties:
+由于`event_init`是特定于事件的，请参考事件文档中的初始属性列表:
 
 - [DragEvent](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/DragEvent)
 - [FocusEvent](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/FocusEvent)
@@ -4362,7 +4363,7 @@ Since `event_init` is event-specific, please refer to the events documentation f
 - [TouchEvent](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/TouchEvent)
 - [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event)
 
-You can also specify `JSHandle` as the property value if you want live objects to be passed into the event:
+如果你想要将活动对象传递到事件中，你也可以指定`jhandle`作为属性值:
 
 - Sync
 
@@ -4384,38 +4385,38 @@ await frame.dispatch_event("#source", "dragstart", { "dataTransfer": data_transf
 
 - `source` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-drag-and-drop-option-source">#</a>
 - `target` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-drag-and-drop-option-target">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-drag-and-drop-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-drag-and-drop-option-no-wait-after">#</a>
-- `source_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Clicks on the source element at this point relative to the top-left corner of the element's padding box. If not specified, some visible point of the element is used.<a name="frame-drag-and-drop-option-source-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-drag-and-drop-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-drag-and-drop-option-no-wait-after">#</a>
+- `source_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 此时相对于元素填充框的左上角单击源元素。如果没有指定，则使用元素的某个可见点.<a name="frame-drag-and-drop-option-source-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-drag-and-drop-option-strict">#</a>
-- `target_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Drops on the target element at this point relative to the top-left corner of the element's padding box. If not specified, some visible point of the element is used.<a name="frame-drag-and-drop-option-target-position">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-drag-and-drop-option-strict">#</a>
+- `target_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 此时相对于元素填充框的左上角落在目标元素上。如果没有指定，则使用元素的某个可见点.<a name="frame-drag-and-drop-option-target-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-drag-and-drop-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="frame-drag-and-drop-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-drag-and-drop-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="frame-drag-and-drop-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-drag-and-drop-return">#</a>
 
 ## frame.eval_on_selector(selector, expression, **kwargs)<a name="frame-eval-on-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-eval-on-selector-option-selector">#</a>
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="frame-eval-on-selector-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="frame-eval-on-selector-option-arg">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-eval-on-selector-option-strict">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="frame-eval-on-selector-option-selector">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="frame-eval-on-selector-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="frame-eval-on-selector-option-arg">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-eval-on-selector-option-strict">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="frame-eval-on-selector-return">#</a>
 
-Returns the return value of `expression`.
+返回表达式的返回值.
 
 > CAUTION
 >
-> This method does not wait for the element to pass actionability checks and therefore can lead to the flaky tests. Use [locator.evaluate(expression, **kwargs)](#locator-evaluate), other [Locator](#locator) helper methods or web-first assertions instead.
+> 此方法不等待元素通过可操作性检查，因此可能导致不稳定的测试 . 使用[locator.evaluate(expression, **kwargs)](#locator-evaluate), 其它[Locator](#locator) 方法优先断言
 
-The method finds an element matching the specified selector within the frame and passes it as a first argument to `expression`. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more details. If no elements match the selector, the method throws an error.
+该方法在框架中找到与指定选择器匹配的元素，并将其作为第一个参数传递给表达式。有关详细信息，请参阅 [Working with selectors](https://playwright.dev/python/docs/selectors)。如果没有匹配该选择器的元素，该方法将抛出错误
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [frame.eval_on_selector(selector, expression, **kwargs)](#frame-eval-on-selector) would wait for the promise to resolve and return its value.
+如果`expression` 返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 那么[frame.eval_on_selector(selector, expression, **kwargs)](#frame-eval-on-selector) 将等待promise解析并返回它的值.
 
-Examples:
+例子:
 
 - Sync
 
@@ -4435,22 +4436,22 @@ html = await frame.eval_on_selector(".main-container", "(e, suffix) => e.outerHT
 
 ## frame.eval_on_selector_all(selector, expression, **kwargs)<a name="frame-eval-on-selector-all">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-eval-on-selector-all-option-selector">#</a>
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="frame-eval-on-selector-all-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="frame-eval-on-selector-all-option-arg">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="frame-eval-on-selector-all-option-selector">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="frame-eval-on-selector-all-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="frame-eval-on-selector-all-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="frame-eval-on-selector-all-return">#</a>
 
-Returns the return value of `expression`.
+返回表达式的返回值.
 
 > NOTE
 >
-> In most cases, [locator.evaluate_all(expression, **kwargs)](#locator-evaluate-all), other [Locator](#locator) helper methods and web-first assertions do a better job.
+> 在大多数情况下, [locator.evaluate_all(expression, **kwargs)](#locator-evaluate-all), 其它[Locator](#locator) 做得更好.
 
-The method finds all elements matching the specified selector within the frame and passes an array of matched elements as a first argument to `expression`. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more details.
+该方法在框架中查找与指定选择器匹配的所有元素，并将匹配元素的数组作为第一个参数传递给表达式。有关详细信息，请参阅[Working with selectors](https://playwright.dev/python/docs/selectors)
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [frame.eval_on_selector_all(selector, expression, **kwargs)](#frame-eval-on-selector-all) would wait for the promise to resolve and return its value.
+如果`expression` 返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 那么[frame.eval_on_selector(selector, expression, **kwargs)](#frame-eval-on-selector) 将等待promise解析并返回它的值.
 
-Examples:
+例子:
 
 - Sync
 
@@ -4466,15 +4467,15 @@ divs_counts = await frame.eval_on_selector_all("div", "(divs, min) => divs.lengt
 
 ## frame.evaluate(expression, **kwargs)<a name="frame-evaluate">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="frame-evaluate-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="frame-evaluate-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="frame-evaluate-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="frame-evaluate-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="frame-evaluate-return">#</a>
 
-Returns the return value of `expression`.
+返回表达式的返回值.
 
-If the function passed to the [frame.evaluate(expression, **kwargs)](#frame-evaluate) returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [frame.evaluate(expression, **kwargs)](#frame-evaluate) would wait for the promise to resolve and return its value.
+如果函数传递给 [frame.evaluate(expression, **kwargs)](#frame-evaluate) 返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 那么[frame.evaluate(expression, **kwargs)](#frame-evaluate) 将等待promise解析并返回其值.
 
-If the function passed to the [frame.evaluate(expression, **kwargs)](#frame-evaluate) returns a non-[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description) value, then [frame.evaluate(expression, **kwargs)](#frame-evaluate) returns `undefined`. Playwright also supports transferring some additional values that are not serializable by `JSON`: `-0`, `NaN`, `Infinity`, `-Infinity`.
+如果函数传递给 [frame.evaluate(expression, **kwargs)](#frame-evaluate) 返回一个不可序列化的值-[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description) , 那么[frame.evaluate(expression, **kwargs)](#frame-evaluate) 返回`undefined`. Playwright 还支持传递一些附加值，不能通过`JSON`序列化 : `-0`, `NaN`, `Infinity`, `-Infinity`.
 
 - Sync
 
@@ -4490,7 +4491,7 @@ result = await frame.evaluate("([x, y]) => Promise.resolve(x * y)", [7, 8])
 print(result) # prints "56"
 ```
 
-A string can also be passed in instead of a function.
+字符串也可以代替函数传入.
 
 - Sync
 
@@ -4508,7 +4509,7 @@ x = 10
 print(await frame.evaluate(f"1 + {x}")) # prints "11"
 ```
 
-[ElementHandle](#elementhandle) instances can be passed as an argument to the [frame.evaluate(expression, **kwargs)](#frame-evaluate):
+可以将 [ElementHandle](#elementhandle) 实例作为参数传递给框架 [frame.evaluate(expression, **kwargs)](#frame-evaluate):
 
 - Sync
 
@@ -4528,15 +4529,15 @@ await body_handle.dispose()
 
 ## frame.evaluate_handle(expression, **kwargs)<a name="frame-evaluate-handle">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="frame-evaluate-handle-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="frame-evaluate-handle-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="frame-evaluate-handle-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="frame-evaluate-handle-option-arg">#</a>
 - returns: \<[JSHandle](#jshandle)><a name="frame-evaluate-handle-return">#</a>
 
-Returns the return value of `expression` as a [JSHandle](#jshandle).
+返回表达式的返回值是 [JSHandle](#jshandle).
 
-The only difference between [frame.evaluate(expression, **kwargs)](#frame-evaluate) and [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle) is that [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle) returns [JSHandle](#jshandle).
+框架之间唯一的区别 [frame.evaluate(expression, **kwargs)](#frame-evaluate) 和 [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle) 是 [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle) 返回 [JSHandle](#jshandle).
 
-If the function, passed to the [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle), returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle) would wait for the promise to resolve and return its value.
+如果函数，传递给 [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle), 返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 那么 [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle) 将等待promise解析并返它的.
 
 - Sync
 
@@ -4552,7 +4553,7 @@ a_window_handle = await frame.evaluate_handle("Promise.resolve(window)")
 a_window_handle # handle for the window object.
 ```
 
-A string can also be passed in instead of a function.
+字符串也可以代替函数传入.
 
 - Sync
 
@@ -4566,7 +4567,7 @@ a_handle = page.evaluate_handle("document") # handle for the "document"
 a_handle = await page.evaluate_handle("document") # handle for the "document"
 ```
 
-[JSHandle](#jshandle) instances can be passed as an argument to the [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle):
+[JSHandle](#jshandle) 实例可以作为参数传递给 [frame.evaluate_handle(expression, **kwargs)](#frame-evaluate-handle):
 
 - Sync
 
@@ -4588,18 +4589,18 @@ await result_handle.dispose()
 
 ## frame.expect_navigation(**kwargs)<a name="frame-wait-for-navigation">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-wait-for-navigation-option-timeout">#</a>
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving [URL](https://en.wikipedia.org/wiki/URL) to match while waiting for the navigation. Note that if the parameter is a string without wilcard characters, the method will wait for navigation to URL that is exactly equal to the string.<a name="frame-wait-for-navigation-option-url">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="frame-wait-for-navigation-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="frame-wait-for-navigation-option-timeout">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 一个glob模式、regex模式或谓词，在等待导航时接收匹配的url。注意，如果参数是一个不带通配符的字符串，该方法将等待导航到与该字符串完全相等的URL.<a name="frame-wait-for-navigation-option-url">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="frame-wait-for-navigation-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Response](#response)]><a name="frame-wait-for-navigation-return">#</a>
 
-Waits for the frame navigation and returns the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect. In case of navigation to a different anchor or navigation due to History API usage, the navigation will resolve with `null`.
+等待框架导航并返回主资源响应。在多个重定向的情况下，导航将使用最后一个重定向的响应进行解析。如果导航到一个不同的锚或导航由于历史API的使用，导航将解析为`null`.
 
-This method waits for the frame to navigate to a new URL. It is useful for when you run code which will indirectly cause the frame to navigate. Consider this example:
+该方法等待 frame 导航到一个新的URL。当你运行会间接导致框架导航的代码时，它很有用。考虑一下这个例子:
 
 - Sync
 
@@ -4619,42 +4620,42 @@ async with frame.expect_navigation():
 
 > NOTE
 >
-> Usage of the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) to change the URL is considered a navigation.
+> 使用 [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) 更改URL被视为导航.
 
 ## frame.fill(selector, value, **kwargs)<a name="frame-fill">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-fill-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-fill-option-selector">#</a>
 - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Value to fill for the `\<input>`, `\<textarea>` or `[contenteditable]` element.<a name="frame-fill-option-value">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-fill-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-fill-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-fill-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-fill-option-timeout">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-fill-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-fill-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-fill-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-fill-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-fill-return">#</a>
 
-This method waits for an element matching `selector`, waits for [actionability](https://playwright.dev/python/docs/actionability) checks, focuses the element, fills it and triggers an `input` event after filling. Note that you can pass an empty string to clear the input field.
+这个方法等待元素匹配`选择器`，等待[actionability](https://playwright.dev/python/docs/actionability)检查，聚焦元素，填充它，并在填充后触发一个输入事件。请注意，您可以`传递`一个空字符串来清除输入字段
 
-If the target element is not an `\<input>`, `\<textarea>` or `[contenteditable]` element, this method throws an error. However, if the element is inside the `\<label>` element that has an associated [control](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control), the control will be filled instead.
+如果目标元素不是 `\<input>`, `\<textarea>` 或者`[contenteditable]` 元素，此方法将抛出一个错误。但是，如果该元素位于 `\<label>` 元素中，且该元素具有关联控件，则该控件将被填充.
 
-To send fine-grained keyboard events, use [frame.type(selector, text, **kwargs)](#frame-type).
+要发送细粒度的键盘事件，请使用 [frame.type(selector, text, **kwargs)](#frame-type).
 
 ## frame.focus(selector, **kwargs)<a name="frame-focus">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-focus-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-focus-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-focus-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-focus-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-focus-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-focus-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-focus-return">#</a>
 
-This method fetches an element with `selector` and focuses it. If there's no element matching `selector`, the method waits until a matching element appears in the DOM.
+这个方法获取一个带有选择器的元素并聚焦于它。如果没有元素匹配选择器，该方法将等待，直到匹配元素出现在DOM中
 
 ## frame.frame_element()<a name="frame-frame-element">#</a>
 
 - returns: \<[ElementHandle](#elementhandle)><a name="frame-frame-element-return">#</a>
 
-Returns the `frame` or `iframe` element handle which corresponds to this frame.
+返回与此fram相对应的fram或iframe元素句柄
 
-This is an inverse of [element_handle.content_frame()](#element-handle-content-frame). Note that returned handle actually belongs to the parent frame.
+这与 [element_handle.content_frame()](#element-handle-content-frame) 相反. 注意，返回的句柄实际上属于父 frame.
 
-This method throws an error if the frame has been detached before `frameElement()` returns.
+如果 frame 在 `frameElement()` 返回之前被分离，则此方法将抛出错误.
 
 - Sync
 
@@ -4674,10 +4675,10 @@ assert frame == content_frame
 
 ## frame.frame_locator(selector)<a name="frame-frame-locator">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to use when resolving DOM element. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-frame-locator-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 解析DOM元素时使用的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-frame-locator-option-selector">#</a>
 - returns: \<[FrameLocator](#framelocator)><a name="frame-frame-locator-return">#</a>
 
-When working with iframes, you can create a frame locator that will enter the iframe and allow selecting elements in that iframe. Following snippet locates element with text "Submit" in the iframe with id `my-frame`, like `\<iframe id="my-frame">`:
+在使用iframes时，您可以创建一个 frame 定位器，该定位器将进入iframe并允许选择该iframe中的元素。下面的代码片段在id为 `my-frame`的iframe中定位到文本为"Submit"的元素，例如: `\<iframe id="my-frame">`:
 
 - Sync
 
@@ -4695,263 +4696,263 @@ await locator.click()
 
 ## frame.get_attribute(selector, name, **kwargs)<a name="frame-get-attribute">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-get-attribute-option-selector">#</a>
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Attribute name to get the value for.<a name="frame-get-attribute-option-name">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-get-attribute-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-get-attribute-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-get-attribute-option-selector">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 属性名.<a name="frame-get-attribute-option-name">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-get-attribute-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-get-attribute-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-get-attribute-return">#</a>
 
-Returns element attribute value.
+返回元素属性值.
 
 ## frame.goto(url, **kwargs)<a name="frame-goto">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> URL to navigate frame to. The url should include scheme, e.g. `https://`.<a name="frame-goto-option-url">#</a>
-- `referer` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Referer header value. If provided it will take preference over the referer header value set by [page.set_extra_http_headers(headers)](#page-set-extra-http-headers).<a name="frame-goto-option-referer">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-goto-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="frame-goto-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> frame导航到的url。url应该包括协议，例如 `https://`.<a name="frame-goto-option-url">#</a>
+- `referer` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> referer头值。如果提供，它将优先于[page.set_extra_http_headers(headers)](#page-set-extra-http-headers)设置的referer头值.<a name="frame-goto-option-referer">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="frame-goto-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="frame-goto-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Response](#response)><a name="frame-goto-return">#</a>
 
-Returns the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect.
+返回主资源响应。在多个重定向的情况下，导航将使用最后一个重定向的响应进行解析
 
-The method will throw an error if:
+如果以下情况，该方法将抛出一个错误:
 
-- there's an SSL error (e.g. in case of self-signed certificates).
-- target URL is invalid.
-- the `timeout` is exceeded during navigation.
-- the remote server does not respond or is unreachable.
-- the main resource failed to load.
+- 有一个SSL错误(例如在自签名证书的情况下).
+- 目标URL无效.
+- 导航过程中超时.
+- 远程服务器没有响应或不可达.
+- main 资源加载失败.
 
-The method will not throw an error when any valid HTTP status code is returned by the remote server, including 404 "Not Found" and 500 "Internal Server Error". The status code for such responses can be retrieved by calling [response.status](#response-status).
-
-> NOTE
->
-> The method either throws an error or returns a main resource response. The only exceptions are navigation to `about:blank` or navigation to the same URL with a different hash, which would succeed and return `null`.
+当远程服务器返回任何有效的HTTP状态码时，该方法不会抛出错误，包括404 " not Found"和500 "Internal server error "。这些响应的状态代码可以通过调用[response.status](#response-status)来获取.
 
 > NOTE
 >
-> Headless mode doesn't support navigation to a PDF document. See the [upstream issue](https://bugs.chromium.org/p/chromium/issues/detail?id=761295).
+> 该方法要么抛出错误，要么返回主资源响应。唯一的例外是导航到`空白`或导航到相同的URL与不同的哈希，这将成功并返回null.
+
+> NOTE
+>
+> 无头模式不支持PDF文档的导航。参见[upstream issue](https://bugs.chromium.org/p/chromium/issues/detail?id=761295).
 
 ## frame.hover(selector, **kwargs)<a name="frame-hover">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-hover-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-hover-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="frame-hover-option-modifiers">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="frame-hover-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-hover-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-hover-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="frame-hover-option-modifiers">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="frame-hover-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-hover-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-hover-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="frame-hover-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-hover-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-hover-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="frame-hover-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-hover-return">#</a>
 
-This method hovers over an element matching `selector` by performing the following steps:
+该方法通过执行以下步骤悬停在元素匹配`选择器`上:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to hover over the center of the element, or the specified `position`.
-5. Wait for initiated navigations to either succeed or fail, unless `noWaitAfter` option is set.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+3. 如果需要，将元素滚动到视图中.
+4. 使鼠标停在元素中心或指定位置上.
+5. 等待发起的导航成功或失败，除非设置了`noWaitAfter`选项.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## frame.inner_html(selector, **kwargs)<a name="frame-inner-html">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-inner-html-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-inner-html-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-inner-html-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-inner-html-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-inner-html-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-inner-html-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-inner-html-return">#</a>
 
-Returns `element.innerHTML`.
+返回`element.innerHTML`.
 
 ## frame.inner_text(selector, **kwargs)<a name="frame-inner-text">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-inner-text-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-inner-text-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-inner-text-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-inner-text-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-inner-text-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-inner-text-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-inner-text-return">#</a>
 
-Returns `element.innerText`.
+返回`element.innerText`.
 
 ## frame.input_value(selector, **kwargs)<a name="frame-input-value">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-input-value-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-input-value-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-input-value-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-input-value-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-input-value-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-input-value-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-input-value-return">#</a>
 
-Returns `input.value` for the selected `\<input>` or `\<textarea>` or `\<select>` element. Throws for non-input elements.
+返回以下元素的输入值 `\<input>` or `\<textarea>` or `\<select>` .排除非输入元素.
 
 ## frame.is_checked(selector, **kwargs)<a name="frame-is-checked">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-is-checked-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-is-checked-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-is-checked-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-is-checked-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-is-checked-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-is-checked-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="frame-is-checked-return">#</a>
 
-Returns whether the element is checked. Throws if the element is not a checkbox or radio input.
+返回元素是否被选中。如果元素不是复选框或单选输入则排除.
 
 ## frame.is_detached()<a name="frame-is-detached">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="frame-is-detached-return">#</a>
 
-Returns `true` if the frame has been detached, or `false` otherwise.
+如果 frame 已被分离，则返回 true，否则返回 false.
 
 ## frame.is_disabled(selector, **kwargs)<a name="frame-is-disabled">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-is-disabled-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-is-disabled-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-is-disabled-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-is-disabled-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-is-disabled-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-is-disabled-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="frame-is-disabled-return">#</a>
 
-Returns whether the element is disabled, the opposite of [enabled](https://playwright.dev/python/docs/actionability#enabled).
+返回该元素是否被禁用，与启用相反 [enabled](https://playwright.dev/python/docs/actionability#enabled).
 
 ## frame.is_editable(selector, **kwargs)<a name="frame-is-editable">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-is-editable-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-is-editable-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-is-editable-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-is-editable-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-is-editable-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-is-editable-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="frame-is-editable-return">#</a>
 
-Returns whether the element is [editable](https://playwright.dev/python/docs/actionability#editable).
+返回元素是否可编辑 [editable](https://playwright.dev/python/docs/actionability#editable).
 
 ## frame.is_enabled(selector, **kwargs)<a name="frame-is-enabled">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-is-enabled-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-is-enabled-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-is-enabled-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-is-enabled-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-is-enabled-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-is-enabled-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="frame-is-enabled-return">#</a>
 
-Returns whether the element is [enabled](https://playwright.dev/python/docs/actionability#enabled).
+返回元素是否被启用 [enabled](https://playwright.dev/python/docs/actionability#enabled).
 
 ## frame.is_hidden(selector, **kwargs)<a name="frame-is-hidden">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-is-hidden-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-is-hidden-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** This option is ignored. [frame.is_hidden(selector, **kwargs)](#frame-is-hidden) does not wait for the element to become hidden and returns immediately.<a name="frame-is-hidden-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-is-hidden-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-is-hidden-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** 此选项将被忽略. [frame.is_hidden(selector, **kwargs)](#frame-is-hidden) 立即返回,不会等待元素被隐藏.<a name="frame-is-hidden-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="frame-is-hidden-return">#</a>
 
-Returns whether the element is hidden, the opposite of [visible](https://playwright.dev/python/docs/actionability#visible). `selector` that does not match any elements is considered hidden.
+返回元素是否隐藏，与[可见](https://playwright.dev/python/docs/actionability#visible)相反。不匹配任何元素的选择器被认为是隐藏的. 
 
 ## frame.is_visible(selector, **kwargs)<a name="frame-is-visible">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-is-visible-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-is-visible-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** This option is ignored. [frame.is_visible(selector, **kwargs)](#frame-is-visible) does not wait for the element to become visible and returns immediately.<a name="frame-is-visible-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-is-visible-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-is-visible-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** 此选项将被忽略. [frame.is_visible(selector, **kwargs)](#frame-is-visible) 立即返回,不会等待元素变得可见.<a name="frame-is-visible-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="frame-is-visible-return">#</a>
 
-Returns whether the element is [visible](https://playwright.dev/python/docs/actionability#visible). `selector` that does not match any elements is considered not visible.
+返回元素是否[可见](https://playwright.dev/python/docs/actionability#visible)。不匹配任何元素的选择器被认为不可见 
 
 ## frame.locator(selector, **kwargs)<a name="frame-locator">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to use when resolving DOM element. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-locator-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 解析DOM元素时使用的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-locator-option-selector">#</a>
 
-- `has` \<[Locator](#locator)> Matches elements containing an element that matches an inner locator. Inner locator is queried against the outer one. For example, `article` that has `text=Playwright` matches `\<article>\<div>Playwright\</div>\</article>`.<a name="frame-locator-option-has">#</a>
+- `has` \<[Locator](#locator)> 对selector选中的元素进行再次匹配, 匹配目标中的子元素, 例如: 匹配子元素的`text=Playwright`的元素  `\<article>\<div>Playwright\</div>\</article>`.<a name="frame-locator-option-has">#</a>
 
-    Note that outer and inner locators must belong to the same frame. Inner locator must not contain [FrameLocator](#framelocator)s.
+    请注意，外部和内部定位器必须属于同一个 frame. 内部定位器不能包含 [FrameLocator](#framelocator).
 
-- `has_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Matches elements containing specified text somewhere inside, possibly in a child or a descendant element. For example, `"Playwright"` matches `\<article>\<div>Playwright\</div>\</article>`.<a name="frame-locator-option-has-text">#</a>
+- `has_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 匹配包含指定文本的元素，可能在子元素或后代元素中,例如:`"Playwright"` 匹配 `\<article>\<div>Playwright\</div>\</article>`.<a name="frame-locator-option-has-text">#</a>
 
 - returns: \<[Locator](#locator)><a name="frame-locator-return">#</a>
 
-The method returns an element locator that can be used to perform actions in the frame. Locator is resolved to the element immediately before performing an action, so a series of actions on the same locator can in fact be performed on different DOM elements. That would happen if the DOM structure between those actions has changed.
+该方法返回一个元素定位器，可用于在frame中执行操作。在执行一个操作之前，Locator被立即解析为元素，因此同一定位器上的一系列操作实际上可以在不同的DOM元素上执行。如果这些动作之间的DOM结构发生了变化，就会发生这种情况.
 
 ## frame.name<a name="frame-name">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-name-return">#</a>
 
-Returns frame's name attribute as specified in the tag.
+返回在标签中指定的 frame 的 name 属性.
 
-If the name is empty, returns the id attribute instead.
+如果名称为空，则返回 id 属性.
 
 > NOTE
 >
-> This value is calculated once when the frame is created, and will not update if the attribute is changed later.
+> 这个值在 frame 创建时计算一次，如果属性后来改变，这个值将不会更新.
 
 ## frame.page<a name="frame-page">#</a>
 
 - returns: \<[Page](#page)><a name="frame-page-return">#</a>
 
-Returns the page containing this frame.
+返回包含此frame的页面.
 
 ## frame.parent_frame<a name="frame-parent-frame">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Frame](#frame)><a name="frame-parent-frame-return">#</a>
 
-Parent frame, if any. Detached frames and main frames return `null`.
+父frame，如果有的话。分离的frame和主frame返回`null`.
 
 ## frame.press(selector, key, **kwargs)<a name="frame-press">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-press-option-selector">#</a>
-- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the key to press or a character to generate, such as `ArrowLeft` or `a`.<a name="frame-press-option-key">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `keydown` and `keyup` in milliseconds. Defaults to 0.<a name="frame-press-option-delay">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-press-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-press-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-press-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-press-option-selector">#</a>
+- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要按下的`键名`或要生成的字符，如`ArrowLeft`或'a'.<a name="frame-press-option-key">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `keydown`和`keyup`之间的等待时间，单位是毫秒。默认为0.<a name="frame-press-option-delay">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-press-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-press-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-press-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-press-return">#</a>
 
-`key` can specify the intended [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value or a single character to generate the text for. A superset of the `key` values can be found [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values). Examples of the keys are:
+key可以指定想要的 [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) 或是单个字符生成的文本,这里可以找到键值的超集。键的例子如下:
 
-`F1` - `F12`, `Digit0`- `Digit9`, `KeyA`- `KeyZ`, `Backquote`, `Minus`, `Equal`, `Backslash`, `Backspace`, `Tab`, `Delete`, `Escape`, `ArrowDown`, `End`, `Enter`, `Home`, `Insert`, `PageDown`, `PageUp`, `ArrowRight`, `ArrowUp`, etc.
+`F1` - `F12`, `Digit0`- `Digit9`, `KeyA`- `KeyZ`, `Backquote`, `Minus`, `Equal`, `Backslash`, `Backspace`, `Tab`, `Delete`, `Escape`, `ArrowDown`, `End`, `Enter`, `Home`, `Insert`, `PageDown`, `PageUp`, `ArrowRight`, `ArrowUp`, 等.
 
-Following modification shortcuts are also supported: `Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
+还支持以下快捷键:`Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
 
-Holding down `Shift` will type the text that corresponds to the `key` in the upper case.
+按住`Shift`键将输入与大写键对应的文本.
 
-If `key` is a single character, it is case-sensitive, so the values `a` and `A` will generate different respective texts.
+如果`key`是单个字符，它是区分大小写的，因此值`a`和`A`将生成不同的文本.
 
-Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported as well. When specified with the modifier, modifier is pressed and being held while the subsequent key is being pressed.
+也支持快捷键，如键:“Control+o”或键:“Control+Shift+T”。当用修饰符指定时，修饰符被按下并被保持，而随后的键被按下.
 
 ## frame.query_selector(selector, **kwargs)<a name="frame-query-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-query-selector-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-query-selector-option-strict">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="frame-query-selector-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-query-selector-option-strict">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[ElementHandle](#elementhandle)><a name="frame-query-selector-return">#</a>
 
-Returns the ElementHandle pointing to the frame element.
+返回指向frame元素的ElementHandle.
 
 > CAUTION
 >
-> The use of [ElementHandle](#elementhandle) is discouraged, use [Locator](#locator) objects and web-first assertions instead.
+> 不鼓励使用 [ElementHandle](#elementhandle)，而是使用[Locator](#locator)对象和web优先断言 
 
-The method finds an element matching the specified selector within the frame. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more details. If no elements match the selector, returns `null`.
+该方法在框架中查找与指定选择器匹配的元素。有关详细信息，请参阅 [Working with selectors](https://playwright.dev/python/docs/selectors)。如果没有元素匹配该选择器，则返回`null`
 
 ## frame.query_selector_all(selector)<a name="frame-query-selector-all">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-query-selector-all-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="frame-query-selector-all-option-selector">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]><a name="frame-query-selector-all-return">#</a>
 
-Returns the ElementHandles pointing to the frame elements.
+返回指向frame元素的ElementHandles.
 
 > CAUTION
 >
-> The use of [ElementHandle](#elementhandle) is discouraged, use [Locator](#locator) objects instead.
+> 不鼓励使用 [ElementHandle](#elementhandle)，而是使用[Locator](#locator)对象
 
-The method finds all elements matching the specified selector within the frame. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more details. If no elements match the selector, returns empty array.
+该方法在框架中查找与指定选择器匹配的所有元素。有关详细信息，请参阅 [Working with selectors](https://playwright.dev/python/docs/selectors)。如果没有元素匹配该选择器，则返回`空数组`
 
 ## frame.select_option(selector, **kwargs)<a name="frame-select-option">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-select-option-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-select-option-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-select-option-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-select-option-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-select-option-option-timeout">#</a>
-- `element` \<[ElementHandle](#elementhandle)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]> Option elements to select. Optional.<a name="frame-select-option-option-element">#</a>
-- `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]> Options to select by index. Optional.<a name="frame-select-option-option-index">#</a>
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Options to select by value. If the `\<select>` has the `multiple` attribute, all given options are selected, otherwise only the first option matching one of the passed options is selected. Optional.<a name="frame-select-option-option-value">#</a>
-- `label` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Options to select by label. If the `\<select>` has the `multiple` attribute, all given options are selected, otherwise only the first option matching one of the passed options is selected. Optional.<a name="frame-select-option-option-label">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="frame-select-option-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-select-option-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-select-option-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-select-option-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-select-option-option-timeout">#</a>
+- `element` \<[ElementHandle](#elementhandle)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]> 要选择的选项。可选的.<a name="frame-select-option-option-element">#</a>
+- `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]> 按索引进行选择的选项。可选的.<a name="frame-select-option-option-index">#</a>
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 按值选择的选项。如果`\<select>`具有多个属性，则选择所有给定的选项，否则只选择与传递的选项之一匹配的第一个选项。可选的.<a name="frame-select-option-option-value">#</a>
+- `label` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 按标签进行选择的选项。如果`\<select>`具有多个属性，则选择所有给定的选项，否则只选择与传递的选项之一匹配的第一个选项。可选的.<a name="frame-select-option-option-label">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="frame-select-option-return">#</a>
 
-This method waits for an element matching `selector`, waits for [actionability](https://playwright.dev/python/docs/actionability) checks, waits until all specified options are present in the `\<select>` element and selects these options.
+这个方法等待元素匹配选择器，等待[可操作性](https://playwright.dev/python/docs/actionability)检查，直到所有指定的选项都出现在`\<select>`元素中，并选择这些选项.
 
-If the target element is not a `\<select>` element, this method throws an error. However, if the element is inside the `\<label>` element that has an associated [control](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control), the control will be used instead.
+如果目标元素不是`\<select>`元素，此方法将抛出一个错误。但是，如果该元素位于`\<label>`元素中，且该元素具有关联控件，则将使用该控件.
 
-Returns the array of option values that have been successfully selected.
+返回已成功选择的选项值的数组.
 
-Triggers a `change` and `input` event once all the provided options have been selected.
+一旦选择了所有提供的选项，就触发一个更改和输入事件.
 
 - Sync
 
@@ -4977,114 +4978,114 @@ await frame.select_option("select#colors", value=["red", "green", "blue"])
 
 ## frame.set_checked(selector, checked, **kwargs)<a name="frame-set-checked">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-set-checked-option-selector">#</a>
-- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to check or uncheck the checkbox.<a name="frame-set-checked-option-checked">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-set-checked-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-set-checked-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="frame-set-checked-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-set-checked-option-selector">#</a>
+- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否选中或不选中复选框.<a name="frame-set-checked-option-checked">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-set-checked-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-set-checked-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="frame-set-checked-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-set-checked-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-set-checked-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="frame-set-checked-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-set-checked-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-set-checked-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="frame-set-checked-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-set-checked-return">#</a>
 
-This method checks or unchecks an element matching `selector` by performing the following steps:
+这个方法通过执行以下步骤检查或取消检查元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Ensure that matched element is a checkbox or a radio input. If not, this method throws.
-3. If the element already has the right checked state, this method returns immediately.
-4. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-5. Scroll the element into view if needed.
-6. Use [page.mouse](#page-mouse) to click in the center of the element.
-7. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-8. Ensure that the element is now checked or unchecked. If not, this method throws.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 确保匹配的元素是一个复选框或单选输入。如果不是，则排除此方法.
+3. 如果元素已经具有正确的选中状态，则该方法立即返回.
+4. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+5. 如果需要，将元素滚动到视图中.
+6. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+7. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+8. 确保元素现在被选中或取消选中。如果不是，则抛出此方法.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## frame.set_content(html, **kwargs)<a name="frame-set-content">#</a>
 
-- `html` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> HTML markup to assign to the page.<a name="frame-set-content-option-html">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-set-content-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="frame-set-content-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `html` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要分配给页面的html标记.<a name="frame-set-content-option-html">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="frame-set-content-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="frame-set-content-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-set-content-return">#</a>
 
 ## frame.set_input_files(selector, files, **kwargs)<a name="frame-set-input-files">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-set-input-files-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-set-input-files-option-selector">#</a>
 - `files` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[List](https://docs.python.org/3/library/typing.html#typing.List)[[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="frame-set-input-files-option-files">#</a>
     - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
     - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
     - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-set-input-files-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-set-input-files-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-set-input-files-option-timeout">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-set-input-files-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-set-input-files-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-set-input-files-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-set-input-files-return">#</a>
 
-This method expects `selector` to point to an [input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
+这个方法期望选择器指向一个[输入元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
 
-Sets the value of the file input to these file paths or files. If some of the `filePaths` are relative paths, then they are resolved relative to the the current working directory. For empty array, clears the selected files.
+将文件输入的值设置为这些文件路径或文件。如果某些`filepath`是相对路径，那么它们将相对于当前工作目录进行解析。对于空数组，清除选定的文件.
 
 ## frame.tap(selector, **kwargs)<a name="frame-tap">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-tap-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-tap-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="frame-tap-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-tap-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="frame-tap-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-tap-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-tap-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="frame-tap-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-tap-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="frame-tap-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-tap-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-tap-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="frame-tap-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-tap-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-tap-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="frame-tap-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-tap-return">#</a>
 
-This method taps an element matching `selector` by performing the following steps:
+这个方法通过执行以下步骤点击元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-3. Scroll the element into view if needed.
-4. Use [page.touchscreen](#page-touchscreen) to tap the center of the element, or the specified `position`.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+3. 如果需要，将元素滚动到视图中.
+4. 点击页面中心或指定位置.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 > NOTE
 >
-> `frame.tap()` requires that the `hasTouch` option of the browser context be set to true.
+> `frame.tap()`要求浏览器上下文的`hasTouch`选项被设置为`True`.
 
 ## frame.text_content(selector, **kwargs)<a name="frame-text-content">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-text-content-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-text-content-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-text-content-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-text-content-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-text-content-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-text-content-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-text-content-return">#</a>
 
-Returns `element.textContent`.
+返回`element.textContent`.
 
 ## frame.title()<a name="frame-title">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-title-return">#</a>
 
-Returns the page title.
+返回页面标题.
 
 ## frame.type(selector, text, **kwargs)<a name="frame-type">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-type-option-selector">#</a>
-- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A text to type into a focused element.<a name="frame-type-option-text">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between key presses in milliseconds. Defaults to 0.<a name="frame-type-option-delay">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-type-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-type-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-type-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-type-option-selector">#</a>
+- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要输入到焦点元素中的文本.<a name="frame-type-option-text">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 按键之间的等待时间，单位是毫秒。默认为0.<a name="frame-type-option-delay">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-type-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-type-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-type-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-type-return">#</a>
 
-Sends a `keydown`, `keypress`/`input`, and `keyup` event for each character in the text. `frame.type` can be used to send fine-grained keyboard events. To fill values in form fields, use [frame.fill(selector, value, **kwargs)](#frame-fill).
+为文本中的每个字符发送 `keydown`, `keypress`/`input`, and `keyup` 事件. `frame.type` 可用于发送细粒度键盘事件。要在表单字段中填充值，请使用 [frame.fill(selector, value, **kwargs)](#frame-fill).
 
-To press a special key, like `Control` or `ArrowDown`, use [keyboard.press(key, **kwargs)](#keyboard-press).
+要按一个特殊的键，如`Control`或`ArrowDown`，使用 [keyboard.press(key, **kwargs)](#keyboard-press).
 
 - Sync
 
@@ -5102,46 +5103,46 @@ await frame.type("#mytextarea", "world", delay=100) # types slower, like a user
 
 ## frame.uncheck(selector, **kwargs)<a name="frame-uncheck">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-uncheck-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="frame-uncheck-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="frame-uncheck-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="frame-uncheck-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-uncheck-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="frame-uncheck-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="frame-uncheck-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="frame-uncheck-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-uncheck-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-uncheck-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="frame-uncheck-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-uncheck-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-uncheck-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="frame-uncheck-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-uncheck-return">#</a>
 
-This method checks an element matching `selector` by performing the following steps:
+这个方法通过以下步骤检查元素匹配选择器::
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Ensure that matched element is a checkbox or a radio input. If not, this method throws. If the element is already unchecked, this method returns immediately.
-3. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-4. Scroll the element into view if needed.
-5. Use [page.mouse](#page-mouse) to click in the center of the element.
-6. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-7. Ensure that the element is now unchecked. If not, this method throws.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 确保匹配的元素是一个复选框或单选输入。如果不是，则排除此方法. If the element is already unchecked, this method returns immediately.
+3. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+4. 如果需要，将元素滚动到视图中.
+5. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+6. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+7. 确保元素现在是未选中的。如果不是，则排除此方法.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## frame.url<a name="frame-url">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="frame-url-return">#</a>
 
-Returns frame's url.
+返回 frame's url.
 
 ## frame.wait_for_function(expression, **kwargs)<a name="frame-wait-for-function">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="frame-wait-for-function-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="frame-wait-for-function-option-arg">#</a>
-- `polling` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|"raf"> If `polling` is `'raf'`, then `expression` is constantly executed in `requestAnimationFrame` callback. If `polling` is a number, then it is treated as an interval in milliseconds at which the function would be executed. Defaults to `raf`.<a name="frame-wait-for-function-option-polling">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="frame-wait-for-function-option-timeout">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="frame-wait-for-function-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="frame-wait-for-function-option-arg">#</a>
+- `polling` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|"raf"> 如果`polling`是'raf'，那么表达式会在`requestAnimationFrame`回调中持续执行。如果`polling`是一个数字，那么它将被视为执行函数的毫秒间隔。默认为`raf`.<a name="frame-wait-for-function-option-polling">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，以毫秒为单位。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="frame-wait-for-function-option-timeout">#</a>
 - returns: \<[JSHandle](#jshandle)><a name="frame-wait-for-function-return">#</a>
 
-Returns when the `expression` returns a truthy value, returns that value.
+当表达式返回真值时，返回该值.
 
-The [frame.wait_for_function(expression, **kwargs)](#frame-wait-for-function) can be used to observe viewport size change:
+[frame.wait_for_function(expression, **kwargs)](#frame-wait-for-function) 可用于观察视口大小的变化:
 
 - Sync
 
@@ -5180,7 +5181,7 @@ async def main():
 asyncio.run(main())
 ```
 
-To pass an argument to the predicate of `frame.waitForFunction` function:
+将参数传递给 `frame.waitForFunction` 函数:
 
 - Sync
 
@@ -5198,16 +5199,16 @@ await frame.wait_for_function("selector => !!document.querySelector(selector)", 
 
 ## frame.wait_for_load_state(**kwargs)<a name="frame-wait-for-load-state">#</a>
 
-- `state` \<"load"|"domcontentloaded"|"networkidle"> Optional load state to wait for, defaults to `load`. If the state has been already reached while loading current document, the method resolves immediately. Can be one of:<a name="frame-wait-for-load-state-option-state">#</a>
-    - `'load'` - wait for the `load` event to be fired.
-    - `'domcontentloaded'` - wait for the `DOMContentLoaded` event to be fired.
-    - `'networkidle'` - wait until there are no network connections for at least `500` ms.
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-wait-for-load-state-option-timeout">#</a>
+- `state` \<"load"|"domcontentloaded"|"networkidle"> 可选加载状态，等待，默认为`load`。如果在加载当前文档时已经达到该状态，该方法将立即进行解析。可以是:<a name="frame-wait-for-load-state-option-state">#</a>
+    - `'load'` - 等待`load`事件被触发.
+    - `'domcontentloaded'` - 等待`domcontentloaded`事件被触发.
+    - `'networkidle'` - 等待至少500毫秒没有网络连接.
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="frame-wait-for-load-state-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-wait-for-load-state-return">#</a>
 
-Waits for the required load state to be reached.
+等待到达所需的加载状态.
 
-This returns when the frame reaches a required load state, `load` by default. The navigation must have been committed when this method is called. If current document has already reached the required state, resolves immediately.
+当 frame 达到所需的加载状态时返回，默认为加载。该导航必须在调用此方法时已提交。如果当前文档已经达到了所需的状态，则立即进行解析.
 
 - Sync
 
@@ -5225,25 +5226,25 @@ await frame.wait_for_load_state() # the promise resolves after "load" event.
 
 ## frame.wait_for_selector(selector, **kwargs)<a name="frame-wait-for-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-wait-for-selector-option-selector">#</a>
-- `state` \<"attached"|"detached"|"visible"|"hidden"> Defaults to `'visible'`. Can be either:<a name="frame-wait-for-selector-option-state">#</a>
-    - `'attached'` - wait for element to be present in DOM.
-    - `'detached'` - wait for element to not be present in DOM.
-    - `'visible'` - wait for element to have non-empty bounding box and no `visibility:hidden`. Note that element without any content or with `display:none` has an empty bounding box and is not considered visible.
-    - `'hidden'` - wait for element to be either detached from DOM, or have an empty bounding box or `visibility:hidden`. This is opposite to the `'visible'` option.
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="frame-wait-for-selector-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-wait-for-selector-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="frame-wait-for-selector-option-selector">#</a>
+- `state` \<"attached"|"detached"|"visible"|"hidden"> 默认为`"visible"`。可以是:<a name="frame-wait-for-selector-option-state">#</a>
+    - `'attached'` - 等待元素出现在DOM中.
+    - `'detached'` - 等待元素在DOM中不存在.
+    - `'visible'` - 等待元素有非空的边界框 且 没有 `visibility:hidden`.注意，没有任何内容或带有`display:none` 的元素有一个空的边界框，因此不被认为是可见的.
+    - `'hidden'` - 等待元素从DOM中分离出来, 或有一个空的边界框或' visibility:hidden '。这与`“visible”`选项相反.
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="frame-wait-for-selector-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="frame-wait-for-selector-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[ElementHandle](#elementhandle)><a name="frame-wait-for-selector-return">#</a>
 
-Returns when element specified by selector satisfies `state` option. Returns `null` if waiting for `hidden` or `detached`.
+当选择器指定的元素满足状态选项时返回。如果等待`隐藏`或`分离`，则返回null.
 
 > NOTE
 >
-> Playwright automatically waits for element to be ready before performing an action. Using [Locator](#locator) objects and web-first assertions make the code wait-for-selector-free.
+> Playwright 在执行操作之前，自动等待元素准备就绪. 使用[Locator](#locator)对象和web-first断言会使代码不需要等待选择器.
 
-Wait for the `selector` to satisfy `state` option (either appear/disappear from dom, or become visible/hidden). If at the moment of calling the method `selector` already satisfies the condition, the method will return immediately. If the selector doesn't satisfy the condition for the `timeout` milliseconds, the function will throw.
+等待' selector '满足' state '选项(要么从dom中出现/消失，要么变成可见/隐藏)。如果在调用方法' selector '的时候已经满足条件，该方法将立即返回。如果选择器不满足' timeout '毫秒的条件，函数将排除.
 
-This method works across navigations:
+此方法适用于多个导航:
 
 - Sync
 
@@ -5288,25 +5289,25 @@ asyncio.run(main())
 
 ## frame.wait_for_timeout(timeout)<a name="frame-wait-for-timeout">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> A timeout to wait for<a name="frame-wait-for-timeout-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 等待超时时间<a name="frame-wait-for-timeout-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-wait-for-timeout-return">#</a>
 
-Waits for the given `timeout` in milliseconds.
+等待给定超时(以毫秒为单位).
 
-Note that `frame.waitForTimeout()` should only be used for debugging. Tests using the timer in production are going to be flaky. Use signals such as network events, selectors becoming visible and others instead.
+注意，`frame.waitForTimeout()` 应该只用于调试。在生产中使用计时器的测试将是不可靠的。使用信号，如网络事件，选择器变得可见和其他方式.
 
 ## frame.wait_for_url(url, **kwargs)<a name="frame-wait-for-url">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving [URL](https://en.wikipedia.org/wiki/URL) to match while waiting for the navigation. Note that if the parameter is a string without wilcard characters, the method will wait for navigation to URL that is exactly equal to the string.<a name="frame-wait-for-url-option-url">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="frame-wait-for-url-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="frame-wait-for-url-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 一个glob模式、regex模式或谓词，在等待导航时接收匹配的url。注意，如果参数是一个不带通配符的字符串，该方法将等待导航到与该字符串完全相等的URL.<a name="frame-wait-for-url-option-url">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="frame-wait-for-url-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="frame-wait-for-url-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="frame-wait-for-url-return">#</a>
 
-Waits for the frame to navigate to the given URL.
+等待frame导航到给定的URL.
 
 - Sync
 
@@ -5328,7 +5329,7 @@ await frame.wait_for_url("**/target.html")
 
 # FrameLocator
 
-FrameLocator represents a view to the `iframe` on the page. It captures the logic sufficient to retrieve the `iframe` and locate elements in that iframe. FrameLocator can be created with either [page.frame_locator(selector)](#page-frame-locator) or [locator.frame_locator(selector)](#locator-frame-locator) method.
+FrameLocator表示页面上`iframe`的视图。它捕获的逻辑足以检索`iframe`并定位该`iframe`中的元素。framellocator可以用 [page.frame_locator(selector)](#page-frame-locator) or [locator.frame_locator(selector)](#locator-frame-locator) 方法创建.
 
 - Sync
 
@@ -5346,7 +5347,7 @@ await locator.click()
 
 **Strictness**
 
-Frame locators are strict. This means that all operations on frame locators will throw if more than one element matches given selector.
+框架定位是严格的。这意味着，如果有多个元素匹配给定的选择器，那么帧定位器上的所有操作都会抛出.
 
 - Sync
 
@@ -5370,7 +5371,7 @@ await page.frame_locator('.result-frame').first.locator('button').click()
 
 **Converting Locator to FrameLocator**
 
-If you have a [Locator](#locator) object pointing to an `iframe` it can be converted to [FrameLocator](#framelocator) using [`:scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) CSS selector:
+如果你有一个指向`iframe`的[Locator](#locator)对象，可以使用以下方法将其转换为 [FrameLocator](#framelocator), 使用   [`:scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/:scope) CSS 选择器:
 
 - Sync
 
@@ -5394,41 +5395,41 @@ frameLocator = locator.frame_locator(":scope");
 
 - returns: \<[FrameLocator](#framelocator)><a name="frame-locator-first-return">#</a>
 
-Returns locator to the first matching frame.
+返回第一个匹配 frame 的定位符.
 
 ## frame_locator.frame_locator(selector)<a name="frame-locator-frame-locator">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to use when resolving DOM element. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-locator-frame-locator-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 解析DOM元素时使用的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-locator-frame-locator-option-selector">#</a>
 - returns: \<[FrameLocator](#framelocator)><a name="frame-locator-frame-locator-return">#</a>
 
-When working with iframes, you can create a frame locator that will enter the iframe and allow selecting elements in that iframe.
+在使用iframes时，您可以创建一个frame 定位器，该定位器将进入iframe并允许选择该iframe中的元素.
 
 ## frame_locator.last<a name="frame-locator-last">#</a>
 
 - returns: \<[FrameLocator](#framelocator)><a name="frame-locator-last-return">#</a>
 
-Returns locator to the last matching frame.
+返回最后一个匹配frame 的定位符.
 
 ## frame_locator.locator(selector, **kwargs)<a name="frame-locator-locator">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to use when resolving DOM element. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="frame-locator-locator-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 解析DOM元素时使用的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="frame-locator-locator-option-selector">#</a>
 
-- `has` \<[Locator](#locator)> Matches elements containing an element that matches an inner locator. Inner locator is queried against the outer one. For example, `article` that has `text=Playwright` matches `\<article>\<div>Playwright\</div>\</article>`.<a name="frame-locator-locator-option-has">#</a>
+- `has` \<[Locator](#locator)> 对selector选中的元素进行再次匹配, 匹配目标中的子元素, 例如: 匹配子元素的`text=Playwright`的元素  `\<article>\<div>Playwright\</div>\</article>`.<a name="frame-locator-locator-option-has">#</a>
 
-    Note that outer and inner locators must belong to the same frame. Inner locator must not contain [FrameLocator](#framelocator)s.
+    请注意，外部和内部定位器必须属于同一个 frame. 内部定位器不能包含 [FrameLocator](#framelocator).
 
-- `has_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Matches elements containing specified text somewhere inside, possibly in a child or a descendant element. For example, `"Playwright"` matches `\<article>\<div>Playwright\</div>\</article>`.<a name="frame-locator-locator-option-has-text">#</a>
+- `has_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 匹配包含指定文本的元素，可能在子元素或后代元素中,例如:`"Playwright"` 匹配 `\<article>\<div>Playwright\</div>\</article>`.<a name="frame-locator-locator-option-has-text">#</a>
 
 - returns: \<[Locator](#locator)><a name="frame-locator-locator-return">#</a>
 
-The method finds an element matching the specified selector in the FrameLocator's subtree.
+该方法在framocator的子树中找到与指定选择器匹配的元素.
 
 ## frame_locator.nth(index)<a name="frame-locator-nth">#</a>
 
 - `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="frame-locator-nth-option-index">#</a>
 - returns: \<[FrameLocator](#framelocator)><a name="frame-locator-nth-return">#</a>
 
-Returns locator to the n-th matching frame.
+返回第n个匹配frame 的定位符.
 
 
 
@@ -5436,7 +5437,7 @@ Returns locator to the n-th matching frame.
 
 # JSHandle
 
-JSHandle represents an in-page JavaScript object. JSHandles can be created with the [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) method.
+JSHandle表示一个页内JavaScript对象。JSHandles可以用 [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) 方法创建.
 
 - Sync
 
@@ -5452,9 +5453,9 @@ window_handle = await page.evaluate_handle("window")
 # ...
 ```
 
-JSHandle prevents the referenced JavaScript object being garbage collected unless the handle is exposed with [js_handle.dispose()](#js-handle-dispose). JSHandles are auto-disposed when their origin frame gets navigated or the parent context gets destroyed.
+jhandle防止被引用的JavaScript对象被垃圾收集，除非该句柄被 [js_handle.dispose()](#js-handle-dispose) 指定. 当JSHandles的原始frame 被导航或者父上下文被销毁时，JSHandles会被自动销毁.
 
-JSHandle instances can be used as an argument in [page.eval_on_selector(selector, expression, **kwargs)](#page-eval-on-selector), [page.evaluate(expression, **kwargs)](#page-evaluate) and [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) methods.
+JSHandle实例可以当作 [page.eval_on_selector(selector, expression, **kwargs)](#page-eval-on-selector), [page.evaluate(expression, **kwargs)](#page-evaluate) and [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) 方法中的一个参数.
 
 - [js_handle.as_element()](#js-handle-as-element)
 - [js_handle.dispose()](#js-handle-dispose)
@@ -5468,27 +5469,27 @@ JSHandle instances can be used as an argument in [page.eval_on_selector(selector
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[ElementHandle](#elementhandle)><a name="js-handle-as-element-return">#</a>
 
-Returns either `null` or the object handle itself, if the object handle is an instance of [ElementHandle](#elementhandle).
+如果对象句柄是[ElementHandle](#elementhandle)的实例，则返回`null`或对象句柄本身.
 
 ## js_handle.dispose()<a name="js-handle-dispose">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="js-handle-dispose-return">#</a>
 
-The `jsHandle.dispose` method stops referencing the element handle.
+`jsHandle.dispose` 方法停止引用元素句柄.
 
 ## js_handle.evaluate(expression, **kwargs)<a name="js-handle-evaluate">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="js-handle-evaluate-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="js-handle-evaluate-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="js-handle-evaluate-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="js-handle-evaluate-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="js-handle-evaluate-return">#</a>
 
-Returns the return value of `expression`.
+返回表达式的返回值.
 
-This method passes this handle as the first argument to `expression`.
+此方法将此句柄作为第一个参数传递给表达式.
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then `handle.evaluate` would wait for the promise to resolve and return its value.
+如果表达式返回[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)，则 `handle.evaluate`将等待promise解析并返回其值
 
-Examples:
+例子:
 
 - Sync
 
@@ -5506,25 +5507,25 @@ assert await tweet_handle.evaluate("node => node.innerText") == "10 retweets"
 
 ## js_handle.evaluate_handle(expression, **kwargs)<a name="js-handle-evaluate-handle">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="js-handle-evaluate-handle-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="js-handle-evaluate-handle-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="js-handle-evaluate-handle-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="js-handle-evaluate-handle-option-arg">#</a>
 - returns: \<[JSHandle](#jshandle)><a name="js-handle-evaluate-handle-return">#</a>
 
-Returns the return value of `expression` as a [JSHandle](#jshandle).
+返回表达式的返回值是一个 [JSHandle](#jshandle).
 
-This method passes this handle as the first argument to `expression`.
+此方法将此句柄作为第一个参数传递给表达式.
 
-The only difference between `jsHandle.evaluate` and `jsHandle.evaluateHandle` is that `jsHandle.evaluateHandle` returns [JSHandle](#jshandle).
+ `jsHandle.evaluate` 和`jsHandle.evaluateHandle` 两者之间的唯一区别是: `jsHandle.evaluateHandle` 返回[JSHandle](#jshandle).
 
-If the function passed to the `jsHandle.evaluateHandle` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then `jsHandle.evaluateHandle` would wait for the promise to resolve and return its value.
+如果函数传递给 `jsHandle.evaluateHandle` 返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 则`jsHandle.evaluateHandle`将等待promise解析并返回它的值.
 
-See [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) for more details.
+更多细节参考: [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) .
 
 ## js_handle.get_properties()<a name="js-handle-get-properties">#</a>
 
 - returns: \<[Map][[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [JSHandle](#jshandle)]><a name="js-handle-get-properties-return">#</a>
 
-The method returns a map with **own property names** as keys and JSHandle instances for the property values.
+该方法返回一个映射，其中包含自己的属性名作为键，jshhandle实例作为属性值.
 
 - Sync
 
@@ -5548,20 +5549,20 @@ await handle.dispose()
 
 ## js_handle.get_property(property_name)<a name="js-handle-get-property">#</a>
 
-- `property_name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> property to get<a name="js-handle-get-property-option-property-name">#</a>
+- `property_name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 属性获取<a name="js-handle-get-property-option-property-name">#</a>
 - returns: \<[JSHandle](#jshandle)><a name="js-handle-get-property-return">#</a>
 
-Fetches a single property from the referenced object.
+从被引用的对象中获取单个属性.
 
 ## js_handle.json_value()<a name="js-handle-json-value">#</a>
 
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="js-handle-json-value-return">#</a>
 
-Returns a JSON representation of the object. If the object has a `toJSON` function, it **will not be called**.
+返回对象的JSON表示。如果对象有toJSON函数，它将不会被调用.
 
 > NOTE
 >
-> The method will return an empty JSON object if the referenced object is not stringifiable. It will throw an error if the object has circular references.
+> 如果引用的对象不是可字符串化的，该方法将返回一个空的JSON对象。如果对象有循环引用，它将抛出一个错误.
 
 
 
@@ -5569,11 +5570,11 @@ Returns a JSON representation of the object. If the object has a `toJSON` functi
 
 # Keyboard
 
-Keyboard provides an api for managing a virtual keyboard. The high level api is [keyboard.type(text, **kwargs)](#keyboard-type), which takes raw characters and generates proper keydown, keypress/input, and keyup events on your page.
+Keyboard提供了一个用于管理虚拟键盘的api。高级api是 [keyboard.type(text, **kwargs)](#keyboard-type), 它接受原始字符并在页面上生成适当的keydown、keypress/input和keyup事件.
 
-For finer control, you can use [keyboard.down(key)](#keyboard-down), [keyboard.up(key)](#keyboard-up), and [keyboard.insert_text(text)](#keyboard-insert-text) to manually fire events as if they were generated from a real keyboard.
+为了进行更精细的控制，可以使用 [keyboard.down(key)](#keyboard-down), [keyboard.up(key)](#keyboard-up), and [keyboard.insert_text(text)](#keyboard-insert-text) 手动触发事件，就像它们是从真正的键盘中生成的一样.
 
-An example of holding down `Shift` in order to select and delete some text:
+按住`Shift`键来选择和删除一些文本的例子:
 
 - Sync
 
@@ -5601,7 +5602,7 @@ await page.keyboard.press("Backspace")
 # result text will end up saying "Hello!"
 ```
 
-An example of pressing uppercase `A`
+一个按大写字母`A`的例子
 
 - Sync
 
@@ -5619,7 +5620,7 @@ await page.keyboard.press("Shift+KeyA")
 await page.keyboard.press("Shift+A")
 ```
 
-An example to trigger select-all with the keyboard
+一个用键盘触发全部选择的例子
 
 - Sync
 
@@ -5647,35 +5648,35 @@ await page.keyboard.press("Meta+A")
 
 ## keyboard.down(key)<a name="keyboard-down">#</a>
 
-- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the key to press or a character to generate, such as `ArrowLeft` or `a`.<a name="keyboard-down-option-key">#</a>
+- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要按下的`键名`或要生成的字符，如`ArrowLeft`或'a'.<a name="keyboard-down-option-key">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="keyboard-down-return">#</a>
 
-Dispatches a `keydown` event.
+分派一个按键事件.
 
-`key` can specify the intended [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value or a single character to generate the text for. A superset of the `key` values can be found [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values). Examples of the keys are:
+key可以指定想要的 [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) 或是单个字符生成的文本,这里可以找到键值的超集。键的例子如下:
 
 `F1` - `F12`, `Digit0`- `Digit9`, `KeyA`- `KeyZ`, `Backquote`, `Minus`, `Equal`, `Backslash`, `Backspace`, `Tab`, `Delete`, `Escape`, `ArrowDown`, `End`, `Enter`, `Home`, `Insert`, `PageDown`, `PageUp`, `ArrowRight`, `ArrowUp`, etc.
 
-Following modification shortcuts are also supported: `Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
+还支持以下快捷键:`Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
 
-Holding down `Shift` will type the text that corresponds to the `key` in the upper case.
+按住`Shift`键将输入与大写键对应的文本.
 
-If `key` is a single character, it is case-sensitive, so the values `a` and `A` will generate different respective texts.
+如果`key`是单个字符，它是区分大小写的，因此值`a`和`A`将生成不同的文本.
 
-If `key` is a modifier key, `Shift`, `Meta`, `Control`, or `Alt`, subsequent key presses will be sent with that modifier active. To release the modifier key, use [keyboard.up(key)](#keyboard-up).
+如果key是一个修饰键, `Shift`, `Meta`, `Control`, or `Alt`, 随后的按键将发送该修饰器激活。要释放修饰键，请使用 [keyboard.up(key)](#keyboard-up).
 
-After the key is pressed once, subsequent calls to [keyboard.down(key)](#keyboard-down) will have [repeat](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/repeat) set to true. To release the key, use [keyboard.up(key)](#keyboard-up).
+按下该键一次后，随后调用 [keyboard.down(key)](#keyboard-down) 将[重复](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/repeat)设置为 true. 释放键，使用 [keyboard.up(key)](#keyboard-up).
 
 > NOTE
 >
-> Modifier keys DO influence `keyboard.down`. Holding down `Shift` will type the text in upper case.
+> 修改键会产生影响 `keyboard.down`. 按住 `Shift` 键将输入大写的文本.
 
 ## keyboard.insert_text(text)<a name="keyboard-insert-text">#</a>
 
-- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Sets input to the specified text value.<a name="keyboard-insert-text-option-text">#</a>
+- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 设置输入为指定的文本值.<a name="keyboard-insert-text-option-text">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="keyboard-insert-text-return">#</a>
 
-Dispatches only `input` event, does not emit the `keydown`, `keyup` or `keypress` events.
+只分派输入事件，不发出 `keydown`, `keyup` or `keypress` 等事件.
 
 - Sync
 
@@ -5691,25 +5692,25 @@ await page.keyboard.insert_text("嗨")
 
 > NOTE
 >
-> Modifier keys DO NOT effect `keyboard.insertText`. Holding down `Shift` will not type the text in upper case.
+> 修饰键不影响 `keyboard.insertText`. 按下 `Shift` 键不会输入大写的文本.
 
 ## keyboard.press(key, **kwargs)<a name="keyboard-press">#</a>
 
-- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the key to press or a character to generate, such as `ArrowLeft` or `a`.<a name="keyboard-press-option-key">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `keydown` and `keyup` in milliseconds. Defaults to 0.<a name="keyboard-press-option-delay">#</a>
+- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要按下的`键名`或要生成的字符，如`ArrowLeft`或'a'.<a name="keyboard-press-option-key">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `keydown`和`keyup`之间的等待时间，单位是毫秒。默认为0.<a name="keyboard-press-option-delay">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="keyboard-press-return">#</a>
 
-`key` can specify the intended [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value or a single character to generate the text for. A superset of the `key` values can be found [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values). Examples of the keys are:
+key可以指定想要的 [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) 或是单个字符生成的文本,这里可以找到键值的超集。键的例子如下:
 
 `F1` - `F12`, `Digit0`- `Digit9`, `KeyA`- `KeyZ`, `Backquote`, `Minus`, `Equal`, `Backslash`, `Backspace`, `Tab`, `Delete`, `Escape`, `ArrowDown`, `End`, `Enter`, `Home`, `Insert`, `PageDown`, `PageUp`, `ArrowRight`, `ArrowUp`, etc.
 
-Following modification shortcuts are also supported: `Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
+还支持以下快捷键:`Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
 
-Holding down `Shift` will type the text that corresponds to the `key` in the upper case.
+按住`Shift`键将输入与大写键对应的文本.
 
-If `key` is a single character, it is case-sensitive, so the values `a` and `A` will generate different respective texts.
+如果`key`是单个字符，它是区分大小写的，因此值`a`和`A`将生成不同的文本.
 
-Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported as well. When specified with the modifier, modifier is pressed and being held while the subsequent key is being pressed.
+也支持快捷键，如键:“Control+o”或键:“Control+Shift+T”。当用修饰符指定时，修饰符被按下并被保持，而随后的键被按下.
 
 - Sync
 
@@ -5739,17 +5740,17 @@ await page.screenshot(path="o.png")
 await browser.close()
 ```
 
-Shortcut for [keyboard.down(key)](#keyboard-down) and [keyboard.up(key)](#keyboard-up).
+ [keyboard.down(key)](#keyboard-down) and [keyboard.up(key) ](#keyboard-up)的快捷键.
 
 ## keyboard.type(text, **kwargs)<a name="keyboard-type">#</a>
 
-- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A text to type into a focused element.<a name="keyboard-type-option-text">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between key presses in milliseconds. Defaults to 0.<a name="keyboard-type-option-delay">#</a>
+- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要输入到焦点元素中的文本.<a name="keyboard-type-option-text">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 按键之间的等待时间，单位是毫秒。默认为0.<a name="keyboard-type-option-delay">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="keyboard-type-return">#</a>
 
-Sends a `keydown`, `keypress`/`input`, and `keyup` event for each character in the text.
+为文本中的每个字符发送  `keydown`, `keypress`/`input`, and `keyup` 事件.
 
-To press a special key, like `Control` or `ArrowDown`, use [keyboard.press(key, **kwargs)](#keyboard-press).
+要按一个特殊的键，如`Control`或`ArrowDown`，使用 [keyboard.press(key, **kwargs)](#keyboard-press).
 
 - Sync
 
@@ -5767,24 +5768,24 @@ await page.keyboard.type("World", delay=100) # types slower, like a user
 
 > NOTE
 >
-> Modifier keys DO NOT effect `keyboard.type`. Holding down `Shift` will not type the text in upper case.
+> 修饰键不影响 `keyboard.type`. 按下 `Shift` 键不会输入大写的文本.
 
 > NOTE
 >
-> For characters that are not on a US keyboard, only an `input` event will be sent.
+> 对于非美式键盘上的字符，只会发送一个`输入`事件.
 
 ## keyboard.up(key)<a name="keyboard-up">#</a>
 
-- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the key to press or a character to generate, such as `ArrowLeft` or `a`.<a name="keyboard-up-option-key">#</a>
+- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要按下的`键名`或要生成的字符，如`ArrowLeft`或'a'.<a name="keyboard-up-option-key">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="keyboard-up-return">#</a>
 
-Dispatches a `keyup` event.
+分派一个`keyup`事件.
 
 
 
 # Locator
 
-Locators are the central piece of Playwright's auto-waiting and retry-ability. In a nutshell, locators represent a way to find element(s) on the page at any moment. Locator can be created with the [page.locator(selector, **kwargs)](#page-locator) method.
+`locator 定位器`是playwright 自动等待和重试能力的核心部分。简而言之，定位器表示一种随时在页面上查找元素的方法。可以使用页面创建定位器 [page.locator(selector, **kwargs)](#page-locator) .
 
 [Learn more about locators](https://playwright.dev/python/docs/locators).
 
@@ -5839,30 +5840,30 @@ Locators are the central piece of Playwright's auto-waiting and retry-ability. I
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="locator-all-inner-texts-return">#</a>
 
-Returns an array of `node.innerText` values for all matching nodes.
+返回一个 `node.innerText` 值为所有匹配节点.
 
 ## locator.all_text_contents()<a name="locator-all-text-contents">#</a>
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="locator-all-text-contents-return">#</a>
 
-Returns an array of `node.textContent` values for all matching nodes.
+返回一个节点数组值为所有节点的 `node.textContent` .
 
 ## locator.bounding_box(**kwargs)<a name="locator-bounding-box">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-bounding-box-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-bounding-box-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="locator-bounding-box-return">#</a>
-    - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> the x coordinate of the element in pixels.
-    - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> the y coordinate of the element in pixels.
-    - `width` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> the width of the element in pixels.
-    - `height` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> the height of the element in pixels.
+    - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 元素的 X 坐标像素.
+    - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 元素的Y坐标，以像素为单位.
+    - `width` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 元素的宽度，以像素为单位.
+    - `height` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 元素的高度，以像素为单位.
 
-This method returns the bounding box of the element, or `null` if the element is not visible. The bounding box is calculated relative to the main frame viewport - which is usually the same as the browser window.
+此方法返回元素的边界框，如果元素不可见，则返回`null`。边界框是相对于主帧视口计算的——主帧视口通常与浏览器窗口相同.
 
-Scrolling affects the returned bonding box, similarly to [Element.getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect). That means `x` and/or `y` may be negative.
+滚动会影响返回的绑定框，类似于  [Element.getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) , 这意味着x和/或y可能是负的.
 
-Elements from child frames return the bounding box relative to the main frame, unlike the [Element.getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect).
+与 [Element.getBoundingClientRect](https://developer.mozilla.org/en-US/docs/Web/API/Element/getBoundingClientRect) 不同，子frame 中的元素返回相对于主frame 的边界框.
 
-Assuming the page is static, it is safe to use bounding box coordinates to perform input. For example, the following snippet should click the center of the element.
+假设页面是静态的，使用边界框坐标执行输入是安全的。例如，下面的代码片段应该单击元素的中心.
 
 - Sync
 
@@ -5880,97 +5881,97 @@ await page.mouse.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2
 
 ## locator.check(**kwargs)<a name="locator-check">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-check-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-check-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="locator-check-option-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-check-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-check-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="locator-check-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-check-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="locator-check-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-check-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="locator-check-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-check-return">#</a>
 
-This method checks the element by performing the following steps:
+这个方法通过执行以下步骤来检查元素:
 
-1. Ensure that element is a checkbox or a radio input. If not, this method throws. If the element is already checked, this method returns immediately.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to click in the center of the element.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-6. Ensure that the element is now checked. If not, this method throws.
+1. 确保元素是一个复选框或单选输入。如果不是，则抛出此方法。如果元素已被选中，则该方法立即返回.
+2. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+3. 如果需要，将元素滚动到视图中.
+4. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+6. 确保元素现在被选中。如果不是，则排除此方法.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## locator.click(**kwargs)<a name="locator-click">#</a>
 
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="locator-click-option-button">#</a>
-- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> defaults to 1. See [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="locator-click-option-click-count">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="locator-click-option-delay">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-click-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="locator-click-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-click-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="locator-click-option-position">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="locator-click-option-button">#</a>
+- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 默认为1,详情查看  [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="locator-click-option-click-count">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="locator-click-option-delay">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-click-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="locator-click-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-click-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="locator-click-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-click-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="locator-click-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-click-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="locator-click-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-click-return">#</a>
 
-This method clicks the element by performing the following steps:
+该方法执行以下步骤单击元素:
 
-1. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-2. Scroll the element into view if needed.
-3. Use [page.mouse](#page-mouse) to click in the center of the element, or the specified `position`.
-4. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
+1. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+2. 如果需要，将元素滚动到视图中.
+3. 使用 [page.mouse](#page-mouse) 单击元素的中心, or the specified `position`.
+4. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## locator.count()<a name="locator-count">#</a>
 
 - returns: \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="locator-count-return">#</a>
 
-Returns the number of elements matching given selector.
+返回匹配给定选择器的元素数.
 
 ## locator.dblclick(**kwargs)<a name="locator-dblclick">#</a>
 
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="locator-dblclick-option-button">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="locator-dblclick-option-delay">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-dblclick-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="locator-dblclick-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-dblclick-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="locator-dblclick-option-position">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="locator-dblclick-option-button">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="locator-dblclick-option-delay">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-dblclick-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="locator-dblclick-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-dblclick-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="locator-dblclick-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-dblclick-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="locator-dblclick-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-dblclick-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="locator-dblclick-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-dblclick-return">#</a>
 
-This method double clicks the element by performing the following steps:
+该方法执行以下步骤双击元素:
 
-1. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-2. Scroll the element into view if needed.
-3. Use [page.mouse](#page-mouse) to double click in the center of the element, or the specified `position`.
-4. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set. Note that if the first click of the `dblclick()` triggers a navigation event, this method will throw.
+1. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+2. 如果需要，将元素滚动到视图中.
+3. 使用 [page.mouse](#page-mouse) 方法,双击元素中心位置.
+4. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.该方法执行以下步骤双击元素, 注意，如果`dblclick()`的第一次单击触发了一个导航事件，则该方法将抛出.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 > NOTE
 >
-> `element.dblclick()` dispatches two `click` events and a single `dblclick` event.
+> `element.dblclick()` 分发两个 `click` 事件和一个 `dblclick` 事件.
 
 ## locator.dispatch_event(type, **kwargs)<a name="locator-dispatch-event">#</a>
 
-- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> DOM event type: `"click"`, `"dragstart"`, etc.<a name="locator-dispatch-event-option-type">#</a>
-- `event_init` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional event-specific initialization properties.<a name="locator-dispatch-event-option-event-init">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-dispatch-event-option-timeout">#</a>
+- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> DOM事件类型:`"click"`， `"dragstart"`等.<a name="locator-dispatch-event-option-type">#</a>
+- `event_init` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 可选的特定于事件的初始化属性.<a name="locator-dispatch-event-option-event-init">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-dispatch-event-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-dispatch-event-return">#</a>
 
-The snippet below dispatches the `click` event on the element. Regardless of the visibility state of the element, `click` is dispatched. This is equivalent to calling [element.click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click).
+下面的代码片段分派元素上的`单击`事件。无论元素的可见性状态如何，单击都将被分派。这相当于调用[element.click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click).
 
 - Sync
 
@@ -5984,9 +5985,9 @@ element.dispatch_event("click")
 await element.dispatch_event("click")
 ```
 
-Under the hood, it creates an instance of an event based on the given `type`, initializes it with `event_init` properties and dispatches it on the element. Events are `composed`, `cancelable` and bubble by default.
+在底层，它根据给定的类型创建一个事件实例，使用`event_init`属性初始化它，并在元素上分派它。默认情况下，事件是组合的、可取消的和冒泡的.
 
-Since `event_init` is event-specific, please refer to the events documentation for the lists of initial properties:
+由于`event_init`是特定于事件的，请参考事件文档中的初始属性列表:
 
 - [DragEvent](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/DragEvent)
 - [FocusEvent](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/FocusEvent)
@@ -5996,7 +5997,7 @@ Since `event_init` is event-specific, please refer to the events documentation f
 - [TouchEvent](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/TouchEvent)
 - [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event)
 
-You can also specify `JSHandle` as the property value if you want live objects to be passed into the event:
+如果你想要将活动对象传递到事件中，你也可以指定`jhandle`作为属性值:
 
 - Sync
 
@@ -6016,46 +6017,46 @@ await element.dispatch_event("#source", "dragstart", {"dataTransfer": data_trans
 
 ## locator.drag_to(target, **kwargs)<a name="locator-drag-to">#</a>
 
-- `target` \<[Locator](#locator)> Locator of the element to drag to.<a name="locator-drag-to-option-target">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-drag-to-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-drag-to-option-no-wait-after">#</a>
-- `source_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Clicks on the source element at this point relative to the top-left corner of the element's padding box. If not specified, some visible point of the element is used.<a name="locator-drag-to-option-source-position">#</a>
+- `target` \<[Locator](#locator)> 要拖动到的元素的定位器.<a name="locator-drag-to-option-target">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-drag-to-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-drag-to-option-no-wait-after">#</a>
+- `source_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 此时相对于元素填充框的左上角单击源元素。如果没有指定，则使用元素的某个可见点.<a name="locator-drag-to-option-source-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `target_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Drops on the target element at this point relative to the top-left corner of the element's padding box. If not specified, some visible point of the element is used.<a name="locator-drag-to-option-target-position">#</a>
+- `target_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 此时相对于元素填充框的左上角落在目标元素上。如果没有指定，则使用元素的某个可见点.<a name="locator-drag-to-option-target-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-drag-to-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="locator-drag-to-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-drag-to-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="locator-drag-to-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-drag-to-return">#</a>
 
 ## locator.element_handle(**kwargs)<a name="locator-element-handle">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-element-handle-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-element-handle-option-timeout">#</a>
 - returns: \<[ElementHandle](#elementhandle)><a name="locator-element-handle-return">#</a>
 
-Resolves given locator to the first matching DOM element. If no elements matching the query are visible, waits for them up to a given timeout. If multiple elements match the selector, throws.
+解析给定的定位器到第一个匹配的DOM元素。如果没有匹配查询的元素可见，等待它们直到给定的超时。如果多个元素匹配该选择器，则抛出.
 
 ## locator.element_handles()<a name="locator-element-handles">#</a>
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]><a name="locator-element-handles-return">#</a>
 
-Resolves given locator to all matching DOM elements.
+解析所有匹配的DOM元素.
 
 ## locator.evaluate(expression, **kwargs)<a name="locator-evaluate">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="locator-evaluate-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="locator-evaluate-option-arg">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-evaluate-option-timeout">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="locator-evaluate-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="locator-evaluate-option-arg">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-evaluate-option-timeout">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="locator-evaluate-return">#</a>
 
-Returns the return value of `expression`.
+返回表达式的返回值.
 
-This method passes this handle as the first argument to `expression`.
+此方法将此句柄作为第一个参数传递给表达式.
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then `handle.evaluate` would wait for the promise to resolve and return its value.
+如果表达式返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 则`handle.evaluate` 将等待promise解析并返回其值.
 
-Examples:
+例子:
 
 - Sync
 
@@ -6073,15 +6074,15 @@ assert await tweets.evaluate("node => node.innerText") == "10 retweets"
 
 ## locator.evaluate_all(expression, **kwargs)<a name="locator-evaluate-all">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="locator-evaluate-all-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="locator-evaluate-all-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="locator-evaluate-all-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="locator-evaluate-all-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="locator-evaluate-all-return">#</a>
 
-The method finds all elements matching the specified locator and passes an array of matched elements as a first argument to `expression`. Returns the result of `expression` invocation.
+该方法查找与指定定位器匹配的所有元素，并将匹配元素的数组作为第一个参数传递给表达式。返回表达式调用的结果.
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [locator.evaluate_all(expression, **kwargs)](#locator-evaluate-all) would wait for the promise to resolve and return its value.
+如果表达式返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 则 [locator.evaluate_all(expression, **kwargs)](#locator-evaluate-all) 将等待promise解析并返回其值.
 
-Examples:
+例子:
 
 - Sync
 
@@ -6099,54 +6100,54 @@ div_counts = await elements("(divs, min) => divs.length >= min", 10)
 
 ## locator.evaluate_handle(expression, **kwargs)<a name="locator-evaluate-handle">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="locator-evaluate-handle-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="locator-evaluate-handle-option-arg">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-evaluate-handle-option-timeout">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="locator-evaluate-handle-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="locator-evaluate-handle-option-arg">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-evaluate-handle-option-timeout">#</a>
 - returns: \<[JSHandle](#jshandle)><a name="locator-evaluate-handle-return">#</a>
 
-Returns the return value of `expression` as a [JSHandle](#jshandle).
+返回表达式的返回值 as a [JSHandle](#jshandle).
 
-This method passes this handle as the first argument to `expression`.
+此方法将此句柄作为第一个参数传递给表达式.
 
-The only difference between [locator.evaluate(expression, **kwargs)](#locator-evaluate) and [locator.evaluate_handle(expression, **kwargs)](#locator-evaluate-handle) is that [locator.evaluate_handle(expression, **kwargs)](#locator-evaluate-handle) returns [JSHandle](#jshandle).
+ [locator.evaluate(expression, **kwargs)](#locator-evaluate) and [locator.evaluate_handle(expression, **kwargs)](#locator-evaluate-handle) 之间唯一不同的是 [locator.evaluate_handle(expression, **kwargs)](#locator-evaluate-handle) 返回 [JSHandle](#jshandle).
 
-If the function passed to the [locator.evaluate_handle(expression, **kwargs)](#locator-evaluate-handle) returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [locator.evaluate_handle(expression, **kwargs)](#locator-evaluate-handle) would wait for the promise to resolve and return its value.
+如果函数传递给 [locator.evaluate_handle(expression, **kwargs)](#locator-evaluate-handle)返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 则 [locator.evaluate_handle(expression, **kwargs)](#locator-evaluate-handle) 将等待promise解析并返回其值.
 
-See [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) for more details.
+详情查看 [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle).
 
 ## locator.fill(value, **kwargs)<a name="locator-fill">#</a>
 
 - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Value to set for the `\<input>`, `\<textarea>` or `[contenteditable]` element.<a name="locator-fill-option-value">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-fill-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-fill-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-fill-option-timeout">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-fill-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-fill-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-fill-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-fill-return">#</a>
 
-This method waits for [actionability](https://playwright.dev/python/docs/actionability) checks, focuses the element, fills it and triggers an `input` event after filling. Note that you can pass an empty string to clear the input field.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查，聚焦元素，填充它，并在填充后触发一个输入事件。请注意，您可以传递一个空字符串来清除输入字段.
 
-If the target element is not an `\<input>`, `\<textarea>` or `[contenteditable]` element, this method throws an error. However, if the element is inside the `\<label>` element that has an associated [control](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control), the control will be filled instead.
+如果目标元素不是 `\<input>`, `\<textarea>` or `[contenteditable]`, 此方法将抛出一个错误。但是，如果该元素位于`\<label>`元素中，且该元素具有关联控件，则该控件将被填充.
 
-To send fine-grained keyboard events, use [locator.type(text, **kwargs)](#locator-type).
+要发送细粒度的键盘事件，请使用 [locator.type(text, **kwargs)](#locator-type).
 
 ## locator.first<a name="locator-first">#</a>
 
 - returns: \<[Locator](#locator)><a name="locator-first-return">#</a>
 
-Returns locator to the first matching element.
+返回第一个匹配元素的定位符.
 
 ## locator.focus(**kwargs)<a name="locator-focus">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-focus-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-focus-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-focus-return">#</a>
 
 Calls [focus](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) on the element.
 
 ## locator.frame_locator(selector)<a name="locator-frame-locator">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to use when resolving DOM element. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="locator-frame-locator-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 解析DOM元素时使用的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="locator-frame-locator-option-selector">#</a>
 - returns: \<[FrameLocator](#framelocator)><a name="locator-frame-locator-return">#</a>
 
-When working with iframes, you can create a frame locator that will enter the iframe and allow selecting elements in that iframe:
+当使用 iframe 时，你可以创建一个frame 定位器，它将进入iframe 并允许选择该 iframe中的元素:
 
 - Sync
 
@@ -6164,200 +6165,200 @@ await locator.click()
 
 ## locator.get_attribute(name, **kwargs)<a name="locator-get-attribute">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Attribute name to get the value for.<a name="locator-get-attribute-option-name">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-get-attribute-option-timeout">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 属性名.<a name="locator-get-attribute-option-name">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-get-attribute-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="locator-get-attribute-return">#</a>
 
-Returns element attribute value.
+返回元素属性值.
 
 ## locator.highlight()<a name="locator-highlight">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-highlight-return">#</a>
 
-Highlight the corresponding element(s) on the screen. Useful for debugging, don't commit the code that uses [locator.highlight()](#locator-highlight).
+在屏幕上突出显示相应的元素。这对调试很有用，不要提交使用 [locator.highlight()](#locator-highlight) 的代码.
 
 ## locator.hover(**kwargs)<a name="locator-hover">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-hover-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="locator-hover-option-modifiers">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="locator-hover-option-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-hover-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="locator-hover-option-modifiers">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="locator-hover-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-hover-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="locator-hover-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-hover-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="locator-hover-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-hover-return">#</a>
 
-This method hovers over the element by performing the following steps:
+该方法通过执行以下步骤悬停在元素上:
 
-1. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-2. Scroll the element into view if needed.
-3. Use [page.mouse](#page-mouse) to hover over the center of the element, or the specified `position`.
-4. Wait for initiated navigations to either succeed or fail, unless `noWaitAfter` option is set.
+1. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+2. 如果需要，将元素滚动到视图中.
+3. 使鼠标停在元素中心或指定位置上.
+4. 等待发起的导航成功或失败，除非设置了`noWaitAfter`选项.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## locator.inner_html(**kwargs)<a name="locator-inner-html">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-inner-html-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-inner-html-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="locator-inner-html-return">#</a>
 
 Returns the `element.innerHTML`.
 
 ## locator.inner_text(**kwargs)<a name="locator-inner-text">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-inner-text-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-inner-text-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="locator-inner-text-return">#</a>
 
 Returns the `element.innerText`.
 
 ## locator.input_value(**kwargs)<a name="locator-input-value">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-input-value-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-input-value-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="locator-input-value-return">#</a>
 
-Returns `input.value` for `\<input>` or `\<textarea>` or `\<select>` element. Throws for non-input elements.
+返回输入 `\<input>` or `\<textarea>` or `\<select>`  元素的值, 排除非输入元素.
 
 ## locator.is_checked(**kwargs)<a name="locator-is-checked">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-is-checked-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-is-checked-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="locator-is-checked-return">#</a>
 
-Returns whether the element is checked. Throws if the element is not a checkbox or radio input.
+返回元素是否被选中。如果元素不是复选框或单选输入则排除.
 
 ## locator.is_disabled(**kwargs)<a name="locator-is-disabled">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-is-disabled-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-is-disabled-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="locator-is-disabled-return">#</a>
 
-Returns whether the element is disabled, the opposite of [enabled](https://playwright.dev/python/docs/actionability#enabled).
+返回该元素是否被禁用，与启用[enabled](https://playwright.dev/python/docs/actionability#enabled)相反.
 
 ## locator.is_editable(**kwargs)<a name="locator-is-editable">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-is-editable-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-is-editable-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="locator-is-editable-return">#</a>
 
-Returns whether the element is [editable](https://playwright.dev/python/docs/actionability#editable).
+返回元素是否可编辑[editable](https://playwright.dev/python/docs/actionability#editable).
 
 ## locator.is_enabled(**kwargs)<a name="locator-is-enabled">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-is-enabled-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-is-enabled-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="locator-is-enabled-return">#</a>
 
-Returns whether the element is [enabled](https://playwright.dev/python/docs/actionability#enabled).
+返回元素是否被启用[enabled](https://playwright.dev/python/docs/actionability#enabled).
 
 ## locator.is_hidden(**kwargs)<a name="locator-is-hidden">#</a>
 
 - `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** This option is ignored. [locator.is_hidden(**kwargs)](#locator-is-hidden) does not wait for the element to become hidden and returns immediately.<a name="locator-is-hidden-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="locator-is-hidden-return">#</a>
 
-Returns whether the element is hidden, the opposite of [visible](https://playwright.dev/python/docs/actionability#visible).
+返回元素是否隐藏，与可见 [visible](https://playwright.dev/python/docs/actionability#visible)相反.
 
 ## locator.is_visible(**kwargs)<a name="locator-is-visible">#</a>
 
 - `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** This option is ignored. [locator.is_visible(**kwargs)](#locator-is-visible) does not wait for the element to become visible and returns immediately.<a name="locator-is-visible-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="locator-is-visible-return">#</a>
 
-Returns whether the element is [visible](https://playwright.dev/python/docs/actionability#visible).
+返回元素是否可见[visible](https://playwright.dev/python/docs/actionability#visible).
 
 ## locator.last<a name="locator-last">#</a>
 
 - returns: \<[Locator](#locator)><a name="locator-last-return">#</a>
 
-Returns locator to the last matching element.
+返回最后一个匹配元素的定位符.
 
 ## locator.locator(selector, **kwargs)<a name="locator-locator">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to use when resolving DOM element. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="locator-locator-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 解析DOM元素时使用的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="locator-locator-option-selector">#</a>
 
-- `has` \<[Locator](#locator)> Matches elements containing an element that matches an inner locator. Inner locator is queried against the outer one. For example, `article` that has `text=Playwright` matches `\<article>\<div>Playwright\</div>\</article>`.<a name="locator-locator-option-has">#</a>
+- `has` \<[Locator](#locator)> 对selector选中的元素进行再次匹配, 匹配目标中的子元素, 例如: 匹配子元素的`text=Playwright`的元素  `\<article>\<div>Playwright\</div>\</article>`.<a name="locator-locator-option-has">#</a>
 
-    Note that outer and inner locators must belong to the same frame. Inner locator must not contain [FrameLocator](#framelocator)s.
+    请注意，外部和内部定位器必须属于同一个 frame. 内部定位器不能包含 [FrameLocator](#framelocator).
 
-- `has_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Matches elements containing specified text somewhere inside, possibly in a child or a descendant element. For example, `"Playwright"` matches `\<article>\<div>Playwright\</div>\</article>`.<a name="locator-locator-option-has-text">#</a>
+- `has_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 匹配包含指定文本的元素，可能在子元素或后代元素中,例如:`"Playwright"` 匹配 `\<article>\<div>Playwright\</div>\</article>`.<a name="locator-locator-option-has-text">#</a>
 
 - returns: \<[Locator](#locator)><a name="locator-locator-return">#</a>
 
-The method finds an element matching the specified selector in the `Locator`'s subtree.
+该方法在`Locator`的子树中查找与指定选择器匹配的元素.
 
 ## locator.nth(index)<a name="locator-nth">#</a>
 
 - `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="locator-nth-option-index">#</a>
 - returns: \<[Locator](#locator)><a name="locator-nth-return">#</a>
 
-Returns locator to the n-th matching element.
+返回第n个匹配元素的定位符.
 
 ## locator.page<a name="locator-page">#</a>
 
 - returns: \<[Page](#page)><a name="locator-page-return">#</a>
 
-A page this locator belongs to.
+这个定位器所属的页面.
 
 ## locator.press(key, **kwargs)<a name="locator-press">#</a>
 
-- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the key to press or a character to generate, such as `ArrowLeft` or `a`.<a name="locator-press-option-key">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `keydown` and `keyup` in milliseconds. Defaults to 0.<a name="locator-press-option-delay">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-press-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-press-option-timeout">#</a>
+- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要按下的`键名`或要生成的字符，如`ArrowLeft`或'a'.<a name="locator-press-option-key">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `keydown`和`keyup`之间的等待时间，单位是毫秒。默认为0.<a name="locator-press-option-delay">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-press-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-press-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-press-return">#</a>
 
-Focuses the element, and then uses [keyboard.down(key)](#keyboard-down) and [keyboard.up(key)](#keyboard-up).
+聚焦元素，然后使用 [keyboard.down(key)](#keyboard-down) and [keyboard.up(key)](#keyboard-up).
 
-`key` can specify the intended [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value or a single character to generate the text for. A superset of the `key` values can be found [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values). Examples of the keys are:
+key可以指定想要的 [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) 或是单个字符生成的文本,这里可以找到键值的超集。键的例子如下:
 
 `F1` - `F12`, `Digit0`- `Digit9`, `KeyA`- `KeyZ`, `Backquote`, `Minus`, `Equal`, `Backslash`, `Backspace`, `Tab`, `Delete`, `Escape`, `ArrowDown`, `End`, `Enter`, `Home`, `Insert`, `PageDown`, `PageUp`, `ArrowRight`, `ArrowUp`, etc.
 
-Following modification shortcuts are also supported: `Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
+还支持以下快捷键:`Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
 
-Holding down `Shift` will type the text that corresponds to the `key` in the upper case.
+按住`Shift`键将输入与大写键对应的文本.
 
-If `key` is a single character, it is case-sensitive, so the values `a` and `A` will generate different respective texts.
+如果`key`是单个字符，它是区分大小写的，因此值`a`和`A`将生成不同的文本.
 
-Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported as well. When specified with the modifier, modifier is pressed and being held while the subsequent key is being pressed.
+也支持快捷键，如键:“Control+o”或键:“Control+Shift+T”。当用修饰符指定时，修饰符被按下并被保持，而随后的键被按下.
 
 ## locator.screenshot(**kwargs)<a name="locator-screenshot">#</a>
 
-- `animations` \<"disabled"> When set to `"disabled"`, stops CSS animations, CSS transitions and Web Animations. Animations get different treatment depending on their duration:<a name="locator-screenshot-option-animations">#</a>
-    - finite animations are fast-forwarded to completion, so they'll fire `transitionend` event.
-    - infinite animations are canceled to initial state, and then played over after the screenshot.
-- `mask` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Locator](#locator)]> Specify locators that should be masked when the screenshot is taken. Masked elements will be overlayed with a pink box `#FF00FF` that completely covers its bounding box.<a name="locator-screenshot-option-mask">#</a>
-- `omit_background` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Hides default white background and allows capturing screenshots with transparency. Not applicable to `jpeg` images. Defaults to `false`.<a name="locator-screenshot-option-omit-background">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> The file path to save the image to. The screenshot type will be inferred from file extension. If `path` is a relative path, then it is resolved relative to the current working directory. If no path is provided, the image won't be saved to the disk.<a name="locator-screenshot-option-path">#</a>
-- `quality` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> The quality of the image, between 0-100. Not applicable to `png` images.<a name="locator-screenshot-option-quality">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-screenshot-option-timeout">#</a>
-- `type` \<"png"|"jpeg"> Specify screenshot type, defaults to `png`.<a name="locator-screenshot-option-type">#</a>
+- `animations` \<"disabled"> 当设置为`"disabled"`时，停止CSS动画，CSS转换和Web动画。动画根据其持续时间得到不同的处理:<a name="locator-screenshot-option-animations">#</a>
+    - 有限动画是快进到完成，所以他们会触发`transitionend`事件.
+    - 无限动画被取消到初始状态，然后在屏幕截图后播放.
+- `mask` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Locator](#locator)]> 指定在截屏时应该被屏蔽的定位器。被屏蔽的元素将被一个粉红色的框覆盖#FF00FF，完全覆盖该元素.<a name="locator-screenshot-option-mask">#</a>
+- `omit_background` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 隐藏默认的白色背景，并允许透明捕捉屏幕截图。不适用于`jpeg`图像。默认值为`false`.<a name="locator-screenshot-option-omit-background">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 保存镜像的文件路径, 屏幕截图类型将从文件扩展名推断。如果path是一个相对路径，那么它是相对于当前工作目录解析的。如果没有提供路径，映像将不会被保存到磁盘.<a name="locator-screenshot-option-path">#</a>
+- `quality` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 图像的质量，在0-100之间。不适用于png图像.<a name="locator-screenshot-option-quality">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-screenshot-option-timeout">#</a>
+- `type` \<"png"|"jpeg">指定截图类型，默认为`png`.<a name="locator-screenshot-option-type">#</a>
 - returns: \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)><a name="locator-screenshot-return">#</a>
 
-Returns the buffer with the captured screenshot.
+返回带有捕获的截图的缓冲区.
 
-This method waits for the [actionability](https://playwright.dev/python/docs/actionability) checks, then scrolls element into view before taking a screenshot. If the element is detached from DOM, the method throws an error.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查，然后在截屏之前将元素滚动到视图中。如果元素与DOM分离，该方法将抛出一个错误.
 
 ## locator.scroll_into_view_if_needed(**kwargs)<a name="locator-scroll-into-view-if-needed">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-scroll-into-view-if-needed-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-scroll-into-view-if-needed-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-scroll-into-view-if-needed-return">#</a>
 
-This method waits for [actionability](https://playwright.dev/python/docs/actionability) checks, then tries to scroll element into view, unless it is completely visible as defined by [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)'s `ratio`.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查，然后尝试滚动元素到视图中，除非它是完全可见的，由 [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)的比率定义.
 
 ## locator.select_option(**kwargs)<a name="locator-select-option">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-select-option-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-select-option-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-select-option-option-timeout">#</a>
-- `element` \<[ElementHandle](#elementhandle)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]> Option elements to select. Optional.<a name="locator-select-option-option-element">#</a>
-- `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]> Options to select by index. Optional.<a name="locator-select-option-option-index">#</a>
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Options to select by value. If the `\<select>` has the `multiple` attribute, all given options are selected, otherwise only the first option matching one of the passed options is selected. Optional.<a name="locator-select-option-option-value">#</a>
-- `label` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Options to select by label. If the `\<select>` has the `multiple` attribute, all given options are selected, otherwise only the first option matching one of the passed options is selected. Optional.<a name="locator-select-option-option-label">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-select-option-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-select-option-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-select-option-option-timeout">#</a>
+- `element` \<[ElementHandle](#elementhandle)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]> 要选择的选项。可选的.<a name="locator-select-option-option-element">#</a>
+- `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]> 按索引进行选择的选项。可选的.<a name="locator-select-option-option-index">#</a>
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 按值选择的选项。如果`\<select>`具有多个属性，则选择所有给定的选项，否则只选择与传递的选项之一匹配的第一个选项。可选的.<a name="locator-select-option-option-value">#</a>
+- `label` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 按标签进行选择的选项。如果`\<select>`具有多个属性，则选择所有给定的选项，否则只选择与传递的选项之一匹配的第一个选项。可选的.<a name="locator-select-option-option-label">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="locator-select-option-return">#</a>
 
-This method waits for [actionability](https://playwright.dev/python/docs/actionability) checks, waits until all specified options are present in the `\<select>` element and selects these options.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查，直到所有指定的选项都出现在`\<select>`元素中，然后选择这些选项.
 
-If the target element is not a `\<select>` element, this method throws an error. However, if the element is inside the `\<label>` element that has an associated [control](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control), the control will be used instead.
+如果目标元素不是`\<select>`元素，此方法将抛出一个错误。但是，如果该元素位于`\<label>`元素中，且该元素具有关联控件，则将使用该控件.
 
-Returns the array of option values that have been successfully selected.
+返回已成功选择的选项值的数组.
 
-Triggers a `change` and `input` event once all the provided options have been selected.
+一旦选择了所有提供的选项，就触发一个更改和输入事件.
 
 - Sync
 
@@ -6396,95 +6397,95 @@ element.select_option(value="blue", { index: 2 }, "red")
 
 ## locator.select_text(**kwargs)<a name="locator-select-text">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-select-text-option-force">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-select-text-option-timeout">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-select-text-option-force">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-select-text-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-select-text-return">#</a>
 
-This method waits for [actionability](https://playwright.dev/python/docs/actionability) checks, then focuses the element and selects all its text content.
+这个方法等待[可操作性](https://playwright.dev/python/docs/actionability)检查, 然后关注元素并选择其所有文本内容
 
 ## locator.set_checked(checked, **kwargs)<a name="locator-set-checked">#</a>
 
-- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to check or uncheck the checkbox.<a name="locator-set-checked-option-checked">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-set-checked-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-set-checked-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="locator-set-checked-option-position">#</a>
+- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否选中或不选中复选框.<a name="locator-set-checked-option-checked">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-set-checked-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-set-checked-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="locator-set-checked-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-set-checked-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="locator-set-checked-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-set-checked-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="locator-set-checked-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-set-checked-return">#</a>
 
-This method checks or unchecks an element by performing the following steps:
+这个方法通过执行以下步骤检查或取消检查一个元素:
 
-1. Ensure that matched element is a checkbox or a radio input. If not, this method throws.
-2. If the element already has the right checked state, this method returns immediately.
-3. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-4. Scroll the element into view if needed.
-5. Use [page.mouse](#page-mouse) to click in the center of the element.
-6. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-7. Ensure that the element is now checked or unchecked. If not, this method throws.
+1. 确保匹配的元素是一个复选框或单选输入。如果不是，则排除此方法.
+2. 如果元素已经具有正确的选中状态，则该方法立即返回.
+3. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+4. 如果需要，将元素滚动到视图中.
+5. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+6. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+7. 确保元素现在被选中或取消选中。如果不是，则抛出此方法.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## locator.set_input_files(files, **kwargs)<a name="locator-set-input-files">#</a>
 
 - `files` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[List](https://docs.python.org/3/library/typing.html#typing.List)[[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="locator-set-input-files-option-files">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
-    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
-    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-set-input-files-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-set-input-files-option-timeout">#</a>
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件名
+    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件类型
+    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 文件内容
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-set-input-files-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-set-input-files-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-set-input-files-return">#</a>
 
-This method expects `element` to point to an [input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
+这个方法期望元素指向一个输入元素 [input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
 
-Sets the value of the file input to these file paths or files. If some of the `filePaths` are relative paths, then they are resolved relative to the the current working directory. For empty array, clears the selected files.
+将文件输入的值设置为这些文件路径或文件。如果某些`filepath`是相对路径，那么它们将相对于当前工作目录进行解析。对于空数组，清除选定的文件.
 
 ## locator.tap(**kwargs)<a name="locator-tap">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-tap-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="locator-tap-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-tap-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="locator-tap-option-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-tap-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="locator-tap-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-tap-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="locator-tap-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-tap-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="locator-tap-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-tap-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="locator-tap-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-tap-return">#</a>
 
-This method taps the element by performing the following steps:
+这个方法通过执行以下步骤点击元素:
 
-1. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-2. Scroll the element into view if needed.
-3. Use [page.touchscreen](#page-touchscreen) to tap the center of the element, or the specified `position`.
-4. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
+1. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+2. 如果需要，将元素滚动到视图中.
+3. 点击页面中心或指定位置.
+4. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 > NOTE
 >
-> `element.tap()` requires that the `hasTouch` option of the browser context be set to true.
+> `element.tap()` 要求浏览器上下文的`hasTouch`选项设置为 True.
 
 ## locator.text_content(**kwargs)<a name="locator-text-content">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-text-content-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-text-content-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="locator-text-content-return">#</a>
 
 Returns the `node.textContent`.
 
 ## locator.type(text, **kwargs)<a name="locator-type">#</a>
 
-- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A text to type into a focused element.<a name="locator-type-option-text">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between key presses in milliseconds. Defaults to 0.<a name="locator-type-option-delay">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-type-option-no-wait-after">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-type-option-timeout">#</a>
+- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要输入到焦点元素中的文本.<a name="locator-type-option-text">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 按键之间的等待时间，单位是毫秒。默认为0.<a name="locator-type-option-delay">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-type-option-no-wait-after">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-type-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-type-return">#</a>
 
-Focuses the element, and then sends a `keydown`, `keypress`/`input`, and `keyup` event for each character in the text.
+聚焦元素，然后为文本中的每个字符发送 `keydown`, `keypress`/`input`, and `keyup`  事件.
 
-To press a special key, like `Control` or `ArrowDown`, use [locator.press(key, **kwargs)](#locator-press).
+要按一个特殊的键，如 `Control` or `ArrowDown`, 使用[locator.press(key, **kwargs)](#locator-press).
 
 - Sync
 
@@ -6500,7 +6501,7 @@ await element.type("hello") # types instantly
 await element.type("world", delay=100) # types slower, like a user
 ```
 
-An example of typing into a text field and then submitting the form:
+一个在文本框中输入然后提交表单的例子:
 
 - Sync
 
@@ -6520,41 +6521,41 @@ await element.press("Enter")
 
 ## locator.uncheck(**kwargs)<a name="locator-uncheck">#</a>
 
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="locator-uncheck-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="locator-uncheck-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="locator-uncheck-option-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="locator-uncheck-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="locator-uncheck-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="locator-uncheck-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-uncheck-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="locator-uncheck-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-uncheck-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="locator-uncheck-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-uncheck-return">#</a>
 
-This method checks the element by performing the following steps:
+这个方法通过执行以下步骤来检查元素:
 
-1. Ensure that element is a checkbox or a radio input. If not, this method throws. If the element is already unchecked, this method returns immediately.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the element, unless `force` option is set.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to click in the center of the element.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-6. Ensure that the element is now unchecked. If not, this method throws.
+1. 确保元素是一个复选框或单选输入。如果不是，则抛出此方法。如果元素已被选中，则此方法立即返回.
+2. 等待元素的[可操作性](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项.
+3. 如果需要，将元素滚动到视图中.
+4. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+6. 确保元素现在是未选中的。如果不是，则排除此方法.
 
-If the element is detached from the DOM at any moment during the action, this method throws.
+如果元素在动作期间的任何时刻与DOM分离，此方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 ## locator.wait_for(**kwargs)<a name="locator-wait-for">#</a>
 
-- `state` \<"attached"|"detached"|"visible"|"hidden"> Defaults to `'visible'`. Can be either:<a name="locator-wait-for-option-state">#</a>
-    - `'attached'` - wait for element to be present in DOM.
-    - `'detached'` - wait for element to not be present in DOM.
-    - `'visible'` - wait for element to have non-empty bounding box and no `visibility:hidden`. Note that element without any content or with `display:none` has an empty bounding box and is not considered visible.
-    - `'hidden'` - wait for element to be either detached from DOM, or have an empty bounding box or `visibility:hidden`. This is opposite to the `'visible'` option.
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="locator-wait-for-option-timeout">#</a>
+- `state` \<"attached"|"detached"|"visible"|"hidden"> 默认为`"visible"`。可以是:<a name="locator-wait-for-option-state">#</a>
+    - `'attached'` - 等待元素出现在DOM中.
+    - `'detached'` - 等待元素在DOM中不存在.
+    - `'visible'` - 等待元素有非空的边界框 且 没有 `visibility:hidden`.注意，没有任何内容或带有`display:none` 的元素有一个空的边界框，因此不被认为是可见的.
+    - `'hidden'` - 等待元素从DOM中分离出来, 或有一个空的边界框或' visibility:hidden '。这与`“visible”`选项相反.
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="locator-wait-for-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-wait-for-return">#</a>
 
-Returns when element specified by locator satisfies the `state` option.
+当 locator 指定的元素满足状态选项时返回.
 
-If target element already satisfies the condition, the method returns immediately. Otherwise, waits for up to `timeout` milliseconds until the condition is met.
+如果目标元素已经满足条件，则该方法立即返回。否则，将等待`超时`毫秒，直到满足条件.
 
 - Sync
 
@@ -6576,9 +6577,9 @@ await order_sent.wait_for()
 
 # Mouse
 
-The Mouse class operates in main-frame CSS pixels relative to the top-left corner of the viewport.
+Mouse类操作的是相对于视口左上角的CSS 像素.
 
-Every `page` object has its own Mouse, accessible with [page.mouse](#page-mouse).
+每个`页面`对象都有自己的鼠标，可以通过 [page.mouse](#page-mouse).
 
 - Sync
 
@@ -6617,59 +6618,59 @@ await page.mouse.up()
 
 - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="mouse-click-option-x">#</a>
 - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="mouse-click-option-y">#</a>
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="mouse-click-option-button">#</a>
-- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> defaults to 1. See [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="mouse-click-option-click-count">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="mouse-click-option-delay">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="mouse-click-option-button">#</a>
+- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 默认为1,详情查看  [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="mouse-click-option-click-count">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="mouse-click-option-delay">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="mouse-click-return">#</a>
 
-Shortcut for [mouse.move(x, y, **kwargs)](#mouse-move), [mouse.down(**kwargs)](#mouse-down), [mouse.up(**kwargs)](#mouse-up).
+ [mouse.move(x, y, **kwargs)](#mouse-move), [mouse.down(**kwargs)](#mouse-down), [mouse.up(**kwargs)](#mouse-up) 的三合一快捷键
 
 ## mouse.dblclick(x, y, **kwargs)<a name="mouse-dblclick">#</a>
 
 - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="mouse-dblclick-option-x">#</a>
 - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="mouse-dblclick-option-y">#</a>
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="mouse-dblclick-option-button">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="mouse-dblclick-option-delay">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="mouse-dblclick-option-button">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="mouse-dblclick-option-delay">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="mouse-dblclick-return">#</a>
 
-Shortcut for [mouse.move(x, y, **kwargs)](#mouse-move), [mouse.down(**kwargs)](#mouse-down), [mouse.up(**kwargs)](#mouse-up), [mouse.down(**kwargs)](#mouse-down) and [mouse.up(**kwargs)](#mouse-up).
+ [mouse.move(x, y, **kwargs)](#mouse-move), [mouse.down(**kwargs)](#mouse-down), [mouse.up(**kwargs)](#mouse-up), [mouse.down(**kwargs)](#mouse-down) and [mouse.up(**kwargs)](#mouse-up) 的快捷键
 
 ## mouse.down(**kwargs)<a name="mouse-down">#</a>
 
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="mouse-down-option-button">#</a>
-- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> defaults to 1. See [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="mouse-down-option-click-count">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="mouse-down-option-button">#</a>
+- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 默认为1,详情查看  [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="mouse-down-option-click-count">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="mouse-down-return">#</a>
 
-Dispatches a `mousedown` event.
+发送一个 `mousedown` 事件.
 
 ## mouse.move(x, y, **kwargs)<a name="mouse-move">#</a>
 
 - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="mouse-move-option-x">#</a>
 - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="mouse-move-option-y">#</a>
-- `steps` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> defaults to 1. Sends intermediate `mousemove` events.<a name="mouse-move-option-steps">#</a>
+- `steps` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 默认为1. 发送 `mousemove` 事件.<a name="mouse-move-option-steps">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="mouse-move-return">#</a>
 
-Dispatches a `mousemove` event.
+发送一个 `mousemove` 事件.
 
 ## mouse.up(**kwargs)<a name="mouse-up">#</a>
 
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="mouse-up-option-button">#</a>
-- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> defaults to 1. See [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="mouse-up-option-click-count">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="mouse-up-option-button">#</a>
+- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 默认为1,详情查看  [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="mouse-up-option-click-count">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="mouse-up-return">#</a>
 
-Dispatches a `mouseup` event.
+发送一个 `mouseup` 事件.
 
 ## mouse.wheel(delta_x, delta_y)<a name="mouse-wheel">#</a>
 
-- `delta_x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Pixels to scroll horizontally.<a name="mouse-wheel-option-delta-x">#</a>
-- `delta_y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Pixels to scroll vertically.<a name="mouse-wheel-option-delta-y">#</a>
+- `delta_x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 像素水平滚动.<a name="mouse-wheel-option-delta-x">#</a>
+- `delta_y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 垂直滚动的像素.<a name="mouse-wheel-option-delta-y">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="mouse-wheel-return">#</a>
 
-Dispatches a `wheel` event.
+发送一个 `wheel` 事件.
 
 > NOTE
 >
-> Wheel events may cause scrolling if they are not handled, and this method does not wait for the scrolling to finish before returning.
+> 如果Wheel事件未被处理，则可能导致滚动，并且此方法在返回之前不会等待滚动完成
 
 
 
@@ -6677,9 +6678,9 @@ Dispatches a `wheel` event.
 
 - extends: [EventEmitter](https://pyee.readthedocs.io/en/latest/#pyee.BaseEventEmitter)
 
-Page provides methods to interact with a single tab in a [Browser](#browser), or an [extension background page](https://developer.chrome.com/extensions/background_pages) in Chromium. One [Browser](#browser) instance might have multiple [Page](#page) instances.
+页面提供了与[Browser](#browser)中的单个标签交互的方法，或在Chromium的[extension background page](https://developer.chrome.com/extensions/background_pages)。一个[Browser](#browser)实例可能有多个[Page](#page)实例
 
-This example creates a page, navigates it to a URL, and then saves a screenshot:
+这个例子创建了一个页面，将它导航到一个URL，然后保存了一个截图:
 
 - Sync
 
@@ -6720,15 +6721,15 @@ async def main():
 asyncio.run(main())
 ```
 
-The Page class emits various events (described below) which can be handled using any of Node's native [`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter) methods, such as `on`, `once` or `removeListener`.
+Page类会发出各种各样的事件(如下所述)，这些事件可以使用Node的任何本地[`EventEmitter`](https://nodejs.org/api/events.html#events_class_eventemitter)方法来处理，比如`on`、`once`或`removeListener `.
 
-This example logs a message for a single page `load` event:
+下面的例子记录了单个页面加载事件的消息:
 
 ```python
 page.once("load", lambda: print("page loaded!"))
 ```
 
-To unsubscribe from events use the `removeListener` method:
+要取消订阅事件，请使用 `removeListener` 方法:
 
 ```python
 def log_request(intercepted_request):
@@ -6852,17 +6853,17 @@ page.remove_listener("request", log_request)
 
 - type: \<[Page](#page)>
 
-Emitted when the page closes.
+页面关闭时触发.
 
 ## page.on("console")<a name="page-event-console">#</a>
 
 - type: \<[ConsoleMessage](#consolemessage)>
 
-Emitted when JavaScript within the page calls one of console API methods, e.g. `console.log` or `console.dir`. Also emitted if the page throws an error or a warning.
+当页面中的JavaScript调用控制台API方法之一时触发，例如`console.log`或`console.dir`。当页面抛出错误或警告时也会触发.
 
-The arguments passed into `console.log` appear as arguments on the event handler.
+传递到`console.log`的参数显示为事件处理程序上的参数.
 
-An example of handling `console` event:
+一个处理控制台事件的例子:
 
 - Sync
 
@@ -6892,9 +6893,9 @@ await page.evaluate("console.log('hello', 5, {foo: 'bar'})")
 
 - type: \<[Page](#page)>
 
-Emitted when the page crashes. Browser pages might crash if they try to allocate too much memory. When the page crashes, ongoing and subsequent operations will throw.
+当页面崩溃时触发。如果试图分配过多的内存，浏览器页面可能会崩溃。当页面崩溃时，将抛出正在进行的和后续的操作.
 
-The most common way to deal with crashes is to catch an exception:
+处理崩溃最常见的方法是捕获一个异常:
 
 - Sync
 
@@ -6924,31 +6925,31 @@ except Error as e:
 
 - type: \<[Dialog](#dialog)>
 
-Emitted when a JavaScript dialog appears, such as `alert`, `prompt`, `confirm` or `beforeunload`. Listener **must** either [dialog.accept(**kwargs)](#dialog-accept) or [dialog.dismiss()](#dialog-dismiss) the dialog - otherwise the page will [freeze](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop#never_blocking) waiting for the dialog, and actions like click will never finish.
+当JavaScript对话框出现时触发，例如 `alert`, `prompt`, `confirm` or `beforeunload`. 必须要么 [dialog.accept(**kwargs)](#dialog-accept) 要么[dialog.dismiss()](#dialog-dismiss) 对话框-否则页面会冻结等待对话框，像click这样的动作将永远不会结束.
 
 
 
 > NOTE
 >
-> When no [page.on("dialog")](#page-event-dialog) listeners are present, all dialogs are automatically dismissed.
+> 当没有 [page.on("dialog")](#page-event-dialog) 监听器时，所有的对话框都会被自动取消.
 
 ## page.on("domcontentloaded")<a name="page-event-dom-content-loaded">#</a>
 
 - type: \<[Page](#page)>
 
-Emitted when the JavaScript [`DOMContentLoaded`](https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded) event is dispatched.
+当发送 JavaScript [`DOMContentLoaded`](https://developer.mozilla.org/en-US/docs/Web/Events/DOMContentLoaded) 事件时触发.
 
 ## page.on("download")<a name="page-event-download">#</a>
 
 - type: \<[Download](#download)>
 
-Emitted when attachment download started. User can access basic file operations on downloaded content via the passed [Download](#download) instance.
+附件下载开始时发出。用户可以通过传递的 [Download](#download) 实例访问已下载内容的基本文件操作.
 
 ## page.on("filechooser")<a name="page-event-file-chooser">#</a>
 
 - type: \<[FileChooser](#filechooser)>
 
-Emitted when a file chooser is supposed to appear, such as after clicking the `\<input type=file>`. Playwright can respond to it via setting the input files using [file_chooser.set_files(files, **kwargs)](#file-chooser-set-files) that can be uploaded after that.
+当一个文件选择器应该出现时发出，例如在单击 `\<input type=file>`. Playwright 可以通过使用[file_chooser.set_files(files, **kwargs)](#file-chooser-set-files) 设置输入文件来响应它.
 
 ```python
 page.on("filechooser", lambda file_chooser: file_chooser.set_files("/tmp/myfile.pdf"))
@@ -6958,39 +6959,39 @@ page.on("filechooser", lambda file_chooser: file_chooser.set_files("/tmp/myfile.
 
 - type: \<[Frame](#frame)>
 
-Emitted when a frame is attached.
+附加 frame 时触发.
 
 ## page.on("framedetached")<a name="page-event-frame-detached">#</a>
 
 - type: \<[Frame](#frame)>
 
-Emitted when a frame is detached.
+分离 frame 时触发.
 
 ## page.on("framenavigated")<a name="page-event-frame-navigated">#</a>
 
 - type: \<[Frame](#frame)>
 
-Emitted when a frame is navigated to a new url.
+当一个frame 导航到一个新url时触发.
 
 ## page.on("load")<a name="page-event-load">#</a>
 
 - type: \<[Page](#page)>
 
-Emitted when the JavaScript [`load`](https://developer.mozilla.org/en-US/docs/Web/Events/load) event is dispatched.
+当分派JavaScript加载  [`load`](https://developer.mozilla.org/en-US/docs/Web/Events/load) 事件时触发
 
 ## page.on("pageerror")<a name="page-event-page-error">#</a>
 
 - type: \<[Error](#error)>
 
-Emitted when an uncaught exception happens within the page.
+当页面内发生未捕获的异常时触发.
 
 ## page.on("popup")<a name="page-event-popup">#</a>
 
 - type: \<[Page](#page)>
 
-Emitted when the page opens a new tab or window. This event is emitted in addition to the [browser_context.on("page")](#browser-context-event-page), but only for popups relevant to this page.
+当页面打开新选项卡或窗口时触发。这个事件是在 [browser_context.on("page")](#browser-context-event-page)之外触发的，但只针对与该页相关的弹出窗口.
 
-The earliest moment that page is available is when it has navigated to the initial url. For example, when opening a popup with `window.open('http://example.com')`, this event will fire when the network request to "[http://example.com"](http://example.com"/) is done and its response has started loading in the popup.
+该页面可用的最早时刻是当它已导航到初始url。例如，当用 `window.open('http://example.com')`打开一个弹出窗口时，这个事件将在网络请求"[http://example.com"](http://example.com"/) 完成并在弹出窗口中开始加载响应时触发.
 
 - Sync
 
@@ -7012,62 +7013,62 @@ print(await popup.evaluate("location.href"))
 
 > NOTE
 >
-> Use [page.wait_for_load_state(**kwargs)](#page-wait-for-load-state) to wait until the page gets to a particular state (you should not need it in most cases).
+> 使用[page.wait_for_load_state(**kwargs)](#page-wait-for-load-state) 等待页面到达特定的状态(在大多数情况下不需要它).
 
 ## page.on("request")<a name="page-event-request">#</a>
 
 - type: \<[Request](#request)>
 
-Emitted when a page issues a request. The [request](#request) object is read-only. In order to intercept and mutate requests, see [page.route(url, handler, **kwargs)](#page-route) or [browser_context.route(url, handler, **kwargs)](#browser-context-route).
+当页面发出请求时触发。[request](#request)对象是只读的。要拦截和修改请求，请参阅页面 [page.route(url, handler, **kwargs)](#page-route) or [browser_context.route(url, handler, **kwargs)](#browser-context-route).
 
 ## page.on("requestfailed")<a name="page-event-request-failed">#</a>
 
 - type: \<[Request](#request)>
 
-Emitted when a request fails, for example by timing out.
+当请求失败时触发，例如超时.
 
 > NOTE
 >
-> HTTP Error responses, such as 404 or 503, are still successful responses from HTTP standpoint, so request will complete with [page.on("requestfinished")](#page-event-request-finished) event and not with [page.on("requestfailed")](#page-event-request-failed). A request will only be considered failed when the client cannot get an HTTP response from the server, e.g. due to network error net::ERR_FAILED.
+> HTTP错误响应，如404或503，从HTTP的角度来看，仍然是成功的响应，因此请求将以 [page.on("requestfinished")](#page-event-request-finished) 事件完成，而不是[page.on("requestfailed")](#page-event-request-failed). 只有当客户端无法从服务器获得HTTP响应时，请求才会被认为失败，例如由于网络错误 net::ERR_FAILED.
 
 ## page.on("requestfinished")<a name="page-event-request-finished">#</a>
 
 - type: \<[Request](#request)>
 
-Emitted when a request finishes successfully after downloading the response body. For a successful response, the sequence of events is `request`, `response` and `requestfinished`.
+在下载响应体后，请求成功完成时触发。对于一个成功的响应，事件序列是 `request`, `response` and `requestfinished`.
 
 ## page.on("response")<a name="page-event-response">#</a>
 
 - type: \<[Response](#response)>
 
-Emitted when [response](#response) status and headers are received for a request. For a successful response, the sequence of events is `request`, `response` and `requestfinished`.
+当收到请求的[Response](#response)状态和报头时触发。对于一个成功的响应，事件序列是 `request`, `response` and `requestfinished`.
 
 ## page.on("websocket")<a name="page-event-web-socket">#</a>
 
 - type: \<[WebSocket](#websocket)>
 
-Emitted when [WebSocket](#websocket) request is sent.
+ [WebSocket](#websocket) 请求发送时触发.
 
 ## page.on("worker")<a name="page-event-worker">#</a>
 
 - type: \<[Worker](#worker)>
 
-Emitted when a dedicated [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) is spawned by the page.
+当页面生成一个专用的 [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) 时触发.
 
 ## page.add_init_script(**kwargs)<a name="page-add-init-script">#</a>
 
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to the JavaScript file. If `path` is a relative path, then it is resolved relative to the current working directory. Optional.<a name="page-add-init-script-option-path">#</a>
-- `script` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Script to be evaluated in all pages in the browser context. Optional.<a name="page-add-init-script-option-script">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> JavaScript 文件的路径. 如果path是一个相对路径，那么它是相对于当前工作目录解析的。可选的.<a name="page-add-init-script-option-path">#</a>
+- `script` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 在浏览器上下文中所有页面中计算的脚本。可选的.<a name="page-add-init-script-option-script">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-add-init-script-return">#</a>
 
-Adds a script which would be evaluated in one of the following scenarios:
+添加一个脚本，该脚本将在以下场景之一中进行评估:
 
-- Whenever the page is navigated.
-- Whenever the child frame is attached or navigated. In this case, the script is evaluated in the context of the newly attached frame.
+- 当页面被导航时.
+- 当附加或导航子框架时。在这种情况下，脚本将在新附加的框架的上下文中计算.
 
-The script is evaluated after the document was created but before any of its scripts were run. This is useful to amend the JavaScript environment, e.g. to seed `Math.random`.
+在创建文档之后，但在运行文档的任何脚本之前，对脚本进行计算。这对于修改JavaScript环境是很有用的，例如 `Math.random`.
 
-An example of overriding `Math.random` before the page loads:
+一个重写 `Math.random` 的例子:
 
 ```js
 // preload.js
@@ -7090,160 +7091,160 @@ await page.add_init_script(path="./preload.js")
 
 > NOTE
 >
-> The order of evaluation of multiple scripts installed via [browser_context.add_init_script(**kwargs)](#browser-context-add-init-script) and [page.add_init_script(**kwargs)](#page-add-init-script) is not defined.
+> 通过 [browser_context.add_init_script(**kwargs)](#browser-context-add-init-script) and [page.add_init_script(**kwargs)](#page-add-init-script)安装的多个脚本的计算顺序没有定义.
 
 ## page.add_script_tag(**kwargs)<a name="page-add-script-tag">#</a>
 
-- `content` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Raw JavaScript content to be injected into frame.<a name="page-add-script-tag-option-content">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to the JavaScript file to be injected into frame. If `path` is a relative path, then it is resolved relative to the current working directory.<a name="page-add-script-tag-option-path">#</a>
-- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Script type. Use 'module' in order to load a Javascript ES6 module. See [script](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) for more details.<a name="page-add-script-tag-option-type">#</a>
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> URL of a script to be added.<a name="page-add-script-tag-option-url">#</a>
+- `content` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要注入帧的原始JavaScript内容.<a name="page-add-script-tag-option-content">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 要注入帧的JavaScript文件的路径,如果`path`是一个相对路径，那么它是相对于当前工作目录解析的.<a name="page-add-script-tag-option-path">#</a>
+- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JS脚本类型。使用“module”来加载一个Javascript ES6模块。详情请参阅 [script](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script) .<a name="page-add-script-tag-option-type">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要添加的脚本的url.<a name="page-add-script-tag-option-url">#</a>
 - returns: \<[ElementHandle](#elementhandle)><a name="page-add-script-tag-return">#</a>
 
-Adds a `\<script>` tag into the page with the desired url or content. Returns the added tag when the script's onload fires or when the script content was injected into frame.
+添加一个`\<script>` 标签到页面所需的url或内容. 当脚本的onload触发或脚本内容被注入帧时，返回添加的标签.
 
-Shortcut for main frame's [frame.add_script_tag(**kwargs)](#frame-add-script-tag).
+主frame [frame.add_script_tag(**kwargs)](#frame-add-script-tag) 的快捷方式.
 
 ## page.add_style_tag(**kwargs)<a name="page-add-style-tag">#</a>
 
-- `content` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Raw CSS content to be injected into frame.<a name="page-add-style-tag-option-content">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to the CSS file to be injected into frame. If `path` is a relative path, then it is resolved relative to the current working directory.<a name="page-add-style-tag-option-path">#</a>
+- `content` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 原始的CSS内容注入到帧.<a name="page-add-style-tag-option-content">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 要注入帧的CSS文件的路径, 如果path是一个相对路径，那么它是相对于当前工作目录解析的.<a name="page-add-style-tag-option-path">#</a>
 - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> URL of the `\<link>` tag.<a name="page-add-style-tag-option-url">#</a>
 - returns: \<[ElementHandle](#elementhandle)><a name="page-add-style-tag-return">#</a>
 
-Adds a `\<link rel="stylesheet">` tag into the page with the desired url or a `\<style type="text/css">` tag with the content. Returns the added tag when the stylesheet's onload fires or when the CSS content was injected into frame.
+添加一个 `\<link rel="stylesheet">` 标签到页面所需的url 或 `\<style type="text/css">` 标签时. 当样式表的onload触发时，或者当CSS内容被注入框架时，返回添加的标签.
 
-Shortcut for main frame's [frame.add_style_tag(**kwargs)](#frame-add-style-tag).
+主框架的 [frame.add_style_tag(**kwargs)](#frame-add-style-tag) 快捷方式.
 
 ## page.bring_to_front()<a name="page-bring-to-front">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-bring-to-front-return">#</a>
 
-Brings page to front (activates tab).
+将页面放到前面(激活标签).
 
 ## page.check(selector, **kwargs)<a name="page-check">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-check-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-check-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-check-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="page-check-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-check-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-check-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-check-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="page-check-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-check-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-check-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="page-check-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-check-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-check-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="page-check-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-check-return">#</a>
 
-This method checks an element matching `selector` by performing the following steps:
+这个方法通过以下步骤检查元素匹配选择器::
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Ensure that matched element is a checkbox or a radio input. If not, this method throws. If the element is already checked, this method returns immediately.
-3. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-4. Scroll the element into view if needed.
-5. Use [page.mouse](#page-mouse) to click in the center of the element.
-6. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-7. Ensure that the element is now checked. If not, this method throws.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 确保匹配的元素是一个复选框或单选输入。如果不是，则排除此方法。如果元素已被选中，则该方法立即返回.
+3. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+4. 如果需要，将元素滚动到视图中.
+5. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+6. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+7. 确保元素现在被选中。如果不是，则排除此方法.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
-Shortcut for main frame's [frame.check(selector, **kwargs)](#frame-check).
+主框架 [frame.check(selector, **kwargs)](#frame-check) 的快捷方式.
 
 ## page.click(selector, **kwargs)<a name="page-click">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-click-option-selector">#</a>
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="page-click-option-button">#</a>
-- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> defaults to 1. See [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="page-click-option-click-count">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="page-click-option-delay">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-click-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="page-click-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-click-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="page-click-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-click-option-selector">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="page-click-option-button">#</a>
+- `click_count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 默认为1,详情查看  [UIEvent.detail](https://developer.mozilla.org/en-US/docs/Web/API/UIEvent/detail).<a name="page-click-option-click-count">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="page-click-option-delay">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-click-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="page-click-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-click-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="page-click-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-click-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-click-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="page-click-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-click-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-click-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="page-click-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-click-return">#</a>
 
-This method clicks an element matching `selector` by performing the following steps:
+这个方法通过执行以下步骤点击元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to click in the center of the element, or the specified `position`.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+3. 如果需要，将元素滚动到视图中.
+4. 使用 [page.mouse](#page-mouse) 单击元素的中心, or the specified `position`.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
-Shortcut for main frame's [frame.click(selector, **kwargs)](#frame-click).
+主框架 [frame.click(selector, **kwargs)](#frame-click) 的快捷方式.
 
 ## page.close(**kwargs)<a name="page-close">#</a>
 
-- `run_before_unload` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Defaults to `false`. Whether to run the [before unload](https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload) page handlers.<a name="page-close-option-run-before-unload">#</a>
+- `run_before_unload` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 默认为`false`。是否运行卸载前页面处理程序 [before unload](https://developer.mozilla.org/en-US/docs/Web/Events/beforeunload) .<a name="page-close-option-run-before-unload">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-close-return">#</a>
 
-If `run_before_unload` is `false`, does not run any unload handlers and waits for the page to be closed. If `run_before_unload` is `true` the method will run unload handlers, but will **not** wait for the page to close.
+如果`run_before_unload` is `false`, 则不运行任何卸载处理程序，并等待关闭页面. 如果`run_before_unload` is `true` 该方法将运行卸载处理程序，但`不会等待`页面关闭.
 
-By default, `page.close()` **does not** run `beforeunload` handlers.
+默认情况下, `page.close()` 不会在卸载处理程序之前运行.
 
 > NOTE
 >
-> if `run_before_unload` is passed as true, a `beforeunload` dialog might be summoned and should be handled manually via [page.on("dialog")](#page-event-dialog) event.
+> 如果`run_before_unload` 被传递为true，一个 `beforeunload` 对话框可能会被调用，并且应该通过 [page.on("dialog")](#page-event-dialog) 事件手动处理.
 
 ## page.content()<a name="page-content">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-content-return">#</a>
 
-Gets the full HTML contents of the page, including the doctype.
+获取页面的完整HTML内容，包括文档类型.
 
 ## page.context<a name="page-context">#</a>
 
 - returns: \<[BrowserContext](#browsercontext)><a name="page-context-return">#</a>
 
-Get the browser context that the page belongs to.
+获取页面所属的浏览器上下文.
 
 ## page.dblclick(selector, **kwargs)<a name="page-dblclick">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-dblclick-option-selector">#</a>
-- `button` \<"left"|"right"|"middle"> Defaults to `left`.<a name="page-dblclick-option-button">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `mousedown` and `mouseup` in milliseconds. Defaults to 0.<a name="page-dblclick-option-delay">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-dblclick-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="page-dblclick-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-dblclick-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="page-dblclick-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-dblclick-option-selector">#</a>
+- `button` \<"left"|"right"|"middle"> 默认左 `left`.<a name="page-dblclick-option-button">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `mousedown`和`mouseup`之间的等待时间，单位是毫秒。默认为0.<a name="page-dblclick-option-delay">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-dblclick-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="page-dblclick-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-dblclick-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="page-dblclick-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-dblclick-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-dblclick-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="page-dblclick-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-dblclick-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-dblclick-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="page-dblclick-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-dblclick-return">#</a>
 
-This method double clicks an element matching `selector` by performing the following steps:
+该方法通过执行以下步骤双击元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to double click in the center of the element, or the specified `position`.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set. Note that if the first click of the `dblclick()` triggers a navigation event, this method will throw.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+3. 如果需要，将元素滚动到视图中.
+4. 使用 [page.mouse](#page-mouse) 方法,双击元素中心位置.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.该方法执行以下步骤双击元素, 注意，如果`dblclick()`的第一次单击触发了一个导航事件，则该方法将抛出.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 > NOTE
 >
-> `page.dblclick()` dispatches two `click` events and a single `dblclick` event.
+> `page.dblclick()` 分发两个 `click` 事件和一个 `dblclick` 事件.
 
-Shortcut for main frame's [frame.dblclick(selector, **kwargs)](#frame-dblclick).
+主框架 [frame.dblclick(selector, **kwargs)](#frame-dblclick) 的快捷方式.
 
 ## page.dispatch_event(selector, type, **kwargs)<a name="page-dispatch-event">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-dispatch-event-option-selector">#</a>
-- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> DOM event type: `"click"`, `"dragstart"`, etc.<a name="page-dispatch-event-option-type">#</a>
-- `event_init` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional event-specific initialization properties.<a name="page-dispatch-event-option-event-init">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-dispatch-event-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-dispatch-event-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-dispatch-event-option-selector">#</a>
+- `type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> DOM事件类型:`"click"`， `"dragstart"`等.<a name="page-dispatch-event-option-type">#</a>
+- `event_init` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 可选的特定于事件的初始化属性.<a name="page-dispatch-event-option-event-init">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-dispatch-event-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-dispatch-event-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-dispatch-event-return">#</a>
 
-The snippet below dispatches the `click` event on the element. Regardless of the visibility state of the element, `click` is dispatched. This is equivalent to calling [element.click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click).
+下面的代码片段分派元素上的`单击`事件。无论元素的可见性状态如何，单击都将被分派。这相当于调用[element.click()](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/click).
 
 - Sync
 
@@ -7257,9 +7258,9 @@ page.dispatch_event("button#submit", "click")
 await page.dispatch_event("button#submit", "click")
 ```
 
-Under the hood, it creates an instance of an event based on the given `type`, initializes it with `event_init` properties and dispatches it on the element. Events are `composed`, `cancelable` and bubble by default.
+在底层，它根据给定的类型创建一个事件实例，使用`event_init`属性初始化它，并在元素上分派它。默认情况下，事件是组合的、可取消的和冒泡的.
 
-Since `event_init` is event-specific, please refer to the events documentation for the lists of initial properties:
+由于`event_init`是特定于事件的，请参考事件文档中的初始属性列表:
 
 - [DragEvent](https://developer.mozilla.org/en-US/docs/Web/API/DragEvent/DragEvent)
 - [FocusEvent](https://developer.mozilla.org/en-US/docs/Web/API/FocusEvent/FocusEvent)
@@ -7269,7 +7270,7 @@ Since `event_init` is event-specific, please refer to the events documentation f
 - [TouchEvent](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/TouchEvent)
 - [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event/Event)
 
-You can also specify `JSHandle` as the property value if you want live objects to be passed into the event:
+如果你想要将活动对象传递到事件中，你也可以指定`jhandle`作为属性值:
 
 - Sync
 
@@ -7291,36 +7292,36 @@ await page.dispatch_event("#source", "dragstart", { "dataTransfer": data_transfe
 
 - `source` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-drag-and-drop-option-source">#</a>
 - `target` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-drag-and-drop-option-target">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-drag-and-drop-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-drag-and-drop-option-no-wait-after">#</a>
-- `source_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Clicks on the source element at this point relative to the top-left corner of the element's padding box. If not specified, some visible point of the element is used.<a name="page-drag-and-drop-option-source-position">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-drag-and-drop-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-drag-and-drop-option-no-wait-after">#</a>
+- `source_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 此时相对于元素填充框的左上角单击源元素。如果没有指定，则使用元素的某个可见点.<a name="page-drag-and-drop-option-source-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-drag-and-drop-option-strict">#</a>
-- `target_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Drops on the target element at this point relative to the top-left corner of the element's padding box. If not specified, some visible point of the element is used.<a name="page-drag-and-drop-option-target-position">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-drag-and-drop-option-strict">#</a>
+- `target_position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 此时相对于元素填充框的左上角落在目标元素上。如果没有指定，则使用元素的某个可见点.<a name="page-drag-and-drop-option-target-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-drag-and-drop-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="page-drag-and-drop-option-trial">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-drag-and-drop-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="page-drag-and-drop-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-drag-and-drop-return">#</a>
 
 ## page.emulate_media(**kwargs)<a name="page-emulate-media">#</a>
 
-- `color_scheme` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|"light"|"dark"|"no-preference"> Emulates `'prefers-colors-scheme'` media feature, supported values are `'light'`, `'dark'`, `'no-preference'`. Passing `null` disables color scheme emulation.<a name="page-emulate-media-option-color-scheme">#</a>
+- `color_scheme` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|"light"|"dark"|"no-preference"> 模拟`'prefers-colors-scheme'` 媒体特性，支持的值为 `'light'`, `'dark'`, `'no-preference'`. 传递`null`将禁用颜色方案仿真.<a name="page-emulate-media-option-color-scheme">#</a>
 
-- `forced_colors` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|"active"|"none"> Emulates `'forced-colors'` media feature, supported values are `'active'` and `'none'`. Passing `null` disables forced colors emulation.<a name="page-emulate-media-option-forced-colors">#</a>
+- `forced_colors` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|"active"|"none"> 模拟`'forced-colors'` 媒体特性，支持的值为 `'active'` and `'none'`. 传递`null`将禁用强制颜色模拟.<a name="page-emulate-media-option-forced-colors">#</a>
 
-    ##### NOTE
+    > NOTE
+>
+    > 它在WebKit中不支持，请在他们的问题跟踪器中查看 [here](https://bugs.webkit.org/show_bug.cgi?id=225281) .
 
-    It's not supported in WebKit, see [here](https://bugs.webkit.org/show_bug.cgi?id=225281) in their issue tracker.
+- `media` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|"screen"|"print"> 修改页面的CSS媒体类型。唯一允许的值是 `'screen'`, `'print'` and `null`. 传递`null`将禁用CSS媒体模拟.<a name="page-emulate-media-option-media">#</a>
 
-- `media` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|"screen"|"print"> Changes the CSS media type of the page. The only allowed values are `'screen'`, `'print'` and `null`. Passing `null` disables CSS media emulation.<a name="page-emulate-media-option-media">#</a>
-
-- `reduced_motion` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|"reduce"|"no-preference"> Emulates `'prefers-reduced-motion'` media feature, supported values are `'reduce'`, `'no-preference'`. Passing `null` disables reduced motion emulation.<a name="page-emulate-media-option-reduced-motion">#</a>
+- `reduced_motion` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|"reduce"|"no-preference"> 模拟`'prefers-reduced-motion'` 媒体特性，支持的值为 `'reduce'`, `'no-preference'`. 传递`null`将禁用减少的运动仿真.<a name="page-emulate-media-option-reduced-motion">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-emulate-media-return">#</a>
 
-This method changes the `CSS media type` through the `media` argument, and/or the `'prefers-colors-scheme'` media feature, using the `colorScheme` argument.
+这个方法通过media参数改变 `CSS media type` ,或者使用`colorScheme`参数改变 `'prefers-colors-scheme'` 的媒体特性.
 
 - Sync
 
@@ -7389,21 +7390,21 @@ await page.evaluate("matchMedia('(prefers-color-scheme: no-preference)').matches
 
 ## page.eval_on_selector(selector, expression, **kwargs)<a name="page-eval-on-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-eval-on-selector-option-selector">#</a>
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="page-eval-on-selector-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="page-eval-on-selector-option-arg">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-eval-on-selector-option-strict">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="page-eval-on-selector-option-selector">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="page-eval-on-selector-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="page-eval-on-selector-option-arg">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-eval-on-selector-option-strict">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="page-eval-on-selector-return">#</a>
 
 > CAUTION
 >
-> This method does not wait for the element to pass actionability checks and therefore can lead to the flaky tests. Use [locator.evaluate(expression, **kwargs)](#locator-evaluate), other [Locator](#locator) helper methods or web-first assertions instead.
+> 此方法不等待元素通过可操作性检查，因此可能导致不稳定的测试。使用 [locator.evaluate(expression, **kwargs)](#locator-evaluate), 其它[Locator](#locator) 其他Locator助手方法或web优先断言.
 
-The method finds an element matching the specified selector within the page and passes it as a first argument to `expression`. If no elements match the selector, the method throws an error. Returns the value of `expression`.
+该方法在页面中找到与指定选择器匹配的元素，并将其作为第一个参数传递给表达式。如果没有匹配该选择器的元素，该方法将抛出错误。返回表达式的值.
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [page.eval_on_selector(selector, expression, **kwargs)](#page-eval-on-selector) would wait for the promise to resolve and return its value.
+如果expression` 返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 则 [page.eval_on_selector(selector, expression, **kwargs)](#page-eval-on-selector) 将等待promise解析并返回它的值.
 
-Examples:
+例子:
 
 - Sync
 
@@ -7421,24 +7422,24 @@ preload_href = await page.eval_on_selector("link[rel=preload]", "el => el.href")
 html = await page.eval_on_selector(".main-container", "(e, suffix) => e.outer_html + suffix", "hello")
 ```
 
-Shortcut for main frame's [frame.eval_on_selector(selector, expression, **kwargs)](#frame-eval-on-selector).
+主框架 [frame.eval_on_selector(selector, expression, **kwargs)](#frame-eval-on-selector) 的快捷方式.
 
 ## page.eval_on_selector_all(selector, expression, **kwargs)<a name="page-eval-on-selector-all">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-eval-on-selector-all-option-selector">#</a>
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="page-eval-on-selector-all-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="page-eval-on-selector-all-option-arg">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="page-eval-on-selector-all-option-selector">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="page-eval-on-selector-all-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="page-eval-on-selector-all-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="page-eval-on-selector-all-return">#</a>
 
 > NOTE
 >
-> In most cases, [locator.evaluate_all(expression, **kwargs)](#locator-evaluate-all), other [Locator](#locator) helper methods and web-first assertions do a better job.
+> 在大多数情况下， [locator.evaluate_all(expression, **kwargs)](#locator-evaluate-all), 其它 [Locator](#locator) 助手方法和 web-first断言做得更好.
 
-The method finds all elements matching the specified selector within the page and passes an array of matched elements as a first argument to `expression`. Returns the result of `expression` invocation.
+该方法查找页面中与指定选择器匹配的所有元素，并将匹配元素的数组作为第一个参数传递给表达式。返回表达式调用的结果.
 
-If `expression` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [page.eval_on_selector_all(selector, expression, **kwargs)](#page-eval-on-selector-all) would wait for the promise to resolve and return its value.
+如果`expression`返回[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)，那么 [page.eval_on_selector_all(selector, expression, **kwargs)](#page-eval-on-selector-all) 将等待promise解析并返回它的值.
 
-Examples:
+例子:
 
 - Sync
 
@@ -7454,17 +7455,17 @@ div_counts = await page.eval_on_selector_all("div", "(divs, min) => divs.length 
 
 ## page.evaluate(expression, **kwargs)<a name="page-evaluate">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="page-evaluate-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="page-evaluate-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="page-evaluate-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="page-evaluate-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="page-evaluate-return">#</a>
 
-Returns the value of the `expression` invocation.
+返回表达式调用的值.
 
-If the function passed to the [page.evaluate(expression, **kwargs)](#page-evaluate) returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [page.evaluate(expression, **kwargs)](#page-evaluate) would wait for the promise to resolve and return its value.
+如果函数传递给 [page.evaluate(expression, **kwargs)](#page-evaluate) 返回 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 那么[page.evaluate(expression, **kwargs)](#page-evaluate) 将等待promise解析并返回它的值.
 
-If the function passed to the [page.evaluate(expression, **kwargs)](#page-evaluate) returns a non-[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description) value, then [page.evaluate(expression, **kwargs)](#page-evaluate) resolves to `undefined`. Playwright also supports transferring some additional values that are not serializable by `JSON`: `-0`, `NaN`, `Infinity`, `-Infinity`.
+如果函数传递给 [page.evaluate(expression, **kwargs)](#page-evaluate) 返回一个不可序列化( non-[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description) ) 的值, 那么 [page.evaluate(expression, **kwargs)](#page-evaluate) 解析为`undefined`. Playwright 还支持传递一些附加值，不能通过`JSON`序列化: `-0`, `NaN`, `Infinity`, `-Infinity`.
 
-Passing argument to `expression`:
+将参数传递给表达式:
 
 - Sync
 
@@ -7480,7 +7481,7 @@ result = await page.evaluate("([x, y]) => Promise.resolve(x * y)", [7, 8])
 print(result) # prints "56"
 ```
 
-A string can also be passed in instead of a function:
+字符串也可以代替函数传入:
 
 - Sync
 
@@ -7498,7 +7499,7 @@ x = 10
 print(await page.evaluate(f"1 + {x}")) # prints "11"
 ```
 
-[ElementHandle](#elementhandle) instances can be passed as an argument to the [page.evaluate(expression, **kwargs)](#page-evaluate):
+可以将 [ElementHandle](#elementhandle) 实例作为参数传递给 [page.evaluate(expression, **kwargs)](#page-evaluate):
 
 - Sync
 
@@ -7516,19 +7517,19 @@ html = await page.evaluate("([body, suffix]) => body.innerHTML + suffix", [body_
 await body_handle.dispose()
 ```
 
-Shortcut for main frame's [frame.evaluate(expression, **kwargs)](#frame-evaluate).
+主框架 [frame.evaluate(expression, **kwargs)](#frame-evaluate) 的快捷方式.
 
 ## page.evaluate_handle(expression, **kwargs)<a name="page-evaluate-handle">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="page-evaluate-handle-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="page-evaluate-handle-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="page-evaluate-handle-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="page-evaluate-handle-option-arg">#</a>
 - returns: \<[JSHandle](#jshandle)><a name="page-evaluate-handle-return">#</a>
 
-Returns the value of the `expression` invocation as a [JSHandle](#jshandle).
+以jhandle形式返回表达式调用的值. [JSHandle](#jshandle).
 
-The only difference between [page.evaluate(expression, **kwargs)](#page-evaluate) and [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) is that [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) returns [JSHandle](#jshandle).
+ [page.evaluate(expression, **kwargs)](#page-evaluate) and [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) 之间唯一的区别是 [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) 返回[JSHandle](#jshandle).
 
-If the function passed to the [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) would wait for the promise to resolve and return its value.
+如果函数传递给 [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) 返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 那么[page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle) 将等待promise解析并返回它的值.
 
 - Sync
 
@@ -7544,7 +7545,7 @@ a_window_handle = await page.evaluate_handle("Promise.resolve(window)")
 a_window_handle # handle for the window object.
 ```
 
-A string can also be passed in instead of a function:
+字符串也可以代替函数传入:
 
 - Sync
 
@@ -7558,7 +7559,7 @@ a_handle = page.evaluate_handle("document") # handle for the "document"
 a_handle = await page.evaluate_handle("document") # handle for the "document"
 ```
 
-[JSHandle](#jshandle) instances can be passed as an argument to the [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle):
+[JSHandle](#jshandle) 实例可以作为参数传递给 [page.evaluate_handle(expression, **kwargs)](#page-evaluate-handle):
 
 - Sync
 
@@ -7580,28 +7581,28 @@ await result_handle.dispose()
 
 ## page.expect_console_message(**kwargs)<a name="page-wait-for-console-message">#</a>
 
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[ConsoleMessage](#consolemessage)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Receives the [ConsoleMessage](#consolemessage) object and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-console-message-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-console-message-option-timeout">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[ConsoleMessage](#consolemessage)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 接收 [ConsoleMessage](#consolemessage) 对象，并在等待应该解决时解析为真值.<a name="page-wait-for-console-message-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-console-message-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[ConsoleMessage](#consolemessage)]><a name="page-wait-for-console-message-return">#</a>
 
-Performs action and waits for a [ConsoleMessage](#consolemessage) to be logged by in the page. If predicate is provided, it passes [ConsoleMessage](#consolemessage) value into the `predicate` function and waits for `predicate(message)` to return a truthy value. Will throw an error if the page is closed before the [page.on("console")](#page-event-console) event is fired.
+执行操作并等待在页面中记录一个 [ConsoleMessage](#consolemessage) , 如果提供了`predicate`，则它将 [ConsoleMessage](#consolemessage) 值传递给 `predicate` 函数,并等待 `predicate(message)` 返回一个真值。如果页面在触发 [page.on("console")](#page-event-console) 事件之前关闭，将抛出一个错误.
 
 ## page.expect_download(**kwargs)<a name="page-wait-for-download">#</a>
 
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Download](#download)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Receives the [Download](#download) object and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-download-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-download-option-timeout">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Download](#download)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 接收`Download`对象，并在等待应该解决时解析为true值.<a name="page-wait-for-download-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-download-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Download](#download)]><a name="page-wait-for-download-return">#</a>
 
-Performs action and waits for a new [Download](#download). If predicate is provided, it passes [Download](#download) value into the `predicate` function and waits for `predicate(download)` to return a truthy value. Will throw an error if the page is closed before the download event is fired.
+执行操作并等待新的 [Download](#download). 如果提供了 provided, 它将 [Download](#download) 的值传递给 `predicate` 函数并等待 `predicate(download)`返回一个真值。如果页面在下载事件被触发之前关闭，将抛出一个错误.
 
 ## page.expect_event(event, **kwargs)<a name="page-wait-for-event">#</a>
 
-- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Event name, same one typically passed into `*.on(event)`.<a name="page-wait-for-event-option-event">#</a>
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Receives the event data and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-event-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-event-option-timeout">#</a>
+- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 事件名称，与通常传递给`*.on(event)`的名称相同.<a name="page-wait-for-event-option-event">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 接收事件数据，并在等待应该被解析时解析为真值.<a name="page-wait-for-event-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-event-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)><a name="page-wait-for-event-return">#</a>
 
-Waits for event to fire and passes its value into the predicate function. Returns when the predicate returns truthy value. Will throw an error if the page is closed before the event is fired. Returns the event data value.
+等待事件触发，并将其值传递给 predicate 函数. 当 predicate() 返回真值时返回。如果在触发事件之前页面已关闭，则将抛出一个错误。返回事件数据值.
 
 - Sync
 
@@ -7621,26 +7622,26 @@ frame = await event_info.value
 
 ## page.expect_file_chooser(**kwargs)<a name="page-wait-for-file-chooser">#</a>
 
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[FileChooser](#filechooser)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Receives the [FileChooser](#filechooser) object and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-file-chooser-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-file-chooser-option-timeout">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[FileChooser](#filechooser)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 接收 [FileChooser](#filechooser) 对象，并在等待应该解决时解析为true值.<a name="page-wait-for-file-chooser-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-file-chooser-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[FileChooser](#filechooser)]><a name="page-wait-for-file-chooser-return">#</a>
 
-Performs action and waits for a new [FileChooser](#filechooser) to be created. If predicate is provided, it passes [FileChooser](#filechooser) value into the `predicate` function and waits for `predicate(fileChooser)` to return a truthy value. Will throw an error if the page is closed before the file chooser is opened.
+执行操作并等待创建一个新的 [FileChooser](#filechooser) . 如果提供了 provided,则它将 [FileChooser](#filechooser) 值传递给 `predicate` 函数，并等待 `predicate(fileChooser)` 返回一个真值。如果在打开文件选择器之前关闭该页，则将抛出一个错误.
 
 ## page.expect_navigation(**kwargs)<a name="page-wait-for-navigation">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-wait-for-navigation-option-timeout">#</a>
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving [URL](https://en.wikipedia.org/wiki/URL) to match while waiting for the navigation. Note that if the parameter is a string without wilcard characters, the method will wait for navigation to URL that is exactly equal to the string.<a name="page-wait-for-navigation-option-url">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="page-wait-for-navigation-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="page-wait-for-navigation-option-timeout">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 一个glob模式、regex模式或谓词，在等待导航时接收匹配的url。注意，如果参数是一个不带通配符的字符串，该方法将等待导航到与该字符串完全相等的URL.<a name="page-wait-for-navigation-option-url">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="page-wait-for-navigation-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Response](#response)]><a name="page-wait-for-navigation-return">#</a>
 
-Waits for the main frame navigation and returns the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect. In case of navigation to a different anchor or navigation due to History API usage, the navigation will resolve with `null`.
+等待主框架导航并返回主资源响应。在多个重定向的情况下，导航将使用最后一个重定向的响应进行解析。如果导航到一个不同的锚或导航由于历史API的使用，导航将解析为null.
 
-This resolves when the page navigates to a new URL or reloads. It is useful for when you run code which will indirectly cause the page to navigate. e.g. The click target has an `onclick` handler that triggers navigation from a `setTimeout`. Consider this example:
+当页面导航到一个新的URL或重新加载时，这个问题就会解决。当您运行将间接导致页面导航的代码时，它非常有用。例:点击目标有一个`onclick`处理程序，通过`setTimeout`触发导航。考虑一下这个例子:
 
 - Sync
 
@@ -7660,25 +7661,25 @@ async with page.expect_navigation():
 
 > NOTE
 >
-> Usage of the [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) to change the URL is considered a navigation.
+> 使用 [History API](https://developer.mozilla.org/en-US/docs/Web/API/History_API) 更改URL被视为导航.
 
-Shortcut for main frame's [frame.expect_navigation(**kwargs)](#frame-wait-for-navigation).
+主框架 [frame.expect_navigation(**kwargs)](#frame-wait-for-navigation)的快捷方式.
 
 ## page.expect_popup(**kwargs)<a name="page-wait-for-popup">#</a>
 
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Page](#page)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Receives the [Page](#page) object and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-popup-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-popup-option-timeout">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Page](#page)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 接收 [Page](#page)对象，并在等待应该解决时解析为true值.<a name="page-wait-for-popup-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-popup-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Page](#page)]><a name="page-wait-for-popup-return">#</a>
 
-Performs action and waits for a popup [Page](#page). If predicate is provided, it passes [Popup] value into the `predicate` function and waits for `predicate(page)` to return a truthy value. Will throw an error if the page is closed before the popup event is fired.
+执行动作并等待弹出 [Page](#page). 如果提供了 predicate ,它将 [Popup]的值传递给 `predicate` 函数,并等待 `predicate(page)` 返回一个真值。如果页面在弹出事件被触发之前关闭，将抛出一个错误.
 
 ## page.expect_request(url_or_predicate, **kwargs)<a name="page-wait-for-request">#</a>
 
-- `url_or_predicate` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Request](#request)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Request URL string, regex or predicate receiving [Request](#request) object. When a `base_url` via the context options was provided and the passed URL is a path, it gets merged via the [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.<a name="page-wait-for-request-option-url-or-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum wait time in milliseconds, defaults to 30 seconds, pass `0` to disable the timeout. The default value can be changed by using the [page.set_default_timeout(timeout)](#page-set-default-timeout) method.<a name="page-wait-for-request-option-timeout">#</a>
+- `url_or_predicate` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Request](#request)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 请求URL字符串、regex或predicate接收 [Request](#request) 对象。当通过上下文选项提供了一个 `base_url` 并且传递的URL是一个路径时，它会通过 [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) 构造函数合并.<a name="page-wait-for-request-option-url-or-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒，缺省值为30秒，通过`0`表示不允许超时。默认值可以通过使用 [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-wait-for-request-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Request](#request)]><a name="page-wait-for-request-return">#</a>
 
-Waits for the matching request and returns it. See [waiting for event](https://playwright.dev/python/docs/events#waiting-for-event) for more details about events.
+等待匹配的请求并返回它。有关事件的更多细节，请参阅等待事件 [waiting for event](https://playwright.dev/python/docs/events#waiting-for-event) .
 
 - Sync
 
@@ -7708,19 +7709,19 @@ second_request = await second.value
 
 ## page.expect_request_finished(**kwargs)<a name="page-wait-for-request-finished">#</a>
 
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Request](#request)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Receives the [Request](#request) object and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-request-finished-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-request-finished-option-timeout">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Request](#request)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 接收 [Request](#request) 对象，并在等待应该解决时解析为true值.<a name="page-wait-for-request-finished-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-request-finished-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Request](#request)]><a name="page-wait-for-request-finished-return">#</a>
 
-Performs action and waits for a [Request](#request) to finish loading. If predicate is provided, it passes [Request](#request) value into the `predicate` function and waits for `predicate(request)` to return a truthy value. Will throw an error if the page is closed before the [page.on("requestfinished")](#page-event-request-finished) event is fired.
+执行动作并等待一个[Request](#request) 完成加载. 如果提供了 predicate ,它将 [Request](#request)的值传递给 `predicate` 函数,并等待 `predicate(request)` 返回一个真值。如果页面在[page.on("requestfinished")](#page-event-request-finished) 事件之前关闭，将抛出一个错误.
 
 ## page.expect_response(url_or_predicate, **kwargs)<a name="page-wait-for-response">#</a>
 
-- `url_or_predicate` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Response](#response)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Request URL string, regex or predicate receiving [Response](#response) object. When a `base_url` via the context options was provided and the passed URL is a path, it gets merged via the [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.<a name="page-wait-for-response-option-url-or-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum wait time in milliseconds, defaults to 30 seconds, pass `0` to disable the timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-wait-for-response-option-timeout">#</a>
+- `url_or_predicate` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Response](#response)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 请求URL字符串、regex或predicate接收 [Response](#response) 对象。当通过上下文选项提供了一个 `base_url` 并且传递的URL是一个路径时，它会通过 [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) 构造函数合并.<a name="page-wait-for-response-option-url-or-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒，缺省值为30秒，通过`0`表示不允许超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-wait-for-response-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Response](#response)]><a name="page-wait-for-response-return">#</a>
 
-Returns the matched response. See [waiting for event](https://playwright.dev/python/docs/events#waiting-for-event) for more details about events.
+返回匹配的响应。有关事件的更多细节，请参阅等待事件 [waiting for event](https://playwright.dev/python/docs/events#waiting-for-event) 
 
 - Sync
 
@@ -7754,38 +7755,38 @@ return response.ok
 
 ## page.expect_websocket(**kwargs)<a name="page-wait-for-web-socket">#</a>
 
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[WebSocket](#websocket)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Receives the [WebSocket](#websocket) object and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-web-socket-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-web-socket-option-timeout">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[WebSocket](#websocket)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 接收 [WebSocket](#websocket) 对象，并在等待应该解决时解析为true值.<a name="page-wait-for-web-socket-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-web-socket-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[WebSocket](#websocket)]><a name="page-wait-for-web-socket-return">#</a>
 
-Performs action and waits for a new [WebSocket](#websocket). If predicate is provided, it passes [WebSocket](#websocket) value into the `predicate` function and waits for `predicate(webSocket)` to return a truthy value. Will throw an error if the page is closed before the WebSocket event is fired.
+执行操作并等待一个新的 [WebSocket](#websocket). 如果提供了 predicate ,它将 [WebSocket](#websocket)的值传递给 `predicate` 函数,并等待 `predicate(webSocket)` 返回一个真值。如果页面在WebSocket 事件被触发之前关闭，将抛出一个错误.
 
 ## page.expect_worker(**kwargs)<a name="page-wait-for-worker">#</a>
 
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Worker](#worker)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Receives the [Worker](#worker) object and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-worker-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-worker-option-timeout">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Worker](#worker)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 接收 [Worker](#worker) 对象，并在等待应该解决时解析为true值.<a name="page-wait-for-worker-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-worker-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Worker](#worker)]><a name="page-wait-for-worker-return">#</a>
 
-Performs action and waits for a new [Worker](#worker). If predicate is provided, it passes [Worker](#worker) value into the `predicate` function and waits for `predicate(worker)` to return a truthy value. Will throw an error if the page is closed before the worker event is fired.
+执行动作并等待一个新的 [Worker](#worker). 如果提供了 predicate ,它将 [Worker](#worker)的值传递给 `predicate` 函数,并等待 `predicate(worker)` 返回一个真值。如果页面在触发 worker 事件之前关闭，则将抛出一个错误.
 
 ## page.expose_binding(name, callback, **kwargs)<a name="page-expose-binding">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the function on the window object.<a name="page-expose-binding-option-name">#</a>
-- `callback` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Callback function that will be called in the Playwright's context.<a name="page-expose-binding-option-callback">#</a>
-- `handle` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to pass the argument as a handle, instead of passing by value. When passing a handle, only one argument is supported. When passing by value, multiple arguments are supported.<a name="page-expose-binding-option-handle">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> window 对象上的函数名.<a name="page-expose-binding-option-name">#</a>
+- `callback` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Playwright 的上下文中被调用的回调函数.<a name="page-expose-binding-option-callback">#</a>
+- `handle` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否将参数作为句柄传递，而不是按值传递。当传递句柄时，只支持一个参数。当传递值时，支持多个参数.<a name="page-expose-binding-option-handle">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-expose-binding-return">#</a>
 
-The method adds a function called `name` on the `window` object of every frame in this page. When called, the function executes `callback` and returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) which resolves to the return value of `callback`. If the `callback` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), it will be awaited.
+该方法为页面中每一个 frame 的窗口对象添加一个名为 `name` 的函数。当被调用时，函数执行回调并返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) ,该Promise解析为回调的返回值。如果回调返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 它将被等待.
 
-The first argument of the `callback` function contains information about the caller: `{ browserContext: BrowserContext, page: Page, frame: Frame }`.
+`callback` 函数的第一个参数包含调用者的信息: `{ browserContext: BrowserContext, page: Page, frame: Frame }`.
 
-See [browser_context.expose_binding(name, callback, **kwargs)](#browser-context-expose-binding) for the context-wide version.
+查看[browser_context.expose_binding(name, callback, **kwargs)](#browser-context-expose-binding) 上下文级版本.
 
 > NOTE
 >
 > Functions installed via [page.expose_binding(name, callback, **kwargs)](#page-expose-binding) survive navigations.
 
-An example of exposing page URL to all frames in a page:
+一个将页面URL暴露给页面中所有 frame 的例子:
 
 - Sync
 
@@ -7842,7 +7843,7 @@ async def main():
 asyncio.run(main())
 ```
 
-An example of passing an element handle:
+传递 element handle 的例子:
 
 - Sync
 
@@ -7878,21 +7879,21 @@ await page.set_content("""
 
 ## page.expose_function(name, callback)<a name="page-expose-function">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the function on the window object<a name="page-expose-function-option-name">#</a>
-- `callback` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Callback function which will be called in Playwright's context.<a name="page-expose-function-option-callback">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> window 对象上的函数名<a name="page-expose-function-option-name">#</a>
+- `callback` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 回调函数，将在playwright的上下文中被调用.<a name="page-expose-function-option-callback">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-expose-function-return">#</a>
 
-The method adds a function called `name` on the `window` object of every frame in the page. When called, the function executes `callback` and returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) which resolves to the return value of `callback`.
+该方法在页面中每一frame 的`window`对象上添加一个名为 `name` 的函数. 当被调用时，函数执行回调并返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) ,该Promise解析为回调的返回值.
 
-If the `callback` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), it will be awaited.
+如果回调返回一个[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)，它将被等待
 
-See [browser_context.expose_function(name, callback)](#browser-context-expose-function) for context-wide exposed function.
+查看[browser_context.expose_function(name, callback)](#browser-context-expose-function) 用于上下文范围的公开函数
 
 > NOTE
 >
 > Functions installed via [page.expose_function(name, callback)](#page-expose-function) survive navigations.
 
-An example of adding a `sha256` function to the page:
+一个在页面中添加`sha256`函数的例子:
 
 - Sync
 
@@ -7963,40 +7964,40 @@ asyncio.run(main())
 
 ## page.fill(selector, value, **kwargs)<a name="page-fill">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-fill-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-fill-option-selector">#</a>
 - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Value to fill for the `\<input>`, `\<textarea>` or `[contenteditable]` element.<a name="page-fill-option-value">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-fill-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-fill-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-fill-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-fill-option-timeout">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-fill-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-fill-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-fill-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-fill-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-fill-return">#</a>
 
-This method waits for an element matching `selector`, waits for [actionability](https://playwright.dev/python/docs/actionability) checks, focuses the element, fills it and triggers an `input` event after filling. Note that you can pass an empty string to clear the input field.
+这个方法等待元素匹配选择器，等待[可操作性](https://playwright.dev/python/docs/actionability)检查,聚焦元素，填充它，并在填充后触发一个输入事件。请注意，您可以传递一个空字符串来清除输入字段.
 
-If the target element is not an `\<input>`, `\<textarea>` or `[contenteditable]` element, this method throws an error. However, if the element is inside the `\<label>` element that has an associated [control](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control), the control will be filled instead.
+如果目标元素不是 `\<input>`, `\<textarea>` or `[contenteditable]`, 此方法将抛出一个错误。但是，如果该元素位于`\<label>`元素中，且该元素具有关联控件，则该控件将被填充.
 
-To send fine-grained keyboard events, use [page.type(selector, text, **kwargs)](#page-type).
+要发送细粒度的键盘事件，请使用 [page.type(selector, text, **kwargs)](#page-type).
 
-Shortcut for main frame's [frame.fill(selector, value, **kwargs)](#frame-fill).
+主框架 [frame.fill(selector, value, **kwargs)](#frame-fill) 快捷方式.
 
 ## page.focus(selector, **kwargs)<a name="page-focus">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-focus-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-focus-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-focus-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-focus-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-focus-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-focus-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-focus-return">#</a>
 
-This method fetches an element with `selector` and focuses it. If there's no element matching `selector`, the method waits until a matching element appears in the DOM.
+这个方法获取一个带有选择器的元素并聚焦于它。如果没有元素匹配选择器，该方法将等待，直到匹配元素出现在DOM中.
 
-Shortcut for main frame's [frame.focus(selector, **kwargs)](#frame-focus).
+主框架 [frame.focus(selector, **kwargs)](#frame-focus) 快捷方式.
 
 ## page.frame(**kwargs)<a name="page-frame">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Frame name specified in the `iframe`'s `name` attribute. Optional.<a name="page-frame-option-name">#</a>
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving frame's `url` as a [URL](https://en.wikipedia.org/wiki/URL) object. Optional.<a name="page-frame-option-url">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 在iframe的name属性中指定的frame名。可选的.<a name="page-frame-option-name">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 一个glob模式，regex模式或谓词接收frame 的[URL](https://en.wikipedia.org/wiki/URL)作为url对象。可选的 .<a name="page-frame-option-url">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Frame](#frame)><a name="page-frame-return">#</a>
 
-Returns frame matching the specified criteria. Either `name` or `url` must be specified.
+返回匹配指定条件的frame。必须指定`name`或`url`.
 
 ```python
 frame = page.frame(name="frame-name")
@@ -8008,10 +8009,10 @@ frame = page.frame(url=r".*domain.*")
 
 ## page.frame_locator(selector)<a name="page-frame-locator">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to use when resolving DOM element. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-frame-locator-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 解析DOM元素时使用的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-frame-locator-option-selector">#</a>
 - returns: \<[FrameLocator](#framelocator)><a name="page-frame-locator-return">#</a>
 
-When working with iframes, you can create a frame locator that will enter the iframe and allow selecting elements in that iframe. Following snippet locates element with text "Submit" in the iframe with id `my-frame`, like `\<iframe id="my-frame">`:
+在使用iframes时，您可以创建一个帧定位器，该定位器将进入iframe并允许选择该iframe中的元素。下面的代码片段在id为 `my-frame`的iframe中定位到文本为"Submit"的元素，例如 `\<iframe id="my-frame">`:
 
 - Sync
 
@@ -8031,269 +8032,269 @@ await locator.click()
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Frame](#frame)]><a name="page-frames-return">#</a>
 
-An array of all frames attached to the page.
+附在页面上的所有frame的数组.
 
 ## page.get_attribute(selector, name, **kwargs)<a name="page-get-attribute">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-get-attribute-option-selector">#</a>
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Attribute name to get the value for.<a name="page-get-attribute-option-name">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-get-attribute-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-get-attribute-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-get-attribute-option-selector">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 属性名.<a name="page-get-attribute-option-name">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-get-attribute-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-get-attribute-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-get-attribute-return">#</a>
 
-Returns element attribute value.
+返回元素属性值.
 
 ## page.go_back(**kwargs)<a name="page-go-back">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-go-back-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="page-go-back-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="page-go-back-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="page-go-back-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Response](#response)><a name="page-go-back-return">#</a>
 
-Returns the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect. If can not go back, returns `null`.
+返回主资源响应。在多个重定向的情况下，导航将使用最后一个重定向的响应进行解析。如果不能返回，返回`null`.
 
-Navigate to the previous page in history.
+导航到历史记录的前一页.
 
 ## page.go_forward(**kwargs)<a name="page-go-forward">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-go-forward-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="page-go-forward-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="page-go-forward-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="page-go-forward-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Response](#response)><a name="page-go-forward-return">#</a>
 
-Returns the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect. If can not go forward, returns `null`.
+返回主资源响应。在多个重定向的情况下，导航将使用最后一个重定向的响应进行解析。如果不能前进，返回null.
 
-Navigate to the next page in history.
+导航到历史记录的下一页.
 
 ## page.goto(url, **kwargs)<a name="page-goto">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> URL to navigate page to. The url should include scheme, e.g. `https://`. When a `base_url` via the context options was provided and the passed URL is a path, it gets merged via the [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.<a name="page-goto-option-url">#</a>
-- `referer` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Referer header value. If provided it will take preference over the referer header value set by [page.set_extra_http_headers(headers)](#page-set-extra-http-headers).<a name="page-goto-option-referer">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-goto-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="page-goto-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 页面导航到的url。url应该包括协议，例如 `https://`.当通过上下文选项提供了一个 `base_url` 并且传递的URL是一个路径时，它会通过 [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) 构造函数合并.<a name="page-goto-option-url">#</a>
+- `referer` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> referer头值。如果提供，它将优先于[page.set_extra_http_headers(headers)](#page-set-extra-http-headers)设置的referer头值.<a name="page-goto-option-referer">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="page-goto-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="page-goto-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Response](#response)><a name="page-goto-return">#</a>
 
-Returns the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect.
+返回主资源响应。在多个重定向的情况下，导航将使用最后一个重定向的响应进行解析.
 
-The method will throw an error if:
+如果以下情况，该方法将抛出一个错误::
 
-- there's an SSL error (e.g. in case of self-signed certificates).
-- target URL is invalid.
-- the `timeout` is exceeded during navigation.
-- the remote server does not respond or is unreachable.
-- the main resource failed to load.
+- 有一个SSL错误(例如在自签名证书的情况下).
+- 目标URL无效.
+- 导航过程中超时.
+- 远程服务器没有响应或不可达.
+- main 资源加载失败.
 
-The method will not throw an error when any valid HTTP status code is returned by the remote server, including 404 "Not Found" and 500 "Internal Server Error". The status code for such responses can be retrieved by calling [response.status](#response-status).
-
-> NOTE
->
-> The method either throws an error or returns a main resource response. The only exceptions are navigation to `about:blank` or navigation to the same URL with a different hash, which would succeed and return `null`.
+当远程服务器返回任何有效的HTTP状态码时，该方法不会抛出错误，包括404 " not Found"和500 "Internal server error "。这些响应的状态代码可以通过调用[response.status](#response-status)来获取.
 
 > NOTE
 >
-> Headless mode doesn't support navigation to a PDF document. See the [upstream issue](https://bugs.chromium.org/p/chromium/issues/detail?id=761295).
+> 该方法要么抛出错误，要么返回主资源响应。唯一的例外是导航到`空白`或导航到相同的URL与不同的哈希，这将成功并返回null.
 
-Shortcut for main frame's [frame.goto(url, **kwargs)](#frame-goto)
+> NOTE
+>
+> 无头模式不支持PDF文档的导航。参见[upstream issue](https://bugs.chromium.org/p/chromium/issues/detail?id=761295).
+
+主框架 [frame.goto(url, **kwargs)](#frame-goto) 的快捷方式
 
 ## page.hover(selector, **kwargs)<a name="page-hover">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-hover-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-hover-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="page-hover-option-modifiers">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="page-hover-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-hover-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-hover-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="page-hover-option-modifiers">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="page-hover-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-hover-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-hover-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="page-hover-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-hover-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-hover-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="page-hover-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-hover-return">#</a>
 
-This method hovers over an element matching `selector` by performing the following steps:
+该方法通过执行以下步骤悬停在元素匹配选择器上:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-3. Scroll the element into view if needed.
-4. Use [page.mouse](#page-mouse) to hover over the center of the element, or the specified `position`.
-5. Wait for initiated navigations to either succeed or fail, unless `noWaitAfter` option is set.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+3. 如果需要，将元素滚动到视图中.
+4. 使鼠标停在元素中心或指定位置上.
+5. 等待发起的导航成功或失败，除非设置了`noWaitAfter`选项.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
-Shortcut for main frame's [frame.hover(selector, **kwargs)](#frame-hover).
+主框架 [frame.hover(selector, **kwargs)](#frame-hover) 的快捷方式.
 
 ## page.inner_html(selector, **kwargs)<a name="page-inner-html">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-inner-html-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-inner-html-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-inner-html-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-inner-html-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-inner-html-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-inner-html-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-inner-html-return">#</a>
 
 Returns `element.innerHTML`.
 
 ## page.inner_text(selector, **kwargs)<a name="page-inner-text">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-inner-text-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-inner-text-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-inner-text-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-inner-text-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-inner-text-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-inner-text-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-inner-text-return">#</a>
 
 Returns `element.innerText`.
 
 ## page.input_value(selector, **kwargs)<a name="page-input-value">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-input-value-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-input-value-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-input-value-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-input-value-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-input-value-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-input-value-option-timeout">#</a>
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-input-value-return">#</a>
 
-Returns `input.value` for the selected `\<input>` or `\<textarea>` or `\<select>` element. Throws for non-input elements.
+返回以下元素的输入值 `\<input>` or `\<textarea>` or `\<select>` .排除非输入元素.
 
 ## page.is_checked(selector, **kwargs)<a name="page-is-checked">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-is-checked-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-is-checked-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-is-checked-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-is-checked-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-is-checked-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-is-checked-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="page-is-checked-return">#</a>
 
-Returns whether the element is checked. Throws if the element is not a checkbox or radio input.
+返回元素是否被选中。如果元素不是复选框或单选输入则排除.
 
 ## page.is_closed()<a name="page-is-closed">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="page-is-closed-return">#</a>
 
-Indicates that the page has been closed.
+表示该页面已关闭.
 
 ## page.is_disabled(selector, **kwargs)<a name="page-is-disabled">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-is-disabled-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-is-disabled-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-is-disabled-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-is-disabled-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-is-disabled-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-is-disabled-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="page-is-disabled-return">#</a>
 
-Returns whether the element is disabled, the opposite of [enabled](https://playwright.dev/python/docs/actionability#enabled).
+返回该元素是否被禁用，与启用[enabled](https://playwright.dev/python/docs/actionability#enabled)相反.
 
 ## page.is_editable(selector, **kwargs)<a name="page-is-editable">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-is-editable-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-is-editable-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-is-editable-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-is-editable-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-is-editable-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-is-editable-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="page-is-editable-return">#</a>
 
-Returns whether the element is [editable](https://playwright.dev/python/docs/actionability#editable).
+返回元素是否可编辑[editable](https://playwright.dev/python/docs/actionability#editable).
 
 ## page.is_enabled(selector, **kwargs)<a name="page-is-enabled">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-is-enabled-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-is-enabled-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-is-enabled-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-is-enabled-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-is-enabled-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-is-enabled-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="page-is-enabled-return">#</a>
 
-Returns whether the element is [enabled](https://playwright.dev/python/docs/actionability#enabled).
+返回元素是否被启用[enabled](https://playwright.dev/python/docs/actionability#enabled).
 
 ## page.is_hidden(selector, **kwargs)<a name="page-is-hidden">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-is-hidden-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-is-hidden-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** This option is ignored. [page.is_hidden(selector, **kwargs)](#page-is-hidden) does not wait for the element to become hidden and returns immediately.<a name="page-is-hidden-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-is-hidden-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-is-hidden-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `DEPRECATED`此选项将被忽略. [page.is_hidden(selector, **kwargs)](#page-is-hidden) 不会等待元素被隐藏并立即返回.<a name="page-is-hidden-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="page-is-hidden-return">#</a>
 
-Returns whether the element is hidden, the opposite of [visible](https://playwright.dev/python/docs/actionability#visible). `selector` that does not match any elements is considered hidden.
+返回元素是否隐藏，与可见 [visible](https://playwright.dev/python/docs/actionability#visible)相反. 不匹配任何元素的选择器被认为是隐藏的.
 
 ## page.is_visible(selector, **kwargs)<a name="page-is-visible">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-is-visible-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-is-visible-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** This option is ignored. [page.is_visible(selector, **kwargs)](#page-is-visible) does not wait for the element to become visible and returns immediately.<a name="page-is-visible-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-is-visible-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-is-visible-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> **DEPRECATED** 此选项将被忽略. [page.is_visible(selector, **kwargs)](#page-is-visible) 不会等待元素变得可见并立即返回.<a name="page-is-visible-option-timeout">#</a>
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="page-is-visible-return">#</a>
 
-Returns whether the element is [visible](https://playwright.dev/python/docs/actionability#visible). `selector` that does not match any elements is considered not visible.
+返回元素是否可见[visible](https://playwright.dev/python/docs/actionability#visible). 不匹配任何元素的选择器被认为不可见.
 
 ## page.locator(selector, **kwargs)<a name="page-locator">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to use when resolving DOM element. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-locator-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 解析DOM元素时使用的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-locator-option-selector">#</a>
 
-- `has` \<[Locator](#locator)> Matches elements containing an element that matches an inner locator. Inner locator is queried against the outer one. For example, `article` that has `text=Playwright` matches `\<article>\<div>Playwright\</div>\</article>`.<a name="page-locator-option-has">#</a>
+- `has` \<[Locator](#locator)> 对selector选中的元素进行再次匹配, 匹配目标中的子元素, 例如: 匹配子元素的`text=Playwright`的元素  `\<article>\<div>Playwright\</div>\</article>`.<a name="page-locator-option-has">#</a>
 
-    Note that outer and inner locators must belong to the same frame. Inner locator must not contain [FrameLocator](#framelocator)s.
+    请注意，外部和内部定位器必须属于同一个 frame. 内部定位器不能包含 [FrameLocator](#framelocator).
 
-- `has_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Matches elements containing specified text somewhere inside, possibly in a child or a descendant element. For example, `"Playwright"` matches `\<article>\<div>Playwright\</div>\</article>`.<a name="page-locator-option-has-text">#</a>
+- `has_text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 匹配包含指定文本的元素，可能在子元素或后代元素中,例如:`"Playwright"` 匹配 `\<article>\<div>Playwright\</div>\</article>`.<a name="page-locator-option-has-text">#</a>
 
 - returns: \<[Locator](#locator)><a name="page-locator-return">#</a>
 
-The method returns an element locator that can be used to perform actions on the page. Locator is resolved to the element immediately before performing an action, so a series of actions on the same locator can in fact be performed on different DOM elements. That would happen if the DOM structure between those actions has changed.
+该方法返回一个元素定位器，可用于在页面上执行操作。在执行一个操作之前，Locator被立即解析为元素，因此同一定位器上的一系列操作实际上可以在不同的DOM元素上执行。如果这些动作之间的DOM结构发生了变化，就会发生这种情况.
 
-Shortcut for main frame's [frame.locator(selector, **kwargs)](#frame-locator).
+主框架 [frame.locator(selector, **kwargs)](#frame-locator) 的快捷方式.
 
 ## page.main_frame<a name="page-main-frame">#</a>
 
 - returns: \<[Frame](#frame)><a name="page-main-frame-return">#</a>
 
-The page's main frame. Page is guaranteed to have a main frame which persists during navigations.
+页面的主框架。页面保证有一个在导航期间持久存在的主框架.
 
 ## page.opener()<a name="page-opener">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Page](#page)><a name="page-opener-return">#</a>
 
-Returns the opener for popup pages and `null` for others. If the opener has been closed already the returns `null`.
+返回弹出页面的 opener 其他的为空 如果 opener 已经关闭，则返回`null`.
 
 ## page.pause()<a name="page-pause">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-pause-return">#</a>
 
-Pauses script execution. Playwright will stop executing the script and wait for the user to either press 'Resume' button in the page overlay or to call `playwright.resume()` in the DevTools console.
+暂停脚本执行. Playwright 将停止执行脚本，等待用户在页面覆盖中按下 'Resume' 按钮，或者在DevTools控制台中调用 `playwright.resume()`.
 
-User can inspect selectors or perform manual steps while paused. Resume will continue running the original script from the place it was paused.
+用户可以在暂停时检查选择器或执行手动步骤。Resume将从暂停的位置继续运行原始脚本.
 
 > NOTE
 >
-> This method requires Playwright to be started in a headed mode, with a falsy `headless` value in the [browser_type.launch(**kwargs)](#browser-type-launch).
+> 这个方法要求 Playwright 以 有头模式启动, 及 [browser_type.launch(**kwargs)](#browser-type-launch) 里 `headless=False`.
 
 ## page.pdf(**kwargs)<a name="page-pdf">#</a>
 
-- `display_header_footer` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Display header and footer. Defaults to `false`.<a name="page-pdf-option-display-header-footer">#</a>
-- `footer_template` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> HTML template for the print footer. Should use the same format as the `header_template`.<a name="page-pdf-option-footer-template">#</a>
-- `format` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Paper format. If set, takes priority over `width` or `height` options. Defaults to 'Letter'.<a name="page-pdf-option-format">#</a>
-- `header_template` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them:<a name="page-pdf-option-header-template">#</a>
-    - `'date'` formatted print date
-    - `'title'` document title
-    - `'url'` document location
-    - `'pageNumber'` current page number
-    - `'totalPages'` total pages in the document
-- `height` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Paper height, accepts values labeled with units.<a name="page-pdf-option-height">#</a>
-- `landscape` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Paper orientation. Defaults to `false`.<a name="page-pdf-option-landscape">#</a>
-- `margin` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Paper margins, defaults to none.<a name="page-pdf-option-margin">#</a>
-    - `top` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Top margin, accepts values labeled with units. Defaults to `0`.
-    - `right` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Right margin, accepts values labeled with units. Defaults to `0`.
-    - `bottom` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Bottom margin, accepts values labeled with units. Defaults to `0`.
-    - `left` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Left margin, accepts values labeled with units. Defaults to `0`.
-- `page_ranges` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Paper ranges to print, e.g., '1-5, 8, 11-13'. Defaults to the empty string, which means print all pages.<a name="page-pdf-option-page-ranges">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> The file path to save the PDF to. If `path` is a relative path, then it is resolved relative to the current working directory. If no path is provided, the PDF won't be saved to the disk.<a name="page-pdf-option-path">#</a>
-- `prefer_css_page_size` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Give any CSS `@page` size declared in the page priority over what is declared in `width` and `height` or `format` options. Defaults to `false`, which will scale the content to fit the paper size.<a name="page-pdf-option-prefer-css-page-size">#</a>
-- `print_background` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Print background graphics. Defaults to `false`.<a name="page-pdf-option-print-background">#</a>
-- `scale` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Scale of the webpage rendering. Defaults to `1`. Scale amount must be between 0.1 and 2.<a name="page-pdf-option-scale">#</a>
-- `width` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Paper width, accepts values labeled with units.<a name="page-pdf-option-width">#</a>
+- `display_header_footer` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 显示页眉和页脚。默认值为 `false`.<a name="page-pdf-option-display-header-footer">#</a>
+- `footer_template` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 打印页脚的HTML模板。应该使用与`header_template`相同的格式.<a name="page-pdf-option-footer-template">#</a>
+- `format` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 论文格式。如果设置，优先级高于`宽度`或`高度`选项。默认为 'Letter'.<a name="page-pdf-option-format">#</a>
+- `header_template` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 打印头的HTML模板。应该是有效的HTML标记，使用以下类注入打印值:<a name="page-pdf-option-header-template">#</a>
+    - `'date'` 格式化打印日期
+    - `'title'`文档标题
+    - `'url'` 文档的位置
+    - `'pageNumber'` 当前页码
+    - `'totalPages'` 文件中的总页数
+- `height` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 纸张高度，接受单位标记的值.<a name="page-pdf-option-height">#</a>
+- `landscape` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 纸张朝向。默认值为 `false`.<a name="page-pdf-option-landscape">#</a>
+- `margin` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 纸边距，默认为 none.<a name="page-pdf-option-margin">#</a>
+    - `top` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 顶部空白，接受单位标记的值。默认值为 `0`.
+    - `right` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 右边距，接受单位标记的值。默认值为 `0`.
+    - `bottom` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>底部边距，接受用单位标记的值。默认值为 `0`.
+    - `left` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 左边距，接受带有单位标记的值。默认值为 `0`.
+- `page_ranges` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 打印的纸张范围，例如:  '1-5, 8, 11-13'. 默认为空字符串，这意味着打印所有页面.<a name="page-pdf-option-page-ranges">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> PDF文件保存到的路径. 如果path是一个相对路径，那么它是相对于当前工作目录解析的。如果没有提供路径，PDF将不会被保存到磁盘.<a name="page-pdf-option-path">#</a>
+- `prefer_css_page_size` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 指定任何在`页面`中声明的 CSS 尺寸优先于在宽度、高度或格式选项中声明的 CSS 尺寸. 默认为 `false`, 它将缩放内容以适应纸张大小.<a name="page-pdf-option-prefer-css-page-size">#</a>
+- `print_background` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 打印背景图形。默认值为 `false`.<a name="page-pdf-option-print-background">#</a>
+- `scale` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 网页渲染的比例。默认为`1`。刻度必须在0.1到 2 之间.<a name="page-pdf-option-scale">#</a>
+- `width` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>纸张宽度，接受单位标记的值.<a name="page-pdf-option-width">#</a>
 - returns: \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)><a name="page-pdf-return">#</a>
 
-Returns the PDF buffer.
+返回PDF缓冲区.
 
 > NOTE
 >
-> Generating a pdf is currently only supported in Chromium headless.
+> 生成pdf目前只支持铬无头模式.
 
-`page.pdf()` generates a pdf of the page with `print` css media. To generate a pdf with `screen` media, call [page.emulate_media(**kwargs)](#page-emulate-media) before calling `page.pdf()`:
+`page.pdf()` 生成一个带有打印CSS媒体的PDF页面, 在调用`page.pdf()`之前,调用[page.emulate_media(**kwargs)](#page-emulate-media) 来生成带有屏幕媒体的pdf:
 
 > NOTE
 >
-> By default, `page.pdf()` generates a pdf with modified colors for printing. Use the [`-webkit-print-color-adjust`](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-print-color-adjust) property to force rendering of exact colors.
+> 默认情况下, `page.pdf()` 会生成一个经过修改的pdf以供打印。使用 [`-webkit-print-color-adjust`](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-print-color-adjust) 属性强制渲染精确的颜色.
 
 - Sync
 
@@ -8311,22 +8312,22 @@ await page.emulate_media(media="screen")
 await page.pdf(path="page.pdf")
 ```
 
-The `width`, `height`, and `margin` options accept values labeled with units. Unlabeled values are treated as pixels.
+宽度、高度和边距选项接受用单位标记的值。未标记的值被视为像素.
 
-A few examples:
+几个例子:
 
-- `page.pdf({width: 100})` - prints with width set to 100 pixels
-- `page.pdf({width: '100px'})` - prints with width set to 100 pixels
-- `page.pdf({width: '10cm'})` - prints with width set to 10 centimeters.
+- `page.pdf({width: 100})` - 打印宽度设置为100像素
+- `page.pdf({width: '100px'})` - 打印宽度设置为100像素
+- `page.pdf({width: '10cm'})` - 打印宽度设置为10厘米.
 
-All possible units are:
+所有可能的单位是:
 
-- `px` - pixel
-- `in` - inch
-- `cm` - centimeter
-- `mm` - millimeter
+- `px` - 像素
+- `in` - 英寸
+- `cm` - 厘米
+- `mm` - 毫米
 
-The `format` options are:
+格式选项如下:
 
 - `Letter`: 8.5in x 11in
 - `Legal`: 8.5in x 14in
@@ -8342,31 +8343,31 @@ The `format` options are:
 
 > NOTE
 >
-> `header_template` and `footer_template` markup have the following limitations: > 1. Script tags inside templates are not evaluated. > 2. Page styles are not visible inside templates.
+> `header_template` and `footer_template` 标记有以下限制: > 1. 模板内的脚本标记不会被计算. > 2. 页面样式在模板中是不可见的.
 
 ## page.press(selector, key, **kwargs)<a name="page-press">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-press-option-selector">#</a>
-- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the key to press or a character to generate, such as `ArrowLeft` or `a`.<a name="page-press-option-key">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between `keydown` and `keyup` in milliseconds. Defaults to 0.<a name="page-press-option-delay">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-press-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-press-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-press-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-press-option-selector">#</a>
+- `key` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要按下的`键名`或要生成的字符，如`ArrowLeft`或'a'.<a name="page-press-option-key">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> `keydown`和`keyup`之间的等待时间，单位是毫秒。默认为0.<a name="page-press-option-delay">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-press-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-press-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-press-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-press-return">#</a>
 
-Focuses the element, and then uses [keyboard.down(key)](#keyboard-down) and [keyboard.up(key)](#keyboard-up).
+聚焦元素，然后使用 [keyboard.down(key)](#keyboard-down) and [keyboard.up(key)](#keyboard-up).
 
-`key` can specify the intended [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) value or a single character to generate the text for. A superset of the `key` values can be found [here](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values). Examples of the keys are:
+key可以指定想要的 [keyboardEvent.key](https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key) 或是单个字符生成的文本,这里可以找到键值的超集。键的例子如下:
 
 `F1` - `F12`, `Digit0`- `Digit9`, `KeyA`- `KeyZ`, `Backquote`, `Minus`, `Equal`, `Backslash`, `Backspace`, `Tab`, `Delete`, `Escape`, `ArrowDown`, `End`, `Enter`, `Home`, `Insert`, `PageDown`, `PageUp`, `ArrowRight`, `ArrowUp`, etc.
 
-Following modification shortcuts are also supported: `Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
+还支持以下快捷键:`Shift`, `Control`, `Alt`, `Meta`, `ShiftLeft`.
 
-Holding down `Shift` will type the text that corresponds to the `key` in the upper case.
+按住`Shift`键将输入与大写键对应的文本.
 
-If `key` is a single character, it is case-sensitive, so the values `a` and `A` will generate different respective texts.
+如果`key`是单个字符，它是区分大小写的，因此值`a`和`A`将生成不同的文本.
 
-Shortcuts such as `key: "Control+o"` or `key: "Control+Shift+T"` are supported as well. When specified with the modifier, modifier is pressed and being held while the subsequent key is being pressed.
+也支持快捷键，如键:“Control+o”或键:“Control+Shift+T”。当用修饰符指定时，修饰符被按下并被保持，而随后的键被按下.
 
 - Sync
 
@@ -8398,63 +8399,63 @@ await browser.close()
 
 ## page.query_selector(selector, **kwargs)<a name="page-query-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-query-selector-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-query-selector-option-strict">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="page-query-selector-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-query-selector-option-strict">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[ElementHandle](#elementhandle)><a name="page-query-selector-return">#</a>
 
 > CAUTION
 >
-> The use of [ElementHandle](#elementhandle) is discouraged, use [Locator](#locator) objects and web-first assertions instead.
+> 不鼓励使用 [ElementHandle](#elementhandle) 而是使用[Locator](#locator)对象和web优先断言
 
-The method finds an element matching the specified selector within the page. If no elements match the selector, the return value resolves to `null`. To wait for an element on the page, use [locator.wait_for(**kwargs)](#locator-wait-for).
+该方法查找页面中与指定选择器匹配的元素。如果没有元素匹配选择器，返回值解析为 `null`.若要等待页面上的元素，请使用[locator.wait_for(**kwargs)](#locator-wait-for).
 
-Shortcut for main frame's [frame.query_selector(selector, **kwargs)](#frame-query-selector).
+主框架 [frame.query_selector(selector, **kwargs)](#frame-query-selector) 的快捷方式.
 
 ## page.query_selector_all(selector)<a name="page-query-selector-all">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-query-selector-all-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="page-query-selector-all-option-selector">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]><a name="page-query-selector-all-return">#</a>
 
 > CAUTION
 >
-> The use of [ElementHandle](#elementhandle) is discouraged, use [Locator](#locator) objects and web-first assertions instead.
+> 不鼓励使用 [ElementHandle](#elementhandle) 而是使用[Locator](#locator)对象和web优先断言
 
-The method finds all elements matching the specified selector within the page. If no elements match the selector, the return value resolves to `[]`.
+该方法查找页面中与指定选择器匹配的所有元素。如果没有元素匹配选择器，返回值解析为 `[]`.
 
-Shortcut for main frame's [frame.query_selector_all(selector)](#frame-query-selector-all).
+主框架 [frame.query_selector_all(selector)](#frame-query-selector-all) 的快捷方式.
 
 ## page.reload(**kwargs)<a name="page-reload">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-reload-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="page-reload-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="page-reload-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="page-reload-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Response](#response)><a name="page-reload-return">#</a>
 
-This method reloads the current page, in the same way as if the user had triggered a browser refresh. Returns the main resource response. In case of multiple redirects, the navigation will resolve with the response of the last redirect.
+这个方法重新加载当前页面，就像用户触发了浏览器刷新一样。返回主资源响应。在多个重定向的情况下，导航将使用最后一个重定向的响应进行解析.
 
 ## page.route(url, handler, **kwargs)<a name="page-route">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving [URL](https://en.wikipedia.org/wiki/URL) to match while routing. When a `base_url` via the context options was provided and the passed URL is a path, it gets merged via the [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.<a name="page-route-option-url">#</a>
-- `handler` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Route](#route), [Request](#request)]> handler function to route the request.<a name="page-route-option-handler">#</a>
-- `times` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> How often a route should be used. By default it will be used every time.<a name="page-route-option-times">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 一个glob模式、regex模式或谓词在路由时接收要匹配的 [URL](https://en.wikipedia.org/wiki/URL). 当通过上下文选项提供了一个 `base_url` 并且传递的URL是一个路径时，它会通过 [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) 构造函数合并.<a name="page-route-option-url">#</a>
+- `handler` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Route](#route), [Request](#request)]> handler函数路由请求.<a name="page-route-option-handler">#</a>
+- `times` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 一个路由应该使用的频率。默认情况下，每次都会使用.<a name="page-route-option-times">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-route-return">#</a>
 
-Routing provides the capability to modify network requests that are made by a page.
+路由提供了修改由页面发出的网络请求的功能.
 
-Once routing is enabled, every request matching the url pattern will stall unless it's continued, fulfilled or aborted.
-
-> NOTE
->
-> The handler will only be called for the first url if the response is a redirect.
+一旦路由被启用，每一个匹配url模式的请求都会停止，除非它被继续、完成或中止.
 
 > NOTE
 >
-> [page.route(url, handler, **kwargs)](#page-route) will not intercept requests intercepted by Service Worker. See [this](https://github.com/microsoft/playwright/issues/1090) issue. We recommend disabling Service Workers when using request interception. Via `await context.addInitScript(() => delete window.navigator.serviceWorker);`
+> 只有当响应是重定向时，才会为第一个url调用处理程序.
 
-An example of a naive handler that aborts all image requests:
+> NOTE
+>
+> [page.route(url, handler, **kwargs)](#page-route) 不会拦截被Service Worker拦截的请求. 查看[这个问题](https://github.com/microsoft/playwright/issues/1090). 我们建议在使用请求拦截时禁用 Service Workers . 通过 `await context.addInitScript(() => delete window.navigator.serviceWorker);`
+
+一个简单的处理程序的例子，中止所有的图像请求:
 
 - Sync
 
@@ -8474,7 +8475,7 @@ await page.goto("https://example.com")
 await browser.close()
 ```
 
-or the same snippet using a regex pattern instead:
+或者使用regex模式替换相同的代码片段:
 
 - Sync
 
@@ -8494,7 +8495,7 @@ await page.goto("https://example.com")
 await browser.close()
 ```
 
-It is possible to examine the request to decide the route action. For example, mocking all requests that contain some post data, and leaving all other requests as is:
+可以通过检查请求来决定路由操作。例如，mock所有包含post数据的请求，并保留所有其他请求的原样:
 
 - Sync
 
@@ -8518,55 +8519,55 @@ def handle_route(route):
 await page.route("/api/**", handle_route)
 ```
 
-Page routes take precedence over browser context routes (set up with [browser_context.route(url, handler, **kwargs)](https://playwright.dev/python/docs/api/class-browsercontext#browser-context-route)) when request matches both handlers.
+当请求匹配两个处理程序时,页面路由优先于浏览器上下文路由(使用 [browser_context.route(url, handler, **kwargs)](https://playwright.dev/python/docs/api/class-browsercontext#browser-context-route)设置) 
 
-To remove a route with its handler you can use [page.unroute(url, **kwargs)](#page-unroute).
+要移除带有其处理程序的路由，你可以使用 [page.unroute(url, **kwargs)](#page-unroute).
 
 > NOTE
 >
-> Enabling routing disables http cache.
+> 启用路由将禁用http缓存.
 
 ## page.screenshot(**kwargs)<a name="page-screenshot">#</a>
 
-- `animations` \<"disabled"> When set to `"disabled"`, stops CSS animations, CSS transitions and Web Animations. Animations get different treatment depending on their duration:<a name="page-screenshot-option-animations">#</a>
-    - finite animations are fast-forwarded to completion, so they'll fire `transitionend` event.
-    - infinite animations are canceled to initial state, and then played over after the screenshot.
-- `clip` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> An object which specifies clipping of the resulting image. Should have the following fields:<a name="page-screenshot-option-clip">#</a>
-    - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> x-coordinate of top-left corner of clip area
-    - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> y-coordinate of top-left corner of clip area
-    - `width` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> width of clipping area
-    - `height` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> height of clipping area
-- `full_page` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, takes a screenshot of the full scrollable page, instead of the currently visible viewport. Defaults to `false`.<a name="page-screenshot-option-full-page">#</a>
-- `mask` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Locator](#locator)]> Specify locators that should be masked when the screenshot is taken. Masked elements will be overlayed with a pink box `#FF00FF` that completely covers its bounding box.<a name="page-screenshot-option-mask">#</a>
-- `omit_background` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Hides default white background and allows capturing screenshots with transparency. Not applicable to `jpeg` images. Defaults to `false`.<a name="page-screenshot-option-omit-background">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> The file path to save the image to. The screenshot type will be inferred from file extension. If `path` is a relative path, then it is resolved relative to the current working directory. If no path is provided, the image won't be saved to the disk.<a name="page-screenshot-option-path">#</a>
-- `quality` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> The quality of the image, between 0-100. Not applicable to `png` images.<a name="page-screenshot-option-quality">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-screenshot-option-timeout">#</a>
-- `type` \<"png"|"jpeg"> Specify screenshot type, defaults to `png`.<a name="page-screenshot-option-type">#</a>
+- `animations` \<"disabled"> 当设置为`"disabled"`时，停止CSS动画，CSS转换和Web动画。动画根据其持续时间得到不同的处理:<a name="page-screenshot-option-animations">#</a>
+    - 有限动画是快进到完成，所以他们会触发`transitionend`事件.
+    - 无限动画被取消到初始状态，然后在屏幕截图后播放.
+- `clip` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)>指定对结果图像进行剪辑的对象。应该有以下字段:<a name="page-screenshot-option-clip">#</a>
+    - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 剪辑区域左上角的X坐标
+    - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 剪辑区域左上角的Y坐标
+    - `width` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 剪辑区域的宽度
+    - `height` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 剪辑区域的高度
+- `full_page` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，获取完整的可滚动页面的截图，而不是当前可见的视口。默认值为 `false`.<a name="page-screenshot-option-full-page">#</a>
+- `mask` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Locator](#locator)]> 指定在截屏时应该被屏蔽的定位器。被屏蔽的元素将被一个粉红色的框覆盖#FF00FF，完全覆盖该元素.<a name="page-screenshot-option-mask">#</a>
+- `omit_background` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 隐藏默认的白色背景，并允许透明捕捉屏幕截图。不适用于`jpeg`图像。默认值为`false`.<a name="page-screenshot-option-omit-background">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 保存镜像的文件路径, 屏幕截图类型将从文件扩展名推断。如果path是一个相对路径，那么它是相对于当前工作目录解析的。如果没有提供路径，映像将不会被保存到磁盘.<a name="page-screenshot-option-path">#</a>
+- `quality` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 图像的质量，在0-100之间。不适用于png图像.<a name="page-screenshot-option-quality">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-screenshot-option-timeout">#</a>
+- `type` \<"png"|"jpeg">指定截图类型，默认为`png`.<a name="page-screenshot-option-type">#</a>
 - returns: \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)><a name="page-screenshot-return">#</a>
 
-Returns the buffer with the captured screenshot.
+返回带有捕获的截图的缓冲区.
 
 ## page.select_option(selector, **kwargs)<a name="page-select-option">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-select-option-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-select-option-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-select-option-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-select-option-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-select-option-option-timeout">#</a>
-- `element` \<[ElementHandle](#elementhandle)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]> Option elements to select. Optional.<a name="page-select-option-option-element">#</a>
-- `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]> Options to select by index. Optional.<a name="page-select-option-option-index">#</a>
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Options to select by value. If the `\<select>` has the `multiple` attribute, all given options are selected, otherwise only the first option matching one of the passed options is selected. Optional.<a name="page-select-option-option-value">#</a>
-- `label` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Options to select by label. If the `\<select>` has the `multiple` attribute, all given options are selected, otherwise only the first option matching one of the passed options is selected. Optional.<a name="page-select-option-option-label">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-select-option-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-select-option-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-select-option-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-select-option-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-select-option-option-timeout">#</a>
+- `element` \<[ElementHandle](#elementhandle)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[ElementHandle](#elementhandle)]> 要选择的选项。可选的.<a name="page-select-option-option-element">#</a>
+- `index` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)]> 按索引进行选择的选项。可选的.<a name="page-select-option-option-index">#</a>
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 按值选择的选项。如果`\<select>`具有多个属性，则选择所有给定的选项，否则只选择与传递的选项之一匹配的第一个选项。可选的.<a name="page-select-option-option-value">#</a>
+- `label` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 按标签进行选择的选项。如果`\<select>`具有多个属性，则选择所有给定的选项，否则只选择与传递的选项之一匹配的第一个选项。可选的.<a name="page-select-option-option-label">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="page-select-option-return">#</a>
 
-This method waits for an element matching `selector`, waits for [actionability](https://playwright.dev/python/docs/actionability) checks, waits until all specified options are present in the `\<select>` element and selects these options.
+这个方法等待元素匹配选择器，等待[可操作性](https://playwright.dev/python/docs/actionability)检查，直到所有指定的选项都出现在`\<select>`元素中，并选择这些选项.
 
-If the target element is not a `\<select>` element, this method throws an error. However, if the element is inside the `\<label>` element that has an associated [control](https://developer.mozilla.org/en-US/docs/Web/API/HTMLLabelElement/control), the control will be used instead.
+如果目标元素不是`\<select>`元素，此方法将抛出一个错误。但是，如果该元素位于`\<label>`元素中，且该元素具有关联控件，则将使用该控件.
 
-Returns the array of option values that have been successfully selected.
+返回已成功选择的选项值的数组.
 
-Triggers a `change` and `input` event once all the provided options have been selected.
+一旦选择了所有提供的选项，就触发一个更改和输入事件.
 
 - Sync
 
@@ -8590,54 +8591,54 @@ await page.select_option("select#colors", label="blue")
 await page.select_option("select#colors", value=["red", "green", "blue"])
 ```
 
-Shortcut for main frame's [frame.select_option(selector, **kwargs)](#frame-select-option).
+主框架 [frame.select_option(selector, **kwargs)](#frame-select-option) 的快捷方式.
 
 ## page.set_checked(selector, checked, **kwargs)<a name="page-set-checked">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-set-checked-option-selector">#</a>
-- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to check or uncheck the checkbox.<a name="page-set-checked-option-checked">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-set-checked-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-set-checked-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="page-set-checked-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-set-checked-option-selector">#</a>
+- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否选中或不选中复选框.<a name="page-set-checked-option-checked">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-set-checked-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-set-checked-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="page-set-checked-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-set-checked-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-set-checked-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="page-set-checked-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-set-checked-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-set-checked-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="page-set-checked-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-set-checked-return">#</a>
 
-This method checks or unchecks an element matching `selector` by performing the following steps:
+这个方法通过执行以下步骤检查或取消检查元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Ensure that matched element is a checkbox or a radio input. If not, this method throws.
-3. If the element already has the right checked state, this method returns immediately.
-4. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-5. Scroll the element into view if needed.
-6. Use [page.mouse](#page-mouse) to click in the center of the element.
-7. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-8. Ensure that the element is now checked or unchecked. If not, this method throws.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 确保匹配的元素是一个复选框或单选输入。如果不是，则排除此方法.
+3. 如果元素已经具有正确的选中状态，则该方法立即返回.
+4. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+5. 如果需要，将元素滚动到视图中.
+6. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+7. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+8. 确保元素现在被选中或取消选中。如果不是，则抛出此方法.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
-Shortcut for main frame's [frame.set_checked(selector, checked, **kwargs)](#frame-set-checked).
+主框架 [frame.set_checked(selector, checked, **kwargs)](#frame-set-checked) 的快捷方式.
 
 ## page.set_content(html, **kwargs)<a name="page-set-content">#</a>
 
-- `html` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> HTML markup to assign to the page.<a name="page-set-content-option-html">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-set-content-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="page-set-content-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `html` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要分配给页面的html标记.<a name="page-set-content-option-html">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="page-set-content-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="page-set-content-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-set-content-return">#</a>
 
 ## page.set_default_navigation_timeout(timeout)<a name="page-set-default-navigation-timeout">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum navigation time in milliseconds<a name="page-set-default-navigation-timeout-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大导航时间，以毫秒为单位<a name="page-set-default-navigation-timeout-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-set-default-navigation-timeout-return">#</a>
 
-This setting will change the default maximum navigation time for the following methods and related shortcuts:
+此设置将改变以下方法和相关快捷方式的默认最大导航时间:
 
 - [page.go_back(**kwargs)](#page-go-back)
 - [page.go_forward(**kwargs)](#page-go-forward)
@@ -8649,56 +8650,56 @@ This setting will change the default maximum navigation time for the following m
 
 > NOTE
 >
-> [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) takes priority over [page.set_default_timeout(timeout)](#page-set-default-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) and [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout).
+> [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout)优先于 [page.set_default_timeout(timeout)](#page-set-default-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) 和[browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout).
 
 ## page.set_default_timeout(timeout)<a name="page-set-default-timeout">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds<a name="page-set-default-timeout-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间(毫秒)<a name="page-set-default-timeout-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-set-default-timeout-return">#</a>
 
-This setting will change the default maximum time for all the methods accepting `timeout` option.
+此设置将更改所有接受超时的方法的默认最大时间.
 
 > NOTE
 >
-> [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) takes priority over [page.set_default_timeout(timeout)](#page-set-default-timeout).
+> [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) 优先于 [page.set_default_timeout(timeout)](#page-set-default-timeout).
 
 ## page.set_extra_http_headers(headers)<a name="page-set-extra-http-headers">#</a>
 
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> An object containing additional HTTP headers to be sent with every request. All header values must be strings.<a name="page-set-extra-http-headers-option-headers">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 包含每个请求发送的附加HTTP头的对象。所有头文件的值必须是字符串.<a name="page-set-extra-http-headers-option-headers">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-set-extra-http-headers-return">#</a>
 
-The extra HTTP headers will be sent with every request the page initiates.
+额外的HTTP报头将随页面发起的每个请求一起发送.
 
 > NOTE
 >
-> [page.set_extra_http_headers(headers)](#page-set-extra-http-headers) does not guarantee the order of headers in the outgoing requests.
+> [page.set_extra_http_headers(headers)](#page-set-extra-http-headers) 不能保证传出请求中报头的顺序.
 
 ## page.set_input_files(selector, files, **kwargs)<a name="page-set-input-files">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-set-input-files-option-selector">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-set-input-files-option-selector">#</a>
 - `files` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[List](https://docs.python.org/3/library/typing.html#typing.List)[[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="page-set-input-files-option-files">#</a>
     - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
     - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
     - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-set-input-files-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-set-input-files-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-set-input-files-option-timeout">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-set-input-files-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-set-input-files-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-set-input-files-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-set-input-files-return">#</a>
 
-This method expects `selector` to point to an [input element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
+这个方法期望选择器指向一个[输入元素](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input).
 
-Sets the value of the file input to these file paths or files. If some of the `filePaths` are relative paths, then they are resolved relative to the the current working directory. For empty array, clears the selected files.
+将文件输入的值设置为这些文件路径或文件。如果某些`filepath`是相对路径，那么它们将相对于当前工作目录进行解析。对于空数组，清除选定的文件.
 
 ## page.set_viewport_size(viewport_size)<a name="page-set-viewport-size">#</a>
 
 - `viewport_size` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="page-set-viewport-size-option-viewport-size">#</a>
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page width in pixels.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page height in pixels.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面宽度(像素).
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面高度(像素).
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-set-viewport-size-return">#</a>
 
-In the case of multiple pages in a single browser, each page can have its own viewport size. However, [browser.new_context(**kwargs)](#browser-new-context) allows to set viewport size (and more) for all pages in the context at once.
+在一个浏览器中有多个页面的情况下，每个页面可以有自己的视口大小。然而，[browser.new_context(**kwargs)](#browser-new-context) 允许在上下文中一次为所有页面设置视口大小(和更多).
 
-[page.set_viewport_size(viewport_size)](#page-set-viewport-size) will resize the page. A lot of websites don't expect phones to change size, so you should set the viewport size before navigating to the page. [page.set_viewport_size(viewport_size)](#page-set-viewport-size) will also reset `screen` size, use [browser.new_context(**kwargs)](#browser-new-context) with `screen` and `viewport` parameters if you need better control of these properties.
+[page.set_viewport_size(viewport_size)](#page-set-viewport-size) 将调整页面的大小. 很多网站不希望手机改变大小，所以你应该在导航到页面之前设置viewport的大小. [page.set_viewport_size(viewport_size)](#page-set-viewport-size) 也将重置屏幕大小，如果你需要更好地控制这些属性，使用 [browser.new_context(**kwargs)](#browser-new-context) 与屏幕和viewport参数.
 
 - Sync
 
@@ -8718,39 +8719,39 @@ await page.goto("https://example.com")
 
 ## page.tap(selector, **kwargs)<a name="page-tap">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-tap-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-tap-option-force">#</a>
-- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> Modifier keys to press. Ensures that only these modifiers are pressed during the operation, and then restores current modifiers back. If not specified, currently pressed modifiers are used.<a name="page-tap-option-modifiers">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-tap-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="page-tap-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-tap-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-tap-option-force">#</a>
+- `modifiers` \<[List](https://docs.python.org/3/library/typing.html#typing.List)["Alt"|"Control"|"Meta"|"Shift"]> modifiers按键要按。确保在操作期间只按下这些修饰符，然后恢复当前的修饰符。如果未指定，则使用当前按下的修饰符.<a name="page-tap-option-modifiers">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-tap-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="page-tap-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-tap-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-tap-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="page-tap-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-tap-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-tap-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="page-tap-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-tap-return">#</a>
 
-This method taps an element matching `selector` by performing the following steps:
+这个方法通过执行以下步骤点击元素匹配选择器:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-3. Scroll the element into view if needed.
-4. Use [page.touchscreen](#page-touchscreen) to tap the center of the element, or the specified `position`.
-5. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+3. 如果需要，将元素滚动到视图中.
+4. 点击页面中心或指定位置.
+5. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
 > NOTE
 >
-> [page.tap(selector, **kwargs)](#page-tap) requires that the `has_touch` option of the browser context be set to true.
+> [page.tap(selector, **kwargs)](#page-tap) 需要将浏览器上下文的 `has_touch` 选项设置为  true.
 
-Shortcut for main frame's [frame.tap(selector, **kwargs)](#frame-tap).
+主框架 [frame.tap(selector, **kwargs)](#frame-tap) 的快捷方式.
 
 ## page.text_content(selector, **kwargs)<a name="page-text-content">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-text-content-option-selector">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-text-content-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-text-content-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-text-content-option-selector">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-text-content-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-text-content-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-text-content-return">#</a>
 
 Returns `element.textContent`.
@@ -8759,21 +8760,21 @@ Returns `element.textContent`.
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-title-return">#</a>
 
-Returns the page's title. Shortcut for main frame's [frame.title()](#frame-title).
+返回页面标题. 主框架 [frame.title()](#frame-title) 的快捷方式.
 
 ## page.type(selector, text, **kwargs)<a name="page-type">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-type-option-selector">#</a>
-- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A text to type into a focused element.<a name="page-type-option-text">#</a>
-- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to wait between key presses in milliseconds. Defaults to 0.<a name="page-type-option-delay">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-type-option-no-wait-after">#</a>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-type-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-type-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-type-option-selector">#</a>
+- `text` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要输入到焦点元素中的文本.<a name="page-type-option-text">#</a>
+- `delay` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 按键之间的等待时间，单位是毫秒。默认为0.<a name="page-type-option-delay">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-type-option-no-wait-after">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-type-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-type-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-type-return">#</a>
 
-Sends a `keydown`, `keypress`/`input`, and `keyup` event for each character in the text. `page.type` can be used to send fine-grained keyboard events. To fill values in form fields, use [page.fill(selector, value, **kwargs)](#page-fill).
+为文本中的每个字符发送  `keydown`, `keypress`/`input`, and `keyup` 事件. `page.type` can be used to send fine-grained keyboard events. To fill values in form fields, use [page.fill(selector, value, **kwargs)](#page-fill).
 
-To press a special key, like `Control` or `ArrowDown`, use [keyboard.press(key, **kwargs)](#keyboard-press).
+要按一个特殊的键，如`Control`或`ArrowDown`，使用 [keyboard.press(key, **kwargs)](#keyboard-press).
 
 - Sync
 
@@ -8789,85 +8790,85 @@ await page.type("#mytextarea", "hello") # types instantly
 await page.type("#mytextarea", "world", delay=100) # types slower, like a user
 ```
 
-Shortcut for main frame's [frame.type(selector, text, **kwargs)](#frame-type).
+主框架 [frame.type(selector, text, **kwargs)](#frame-type) 的快捷方式.
 
 ## page.uncheck(selector, **kwargs)<a name="page-uncheck">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to search for an element. If there are multiple elements satisfying the selector, the first will be used. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-uncheck-option-selector">#</a>
-- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to bypass the [actionability](https://playwright.dev/python/docs/actionability) checks. Defaults to `false`.<a name="page-uncheck-option-force">#</a>
-- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Actions that initiate navigations are waiting for these navigations to happen and for pages to start loading. You can opt out of waiting via setting this flag. You would only need this option in the exceptional cases such as navigating to inaccessible pages. Defaults to `false`.<a name="page-uncheck-option-no-wait-after">#</a>
-- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> A point to use relative to the top-left corner of element padding box. If not specified, uses some visible point of the element.<a name="page-uncheck-option-position">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个搜索元素的选择器。如果有多个元素满足选择器，将使用第一个元素。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors) .<a name="page-uncheck-option-selector">#</a>
+- `force` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否绕过[actionability](https://playwright.dev/python/docs/actionability)检查。默认值为`false`.<a name="page-uncheck-option-force">#</a>
+- `no_wait_after` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启动导航的操作正在等待这些导航发生，并等待页面开始加载。你可以通过设置这个标志来选择不等待。只有在特殊情况下才需要这个选项，比如导航到不可访问的页面。默认值为`false`.<a name="page-uncheck-option-no-wait-after">#</a>
+- `position` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 相对于元素填充框的左上角使用的一个点。如果没有指定，则使用元素的某个可见点.<a name="page-uncheck-option-position">#</a>
     - `x` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
     - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-uncheck-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-uncheck-option-timeout">#</a>
-- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When set, this method only performs the [actionability](https://playwright.dev/python/docs/actionability) checks and skips the action. Defaults to `false`. Useful to wait until the element is ready for the action without performing it.<a name="page-uncheck-option-trial">#</a>
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-uncheck-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-uncheck-option-timeout">#</a>
+- `trial` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 设置后，该方法只执行[actionability](https://playwright.dev/python/docs/actionability) 检查，并跳过操作。默认值为`false`。在元素准备好时再执行动作是很有用的.<a name="page-uncheck-option-trial">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-uncheck-return">#</a>
 
-This method unchecks an element matching `selector` by performing the following steps:
+这个方法通过执行以下步骤取消对元素匹配选择器的检查:
 
-1. Find an element matching `selector`. If there is none, wait until a matching element is attached to the DOM.
-2. Ensure that matched element is a checkbox or a radio input. If not, this method throws. If the element is already unchecked, this method returns immediately.
-3. Wait for [actionability](https://playwright.dev/python/docs/actionability) checks on the matched element, unless `force` option is set. If the element is detached during the checks, the whole action is retried.
-4. Scroll the element into view if needed.
-5. Use [page.mouse](#page-mouse) to click in the center of the element.
-6. Wait for initiated navigations to either succeed or fail, unless `no_wait_after` option is set.
-7. Ensure that the element is now unchecked. If not, this method throws.
+1. 找到一个元素匹配选择器。如果没有，则等待直到匹配的元素被附加到DOM.
+2. 确保匹配的元素是一个复选框或单选输入。如果不是，则排除此方法. If the element is already unchecked, this method returns immediately.
+3. 等待匹配元素的[actionability](https://playwright.dev/python/docs/actionability)检查，除非设置了强制选项。如果在检查期间分离了元素，则会重试整个操作.
+4. 如果需要，将元素滚动到视图中.
+5. 使用 [page.mouse](#page-mouse) 单击元素的中心.
+6. 等待已启动的导航成功或失败，除非设置了`no_wait_after`选项.
+7. 确保元素现在是未选中的。如果不是，则排除此方法.
 
-When all steps combined have not finished during the specified `timeout`, this method throws a [TimeoutError](#timeouterror). Passing zero timeout disables this.
+如果在指定的超时期间，所有步骤组合都没有完成，则该方法将抛出一个[TimeoutError](#timeouterror)。传递零超时将禁用此功能.
 
-Shortcut for main frame's [frame.uncheck(selector, **kwargs)](#frame-uncheck).
+主框架 [frame.uncheck(selector, **kwargs)](#frame-uncheck) 的快捷方式.
 
 ## page.unroute(url, **kwargs)<a name="page-unroute">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving [URL](https://en.wikipedia.org/wiki/URL) to match while routing.<a name="page-unroute-option-url">#</a>
-- `handler` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Route](#route), [Request](#request)]> Optional handler function to route the request.<a name="page-unroute-option-handler">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 一个glob Pattern, regex Pattern或predicate在路由时接收要匹配的url.<a name="page-unroute-option-url">#</a>
+- `handler` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Route](#route), [Request](#request)]> Optional handler函数路由请求.<a name="page-unroute-option-handler">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-unroute-return">#</a>
 
-Removes a route created with [page.route(url, handler, **kwargs)](#page-route). When `handler` is not specified, removes all routes for the `url`.
+移除使用 [page.route(url, handler, **kwargs)](#page-route) 创建的路由. 当未指定handler时，删除url的所有路由.
 
 ## page.url<a name="page-url">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="page-url-return">#</a>
 
-Shortcut for main frame's [frame.url](#frame-url).
+主框架 [frame.url](#frame-url) 的快捷方式.
 
 ## page.video<a name="page-video">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Video](#video)><a name="page-video-return">#</a>
 
-Video object associated with this page.
+与此页相关联的视频对象.
 
 ## page.viewport_size<a name="page-viewport-size">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="page-viewport-size-return">#</a>
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page width in pixels.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page height in pixels.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面宽度(像素).
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面高度(像素).
 
 ## page.wait_for_event(event, **kwargs)<a name="page-wait-for-event-2">#</a>
 
-- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Event name, same one typically passed into `*.on(event)`.<a name="page-wait-for-event-2-option-event">#</a>
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Receives the event data and resolves to truthy value when the waiting should resolve.<a name="page-wait-for-event-2-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-event-2-option-timeout">#</a>
+- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 事件名称，与通常传递给`*.on(event)`的名称相同.<a name="page-wait-for-event-2-option-event">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 接收事件数据，并在等待应该被解析时解析为真值.<a name="page-wait-for-event-2-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-event-2-option-timeout">#</a>
 - returns: \<[Any](https://docs.python.org/3/library/typing.html#typing.Any)><a name="page-wait-for-event-2-return">#</a>
 
 > NOTE
 >
-> In most cases, you should use [page.expect_event(event, **kwargs)](#page-wait-for-event).
+> 在大多数情况下，您应该使用 [page.expect_event(event, **kwargs)](#page-wait-for-event).
 
-Waits for given `event` to fire. If predicate is provided, it passes event's value into the `predicate` function and waits for `predicate(event)` to return a truthy value. Will throw an error if the page is closed before the `event` is fired.
+等待给定事件被触发. 如果提供了 predicate ,它将 event's的值传递给 `predicate` 函数,并等待 `predicate(event)` 返回一个真值。如果触发事件之前页面已关闭，则将抛出一个错误.
 
 ## page.wait_for_function(expression, **kwargs)<a name="page-wait-for-function">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="page-wait-for-function-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="page-wait-for-function-option-arg">#</a>
-- `polling` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|"raf"> If `polling` is `'raf'`, then `expression` is constantly executed in `requestAnimationFrame` callback. If `polling` is a number, then it is treated as an interval in milliseconds at which the function would be executed. Defaults to `raf`.<a name="page-wait-for-function-option-polling">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="page-wait-for-function-option-timeout">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="page-wait-for-function-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="page-wait-for-function-option-arg">#</a>
+- `polling` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|"raf"> 如果`polling`是'raf'，那么表达式会在`requestAnimationFrame`回调中持续执行。如果`polling`是一个数字，那么它将被视为执行函数的毫秒间隔。默认为`raf`.<a name="page-wait-for-function-option-polling">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，以毫秒为单位。默认为30000(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="page-wait-for-function-option-timeout">#</a>
 - returns: \<[JSHandle](#jshandle)><a name="page-wait-for-function-return">#</a>
 
-Returns when the `expression` returns a truthy value. It resolves to a JSHandle of the truthy value.
+当表达式返回真值时返回。它解析为真值的`jshhandle`.
 
-The [page.wait_for_function(expression, **kwargs)](#page-wait-for-function) can be used to observe viewport size change:
+[page.wait_for_function(expression, **kwargs)](#page-wait-for-function) 可用于观察视口大小的变化:
 
 - Sync
 
@@ -8906,7 +8907,7 @@ async def main():
 asyncio.run(main())
 ```
 
-To pass an argument to the predicate of [page.wait_for_function(expression, **kwargs)](#page-wait-for-function) function:
+将参数传递给[page.wait_for_function(expression, **kwargs)](#page-wait-for-function)函数的 predicate :
 
 - Sync
 
@@ -8922,20 +8923,20 @@ selector = ".foo"
 await page.wait_for_function("selector => !!document.querySelector(selector)", selector)
 ```
 
-Shortcut for main frame's [frame.wait_for_function(expression, **kwargs)](#frame-wait-for-function).
+主框架 [frame.wait_for_function(expression, **kwargs)](#frame-wait-for-function) 的快捷方式.
 
 ## page.wait_for_load_state(**kwargs)<a name="page-wait-for-load-state">#</a>
 
-- `state` \<"load"|"domcontentloaded"|"networkidle"> Optional load state to wait for, defaults to `load`. If the state has been already reached while loading current document, the method resolves immediately. Can be one of:<a name="page-wait-for-load-state-option-state">#</a>
-    - `'load'` - wait for the `load` event to be fired.
-    - `'domcontentloaded'` - wait for the `DOMContentLoaded` event to be fired.
-    - `'networkidle'` - wait until there are no network connections for at least `500` ms.
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-wait-for-load-state-option-timeout">#</a>
+- `state` \<"load"|"domcontentloaded"|"networkidle"> 可选加载状态，等待，默认为`load`。如果在加载当前文档时已经达到该状态，该方法将立即进行解析。可以是:<a name="page-wait-for-load-state-option-state">#</a>
+    - `'load'` - 等待`load`事件被触发.
+    - `'domcontentloaded'` - 等待`domcontentloaded`事件被触发.
+    - `'networkidle'` - 等待至少500毫秒没有网络连接.
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="page-wait-for-load-state-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-wait-for-load-state-return">#</a>
 
-Returns when the required load state has been reached.
+当达到所需的加载状态时返回
 
-This resolves when the page reaches a required load state, `load` by default. The navigation must have been committed when this method is called. If current document has already reached the required state, resolves immediately.
+当页面达到所需的加载状态时，此问题将被解决，默认情况下加载。该导航必须在调用此方法时已提交。如果当前文档已经达到了所需的状态，则立即进行解析.
 
 - Sync
 
@@ -8973,29 +8974,29 @@ await popup.wait_for_load_state("domcontentloaded")
 print(await popup.title()) # popup is ready to use.
 ```
 
-Shortcut for main frame's [frame.wait_for_load_state(**kwargs)](#frame-wait-for-load-state).
+主框架 [frame.wait_for_load_state(**kwargs)](#frame-wait-for-load-state) 的快捷方式.
 
 ## page.wait_for_selector(selector, **kwargs)<a name="page-wait-for-selector">#</a>
 
-- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A selector to query for. See [working with selectors](https://playwright.dev/python/docs/selectors) for more details.<a name="page-wait-for-selector-option-selector">#</a>
-- `state` \<"attached"|"detached"|"visible"|"hidden"> Defaults to `'visible'`. Can be either:<a name="page-wait-for-selector-option-state">#</a>
-    - `'attached'` - wait for element to be present in DOM.
-    - `'detached'` - wait for element to not be present in DOM.
-    - `'visible'` - wait for element to have non-empty bounding box and no `visibility:hidden`. Note that element without any content or with `display:none` has an empty bounding box and is not considered visible.
-    - `'hidden'` - wait for element to be either detached from DOM, or have an empty bounding box or `visibility:hidden`. This is opposite to the `'visible'` option.
-- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> When true, the call requires selector to resolve to a single element. If given selector resolves to more then one element, the call throws an exception.<a name="page-wait-for-selector-option-strict">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-wait-for-selector-option-timeout">#</a>
+- `selector` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要查询的选择器。有关更多细节，请参阅[working with selectors](https://playwright.dev/python/docs/selectors).<a name="page-wait-for-selector-option-selector">#</a>
+- `state` \<"attached"|"detached"|"visible"|"hidden"> 默认为`"visible"`。可以是:<a name="page-wait-for-selector-option-state">#</a>
+    - `'attached'` - 等待元素出现在DOM中.
+    - `'detached'` - 等待元素在DOM中不存在.
+    - `'visible'` - 等待元素有非空的边界框 且 没有 `visibility:hidden`.注意，没有任何内容或带有`display:none` 的元素有一个空的边界框，因此不被认为是可见的.
+    - `'hidden'` - 等待元素从DOM中分离出来, 或有一个空的边界框或' visibility:hidden '。这与`“visible”`选项相反.
+- `strict` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当为true时，调用要求选择器解析为单个元素。如果给定的选择器解析为多于一个元素，调用将抛出一个异常.<a name="page-wait-for-selector-option-strict">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间，单位为毫秒，默认为30秒，通过`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来更改.<a name="page-wait-for-selector-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[ElementHandle](#elementhandle)><a name="page-wait-for-selector-return">#</a>
 
-Returns when element specified by selector satisfies `state` option. Returns `null` if waiting for `hidden` or `detached`.
+当选择器指定的元素满足状态选项时返回。如果等待隐藏或分离，则返回`null`.
 
 > NOTE
 >
-> Playwright automatically waits for element to be ready before performing an action. Using [Locator](#locator) objects and web-first assertions make the code wait-for-selector-free.
+> Playwright 在执行动作前,会自动等待元素准备好。使用 [Locator](#locator) 对象和web-first断言可以使代码不需要等待选择器.
 
-Wait for the `selector` to satisfy `state` option (either appear/disappear from dom, or become visible/hidden). If at the moment of calling the method `selector` already satisfies the condition, the method will return immediately. If the selector doesn't satisfy the condition for the `timeout` milliseconds, the function will throw.
+等待选择器满足状态选项 (要么从dom中出现/消失，要么变成可见/隐藏). 如果在调用方法选择器的时刻已经满足条件，则该方法将立即返回。如果选择器不满足超时毫秒的条件，函数将抛出.
 
-This method works across navigations:
+此方法适用于多个导航:
 
 - Sync
 
@@ -9040,12 +9041,12 @@ asyncio.run(main())
 
 ## page.wait_for_timeout(timeout)<a name="page-wait-for-timeout">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> A timeout to wait for<a name="page-wait-for-timeout-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 等待超时时间<a name="page-wait-for-timeout-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-wait-for-timeout-return">#</a>
 
-Waits for the given `timeout` in milliseconds.
+等待给定超时(以毫秒为单位).
 
-Note that `page.waitForTimeout()` should only be used for debugging. Tests using the timer in production are going to be flaky. Use signals such as network events, selectors becoming visible and others instead.
+注意，`page.waitForTimeout()` 应该只用于调试。在生产中使用计时器的测试将是不可靠的。使用信号，如网络事件，选择器变得可见和其他.
 
 - Sync
 
@@ -9061,20 +9062,20 @@ page.wait_for_timeout(1000)
 await page.wait_for_timeout(1000)
 ```
 
-Shortcut for main frame's [frame.wait_for_timeout(timeout)](#frame-wait-for-timeout).
+主框架 [frame.wait_for_timeout(timeout)](#frame-wait-for-timeout)的快捷方式.
 
 ## page.wait_for_url(url, **kwargs)<a name="page-wait-for-url">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving [URL](https://en.wikipedia.org/wiki/URL) to match while waiting for the navigation. Note that if the parameter is a string without wilcard characters, the method will wait for navigation to URL that is exactly equal to the string.<a name="page-wait-for-url-option-url">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum operation time in milliseconds, defaults to 30 seconds, pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) methods.<a name="page-wait-for-url-option-timeout">#</a>
-- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> When to consider operation succeeded, defaults to `load`. Events can be either:<a name="page-wait-for-url-option-wait-until">#</a>
-    - `'domcontentloaded'` - consider operation to be finished when the `DOMContentLoaded` event is fired.
-    - `'load'` - consider operation to be finished when the `load` event is fired.
-    - `'networkidle'` - consider operation to be finished when there are no network connections for at least `500` ms.
-    - `'commit'` - consider operation to be finished when network response is received and the document started loading.
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 一个glob模式、regex模式或谓词，在等待导航时接收匹配的url。注意，如果参数是一个不带通配符的字符串，该方法将等待导航到与该字符串完全相等的URL.<a name="page-wait-for-url-option-url">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>最大操作时间，单位为毫秒，默认为30秒，通过0表示禁止超时。默认值可以通过使用  [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout), [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout), [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) or [page.set_default_timeout(timeout)](#page-set-default-timeout) 方法来修改.<a name="page-wait-for-url-option-timeout">#</a>
+- `wait_until` \<"load"|"domcontentloaded"|"networkidle"|"commit"> 当认为操作成功时，默认为`load`。事件可以是:<a name="page-wait-for-url-option-wait-until">#</a>
+    - `'domcontentloaded'` - 当`domcontentloaded`事件被触发时，认为操作已经完成.
+    - `'load'` - 当触发`load`事件时，认为操作已经完成.
+    - `'networkidle'` - 当至少`500毫秒`没有网络连接时，认为操作已经完成.
+    - `'commit'` - 当接收到网络响应并开始加载文档时，认为操作已经完成.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-wait-for-url-return">#</a>
 
-Waits for the main frame to navigate to the given URL.
+等待主框架导航到给定的URL.
 
 - Sync
 
@@ -9090,17 +9091,17 @@ await page.click("a.delayed-navigation") # clicking the link will indirectly cau
 await page.wait_for_url("**/target.html")
 ```
 
-Shortcut for main frame's [frame.wait_for_url(url, **kwargs)](#frame-wait-for-url).
+主框架 [frame.wait_for_url(url, **kwargs)](#frame-wait-for-url) 的快捷方式.
 
 ## page.workers<a name="page-workers">#</a>
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Worker](#worker)]><a name="page-workers-return">#</a>
 
-This method returns all of the dedicated [WebWorkers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) associated with the page.
+此方法返回与该页面关联的所有专用 [WebWorkers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) .
 
 > NOTE
 >
-> This does not contain ServiceWorkers
+> 它不包含 ServiceWorkers
 
 ## page.accessibility<a name="page-accessibility">#</a>
 
@@ -9118,7 +9119,7 @@ This method returns all of the dedicated [WebWorkers](https://developer.mozilla.
 
 - type: \<[APIRequestContext](#apirequestcontext)>
 
-API testing helper associated with this page. Requests made with this API will use page cookies.
+与此页面相关的API测试助手。使用此API发出的请求将使用页面cookie.
 
 ## page.touchscreen<a name="page-touchscreen">#</a>
 
@@ -9130,19 +9131,19 @@ API testing helper associated with this page. Requests made with this API will u
 
 # Request
 
-Whenever the page sends a request for a network resource the following sequence of events are emitted by [Page](#page):
+当页面向网络资源发送请求时，会触发以下事件序列 [Page](#page):
 
-- [page.on("request")](#page-event-request) emitted when the request is issued by the page.
-- [page.on("response")](#page-event-response) emitted when/if the response status and headers are received for the request.
-- [page.on("requestfinished")](#page-event-request-finished) emitted when the response body is downloaded and the request is complete.
+- [page.on("request")](#page-event-request) 当页面发出请求时.
+- [page.on("response")](#page-event-response) 在/如果收到请求的响应状态和报头时触发.
+- [page.on("requestfinished")](#page-event-request-finished) 在下载响应体并完成请求时触发.
 
-If request fails at some point, then instead of `'requestfinished'` event (and possibly instead of 'response' event), the [page.on("requestfailed")](#page-event-request-failed) event is emitted.
+如果请求在某一时刻失败，则会触发 [page.on("requestfailed")](#page-event-request-failed) 而不是'requestfinished'事件(可能也不是'response'事件).
 
 > NOTE
 >
-> HTTP Error responses, such as 404 or 503, are still successful responses from HTTP standpoint, so request will complete with `'requestfinished'` event.
+> HTTP错误响应，如404或503，从HTTP的角度来看仍然是成功的响应，所以请求将通过'requestfinished'事件完成.
 
-If request gets a 'redirect' response, the request is successfully finished with the 'requestfinished' event, and a new request is issued to a redirected url.
+如果请求得到了一个“重定向”响应，该请求就会通过“requestfinished”事件成功完成，并向一个重定向url发出一个新请求.
 
 - [request.all_headers()](#request-all-headers)
 - [request.failure](#request-failure)
@@ -9167,15 +9168,15 @@ If request gets a 'redirect' response, the request is successfully finished with
 
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="request-all-headers-return">#</a>
 
-An object with all the request HTTP headers associated with this request. The header names are lower-cased.
+一个包含与此请求相关的所有请求HTTP头的对象。头属性名称是小写的.
 
 ## request.failure<a name="request-failure">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="request-failure-return">#</a>
 
-The method returns `null` unless this request has failed, as reported by `requestfailed` event.
+该方法返回`null`，除非请求失败，如requestfailed事件所报告的那样.
 
-Example of logging of all the failed requests:
+所有失败请求的日志记录示例:
 
 ```python
 page.on("requestfailed", lambda request: print(request.url + " " + request.failure))
@@ -9185,70 +9186,70 @@ page.on("requestfailed", lambda request: print(request.url + " " + request.failu
 
 - returns: \<[Frame](#frame)><a name="request-frame-return">#</a>
 
-Returns the [Frame](#frame) that initiated this request.
+返回发起此请求的[Frame](#frame) .
 
 ## request.header_value(name)<a name="request-header-value">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the header.<a name="request-header-value-option-name">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 请求头名称.<a name="request-header-value-option-name">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="request-header-value-return">#</a>
 
-Returns the value of the header matching the name. The name is case insensitive.
+返回与名称匹配的头的值。名称不区分大小写.
 
 ## request.headers<a name="request-headers">#</a>
 
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="request-headers-return">#</a>
 
-**DEPRECATED** Incomplete list of headers as seen by the rendering engine. Use [request.all_headers()](#request-all-headers) instead.
+**DEPRECATED** **由渲染引擎看到的不完整的头文件列表。**使用 [request.all_headers()](#request-all-headers) .
 
 ## request.headers_array()<a name="request-headers-array">#</a>
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="request-headers-array-return">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the header.
-    - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Value of the header.
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 请求头名称.
+    - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 请求头值.
 
-An array with all the request HTTP headers associated with this request. Unlike [request.all_headers()](#request-all-headers), header names are NOT lower-cased. Headers with multiple entries, such as `Set-Cookie`, appear in the array multiple times.
+包含与此请求相关的所有请求HTTP头的数组。与 [request.all_headers()](#request-all-headers)不同，头属性名称不是小写的。具有多个条目的头属性，例如`Set-Cookie`，在数组中会出现多次
 
 ## request.is_navigation_request()<a name="request-is-navigation-request">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="request-is-navigation-request-return">#</a>
 
-Whether this request is driving frame's navigation.
+这个请求是否驱动框架的导航.
 
 ## request.method<a name="request-method">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="request-method-return">#</a>
 
-Request's method (GET, POST, etc.)
+请求的方法(GET、POST等)
 
 ## request.post_data<a name="request-post-data">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="request-post-data-return">#</a>
 
-Request's post body, if any.
+请求的post body，如果有的话
 
 ## request.post_data_buffer<a name="request-post-data-buffer">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)><a name="request-post-data-buffer-return">#</a>
 
-Request's post body in a binary form, if any.
+请求体以二进制形式(如果有的话)表示
 
 ## request.post_data_json<a name="request-post-data-json">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="request-post-data-json-return">#</a>
 
-Returns parsed request's body for `form-urlencoded` and JSON as a fallback if any.
+返回url编码的`form-urlencoded`和 JSON 解析后的请求体作为备用
 
-When the response is `application/x-www-form-urlencoded` then a key/value object of the values will be returned. Otherwise it will be parsed as JSON.
+当响应是 `application/x-www-form-urlencoded` 时，值的键/值对象将被返回。否则它将被解析为JSON
 
 ## request.redirected_from<a name="request-redirected-from">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Request](#request)><a name="request-redirected-from-return">#</a>
 
-Request that was redirected by the server to this one, if any.
+请求被服务器重定向到这个，如果有的话
 
-When the server responds with a redirect, Playwright creates a new [Request](#request) object. The two requests are connected by `redirectedFrom()` and `redirectedTo()` methods. When multiple server redirects has happened, it is possible to construct the whole redirect chain by repeatedly calling `redirectedFrom()`.
+当服务器响应重定向时， Playwright 创建一个新的[Request](#request) 对象。这两个请求由 `redirectedFrom()` and `redirectedTo()` 方法连接。当发生多个服务器重定向时，可以通过重复调用 `redirectedFrom()`来构造整个重定向链.
 
-For example, if the website `http://example.com` redirects to `https://example.com`:
+例如， `http://example.com` 网站跳转到 `https://example.com`:
 
 - Sync
 
@@ -9264,7 +9265,7 @@ response = await page.goto("http://example.com")
 print(response.request.redirected_from.url) # "http://example.com"
 ```
 
-If the website `https://google.com` has no redirects:
+如果网站 `https://google.com`没有重定向:
 
 - Sync
 
@@ -9284,9 +9285,9 @@ print(response.request.redirected_from) # None
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Request](#request)><a name="request-redirected-to-return">#</a>
 
-New request issued by the browser if the server responded with redirect.
+如果服务器响应重定向，浏览器发出的新请求.
 
-This method is the opposite of [request.redirected_from](#request-redirected-from):
+这个方法与 [request.redirected_from](#request-redirected-from) 相反:
 
 ```python
 assert request.redirected_from.redirected_to == request
@@ -9296,38 +9297,38 @@ assert request.redirected_from.redirected_to == request
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="request-resource-type-return">#</a>
 
-Contains the request's resource type as it was perceived by the rendering engine. ResourceType will be one of the following: `document`, `stylesheet`, `image`, `media`, `font`, `script`, `texttrack`, `xhr`, `fetch`, `eventsource`, `websocket`, `manifest`, `other`.
+包含呈现引擎感知到的请求资源类型. ResourceType 将是以下其中之一: `document`, `stylesheet`, `image`, `media`, `font`, `script`, `texttrack`, `xhr`, `fetch`, `eventsource`, `websocket`, `manifest`, `other`.
 
 ## request.response()<a name="request-response">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Response](#response)><a name="request-response-return">#</a>
 
-Returns the matching [Response](#response) object, or `null` if the response was not received due to error.
+返回匹配的[Response](#response) 对象，如果由于错误没有接收到响应，则返回`null`
 
 ## request.sizes()<a name="request-sizes">#</a>
 
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="request-sizes-return">#</a>
-    - `requestBodySize` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Size of the request body (POST data payload) in bytes. Set to 0 if there was no body.
-    - `requestHeadersSize` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Total number of bytes from the start of the HTTP request message until (and including) the double CRLF before the body.
-    - `responseBodySize` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Size of the received response body (encoded) in bytes.
-    - `responseHeadersSize` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Total number of bytes from the start of the HTTP response message until (and including) the double CRLF before the body.
+    - `requestBodySize` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求正文(POST数据负载)的大小，以字节为单位。如果没有正文，则设置为0.
+    - `requestHeadersSize` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 从HTTP请求消息开始直到(包括)正文前的双CRLF的总字节数
+    - `responseBodySize` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 接收到的响应体大小(编码后)，单位为字节
+    - `responseHeadersSize` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 从HTTP响应消息开始到(包括)正文前的双CRLF的总字节数
 
-Returns resource size information for given request.
+返回给定请求的资源大小信息
 
 ## request.timing<a name="request-timing">#</a>
 
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="request-timing-return">#</a>
-    - `startTime` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Request start time in milliseconds elapsed since January 1, 1970 00:00:00 UTC
-    - `domainLookupStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time immediately before the browser starts the domain name lookup for the resource. The value is given in milliseconds relative to `startTime`, -1 if not available.
-    - `domainLookupEnd` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time immediately after the browser starts the domain name lookup for the resource. The value is given in milliseconds relative to `startTime`, -1 if not available.
-    - `connectStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time immediately before the user agent starts establishing the connection to the server to retrieve the resource. The value is given in milliseconds relative to `startTime`, -1 if not available.
-    - `secureConnectionStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time immediately before the browser starts the handshake process to secure the current connection. The value is given in milliseconds relative to `startTime`, -1 if not available.
-    - `connectEnd` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time immediately before the user agent starts establishing the connection to the server to retrieve the resource. The value is given in milliseconds relative to `startTime`, -1 if not available.
-    - `requestStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time immediately before the browser starts requesting the resource from the server, cache, or local resource. The value is given in milliseconds relative to `startTime`, -1 if not available.
-    - `responseStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time immediately after the browser starts requesting the resource from the server, cache, or local resource. The value is given in milliseconds relative to `startTime`, -1 if not available.
-    - `responseEnd` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time immediately after the browser receives the last byte of the resource or immediately before the transport connection is closed, whichever comes first. The value is given in milliseconds relative to `startTime`, -1 if not available.
+    - `startTime` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求开始时间，单位是毫秒，自UTC 1月1日1970 00:00:00开始
+    - `domainLookupStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 浏览器启动资源域名查找的紧接时间。该值以相对于`startTime`的毫秒为单位给出，如果不可用则为-1.
+    - `domainLookupEnd` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 浏览器启动资源域名查找后的即时时间。该值以相对于`startTime`的毫秒为单位给出，如果不可用则为-1.
+    - `connectStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 用户代理开始建立与服务器的连接以检索资源之前的时间。该值以相对于`startTime`的毫秒为单位给出，如果不可用则为-1.
+    - `secureConnectionStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 浏览器启动握手进程以确保当前连接安全的时间。该值以相对于`startTime`的毫秒为单位给出，如果不可用则为-1.
+    - `connectEnd` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>用户代理开始建立与服务器的连接以检索资源之前的时间。该值以相对于`startTime`的毫秒为单位给出，如果不可用则为-1.
+    - `requestStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 浏览器从服务器、缓存或本地资源开始请求资源的时间。该值以相对于`startTime`的毫秒为单位给出，如果不可用则为-1
+    - `responseStart` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>浏览器从服务器、缓存或本地资源开始请求资源的时间。该值以相对于`startTime`的毫秒为单位给出，如果不可用则为-1
+    - `responseEnd` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>浏览器接收到资源的最后一个字节后或传输连接关闭前的时间，以先到的那个为例。该值以相对于`startTime`的毫秒为单位给出，如果不可用则为-1
 
-Returns resource timing information for given request. Most of the timing values become available upon the response, `responseEnd` becomes available when request finishes. Find more information at [Resource Timing API](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming).
+返回给定请求的资源计时信息。大多数计时值在响应时可用, `responseEnd` 在请求完成时可用. 详情查看 [Resource Timing API](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceResourceTiming).
 
 - Sync
 
@@ -9351,13 +9352,13 @@ print(request.timing)
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="request-url-return">#</a>
 
-URL of the request.
+请求的URL.
 
 
 
 # Response
 
-[Response](#response) class represents responses which are received by page.
+[Response](#response) 表示页面接收的响应.
 
 - [response.all_headers()](#response-all-headers)
 - [response.body()](#response-body)
@@ -9381,122 +9382,122 @@ URL of the request.
 
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="response-all-headers-return">#</a>
 
-An object with all the response HTTP headers associated with this response.
+具有与此响应关联的所有响应HTTP头的对象
 
 ## response.body()<a name="response-body">#</a>
 
 - returns: \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)><a name="response-body-return">#</a>
 
-Returns the buffer with response body.
+返回带有响应体的缓冲区
 
 ## response.finished()<a name="response-finished">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="response-finished-return">#</a>
 
-Waits for this response to finish, returns always `null`.
+等待此响应完成，总是返回`null`
 
 ## response.frame<a name="response-frame">#</a>
 
 - returns: \<[Frame](#frame)><a name="response-frame-return">#</a>
 
-Returns the [Frame](#frame) that initiated this response.
+返回发起此响应的 [Frame](#frame) .
 
 ## response.header_value(name)<a name="response-header-value">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the header.<a name="response-header-value-option-name">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 请求头名称.<a name="response-header-value-option-name">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="response-header-value-return">#</a>
 
-Returns the value of the header matching the name. The name is case insensitive. If multiple headers have the same name (except `set-cookie`), they are returned as a list separated by `, `. For `set-cookie`, the `\n` separator is used. If no headers are found, `null` is returned.
+返回与名称匹配的头的值。名称不区分大小写。如果多个报头有相同的名称(除了 `set-cookie`), 它们将被返回一个由`,`分隔的列表。对于 `set-cookie`, 使用`\n`分隔符. 如果没有找到对应的响应头，则返回`null`.
 
 ## response.header_values(name)<a name="response-header-values">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the header.<a name="response-header-values-option-name">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 请求头名称.<a name="response-header-values-option-name">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="response-header-values-return">#</a>
 
-Returns all values of the headers matching the name, for example `set-cookie`. The name is case insensitive.
+返回与名称匹配的头的所有值，例如 `set-cookie`. 名称不区分大小写
 
 ## response.headers<a name="response-headers">#</a>
 
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="response-headers-return">#</a>
 
-**DEPRECATED** Incomplete list of headers as seen by the rendering engine. Use [response.all_headers()](#response-all-headers) instead.
+**由渲染引擎看到的不完整的响应头列表。**建议使用 [response.all_headers()](#response-all-headers) .
 
 ## response.headers_array()<a name="response-headers-array">#</a>
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="response-headers-array-return">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the header.
-    - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Value of the header.
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 请求头名称.
+    - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 请求头值.
 
-An array with all the request HTTP headers associated with this response. Unlike [response.all_headers()](#response-all-headers), header names are NOT lower-cased. Headers with multiple entries, such as `Set-Cookie`, appear in the array multiple times.
+包含与此响应关联的所有请求HTTP头的数组。与 [response.all_headers()](#response-all-headers)不同，头文件名称不是小写的。具有多个条目的头文件，例如 `Set-Cookie`, 在数组中出现多次
 
 ## response.json()<a name="response-json">#</a>
 
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="response-json-return">#</a>
 
-Returns the JSON representation of response body.
+返回响应体的JSON表示
 
-This method will throw if the response body is not parsable via `JSON.parse`.
+如果响应体不能通过JSON.parse进行解析，则该方法将抛出.
 
 ## response.ok<a name="response-ok">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="response-ok-return">#</a>
 
-Contains a boolean stating whether the response was successful (status in the range 200-299) or not.
+包含一个布尔值，说明响应是否成功(状态在200-299之间).
 
 ## response.request<a name="response-request">#</a>
 
 - returns: \<[Request](#request)><a name="response-request-return">#</a>
 
-Returns the matching [Request](#request) object.
+返回匹配的 [Request](#request) 对象.
 
 ## response.security_details()<a name="response-security-details">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="response-security-details-return">#</a>
-    - `issuer` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Common Name component of the Issuer field. from the certificate. This should only be used for informational purposes. Optional.
-    - `protocol` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> The specific TLS protocol used. (e.g. `TLS 1.3`). Optional.
-    - `subjectName` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Common Name component of the Subject field from the certificate. This should only be used for informational purposes. Optional.
-    - `validFrom` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix timestamp (in seconds) specifying when this cert becomes valid. Optional.
-    - `validTo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix timestamp (in seconds) specifying when this cert becomes invalid. Optional.
+    - `issuer` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> issuer字段的Common Name组件。从证书。这应该只用于信息目的。可选的
+    - `protocol` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 所使用的TLS协议。(如TLS 1.3)。可选的
+    - `subjectName` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Subject字段的Common Name组件。这应该只用于信息目的。可选的。
+    - `validFrom` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix时间戳(以秒为单位)，指定此证书何时生效。可选的。
+    - `validTo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix时间戳(以秒为单位)，指定证书何时失效。可选的
 
-Returns SSL and other security information.
+返回SSL和其他安全信息
 
 ## response.server_addr()<a name="response-server-addr">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="response-server-addr-return">#</a>
-    - `ipAddress` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> IPv4 or IPV6 address of the server.
+    - `ipAddress` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 服务器IPv4或IPV6地址
     - `port` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>
 
-Returns the IP address and port of the server.
+返回服务器的IP地址和端口
 
 ## response.status<a name="response-status">#</a>
 
 - returns: \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="response-status-return">#</a>
 
-Contains the status code of the response (e.g., 200 for a success).
+包含响应的状态码(例如，200表示成功)
 
 ## response.status_text<a name="response-status-text">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="response-status-text-return">#</a>
 
-Contains the status text of the response (e.g. usually an "OK" for a success).
+包含响应的状态文本(例如，通常一个“OK”表示成功)
 
 ## response.text()<a name="response-text">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="response-text-return">#</a>
 
-Returns the text representation of response body.
+返回响应体的文本表示形式
 
 ## response.url<a name="response-url">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="response-url-return">#</a>
 
-Contains the URL of the response.
+包含响应的URL
 
 
 
 # Route
 
-Whenever a network route is set up with [page.route(url, handler, **kwargs)](#page-route) or [browser_context.route(url, handler, **kwargs)](#browser-context-route), the `Route` object allows to handle the route.
+当一个网络路由页面被设置为 [page.route(url, handler, **kwargs)](#page-route) or [browser_context.route(url, handler, **kwargs)](#browser-context-route),  route对象允许处理该路由
 
 - [route.abort(**kwargs)](#route-abort)
 - [route.continue_(**kwargs)](#route-continue)
@@ -9505,34 +9506,34 @@ Whenever a network route is set up with [page.route(url, handler, **kwargs)](#pa
 
 ## route.abort(**kwargs)<a name="route-abort">#</a>
 
-- `error_code` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional error code. Defaults to `failed`, could be one of the following:<a name="route-abort-option-error-code">#</a>
-    - `'aborted'` - An operation was aborted (due to user action)
-    - `'accessdenied'` - Permission to access a resource, other than the network, was denied
-    - `'addressunreachable'` - The IP address is unreachable. This usually means that there is no route to the specified host or network.
-    - `'blockedbyclient'` - The client chose to block the request.
-    - `'blockedbyresponse'` - The request failed because the response was delivered along with requirements which are not met ('X-Frame-Options' and 'Content-Security-Policy' ancestor checks, for instance).
-    - `'connectionaborted'` - A connection timed out as a result of not receiving an ACK for data sent.
-    - `'connectionclosed'` - A connection was closed (corresponding to a TCP FIN).
-    - `'connectionfailed'` - A connection attempt failed.
-    - `'connectionrefused'` - A connection attempt was refused.
-    - `'connectionreset'` - A connection was reset (corresponding to a TCP RST).
-    - `'internetdisconnected'` - The Internet connection has been lost.
-    - `'namenotresolved'` - The host name could not be resolved.
-    - `'timedout'` - An operation timed out.
-    - `'failed'` - A generic failure occurred.
+- `error_code` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 可选错误码。默认为 `failed`, 可能是以下其中之一:<a name="route-abort-option-error-code">#</a>
+    - `'aborted'` - 操作被中止(由于用户操作)
+    - `'accessdenied'` - 访问资源的权限，而不是网络，被拒绝
+    - `'addressunreachable'` - IP地址不可达。这通常意味着没有到指定主机或网络的路由
+    - `'blockedbyclient'` - 客户端选择阻塞请求
+    - `'blockedbyresponse'` - 请求失败，因为响应是与不满足的需求一起交付的(例如'X-Frame-Options'和'Content-Security-Policy'祖先检查)
+    - `'connectionaborted'` - 由于没有收到ACK而导致的连接超时.
+    - `'connectionclosed'` - 连接被关闭(对应于一个TCP FIN).
+    - `'connectionfailed'` - 连接尝试失败.
+    - `'connectionrefused'` - 连接请求被拒绝.
+    - `'connectionreset'` - 连接被重置(对应于TCP RST).
+    - `'internetdisconnected'` - 网络连接中断.
+    - `'namenotresolved'` - 无法解析主机名.
+    - `'timedout'` - 操作超时.
+    - `'failed'` - 发生了一个普遍的故障.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="route-abort-return">#</a>
 
-Aborts the route's request.
+中止路由的请求
 
 ## route.continue_(**kwargs)<a name="route-continue">#</a>
 
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> If set changes the request HTTP headers. Header values will be converted to a string.<a name="route-continue-option-headers">#</a>
-- `method` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> If set changes the request method (e.g. GET or POST)<a name="route-continue-option-method">#</a>
-- `post_data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> If set changes the post data of request<a name="route-continue-option-post-data">#</a>
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> If set changes the request URL. New URL must have same protocol as original one.<a name="route-continue-option-url">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 改变请求的HTTP头。头文件的值将被转换为字符串.<a name="route-continue-option-headers">#</a>
+- `method` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 改变请求的方法(例如GET或POST)<a name="route-continue-option-method">#</a>
+- `post_data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 改变请求的post数据<a name="route-continue-option-post-data">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 如果设置改变请求的url。新URL必须具有与原始URL相同的协议.<a name="route-continue-option-url">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="route-continue-return">#</a>
 
-Continues route's request with optional overrides.
+用可选的覆盖继续路由的请求
 
 - Sync
 
@@ -9566,17 +9567,17 @@ await page.route("**/*", handle)
 
 ## route.fulfill(**kwargs)<a name="route-fulfill">#</a>
 
-- `body` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> Response body.<a name="route-fulfill-option-body">#</a>
-- `content_type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> If set, equals to setting `Content-Type` response header.<a name="route-fulfill-option-content-type">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Response headers. Header values will be converted to a string.<a name="route-fulfill-option-headers">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> File path to respond with. The content type will be inferred from file extension. If `path` is a relative path, then it is resolved relative to the current working directory.<a name="route-fulfill-option-path">#</a>
-- `response` \<[APIResponse](#apiresponse)> [APIResponse](#apiresponse) to fulfill route's request with. Individual fields of the response (such as headers) can be overridden using fulfill options.<a name="route-fulfill-option-response">#</a>
-- `status` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Response status code, defaults to `200`.<a name="route-fulfill-option-status">#</a>
+- `body` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 响应正文.<a name="route-fulfill-option-body">#</a>
+- `content_type` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 设置`Content-Type`响应头.<a name="route-fulfill-option-content-type">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 响应头。头文件的值将被转换为字符串.<a name="route-fulfill-option-headers">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 响应的文件路径. 内容类型将从文件扩展名推断出来。如果path是一个相对路径，那么它是相对于当前工作目录解析的.<a name="route-fulfill-option-path">#</a>
+- `response` \<[APIResponse](#apiresponse)> [APIResponse](#apiresponse) 满足路由的请求。响应的各个字段(如报头)可以使用fill选项覆盖.<a name="route-fulfill-option-response">#</a>
+- `status` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 响应状态码，默认为`200`.<a name="route-fulfill-option-status">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="route-fulfill-return">#</a>
 
-Fulfills route's request with given response.
+用给定的响应来满足路由的请求
 
-An example of fulfilling all requests with 404 responses:
+用`404`响应来完成所有请求的例子:
 
 - Sync
 
@@ -9620,19 +9621,19 @@ A request to be routed.
 
 # Selectors
 
-Selectors can be used to install custom selector engines. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more information.
+选择器可用于安装自定义选择器引擎。有关更多信息，请参见使用选择器 [Working with selectors](https://playwright.dev/python/docs/selectors) 
 
 - [selectors.register(name, **kwargs)](#selectors-register)
 
 ## selectors.register(name, **kwargs)<a name="selectors-register">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name that is used in selectors as a prefix, e.g. `{name: 'foo'}` enables `foo=myselectorbody` selectors. May only contain `[a-zA-Z0-9_]` characters.<a name="selectors-register-option-name">#</a>
-- `content_script` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to run this selector engine in isolated JavaScript environment. This environment has access to the same DOM, but not any JavaScript objects from the frame's scripts. Defaults to `false`. Note that running as a content script is not guaranteed when this engine is used together with other registered engines.<a name="selectors-register-option-content-script">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to the JavaScript file. If `path` is a relative path, then it is resolved relative to the current working directory.<a name="selectors-register-option-path">#</a>
-- `script` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Raw script content.<a name="selectors-register-option-script">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 在选择器中作为前缀使用的名称，例如 `{name: 'foo'}` 启用`foo=myselectorbody` 选择器。只能包含 `[a-zA-Z0-9_]` 字符.<a name="selectors-register-option-name">#</a>
+- `content_script` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否在独立的JavaScript环境中运行该选择器引擎。这个环境可以访问相同的DOM，但不能访问框架脚本中的任何JavaScript对象。默认值为 `false`. 请注意，当这个引擎与其他已注册的引擎一起使用时，不能保证作为一个内容脚本运行.<a name="selectors-register-option-content-script">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> JavaScript文件的路径. 如果path是一个相对路径，那么它是相对于当前工作目录解析的.<a name="selectors-register-option-path">#</a>
+- `script` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>原始脚本内容.<a name="selectors-register-option-script">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="selectors-register-return">#</a>
 
-An example of registering selector engine that queries elements based on a tag name:
+注册选择器引擎的一个例子，它根据标签名查询元素:
 
 - Sync
 
@@ -9718,7 +9719,7 @@ asyncio.run(main())
 
 - extends: [Error](#error)
 
-TimeoutError is emitted whenever certain operations are terminated due to timeout, e.g. [locator.wait_for(**kwargs)](#locator-wait-for) or [browser_type.launch(**kwargs)](#browser-type-launch).
+每当某些操作因超时而终止时，就会触发TimeoutError，例如 [locator.wait_for(**kwargs)](#locator-wait-for) or [browser_type.launch(**kwargs)](#browser-type-launch).
 
 - Sync
 
@@ -9761,7 +9762,7 @@ asyncio.run(main())
 
 # Touchscreen
 
-The Touchscreen class operates in main-frame CSS pixels relative to the top-left corner of the viewport. Methods on the touchscreen can only be used in browser contexts that have been initialized with `hasTouch` set to true.
+触摸屏类操作的是相对于视口左上角CSS像素。触屏上的方法只能在已经初始化并设置为true的浏览器上下文中使用
 
 - [touchscreen.tap(x, y)](#touchscreen-tap)
 
@@ -9771,15 +9772,15 @@ The Touchscreen class operates in main-frame CSS pixels relative to the top-left
 - `y` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="touchscreen-tap-option-y">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="touchscreen-tap-return">#</a>
 
-Dispatches a `touchstart` and `touchend` event with a single touch at the position (`x`,`y`).
+在位置(x,y)分派一个触摸开始和触摸结束事件.
 
 
 
 # Tracing
 
-API for collecting and saving Playwright traces. Playwright traces can be opened in [Trace Viewer](https://playwright.dev/python/docs/trace-viewer) after Playwright script runs.
+API用于收集和保存 Playwright的痕迹. Playwright 跟踪可以在 Playwright 脚本运行后在 [Trace Viewer](https://playwright.dev/python/docs/trace-viewer) 中打开 
 
-Start recording a trace before performing actions. At the end, stop tracing and save it to a file.
+在执行操作之前开始记录跟踪。最后，停止跟踪并将其保存到一个文件中
 
 - Sync
 
@@ -9810,16 +9811,16 @@ await context.tracing.stop(path = "trace.zip")
 
 ## tracing.start(**kwargs)<a name="tracing-start">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> If specified, the trace is going to be saved into the file with the given name inside the `traces_dir` folder specified in [browser_type.launch(**kwargs)](#browser-type-launch).<a name="tracing-start-option-name">#</a>
-- `screenshots` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to capture screenshots during tracing. Screenshots are used to build a timeline preview.<a name="tracing-start-option-screenshots">#</a>
-- `snapshots` \<[bool](https://docs.python.org/3/library/stdtypes.html)> If this option is true tracing will<a name="tracing-start-option-snapshots">#</a>
-    - capture DOM snapshot on every action
-    - record network activity
-- `sources` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to include source files for trace actions.<a name="tracing-start-option-sources">#</a>
-- `title` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Trace name to be shown in the Trace Viewer.<a name="tracing-start-option-title">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>如果指定了，跟踪将被保存到[browser_type.launch(**kwargs)](#browser-type-launch) 中指定的`traces_dir`文件夹中的文件中.<a name="tracing-start-option-name">#</a>
+- `screenshots` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 跟踪时是否截图。截图是用来构建时间线预览的.<a name="tracing-start-option-screenshots">#</a>
+- `snapshots` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 如果该选项为true，跟踪将<a name="tracing-start-option-snapshots">#</a>
+    - 在每个动作上捕获DOM快照
+    - 记录网络活动
+- `sources` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否包含跟踪动作的源文件.<a name="tracing-start-option-sources">#</a>
+- `title` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要显示在跟踪查看器中的跟踪名称.<a name="tracing-start-option-title">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="tracing-start-return">#</a>
 
-Start tracing.
+开始跟踪
 
 - Sync
 
@@ -9841,10 +9842,10 @@ await context.tracing.stop(path = "trace.zip")
 
 ## tracing.start_chunk(**kwargs)<a name="tracing-start-chunk">#</a>
 
-- `title` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Trace name to be shown in the Trace Viewer.<a name="tracing-start-chunk-option-title">#</a>
+- `title` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要显示在跟踪查看器中的跟踪名称.<a name="tracing-start-chunk-option-title">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="tracing-start-chunk-return">#</a>
 
-Start a new trace chunk. If you'd like to record multiple traces on the same [BrowserContext](#browsercontext), use [tracing.start(**kwargs)](#tracing-start) once, and then create multiple trace chunks with [tracing.start_chunk(**kwargs)](#tracing-start-chunk) and [tracing.stop_chunk(**kwargs)](#tracing-stop-chunk).
+启动一个新的跟踪块。如果你想在同一个 [BrowserContext](#browsercontext), 上记录多个跟踪，只使用一次 [tracing.start(**kwargs)](#tracing-start) 然后使用 [tracing.start_chunk(**kwargs)](#tracing-start-chunk) and [tracing.stop_chunk(**kwargs)](#tracing-stop-chunk) 创建多个跟踪块.
 
 - Sync
 
@@ -9884,23 +9885,23 @@ await context.tracing.stop_chunk(path = "trace2.zip")
 
 ## tracing.stop(**kwargs)<a name="tracing-stop">#</a>
 
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Export trace into the file with the given path.<a name="tracing-stop-option-path">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 将跟踪导出到指定路径下的文件中.<a name="tracing-stop-option-path">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="tracing-stop-return">#</a>
 
-Stop tracing.
+停止跟踪
 
 ## tracing.stop_chunk(**kwargs)<a name="tracing-stop-chunk">#</a>
 
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Export trace collected since the last [tracing.start_chunk(**kwargs)](#tracing-start-chunk) call into the file with the given path.<a name="tracing-stop-chunk-option-path">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 将上次 [tracing.start_chunk(**kwargs)](#tracing-start-chunk) 调用后收集的跟踪信息导出到指定路径的文件中.<a name="tracing-stop-chunk-option-path">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="tracing-stop-chunk-return">#</a>
 
-Stop the trace chunk. See [tracing.start_chunk(**kwargs)](#tracing-start-chunk) for more details about multiple trace chunks.
+停止跟踪块。有关多个跟踪块的详细信息，请参阅 [tracing.start_chunk(**kwargs)](#tracing-start-chunk) 
 
 
 
 # Video
 
-When browser context is created with the `recordVideo` option, each page has a video object associated with it.
+当使用recordVideo选项创建浏览器上下文时，每个页面都有一个与之关联的视频对象
 
 - Sync
 
@@ -9922,26 +9923,26 @@ print(await page.video.path())
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="video-delete-return">#</a>
 
-Deletes the video file. Will wait for the video to finish if necessary.
+删除视频文件。如有必要，将等待视频完成
 
 ## video.path()<a name="video-path">#</a>
 
 - returns: \<[pathlib.Path](https://realpython.com/python-pathlib/)><a name="video-path-return">#</a>
 
-Returns the file system path this video will be recorded to. The video is guaranteed to be written to the filesystem upon closing the browser context. This method throws when connected remotely.
+返回视频录制到的文件系统路径。在关闭浏览器上下文时，保证视频被写入文件系统。此方法在远程连接时抛出
 
 ## video.save_as(path)<a name="video-save-as">#</a>
 
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path where the video should be saved.<a name="video-save-as-option-path">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 视频应该保存的路径.<a name="video-save-as-option-path">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="video-save-as-return">#</a>
 
-Saves the video to a user-specified path. It is safe to call this method while the video is still in progress, or after the page has closed. This method waits until the page is closed and the video is fully saved.
+将视频保存到用户指定的路径。在视频仍在播放或页面已关闭时调用此方法是安全的。此方法将一直等待，直到页面关闭并完全保存视频
 
 
 
 # WebSocket
 
-The [WebSocket](#websocket) class represents websocket connections in the page.
+[WebSocket](#websocket) 表示页面中的WebSocket连接
 
 - [web_socket.on("close")](#web-socket-event-close)
 - [web_socket.on("framereceived")](#web-socket-event-frame-received)
@@ -9956,67 +9957,67 @@ The [WebSocket](#websocket) class represents websocket connections in the page.
 
 - type: \<[WebSocket](#websocket)>
 
-Fired when the websocket closes.
+websocket关闭时触发
 
 ## web_socket.on("framereceived")<a name="web-socket-event-frame-received">#</a>
 
 - type: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)>
-    - `payload` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> frame payload
+    - `payload` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> frame 有效负载
 
-Fired when the websocket receives a frame.
+当websocket接收到一个frame 时触发.
 
 ## web_socket.on("framesent")<a name="web-socket-event-frame-sent">#</a>
 
 - type: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)>
-    - `payload` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> frame payload
+    - `payload` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> frame 有效负载
 
-Fired when the websocket sends a frame.
+当websocket发送一个frame 时触发
 
 ## web_socket.on("socketerror")<a name="web-socket-event-socket-error">#</a>
 
 - type: \<[String]>
 
-Fired when the websocket has an error.
+当websocket有错误时触发
 
 ## web_socket.expect_event(event, **kwargs)<a name="web-socket-wait-for-event">#</a>
 
-- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Event name, same one would pass into `webSocket.on(event)`.<a name="web-socket-wait-for-event-option-event">#</a>
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Receives the event data and resolves to truthy value when the waiting should resolve.<a name="web-socket-wait-for-event-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="web-socket-wait-for-event-option-timeout">#</a>
+- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 事件名称，相同的将传递到 `webSocket.on(event)`.<a name="web-socket-wait-for-event-option-event">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 接收事件数据，并在等待应该被解析时解析为真值.<a name="web-socket-wait-for-event-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="web-socket-wait-for-event-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)><a name="web-socket-wait-for-event-return">#</a>
 
-Waits for event to fire and passes its value into the predicate function. Returns when the predicate returns truthy value. Will throw an error if the webSocket is closed before the event is fired. Returns the event data value.
+等待事件触发，并将其值传递给 predicate 函数.当 predicate 返回真值时返回。如果webSocket在事件被触发之前关闭，将抛出一个错误。返回事件数据值
 
 ## web_socket.is_closed()<a name="web-socket-is-closed">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="web-socket-is-closed-return">#</a>
 
-Indicates that the web socket has been closed.
+web socket已经关闭
 
 ## web_socket.url<a name="web-socket-url">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="web-socket-url-return">#</a>
 
-Contains the URL of the WebSocket.
+包含WebSocket的URL
 
 ## web_socket.wait_for_event(event, **kwargs)<a name="web-socket-wait-for-event-2">#</a>
 
-- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Event name, same one typically passed into `*.on(event)`.<a name="web-socket-wait-for-event-2-option-event">#</a>
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Receives the event data and resolves to truthy value when the waiting should resolve.<a name="web-socket-wait-for-event-2-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="web-socket-wait-for-event-2-option-timeout">#</a>
+- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 事件名称，与通常传递给`*.on(event)`的名称相同.<a name="web-socket-wait-for-event-2-option-event">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 接收事件数据，并在等待应该被解析时解析为真值.<a name="web-socket-wait-for-event-2-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为`30000`(30秒)。通过0禁用超时。默认值可以通过使用[browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout)来更改.<a name="web-socket-wait-for-event-2-option-timeout">#</a>
 - returns: \<[Any](https://docs.python.org/3/library/typing.html#typing.Any)><a name="web-socket-wait-for-event-2-return">#</a>
 
 > NOTE
 >
-> In most cases, you should use [web_socket.expect_event(event, **kwargs)](#web-socket-wait-for-event).
+> 在大多数情况下，你应该使用 [web_socket.expect_event(event, **kwargs)](#web-socket-wait-for-event).
 
-Waits for given `event` to fire. If predicate is provided, it passes event's value into the `predicate` function and waits for `predicate(event)` to return a truthy value. Will throw an error if the socket is closed before the `event` is fired.
+等待给定事件被触发. 如果提供了 predicate ,它将 event's的值传递给 `predicate` 函数,并等待 `predicate(event)` 返回一个真值。如果套接字在触发事件之前关闭，则将抛出一个错误
 
 
 
 # Worker
 
-The Worker class represents a [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). `worker` event is emitted on the page object to signal a worker creation. `close` event is emitted on the worker object when the worker is gone.
+Worker 类代表一个 [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). 在页面对象上发出Worker事件，以通知一个Worker创建。关闭事件在worker对象消失时被触发
 
 ```python
 def handle_worker(worker):
@@ -10039,31 +10040,31 @@ for worker in page.workers:
 
 - type: \<[Worker](#worker)>
 
-Emitted when this dedicated [WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) is terminated.
+当这个专用的[WebWorker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) 被终止时触发.
 
 ## worker.evaluate(expression, **kwargs)<a name="worker-evaluate">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="worker-evaluate-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="worker-evaluate-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="worker-evaluate-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="worker-evaluate-option-arg">#</a>
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="worker-evaluate-return">#</a>
 
-Returns the return value of `expression`.
+返回表达式的返回值.
 
-If the function passed to the [worker.evaluate(expression, **kwargs)](#worker-evaluate) returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [worker.evaluate(expression, **kwargs)](#worker-evaluate) would wait for the promise to resolve and return its value.
+如果函数传递给 [worker.evaluate(expression, **kwargs)](#worker-evaluate) 返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 则[worker.evaluate(expression, **kwargs)](#worker-evaluate) 将等待promise解析并返回它的值.
 
-If the function passed to the [worker.evaluate(expression, **kwargs)](#worker-evaluate) returns a non-[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description) value, then [worker.evaluate(expression, **kwargs)](#worker-evaluate) returns `undefined`. Playwright also supports transferring some additional values that are not serializable by `JSON`: `-0`, `NaN`, `Infinity`, `-Infinity`.
+如果函数传递给 [worker.evaluate(expression, **kwargs)](#worker-evaluate) 返回一个不可序列化 non-[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description) 的值, 则[worker.evaluate(expression, **kwargs)](#worker-evaluate) 返回`undefined`. Playwright 还支持传递一些附加值，不能通过JSON序列化: `-0`, `NaN`, `Infinity`, `-Infinity`.
 
 ## worker.evaluate_handle(expression, **kwargs)<a name="worker-evaluate-handle">#</a>
 
-- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> JavaScript expression to be evaluated in the browser context. If it looks like a function declaration, it is interpreted as a function. Otherwise, evaluated as an expression.<a name="worker-evaluate-handle-option-expression">#</a>
-- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> Optional argument to pass to `expression`.<a name="worker-evaluate-handle-option-arg">#</a>
+- `expression` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要在浏览器上下文中计算的`JavaScript`表达式。如果它看起来像一个函数声明，它会被解释为一个函数。否则，作为表达式求值.<a name="worker-evaluate-handle-option-expression">#</a>
+- `arg` \<[EvaluationArgument](https://playwright.dev/python/docs/evaluating#evaluation-argument)> 传递给`expression`的可选参数.<a name="worker-evaluate-handle-option-arg">#</a>
 - returns: \<[JSHandle](#jshandle)><a name="worker-evaluate-handle-return">#</a>
 
-Returns the return value of `expression` as a [JSHandle](#jshandle).
+返回表达式的返回值是一个 [JSHandle](#jshandle).
 
-The only difference between [worker.evaluate(expression, **kwargs)](#worker-evaluate) and [worker.evaluate_handle(expression, **kwargs)](#worker-evaluate-handle) is that [worker.evaluate_handle(expression, **kwargs)](#worker-evaluate-handle) returns [JSHandle](#jshandle).
+[worker.evaluate(expression, **kwargs)](#worker-evaluate) and [worker.evaluate_handle(expression, **kwargs)](#worker-evaluate-handle) 之间唯一的区别是 [worker.evaluate_handle(expression, **kwargs)](#worker-evaluate-handle) 返回[JSHandle](#jshandle).
 
-If the function passed to the [worker.evaluate_handle(expression, **kwargs)](#worker-evaluate-handle) returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), then [worker.evaluate_handle(expression, **kwargs)](#worker-evaluate-handle) would wait for the promise to resolve and return its value.
+如果函数传递给 [worker.evaluate_handle(expression, **kwargs)](#worker-evaluate-handle) 返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), 则[worker.evaluate_handle(expression, **kwargs)](#worker-evaluate-handle) 将等待promise解析并返回它的值.
 
 ## worker.url<a name="worker-url">#</a>
 
