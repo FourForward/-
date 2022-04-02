@@ -95,7 +95,9 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ### [各种 web-js-hook](./python/js-hook.md)
 
-### [web自动化工具 playwright-docs-api 英文文档](./python/playwright-docs-api.md)
+### [playwright-docs-api-中文文档.pdf](./python/playwright-docs-api-中文文档.pdf)
+
+[playwright-中文文档.md(建议使用上面的PDF查看,md会卡)](./python/playwright-docs-api-中文文档.md)      [web自动化工具 playwright-docs-api 英文文档](./python/playwright-docs-api.md)
 
 ### 骑行数据相关整合
 

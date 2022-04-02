@@ -64,3 +64,23 @@
 
 ### 4.2.修改指向锚点超链接的大小写(略: 实测typora的跳转是忽略大小写的)
 
+
+
+### 5.修改 一级标题 Assertions 的内容
+
+该标题下的链接格式与其它不同,需要单独处理
+
+1.
+
+`\[#?\]\(https://playwright.dev/python/docs/test-assertions([^\)]*?)#(.*?)\)`
+
+`<a name="$2">#</a>`
+
+2.
+
+`\[([^\]]*?)\]\(https://playwright.dev/python/docs/test-assertions([^\)]*?)#(.*?)\)`
+
+`\[$1\]\(#$3\)`
+
+
+

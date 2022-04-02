@@ -1,4 +1,4 @@
-# Playwright-docs-api 文档全文拷贝
+# Playwright-docs-api 中文文档
 
 [Playwright | Playwright Python 官方文档--需要科学上网](https://playwright.dev/python/docs/api/class-playwright)
 
@@ -10,11 +10,15 @@ language: Python
 
 拷贝完整度: > 99%
 
+翻译完整度: < 4%
+
+翻译: 有道词典, 小玉的玉
+
 备注: 该文档针对 typora 的使用方式做了部分优化(超链接显示,锚点跳转[具体优化方式](./playwright文档优化方式.md))
 
 # Playwright
 
-Playwright module provides a method to launch a browser instance. The following is a typical example of using Playwright to drive automation:
+Playwright 模块提供了一个方法来启动浏览器实例。下面是一个使用Playwright 驱动自动化的典型例子:
 
 - Sync
 
@@ -65,7 +69,7 @@ asyncio.run(main())
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="playwright-stop-return">#</a>
 
-Terminates this instance of Playwright in case it was created bypassing the Python context manager. This is useful in REPL applications.
+终止这个剧作家实例，以防它是绕过Python上下文管理器创建的。这在REPL应用程序中非常有用。
 
 ```python
 >>> from playwright.sync_api import sync_playwright
@@ -85,13 +89,13 @@ Terminates this instance of Playwright in case it was created bypassing the Pyth
 
 - type: \<[BrowserType](#browsertype)>
 
-This object can be used to launch or connect to Chromium, returning instances of [Browser](#browser).
+这个对象可以用来启动或连接到Chromium，返回[Browser](#browser)的实例。
 
 ## playwright.devices<a name="playwright-devices">#</a>
 
 - type: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)>
 
-Returns a dictionary of devices to be used with [browser.new_context(**kwargs)](#browser-new-context) or [browser.new_page(**kwargs)](#browser-new-page).
+返回与[browser.new_context(**kwargs)](#browser-new-context)或[browser.new_page(**kwargs)](#browser-new-page)一起使用的设备的字典。
 
 - Sync
 
@@ -138,57 +142,57 @@ asyncio.run(main())
 
 - type: \<[BrowserType](#browsertype)>
 
-This object can be used to launch or connect to Firefox, returning instances of [Browser](#browser).
+此对象可用于启动或连接到Firefox，返回[Browser](#browser)的实例。
 
 ## playwright.request<a name="playwright-request">#</a>
 
 - type: \<[APIRequest](#apirequest)>
 
-Exposes API that can be used for the Web API testing.
+公开可用于Web API测试的API。
 
 ## playwright.selectors<a name="playwright-selectors">#</a>
 
 - type: \<[Selectors](#selectors)>
 
-Selectors can be used to install custom selector engines. See [Working with selectors](https://playwright.dev/python/docs/selectors) for more information.
+选择器可用于安装自定义选择器引擎。有关更多信息，请参见[Working with selectors](https://playwright.dev/python/docs/selectors)。
 
 ## playwright.webkit<a name="playwright-webkit">#</a>
 
 - type: \<[BrowserType](#browsertype)>
 
-This object can be used to launch or connect to WebKit, returning instances of [Browser](#browser).
+这个对象可以用来启动或连接到WebKit，返回[Browser](#browser)的实例。
 
 
 
 # APIRequest
 
-Exposes API that can be used for the Web API testing. Each Playwright browser context has a APIRequestContext instance attached which shares cookies with the page context. Its also possible to create a new APIRequestContext instance manually. For more information see [here](#apirequestcontext).
+公开可用于Web API测试的API。每个剧作家浏览器上下文都有一个APIRequestContext实例，它与页面上下文共享cookie。也可以手动创建一个新的APIRequestContext实例。更多信息请参见[此处](#apirequestcontext)。
 
 - [api_request.new_context(**kwargs)](#api-request-new-context)
 
 ## api_request.new_context(**kwargs)<a name="api-request-new-context">#</a>
 
-- `base_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Methods like [api_request_context.get(url, **kwargs)](#api-request-context-get) take the base URL into consideration by using the [`URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor for building the corresponding URL. Examples:<a name="api-request-new-context-option-base-url">#</a>
-    - baseURL: `http://localhost:3000` and sending request to `/bar.html` results in `http://localhost:3000/bar.html`
-    - baseURL: `http://localhost:3000/foo/` and sending request to `./bar.html` results in `http://localhost:3000/foo/bar.html`
-    - baseURL: `http://localhost:3000/foo` (without trailing slash) and navigating to `./bar.html` results in `http://localhost:3000/bar.html`
-- `extra_http_headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> An object containing additional HTTP headers to be sent with every request.<a name="api-request-new-context-option-extra-http-headers">#</a>
-- `http_credentials` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Credentials for [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).<a name="api-request-new-context-option-http-credentials">#</a>
+- `base_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>  [api_request_context.get(url, **kwargs)](#api-request-context-get) 之类的方法,通过使用 [`URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) 构造函数来构建相应的url. 例子:<a name="api-request-new-context-option-base-url">#</a>
+    - baseURL= `http://localhost:3000` 时发送请求至`/bar.html` 结果是 `http://localhost:3000/bar.html`
+    - baseURL= `http://localhost:3000/foo/` 时发送请求至 `./bar.html` 结果是`http://localhost:3000/foo/bar.html`
+    - baseURL= `http://localhost:3000/foo` 时发送请求至(末尾不加斜杠) `./bar.html`结果是`http://localhost:3000/bar.html`
+- `extra_http_headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 一个包含附加HTTP头的对象，每个请求都要发送.<a name="api-request-new-context-option-extra-http-headers">#</a>
+- `http_credentials` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)>  [HTTP认证凭据](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).<a name="api-request-new-context-option-http-credentials">#</a>
     - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
     - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="api-request-new-context-option-ignore-https-errors">#</a>
-- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Network proxy settings.<a name="api-request-new-context-option-proxy">#</a>
-    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Proxy to be used for all requests. HTTP and SOCKS proxies are supported, for example `http://myproxy.com:3128` or `socks5://myproxy.com:3128`. Short form `myproxy.com:3128` is considered an HTTP proxy.
-    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional comma-separated domains to bypass proxy, for example `".com, chromium.org, .domain.com"`.
-    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional username to use if HTTP proxy requires authentication.
-    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional password to use if HTTP proxy requires authentication.
-- `storage_state` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Populates context with given storage state. This option can be used to initialize context with logged-in information obtained via [browser_context.storage_state(**kwargs)](#browser-context-storage-state) or [api_request_context.storage_state(**kwargs)](#api-request-context-storage-state). Either a path to the file with saved storage, or the value returned by one of [browser_context.storage_state(**kwargs)](#browser-context-storage-state) or [api_request_context.storage_state(**kwargs)](#api-request-context-storage-state) methods.<a name="api-request-new-context-option-storage-state">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-new-context-option-ignore-https-errors">#</a>
+- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 网络代理设置.<a name="api-request-new-context-option-proxy">#</a>
+    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 所有请求使用的代理。支持HTTP代理和SOCKS代理，例如: `http://myproxy.com:3128` or `socks5://myproxy.com:3128`.缩写形式 `myproxy.com:3128` 被认为是一个HTTP代理.
+    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 可选，用逗号分隔的域，绕过代理，例如 `".com, chromium.org, .domain.com"`.
+    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>可选 username，当HTTP代理需要鉴权时使用.
+    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 当HTTP代理需要鉴权时可选密码.
+- `storage_state` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 用给定的存储状态填充上下文。这个选项可以用来用通过 [browser_context.storage_state(**kwargs)](#browser-context-storage-state) or [api_request_context.storage_state(**kwargs)](#api-request-context-storage-state). 获得的登录信息初始化上下文。可以是保存存储的文件路径，也可以是 [browser_context.storage_state(**kwargs)](#browser-context-storage-state) or [api_request_context.storage_state(**kwargs)](#api-request-context-storage-state) 方法返回的值.<a name="api-request-new-context-option-storage-state">#</a>
     - `cookies` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>
         - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix time in seconds.
+        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix 时间，单位为秒.
         - `httpOnly` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
         - `secure` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
         - `sameSite` \<"Strict"|"Lax"|"None">
@@ -197,17 +201,17 @@ Exposes API that can be used for the Web API testing. Each Playwright browser co
         - `localStorage` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>
             - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
             - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds to wait for the response. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="api-request-new-context-option-timeout">#</a>
-- `user_agent` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Specific user agent to use in this context.<a name="api-request-new-context-option-user-agent">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 等待响应的最大时间，单位为毫秒。默认为 `30000` (30 seconds). 传递`0` 以禁用超时.<a name="api-request-new-context-option-timeout">#</a>
+- `user_agent` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 在此上下文中使用的特定用户代理.<a name="api-request-new-context-option-user-agent">#</a>
 - returns: \<[APIRequestContext](#apirequestcontext)><a name="api-request-new-context-return">#</a>
 
-Creates new instances of [APIRequestContext](#apirequestcontext).
+创建 [APIRequestContext](#apirequestcontext) 新实例.
 
 
 
 # APIRequestContext
 
-This API is used for the Web API testing. You can use it to trigger API endpoints, configure micro-services, prepare environment or the service to your e2e test. When used on [Page](#page) or a [BrowserContext](#browsercontext), this API will automatically use the cookies from the corresponding [BrowserContext](#browsercontext). This means that if you log in using this API, your e2e test will be logged in and vice versa.
+此API用于Web API测试。您可以使用它来触发API端点、配置微服务、为您的端到端测试准备环境或服务。当在[Page](#page)或 [BrowserContext](#browsercontext)中使用时，这个API将自动使用相应的 [BrowserContext](#browsercontext)中的cookie。这意味着如果您使用这个API登录，您的e2e测试将被登录，反之亦然。
 
 - Sync
 
@@ -315,133 +319,133 @@ asyncio.run(main())
 
 ## api_request_context.delete(url, **kwargs)<a name="api-request-context-delete">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Target URL.<a name="api-request-context-delete-option-url">#</a>
-- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> Allows to set post data of the request. If the data parameter is an object, it will be serialized to json string and `content-type` header will be set to `application/json` if not explicitly set. Otherwise the `content-type` header will be set to `application/octet-stream` if not explicitly set.<a name="api-request-context-delete-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to throw on response codes other than 2xx and 3xx. By default response object is returned for all status codes.<a name="api-request-context-delete-option-fail-on-status-code">#</a>
-- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Provides an object that will be serialized as html form using `application/x-www-form-urlencoded` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `application/x-www-form-urlencoded` unless explicitly provided.<a name="api-request-context-delete-option-form">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Allows to set HTTP headers.<a name="api-request-context-delete-option-headers">#</a>
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="api-request-context-delete-option-ignore-https-errors">#</a>
-- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> Provides an object that will be serialized as html form using `multipart/form-data` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `multipart/form-data` unless explicitly provided. File values can be passed either as [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) or as file-like object containing file name, mime-type and its content.<a name="api-request-context-delete-option-multipart">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
-    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
-    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Query parameters to be sent with the URL.<a name="api-request-context-delete-option-params">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Request timeout in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="api-request-context-delete-option-timeout">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标URL.<a name="api-request-context-delete-option-url">#</a>
+- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type`头将被设置为`application/json` . 否则，如果没有显式设置`content-type`头将被设置为 `application/octet-stream` .<a name="api-request-context-delete-option-data">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> •      是否对2xx和3xx以外的响应码抛出异常。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-delete-option-fail-on-status-code">#</a>
+- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form, 并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-delete-option-form">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-delete-option-headers">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-delete-option-ignore-https-errors">#</a>
+- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> 提供一个对象，该对象将使用 `multipart/form-data` 编码序列化为html形式，并作为请求体发送。如果指定了该参数，除非明确提供，否则`content-type` 将被设置为 `multipart/form-data`. 文件值可以作为fs来传递, [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) 或作为文件类对象，包含文件名、mime类型及其内容.<a name="api-request-context-delete-option-multipart">#</a>
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件名
+    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件类型
+    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 文件内容
+- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 查询参数.<a name="api-request-context-delete-option-params">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求超时时间，单位为毫秒。默认为 `30000` (30 seconds). 传递 `0` 以禁用超时.<a name="api-request-context-delete-option-timeout">#</a>
 - returns: \<[APIResponse](#apiresponse)><a name="api-request-context-delete-return">#</a>
 
-Sends HTTP(S) [DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE) request and returns its response. The method will populate request cookies from the context and update context cookies from the response. The method will automatically follow redirects.
+发送HTTP(S) [DELETE](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/DELETE) 请求并返回响应。该方法将从上下文填充请求cookie，并从响应更新上下文cookie。该方法将自动遵循**重定向**。
 
 ## api_request_context.dispose()<a name="api-request-context-dispose">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="api-request-context-dispose-return">#</a>
 
-All responses returned by [api_request_context.get(url, **kwargs)](#api-request-context-get) and similar methods are stored in the memory, so that you can later call [api_response.body()](#api-response-body). This method discards all stored responses, and makes [api_response.body()](#api-response-body) throw "Response disposed" error.
+ [api_request_context.get(url, **kwargs)](#api-request-context-get) 返回的所有响应和类似的方法都存储在内存中，这样你以后就可以调用 [api_response.body()](#api-response-body). 此方法丢弃所有存储的响应，并使 [api_response.body()](#api-response-body) 抛出“Response dispose”错误.
 
 ## api_request_context.fetch(url_or_request, **kwargs)<a name="api-request-context-fetch">#</a>
 
-- `url_or_request` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Request](#request)> Target URL or Request to get all parameters from.<a name="api-request-context-fetch-option-url-or-request">#</a>
-- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> Allows to set post data of the request. If the data parameter is an object, it will be serialized to json string and `content-type` header will be set to `application/json` if not explicitly set. Otherwise the `content-type` header will be set to `application/octet-stream` if not explicitly set.<a name="api-request-context-fetch-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to throw on response codes other than 2xx and 3xx. By default response object is returned for all status codes.<a name="api-request-context-fetch-option-fail-on-status-code">#</a>
-- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Provides an object that will be serialized as html form using `application/x-www-form-urlencoded` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `application/x-www-form-urlencoded` unless explicitly provided.<a name="api-request-context-fetch-option-form">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Allows to set HTTP headers.<a name="api-request-context-fetch-option-headers">#</a>
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="api-request-context-fetch-option-ignore-https-errors">#</a>
-- `method` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> If set changes the fetch method (e.g. [PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT) or [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)). If not specified, GET method is used.<a name="api-request-context-fetch-option-method">#</a>
-- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> Provides an object that will be serialized as html form using `multipart/form-data` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `multipart/form-data` unless explicitly provided. File values can be passed either as [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) or as file-like object containing file name, mime-type and its content.<a name="api-request-context-fetch-option-multipart">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
-    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
-    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Query parameters to be sent with the URL.<a name="api-request-context-fetch-option-params">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Request timeout in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="api-request-context-fetch-option-timeout">#</a>
+- `url_or_request` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Request](#request)> 获取所有参数的目标URL或请求.<a name="api-request-context-fetch-option-url-or-request">#</a>
+- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type` 将被设置为 `application/json` ,否则，如果没有显式设置， `content-type` 将被设置为 `application/octet-stream` .<a name="api-request-context-fetch-option-data">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-fetch-option-fail-on-status-code">#</a>
+- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form，并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-fetch-option-form">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-fetch-option-headers">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-fetch-option-ignore-https-errors">#</a>
+- `method` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 改变了获取方法 (e.g. [PUT](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PUT) or [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST)). 如果未指定，则使用GET方法.<a name="api-request-context-fetch-option-method">#</a>
+- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> 提供一个对象，该对象将使用 `multipart/form-data` 编码序列化为html形式，并作为请求体发送。如果指定了该参数，除非明确提供，否则`content-type` 将被设置为 `multipart/form-data`. 文件值可以作为fs来传递, [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) 或作为文件类对象，包含文件名、mime类型及其内容.<a name="api-request-context-fetch-option-multipart">#</a>
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件名
+    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件类型
+    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 文件内容
+- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 查询参数.<a name="api-request-context-fetch-option-params">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求超时时间，单位为毫秒。默认为 `30000` (30 seconds). 传递 `0` 以禁用超时.<a name="api-request-context-fetch-option-timeout">#</a>
 - returns: \<[APIResponse](#apiresponse)><a name="api-request-context-fetch-return">#</a>
 
-Sends HTTP(S) request and returns its response. The method will populate request cookies from the context and update context cookies from the response. The method will automatically follow redirects.
+发送HTTP(S)请求并返回响应。该方法将从上下文填充请求cookie，并从响应更新上下文cookie。该方法将自动遵循重定向。
 
 ## api_request_context.get(url, **kwargs)<a name="api-request-context-get">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Target URL.<a name="api-request-context-get-option-url">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to throw on response codes other than 2xx and 3xx. By default response object is returned for all status codes.<a name="api-request-context-get-option-fail-on-status-code">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Allows to set HTTP headers.<a name="api-request-context-get-option-headers">#</a>
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="api-request-context-get-option-ignore-https-errors">#</a>
-- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Query parameters to be sent with the URL.<a name="api-request-context-get-option-params">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Request timeout in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="api-request-context-get-option-timeout">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标 URL.<a name="api-request-context-get-option-url">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-get-option-fail-on-status-code">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-get-option-headers">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-get-option-ignore-https-errors">#</a>
+- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 查询参数.<a name="api-request-context-get-option-params">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求超时时间，单位为毫秒。默认为 `30000` (30 seconds). 传递 `0` 以禁用超时.<a name="api-request-context-get-option-timeout">#</a>
 - returns: \<[APIResponse](#apiresponse)><a name="api-request-context-get-return">#</a>
 
-Sends HTTP(S) [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) request and returns its response. The method will populate request cookies from the context and update context cookies from the response. The method will automatically follow redirects.
+发送HTTP(S) GET请求并返回响应。该方法将从上下文填充请求cookie，并从响应更新上下文cookie。该方法将自动遵循重定向。
 
 ## api_request_context.head(url, **kwargs)<a name="api-request-context-head">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Target URL.<a name="api-request-context-head-option-url">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to throw on response codes other than 2xx and 3xx. By default response object is returned for all status codes.<a name="api-request-context-head-option-fail-on-status-code">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Allows to set HTTP headers.<a name="api-request-context-head-option-headers">#</a>
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="api-request-context-head-option-ignore-https-errors">#</a>
-- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Query parameters to be sent with the URL.<a name="api-request-context-head-option-params">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Request timeout in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="api-request-context-head-option-timeout">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标  URL.<a name="api-request-context-head-option-url">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-head-option-fail-on-status-code">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-head-option-headers">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-head-option-ignore-https-errors">#</a>
+- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]>查询参数.<a name="api-request-context-head-option-params">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求超时时间，单位为毫秒。默认为 `30000` (30 seconds). 传递 `0` 以禁用超时.<a name="api-request-context-head-option-timeout">#</a>
 - returns: \<[APIResponse](#apiresponse)><a name="api-request-context-head-return">#</a>
 
-Sends HTTP(S) [HEAD](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD) request and returns its response. The method will populate request cookies from the context and update context cookies from the response. The method will automatically follow redirects.
+发送HTTP(S) [HEAD](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD) 请求并返回其响应。该方法将从上下文填充请求cookie，并从响应更新上下文cookie。该方法将自动遵循重定向。
 
 ## api_request_context.patch(url, **kwargs)<a name="api-request-context-patch">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Target URL.<a name="api-request-context-patch-option-url">#</a>
-- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> Allows to set post data of the request. If the data parameter is an object, it will be serialized to json string and `content-type` header will be set to `application/json` if not explicitly set. Otherwise the `content-type` header will be set to `application/octet-stream` if not explicitly set.<a name="api-request-context-patch-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to throw on response codes other than 2xx and 3xx. By default response object is returned for all status codes.<a name="api-request-context-patch-option-fail-on-status-code">#</a>
-- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Provides an object that will be serialized as html form using `application/x-www-form-urlencoded` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `application/x-www-form-urlencoded` unless explicitly provided.<a name="api-request-context-patch-option-form">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Allows to set HTTP headers.<a name="api-request-context-patch-option-headers">#</a>
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="api-request-context-patch-option-ignore-https-errors">#</a>
-- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> Provides an object that will be serialized as html form using `multipart/form-data` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `multipart/form-data` unless explicitly provided. File values can be passed either as [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) or as file-like object containing file name, mime-type and its content.<a name="api-request-context-patch-option-multipart">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
-    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
-    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Query parameters to be sent with the URL.<a name="api-request-context-patch-option-params">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Request timeout in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="api-request-context-patch-option-timeout">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标 URL.<a name="api-request-context-patch-option-url">#</a>
+- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type` 将被设置为 `application/json` ,否则，如果没有显式设置， `content-type` 将被设置为 `application/octet-stream` .<a name="api-request-context-patch-option-data">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-patch-option-fail-on-status-code">#</a>
+- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form，并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-patch-option-form">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-patch-option-headers">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-patch-option-ignore-https-errors">#</a>
+- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> 提供一个对象，该对象将使用 `multipart/form-data` 编码序列化为html形式，并作为请求体发送。如果指定了该参数，除非明确提供，否则`content-type` 将被设置为 `multipart/form-data`. 文件值可以作为fs来传递, [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) 或作为文件类对象，包含文件名、mime类型及其内容.<a name="api-request-context-patch-option-multipart">#</a>
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件名
+    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件类型
+    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 文件内容
+- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 查询参数.<a name="api-request-context-patch-option-params">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求超时时间，单位为毫秒。默认为 `30000` (30 seconds). 传递 `0` 以禁用超时.<a name="api-request-context-patch-option-timeout">#</a>
 - returns: \<[APIResponse](#apiresponse)><a name="api-request-context-patch-return">#</a>
 
-Sends HTTP(S) [PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH) request and returns its response. The method will populate request cookies from the context and update context cookies from the response. The method will automatically follow redirects.
+发送HTTP(S) [PATCH](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/PATCH) 请求并返回响应。该方法将从上下文填充请求cookie，并从响应更新上下文cookie。该方法将自动遵循重定向。
 
 ## api_request_context.post(url, **kwargs)<a name="api-request-context-post">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Target URL.<a name="api-request-context-post-option-url">#</a>
-- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> Allows to set post data of the request. If the data parameter is an object, it will be serialized to json string and `content-type` header will be set to `application/json` if not explicitly set. Otherwise the `content-type` header will be set to `application/octet-stream` if not explicitly set.<a name="api-request-context-post-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to throw on response codes other than 2xx and 3xx. By default response object is returned for all status codes.<a name="api-request-context-post-option-fail-on-status-code">#</a>
-- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Provides an object that will be serialized as html form using `application/x-www-form-urlencoded` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `application/x-www-form-urlencoded` unless explicitly provided.<a name="api-request-context-post-option-form">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Allows to set HTTP headers.<a name="api-request-context-post-option-headers">#</a>
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="api-request-context-post-option-ignore-https-errors">#</a>
-- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> Provides an object that will be serialized as html form using `multipart/form-data` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `multipart/form-data` unless explicitly provided. File values can be passed either as [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) or as file-like object containing file name, mime-type and its content.<a name="api-request-context-post-option-multipart">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
-    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
-    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Query parameters to be sent with the URL.<a name="api-request-context-post-option-params">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Request timeout in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="api-request-context-post-option-timeout">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>目标 URL.<a name="api-request-context-post-option-url">#</a>
+- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type` 将被设置为 `application/json` ,否则，如果没有显式设置， `content-type` 将被设置为 `application/octet-stream` .<a name="api-request-context-post-option-data">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-post-option-fail-on-status-code">#</a>
+- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form，并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-post-option-form">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]>  允许设置HTTP头.<a name="api-request-context-post-option-headers">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-post-option-ignore-https-errors">#</a>
+- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> 提供一个对象，该对象将使用 `multipart/form-data` 编码序列化为html形式，并作为请求体发送。如果指定了该参数，除非明确提供，否则`content-type` 将被设置为 `multipart/form-data`. 文件值可以作为fs来传递, [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) 或作为文件类对象，包含文件名、mime类型及其内容.<a name="api-request-context-post-option-multipart">#</a>
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件名
+    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件类型
+    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 文件内容
+- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 查询参数.<a name="api-request-context-post-option-params">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求超时时间，单位为毫秒。默认为 `30000` (30 seconds). 传递 `0` 以禁用超时.<a name="api-request-context-post-option-timeout">#</a>
 - returns: \<[APIResponse](#apiresponse)><a name="api-request-context-post-return">#</a>
 
-Sends HTTP(S) [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) request and returns its response. The method will populate request cookies from the context and update context cookies from the response. The method will automatically follow redirects.
+发送HTTP(S) [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) 请求并返回响应。该方法将从上下文填充请求cookie，并从响应更新上下文cookie。该方法将自动遵循重定向。
 
 ## api_request_context.put(url, **kwargs)<a name="api-request-context-put">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Target URL.<a name="api-request-context-put-option-url">#</a>
-- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> Allows to set post data of the request. If the data parameter is an object, it will be serialized to json string and `content-type` header will be set to `application/json` if not explicitly set. Otherwise the `content-type` header will be set to `application/octet-stream` if not explicitly set.<a name="api-request-context-put-option-data">#</a>
-- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to throw on response codes other than 2xx and 3xx. By default response object is returned for all status codes.<a name="api-request-context-put-option-fail-on-status-code">#</a>
-- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Provides an object that will be serialized as html form using `application/x-www-form-urlencoded` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `application/x-www-form-urlencoded` unless explicitly provided.<a name="api-request-context-put-option-form">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Allows to set HTTP headers.<a name="api-request-context-put-option-headers">#</a>
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="api-request-context-put-option-ignore-https-errors">#</a>
-- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> Provides an object that will be serialized as html form using `multipart/form-data` encoding and sent as this request body. If this parameter is specified `content-type` header will be set to `multipart/form-data` unless explicitly provided. File values can be passed either as [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) or as file-like object containing file name, mime-type and its content.<a name="api-request-context-put-option-multipart">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File name
-    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> File type
-    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> File content
-- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Query parameters to be sent with the URL.<a name="api-request-context-put-option-params">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Request timeout in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="api-request-context-put-option-timeout">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 目标 URL.<a name="api-request-context-put-option-url">#</a>
+- `data` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)|[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)> 允许设置请求的post数据。如果data参数是一个对象，它将被序列化为json字符串，如果没有显式设置，`content-type` 将被设置为 `application/json` ,否则，如果没有显式设置， `content-type` 将被设置为 `application/octet-stream` .<a name="api-request-context-put-option-data">#</a>
+- `fail_on_status_code` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否对2xx和3xx以外的响应码抛出。默认情况下，返回所有状态码的响应对象.<a name="api-request-context-put-option-fail-on-status-code">#</a>
+- `form` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]>提供一个对象，该对象将使用 `application/x-www-form-urlencoded` 编码序列化为html form，并作为请求体发送。如果指定了这个参数，除非明确提供，否则 `content-type` 将被设置为 `application/x-www-form-urlencoded`.<a name="api-request-context-put-option-form">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 允许设置HTTP头.<a name="api-request-context-put-option-headers">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="api-request-context-put-option-ignore-https-errors">#</a>
+- `multipart` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)|[ReadStream]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> 提供一个对象，该对象将使用 `multipart/form-data` 编码序列化为html形式，并作为请求体发送。如果指定了该参数，除非明确提供，否则`content-type` 将被设置为 `multipart/form-data`. 文件值可以作为fs来传递, [`fs.ReadStream`](https://nodejs.org/api/fs.html#fs_class_fs_readstream) 或作为文件类对象，包含文件名、mime类型及其内容.<a name="api-request-context-put-option-multipart">#</a>
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件名
+    - `mimeType` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 文件类型
+    - `buffer` \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)> 文件内容
+- `params` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 查询参数 <a name="api-request-context-put-option-params">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 请求超时时间，单位为毫秒。默认为 `30000` (30 seconds). 传递 `0` 以禁用超时.<a name="api-request-context-put-option-timeout">#</a>
 - returns: \<[APIResponse](#apiresponse)><a name="api-request-context-put-return">#</a>
 
 ## api_request_context.storage_state(**kwargs)<a name="api-request-context-storage-state">#</a>
 
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> The file path to save the storage state to. If `path` is a relative path, then it is resolved relative to current working directory. If no path is provided, storage state is still returned, but won't be saved to the disk.<a name="api-request-context-storage-state-option-path">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 存储状态保存到的文件路径. 如果 `path` 是一个相对路径，那么它是相对于当前工作目录解析的。如果没有提供路径，存储状态仍然返回，但不会保存到磁盘.<a name="api-request-context-storage-state-option-path">#</a>
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="api-request-context-storage-state-return">#</a>
     - `cookies` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>
         - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix time in seconds.
+        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix 时间，单位为秒.
         - `httpOnly` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
         - `secure` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
         - `sameSite` \<"Strict"|"Lax"|"None">
@@ -451,13 +455,13 @@ Sends HTTP(S) [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/P
             - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
             - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-Returns storage state for this request context, contains current cookies and local storage snapshot if it was passed to the constructor.
+返回此请求上下文的存储状态，如果它被传递给构造函数，则包含当前cookie和本地存储快照。
 
 
 
 # APIResponse
 
-[APIResponse](#apiresponse) class represents responses returned by [api_request_context.get(url, **kwargs)](#api-request-context-get) and similar methods.
+[APIResponse](#apiresponse) 类表示 [api_request_context.get(url, **kwargs)](#api-request-context-get) 等类似的方法返回的响应
 
 - Sync
 
@@ -501,73 +505,71 @@ asyncio.run(main())
 
 - returns: \<[bytes](https://docs.python.org/3/library/stdtypes.html#bytes)><a name="api-response-body-return">#</a>
 
-Returns the buffer with response body.
+返回带有响应体的缓冲区.
 
 ## api_response.dispose()<a name="api-response-dispose">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="api-response-dispose-return">#</a>
 
-Disposes the body of this response. If not called then the body will stay in memory until the context closes.
+处理此响应的正文。如果没有调用，则主体将留在内存中，直到上下文关闭。
 
 ## api_response.headers<a name="api-response-headers">#</a>
 
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]><a name="api-response-headers-return">#</a>
 
-An object with all the response HTTP headers associated with this response.
+具有与此响应关联的所有响应HTTP头的对象。
 
 ## api_response.headers_array<a name="api-response-headers-array">#</a>
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="api-response-headers-array-return">#</a>
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the header.
-    - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Value of the header.
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 头属性名称.
+    - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 头属性值.
 
-An array with all the request HTTP headers associated with this response. Header names are not lower-cased. Headers with multiple entries, such as `Set-Cookie`, appear in the array multiple times.
+包含与此响应关联的所有请求HTTP头的数组。头属性名称不是小写的。具有多个条目的头属性，例如 `Set-Cookie`, 在数组中出现多次.
 
 ## api_response.json()<a name="api-response-json">#</a>
 
 - returns: \<[Serializable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Description)><a name="api-response-json-return">#</a>
 
-Returns the JSON representation of response body.
+返回响应体的JSON表示。
 
-This method will throw if the response body is not parsable via `JSON.parse`.
+如果响应体不能通过 `JSON.parse`进行解析，则该方法将抛出.
 
 ## api_response.ok<a name="api-response-ok">#</a>
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="api-response-ok-return">#</a>
 
-Contains a boolean stating whether the response was successful (status in the range 200-299) or not.
+包含一个布尔值，说明响应是否成功(状态在200-299之间)。
 
 ## api_response.status<a name="api-response-status">#</a>
 
 - returns: \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)><a name="api-response-status-return">#</a>
 
-Contains the status code of the response (e.g., 200 for a success).
+包含响应的状态码(例如，200表示成功)。
 
 ## api_response.status_text<a name="api-response-status-text">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="api-response-status-text-return">#</a>
 
-Contains the status text of the response (e.g. usually an "OK" for a success).
+包含响应的状态文本(例如，通常一个“OK”表示成功)。
 
 ## api_response.text()<a name="api-response-text">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="api-response-text-return">#</a>
 
-Returns the text representation of response body.
+返回响应体的文本表示形式。
 
 ## api_response.url<a name="api-response-url">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="api-response-url-return">#</a>
 
-Contains the URL of the response.
+包含响应的URL。
 
 
 
 # Assertions
 
-Playwright gives you Web-First Assertions with convenience methods for creating assertions that will wait and retry until the expected condition is met.
-
-Consider the following example:
+Playwright 为您提供了web优先的断言，提供了创建断言的方便方法，这些断言将等待并重试，直到满足预期的条件。
 
 - Sync
 
@@ -593,150 +595,150 @@ async def test_status_becomes_submitted(page: Page) -> None:
 
 
 
-Playwright will be re-testing the node with the selector `.status` until fetched Node has the `"Submitted"` text. It will be re-fetching the node and checking it over and over, until the condition is met or until the timeout is reached. You can pass this timeout as an option.
+Playwright 会用选择器 `.status` 重新测试节点，直到取回的节点有 `"Submitted"` 文本。它将重新获取节点并一遍又一遍地检查它，直到满足条件或到达超时。您可以将此超时作为一个选项传递。
 
-By default, the timeout for assertions is set to 5 seconds.
+默认情况下，断言的超时被设置为5秒。
 
-## expect(locator).not_to_be_checked(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-checked)
+## expect(locator).not_to_be_checked(**kwargs)<a name="locator-assertions-not-to-be-checked">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-checked-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-checked-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-be-checked-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-be-checked-return">#</a>
 
-The opposite of [expect(locator).to_be_checked(**kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-checked).
+与 [expect(locator).to_be_checked(**kwargs)](#locator-assertions-to-be-checked) 相反.
 
-## expect(locator).not_to_be_disabled(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-disabled)
+## expect(locator).not_to_be_disabled(**kwargs)<a name="locator-assertions-not-to-be-disabled">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-disabled-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-disabled-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-be-disabled-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-be-disabled-return">#</a>
 
-The opposite of [expect(locator).to_be_disabled(**kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-disabled).
+与 [expect(locator).to_be_disabled(**kwargs)](#locator-assertions-to-be-disabled) 相反.
 
-## expect(locator).not_to_be_editable(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-editable)
+## expect(locator).not_to_be_editable(**kwargs)<a name="locator-assertions-not-to-be-editable">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-editable-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-editable-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-be-editable-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-be-editable-return">#</a>
 
-The opposite of [expect(locator).to_be_editable(**kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-editable).
+与 [expect(locator).to_be_editable(**kwargs)](#locator-assertions-to-be-editable) 相反.
 
-## expect(locator).not_to_be_empty(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-empty)
+## expect(locator).not_to_be_empty(**kwargs)<a name="locator-assertions-not-to-be-empty">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-empty-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-empty-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-be-empty-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-be-empty-return">#</a>
 
-The opposite of [expect(locator).to_be_empty(**kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-empty).
+与 [expect(locator).to_be_empty(**kwargs)](#locator-assertions-to-be-empty) 相反.
 
-## expect(locator).not_to_be_enabled(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-enabled)
+## expect(locator).not_to_be_enabled(**kwargs)<a name="locator-assertions-not-to-be-enabled">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-enabled-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-enabled-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-be-enabled-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-be-enabled-return">#</a>
 
-The opposite of [expect(locator).to_be_enabled(**kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-enabled).
+与 [expect(locator).to_be_enabled(**kwargs)](#locator-assertions-to-be-enabled) 相反.
 
-## expect(locator).not_to_be_focused(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-focused)
+## expect(locator).not_to_be_focused(**kwargs)<a name="locator-assertions-not-to-be-focused">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-focused-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-focused-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-be-focused-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-be-focused-return">#</a>
 
-The opposite of [expect(locator).to_be_focused(**kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-focused).
+与 [expect(locator).to_be_focused(**kwargs)](#locator-assertions-to-be-focused) 相反.
 
-## expect(locator).not_to_be_hidden(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-hidden)
+## expect(locator).not_to_be_hidden(**kwargs)<a name="locator-assertions-not-to-be-hidden">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-hidden-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-hidden-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-be-hidden-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-be-hidden-return">#</a>
 
-The opposite of [expect(locator).to_be_hidden(**kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-hidden).
+与 [expect(locator).to_be_hidden(**kwargs)](#locator-assertions-to-be-hidden) 相反.
 
-## expect(locator).not_to_be_visible(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-visible)
+## expect(locator).not_to_be_visible(**kwargs)<a name="locator-assertions-not-to-be-visible">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-visible-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-be-visible-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-be-visible-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-be-visible-return">#</a>
 
-The opposite of [expect(locator).to_be_visible(**kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-visible).
+与 [expect(locator).to_be_visible(**kwargs)](#locator-assertions-to-be-visible) 相反.
 
-## expect(locator).not_to_contain_text(expected, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-contain-text)
+## expect(locator).not_to_contain_text(expected, **kwargs)<a name="locator-assertions-not-to-contain-text">#</a>
 
-- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> Expected substring or RegExp or a list of those.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-contain-text-option-expected)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-contain-text-option-timeout)
-- `use_inner_text` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to use `element.innerText` instead of `element.textContent` when retrieving DOM node text.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-contain-text-option-use-inner-text)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-contain-text-return)
+- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> 期望的子字符串或RegExp或它们的列表.<a name="locator-assertions-not-to-contain-text-option-expected">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-contain-text-option-timeout">#</a>
+- `use_inner_text` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 检索DOM节点文本时使用 `element.innerText` 而不是 `element.textContent` .<a name="locator-assertions-not-to-contain-text-option-use-inner-text">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-contain-text-return">#</a>
 
-The opposite of [expect(locator).to_contain_text(expected, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-contain-text).
+与之相反 [expect(locator).to_contain_text(expected, **kwargs)](#locator-assertions-to-contain-text).
 
-## expect(locator).not_to_have_attribute(name, value, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-attribute)
+## expect(locator).not_to_have_attribute(name, value, **kwargs)<a name="locator-assertions-not-to-have-attribute">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Attribute name.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-attribute-option-name)
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Expected attribute value.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-attribute-option-value)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-attribute-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-attribute-return)
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 属性名.<a name="locator-assertions-not-to-have-attribute-option-name">#</a>
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 期望的属性值.<a name="locator-assertions-not-to-have-attribute-option-value">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-have-attribute-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-have-attribute-return">#</a>
 
-The opposite of [expect(locator).to_have_attribute(name, value, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-attribute).
+与之相反 [expect(locator).to_have_attribute(name, value, **kwargs)](#locator-assertions-to-have-attribute).
 
-## expect(locator).not_to_have_class(expected, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-class)
+## expect(locator).not_to_have_class(expected, **kwargs)<a name="locator-assertions-not-to-have-class">#</a>
 
-- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> Expected class or RegExp or a list of those.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-class-option-expected)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-class-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-class-return)
+- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> 期望的类或RegExp或它们的列表.<a name="locator-assertions-not-to-have-class-option-expected">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-have-class-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-have-class-return">#</a>
 
-The opposite of [expect(locator).to_have_class(expected, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-class).
+与之相反 [expect(locator).to_have_class(expected, **kwargs)](#locator-assertions-to-have-class).
 
-## expect(locator).not_to_have_count(count, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-count)
+## expect(locator).not_to_have_count(count, **kwargs)<a name="locator-assertions-not-to-have-count">#</a>
 
-- `count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Expected count.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-count-option-count)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-count-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-count-return)
+- `count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 期望的计数.<a name="locator-assertions-not-to-have-count-option-count">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-have-count-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-have-count-return">#</a>
 
-The opposite of [expect(locator).to_have_count(count, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-count).
+与之相反 [expect(locator).to_have_count(count, **kwargs)](#locator-assertions-to-have-count).
 
-## expect(locator).not_to_have_css(name, value, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-css)
+## expect(locator).not_to_have_css(name, value, **kwargs)<a name="locator-assertions-not-to-have-css">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> CSS property name.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-css-option-name)
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> CSS property value.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-css-option-value)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-css-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-css-return)
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> CSS 属性名.<a name="locator-assertions-not-to-have-css-option-name">#</a>
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> CSS 属性值.<a name="locator-assertions-not-to-have-css-option-value">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-have-css-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-have-css-return">#</a>
 
-The opposite of [expect(locator).to_have_css(name, value, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-css).
+与之相反 [expect(locator).to_have_css(name, value, **kwargs)](#locator-assertions-to-have-css).
 
-## expect(locator).not_to_have_id(id, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-id)
+## expect(locator).not_to_have_id(id, **kwargs)<a name="locator-assertions-not-to-have-id">#</a>
 
-- `id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Element id.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-id-option-id)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-id-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-id-return)
+- `id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)>元素 id.<a name="locator-assertions-not-to-have-id-option-id">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-have-id-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-have-id-return">#</a>
 
-The opposite of [expect(locator).to_have_id(id, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-id).
+与之相反 [expect(locator).to_have_id(id, **kwargs)](#locator-assertions-to-have-id).
 
-## expect(locator).not_to_have_js_property(name, value, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-js-property)
+## expect(locator).not_to_have_js_property(name, value, **kwargs)<a name="locator-assertions-not-to-have-js-property">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Property name.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-js-property-option-name)
-- `value` \<[Any](https://docs.python.org/3/library/typing.html#typing.Any)> Property value.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-js-property-option-value)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-js-property-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-js-property-return)
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 属性名.<a name="locator-assertions-not-to-have-js-property-option-name">#</a>
+- `value` \<[Any](https://docs.python.org/3/library/typing.html#typing.Any)> 属性值.<a name="locator-assertions-not-to-have-js-property-option-value">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-have-js-property-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-have-js-property-return">#</a>
 
-The opposite of [expect(locator).to_have_js_property(name, value, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-js-property).
+与之相反 [expect(locator).to_have_js_property(name, value, **kwargs)](#locator-assertions-to-have-js-property).
 
-## expect(locator).not_to_have_text(expected, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-text)
+## expect(locator).not_to_have_text(expected, **kwargs)<a name="locator-assertions-not-to-have-text">#</a>
 
-- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> Expected substring or RegExp or a list of those.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-text-option-expected)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-text-option-timeout)
-- `use_inner_text` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to use `element.innerText` instead of `element.textContent` when retrieving DOM node text.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-text-option-use-inner-text)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-text-return)
+- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> 期望的子字符串或RegExp或它们的列表.<a name="locator-assertions-not-to-have-text-option-expected">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-have-text-option-timeout">#</a>
+- `use_inner_text` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 检索DOM节点文本时使用 `element.innerText` 而不是 `element.textContent`.<a name="locator-assertions-not-to-have-text-option-use-inner-text">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-have-text-return">#</a>
 
-The opposite of [expect(locator).to_have_text(expected, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-text).
+与之相反 [expect(locator).to_have_text(expected, **kwargs)](#locator-assertions-to-have-text).
 
-## expect(locator).not_to_have_value(value, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-value)
+## expect(locator).not_to_have_value(value, **kwargs)<a name="locator-assertions-not-to-have-value">#</a>
 
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Expected value.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-value-option-value)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-value-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-not-to-have-value-return)
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 期望值.<a name="locator-assertions-not-to-have-value-option-value">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-not-to-have-value-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-not-to-have-value-return">#</a>
 
-The opposite of [expect(locator).to_have_value(value, **kwargs)](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-value).
+与之相反 [expect(locator).to_have_value(value, **kwargs)](#locator-assertions-to-have-value).
 
-## expect(locator).to_be_checked(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-checked)
+## expect(locator).to_be_checked(**kwargs)<a name="locator-assertions-to-be-checked">#</a>
 
-- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-checked-option-checked)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-checked-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-checked-return)
+- `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="locator-assertions-to-be-checked-option-checked">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-be-checked-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-be-checked-return">#</a>
 
-Ensures the [Locator](#locator) points to a checked input.
+确保 [Locator](#locator) 指向选中的输入。
 
 - Sync
 
@@ -758,12 +760,12 @@ await expect(locator).to_be_checked()
 
 
 
-## expect(locator).to_be_disabled(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-disabled)
+## expect(locator).to_be_disabled(**kwargs)<a name="locator-assertions-to-be-disabled">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-disabled-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-disabled-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-be-disabled-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-be-disabled-return">#</a>
 
-Ensures the [Locator](#locator) points to a disabled element.
+确保 [Locator](#locator) 指向一个禁用的元素。
 
 - Sync
 
@@ -785,12 +787,12 @@ await expect(locator).to_be_disabled()
 
 
 
-## expect(locator).to_be_editable(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-editable)
+## expect(locator).to_be_editable(**kwargs)<a name="locator-assertions-to-be-editable">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-editable-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-editable-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-be-editable-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-be-editable-return">#</a>
 
-Ensures the [Locator](#locator) points to an editable element.
+确保 [Locator](#locator) 指向一个可编辑的元素。
 
 - Sync
 
@@ -812,12 +814,12 @@ await expect(locator).to_be_editable()
 
 
 
-## expect(locator).to_be_empty(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-empty)
+## expect(locator).to_be_empty(**kwargs)<a name="locator-assertions-to-be-empty">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-empty-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-empty-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-be-empty-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-be-empty-return">#</a>
 
-Ensures the [Locator](#locator) points to an empty editable element or to a DOM node that has no text.
+确保 [Locator](#locator) 指向空的可编辑元素或没有文本的DOM节点。
 
 - Sync
 
@@ -839,12 +841,12 @@ await expect(locator).to_be_empty()
 
 
 
-## expect(locator).to_be_enabled(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-enabled)
+## expect(locator).to_be_enabled(**kwargs)<a name="locator-assertions-to-be-enabled">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-enabled-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-enabled-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-be-enabled-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-be-enabled-return">#</a>
 
-Ensures the [Locator](#locator) points to an enabled element.
+确保 [Locator](#locator) 指向一个启用的元素。
 
 - Sync
 
@@ -866,12 +868,12 @@ await expect(locator).to_be_enabled()
 
 
 
-## expect(locator).to_be_focused(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-focused)
+## expect(locator).to_be_focused(**kwargs)<a name="locator-assertions-to-be-focused">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-focused-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-focused-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-be-focused-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-be-focused-return">#</a>
 
-Ensures the [Locator](#locator) points to a focused DOM node.
+确保 [Locator](#locator) 指向一个集中的DOM节点。
 
 - Sync
 
@@ -893,12 +895,12 @@ await expect(locator).to_be_focused()
 
 
 
-## expect(locator).to_be_hidden(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-hidden)
+## expect(locator).to_be_hidden(**kwargs)<a name="locator-assertions-to-be-hidden">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-hidden-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-hidden-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-be-hidden-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-be-hidden-return">#</a>
 
-Ensures the [Locator](#locator) points to a hidden DOM node, which is the opposite of [visible](https://playwright.dev/python/docs/actionability#visible).
+确保 [Locator](#locator) 指向一个隐藏的DOM节点，这与 [visible](https://playwright.dev/python/docs/actionability#visible)相反。
 
 - Sync
 
@@ -920,12 +922,12 @@ await expect(locator).to_be_hidden()
 
 
 
-## expect(locator).to_be_visible(**kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-visible)
+## expect(locator).to_be_visible(**kwargs)<a name="locator-assertions-to-be-visible">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-visible-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-be-visible-return)
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-be-visible-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-be-visible-return">#</a>
 
-Ensures the [Locator](#locator) points to a [visible](https://playwright.dev/python/docs/actionability#visible) DOM node.
+确保 [Locator](#locator) 指向一个[可见 visible](https://playwright.dev/python/docs/actionability#visible) 的DOM节点。
 
 - Sync
 
@@ -947,14 +949,14 @@ await expect(locator).to_be_visible()
 
 
 
-## expect(locator).to_contain_text(expected, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-contain-text)
+## expect(locator).to_contain_text(expected, **kwargs)<a name="locator-assertions-to-contain-text">#</a>
 
-- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> Expected substring or RegExp or a list of those.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-contain-text-option-expected)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-contain-text-option-timeout)
-- `use_inner_text` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to use `element.innerText` instead of `element.textContent` when retrieving DOM node text.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-contain-text-option-use-inner-text)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-contain-text-return)
+- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> 期望的子字符串或RegExp或它们的列表.<a name="locator-assertions-to-contain-text-option-expected">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-contain-text-option-timeout">#</a>
+- `use_inner_text` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当检索DOM节点文本时使用 `element.innerText` 而不是 `element.textContent` .<a name="locator-assertions-to-contain-text-option-use-inner-text">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-contain-text-return">#</a>
 
-Ensures the [Locator](#locator) points to an element that contains the given text. You can use regular expressions for the value as well.
+确保 [Locator](#locator) 指向包含给定文本的元素。您也可以为该值使用正则表达式。
 
 - Sync
 
@@ -980,7 +982,7 @@ await expect(locator).to_contain_text(re.compile(r"\d messages"))
 
 
 
-Note that if array is passed as an expected value, entire lists of elements can be asserted:
+注意，如果array是作为预期值传递的，那么整个元素列表都可以被断言:
 
 - Sync
 
@@ -1004,14 +1006,14 @@ await expect(locator).to_contain_text(["Text 1", "Text 4", "Text 5"])
 
 
 
-## expect(locator).to_have_attribute(name, value, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-attribute)
+## expect(locator).to_have_attribute(name, value, **kwargs)<a name="locator-assertions-to-have-attribute">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Attribute name.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-attribute-option-name)
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Expected attribute value.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-attribute-option-value)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-attribute-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-attribute-return)
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>属性名.<a name="locator-assertions-to-have-attribute-option-name">#</a>
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 期望的属性值.<a name="locator-assertions-to-have-attribute-option-value">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-have-attribute-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-have-attribute-return">#</a>
 
-Ensures the [Locator](#locator) points to an element with given attribute.
+确保 [Locator](#locator) 指向具有给定属性的元素。
 
 - Sync
 
@@ -1033,13 +1035,13 @@ await expect(locator).to_have_attribute("type", "text")
 
 
 
-## expect(locator).to_have_class(expected, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-class)
+## expect(locator).to_have_class(expected, **kwargs)<a name="locator-assertions-to-have-class">#</a>
 
-- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> Expected class or RegExp or a list of those.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-class-option-expected)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-class-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-class-return)
+- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> •      期望的类或RegExp或它们的列表.<a name="locator-assertions-to-have-class-option-expected">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-have-class-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-have-class-return">#</a>
 
-Ensures the [Locator](#locator) points to an element with given CSS class.
+确保 [Locator](#locator) 指向具有给定CSS类的元素。
 
 - Sync
 
@@ -1061,7 +1063,7 @@ await expect(locator).to_have_class(re.compile(r"selected"))
 
 
 
-Note that if array is passed as an expected value, entire lists of elements can be asserted:
+注意，如果array是作为预期值传递的，那么整个元素列表都可以被断言:
 
 - Sync
 
@@ -1083,13 +1085,13 @@ await expect(locator).to_have_class(["component", "component selected", "compone
 
 
 
-## expect(locator).to_have_count(count, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-count)
+## expect(locator).to_have_count(count, **kwargs)<a name="locator-assertions-to-have-count">#</a>
 
-- `count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Expected count.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-count-option-count)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-count-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-count-return)
+- `count` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 期望的计数.<a name="locator-assertions-to-have-count-option-count">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-have-count-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-have-count-return">#</a>
 
-Ensures the [Locator](#locator) resolves to an exact number of DOM nodes.
+确保 [Locator](#locator) 解析为精确数量的DOM节点。
 
 - Sync
 
@@ -1111,14 +1113,14 @@ await expect(locator).to_have_count(3)
 
 
 
-## expect(locator).to_have_css(name, value, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-css)
+## expect(locator).to_have_css(name, value, **kwargs)<a name="locator-assertions-to-have-css">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> CSS property name.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-css-option-name)
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> CSS property value.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-css-option-value)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-css-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-css-return)
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> CSS 属性名.<a name="locator-assertions-to-have-css-option-name">#</a>
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> CSS属性值.<a name="locator-assertions-to-have-css-option-value">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-have-css-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-have-css-return">#</a>
 
-Ensures the [Locator](#locator) resolves to an element with the given computed CSS style.
+确保 [Locator](#locator) 解析为具有给定计算的CSS样式的元素。
 
 - Sync
 
@@ -1140,13 +1142,13 @@ await expect(locator).to_have_css("display", "flex")
 
 
 
-## expect(locator).to_have_id(id, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-id)
+## expect(locator).to_have_id(id, **kwargs)<a name="locator-assertions-to-have-id">#</a>
 
-- `id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Element id.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-id-option-id)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-id-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-id-return)
+- `id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 元素 id.<a name="locator-assertions-to-have-id-option-id">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-have-id-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-have-id-return">#</a>
 
-Ensures the [Locator](#locator) points to an element with the given DOM Node ID.
+确保 [Locator](#locator) 指向具有给定DOM节点ID的元素。
 
 - Sync
 
@@ -1168,14 +1170,14 @@ await expect(locator).to_have_id("lastname")
 
 
 
-## expect(locator).to_have_js_property(name, value, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-js-property)
+## expect(locator).to_have_js_property(name, value, **kwargs)<a name="locator-assertions-to-have-js-property">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Property name.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-js-property-option-name)
-- `value` \<[Any](https://docs.python.org/3/library/typing.html#typing.Any)> Property value.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-js-property-option-value)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-js-property-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-js-property-return)
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 属性名 <a name="locator-assertions-to-have-js-property-option-name">#</a>
+- `value` \<[Any](https://docs.python.org/3/library/typing.html#typing.Any)>属性值.<a name="locator-assertions-to-have-js-property-option-value">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-have-js-property-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-have-js-property-return">#</a>
 
-Ensures the [Locator](#locator) points to an element with given JavaScript property. Note that this property can be of a primitive type as well as a plain serializable JavaScript object.
+确保 [Locator](#locator) 指向具有给定JavaScript属性的元素。请注意，该属性可以是基本类型，也可以是可序列化的普通JavaScript对象。
 
 - Sync
 
@@ -1197,14 +1199,14 @@ await expect(locator).to_have_js_property("loaded", True)
 
 
 
-## expect(locator).to_have_text(expected, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-text)
+## expect(locator).to_have_text(expected, **kwargs)<a name="locator-assertions-to-have-text">#</a>
 
-- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> Expected substring or RegExp or a list of those.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-text-option-expected)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-text-option-timeout)
-- `use_inner_text` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to use `element.innerText` instead of `element.textContent` when retrieving DOM node text.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-text-option-use-inner-text)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-text-return)
+- `expected` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)]> 期望的子字符串或RegExp或它们的列表.<a name="locator-assertions-to-have-text-option-expected">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-have-text-option-timeout">#</a>
+- `use_inner_text` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 当检索DOM节点文本时使用 `element.innerText` 而不是 `element.textContent` .<a name="locator-assertions-to-have-text-option-use-inner-text">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-have-text-return">#</a>
 
-Ensures the [Locator](#locator) points to an element with the given text. You can use regular expressions for the value as well.
+确保 [Locator](#locator) 指向具有给定文本的元素。您也可以为该值使用正则表达式。
 
 - Sync
 
@@ -1230,7 +1232,7 @@ await expect(locator).to_have_text(re.compile(r"Welcome, .*"))
 
 
 
-Note that if array is passed as an expected value, entire lists of elements can be asserted:
+注意，如果array是作为预期值传递的，那么整个元素列表都可以被断言:
 
 - Sync
 
@@ -1252,13 +1254,13 @@ await expect(locator).to_have_text(["Text 1", "Text 2", "Text 3"])
 
 
 
-## expect(locator).to_have_value(value, **kwargs)[](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-value)
+## expect(locator).to_have_value(value, **kwargs)<a name="locator-assertions-to-have-value">#</a>
 
-- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Expected value.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-value-option-value)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-value-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#locator-assertions-to-have-value-return)
+- `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 期望值 <a name="locator-assertions-to-have-value-option-value">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="locator-assertions-to-have-value-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="locator-assertions-to-have-value-return">#</a>
 
-Ensures the [Locator](#locator) points to an element with the given input value. You can use regular expressions for the value as well.
+确保 [Locator](#locator) 指向具有给定输入值的元素。您也可以为该值使用正则表达式。
 
 - Sync
 
@@ -1282,29 +1284,29 @@ await expect(locator).to_have_value(re.compile(r"[0-9]"))
 
 
 
-## expect(page).not_to_have_title(title_or_reg_exp, **kwargs)[](https://playwright.dev/python/docs/test-assertions#page-assertions-not-to-have-title)
+## expect(page).not_to_have_title(title_or_reg_exp, **kwargs)<a name="page-assertions-not-to-have-title">#</a>
 
-- `title_or_reg_exp` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Expected title or RegExp.[#](https://playwright.dev/python/docs/test-assertions#page-assertions-not-to-have-title-option-title-or-reg-exp)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#page-assertions-not-to-have-title-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#page-assertions-not-to-have-title-return)
+- `title_or_reg_exp` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 期望的标题或RegExp.<a name="page-assertions-not-to-have-title-option-title-or-reg-exp">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="page-assertions-not-to-have-title-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-assertions-not-to-have-title-return">#</a>
 
-The opposite of [expect(page).to_have_title(title_or_reg_exp, **kwargs)](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-title).
+与之相反 [expect(page).to_have_title(title_or_reg_exp, **kwargs)](#page-assertions-to-have-title).
 
-## expect(page).not_to_have_url(url_or_reg_exp, **kwargs)[](https://playwright.dev/python/docs/test-assertions#page-assertions-not-to-have-url)
+## expect(page).not_to_have_url(url_or_reg_exp, **kwargs)<a name="page-assertions-not-to-have-url">#</a>
 
-- `url_or_reg_exp` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Expected substring or RegExp.[#](https://playwright.dev/python/docs/test-assertions#page-assertions-not-to-have-url-option-url-or-reg-exp)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#page-assertions-not-to-have-url-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#page-assertions-not-to-have-url-return)
+- `url_or_reg_exp` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 期望的子字符串或RegExp.<a name="page-assertions-not-to-have-url-option-url-or-reg-exp">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="page-assertions-not-to-have-url-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-assertions-not-to-have-url-return">#</a>
 
-The opposite of [expect(page).to_have_url(url_or_reg_exp, **kwargs)](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-url).
+与之相反 [expect(page).to_have_url(url_or_reg_exp, **kwargs)](#page-assertions-to-have-url).
 
-## expect(page).to_have_title(title_or_reg_exp, **kwargs)[](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-title)
+## expect(page).to_have_title(title_or_reg_exp, **kwargs)<a name="page-assertions-to-have-title">#</a>
 
-- `title_or_reg_exp` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Expected title or RegExp.[#](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-title-option-title-or-reg-exp)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-title-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-title-return)
+- `title_or_reg_exp` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)>期望的标题或RegExp.<a name="page-assertions-to-have-title-option-title-or-reg-exp">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="page-assertions-to-have-title-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-assertions-to-have-title-return">#</a>
 
-Ensures the page has the given title.
+确保 页面具有给定的标题。
 
 - Sync
 
@@ -1328,13 +1330,13 @@ await expect(page).to_have_title(re.compile(r".*checkout"))
 
 
 
-## expect(page).to_have_url(url_or_reg_exp, **kwargs)[](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-url)
+## expect(page).to_have_url(url_or_reg_exp, **kwargs)<a name="page-assertions-to-have-url">#</a>
 
-- `url_or_reg_exp` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> Expected substring or RegExp.[#](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-url-option-url-or-reg-exp)
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Time to retry the assertion for.[#](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-url-option-timeout)
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#page-assertions-to-have-url-return)
+- `url_or_reg_exp` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)> 期望的子字符串或RegExp.<a name="page-assertions-to-have-url-option-url-or-reg-exp">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 重试断言的时间.<a name="page-assertions-to-have-url-option-timeout">#</a>
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="page-assertions-to-have-url-return">#</a>
 
-Ensures the page is navigated to the given URL.
+确保 页面被导航到给定的URL。
 
 - Sync
 
@@ -1358,17 +1360,17 @@ await expect(page).to_have_url(re.compile(".*checkout"))
 
 
 
-## expect(api_response).not_to_be_ok()[](https://playwright.dev/python/docs/test-assertions#api-response-assertions-not-to-be-ok)
+## expect(api_response).not_to_be_ok()<a name="api-response-assertions-not-to-be-ok">#</a>
 
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#api-response-assertions-not-to-be-ok-return)
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="api-response-assertions-not-to-be-ok-return">#</a>
 
-The opposite of [expect(api_response).to_be_ok()](https://playwright.dev/python/docs/test-assertions#api-response-assertions-to-be-ok).
+与之相反 [expect(api_response).to_be_ok()](#api-response-assertions-to-be-ok).
 
-## expect(api_response).to_be_ok()[](https://playwright.dev/python/docs/test-assertions#api-response-assertions-to-be-ok)
+## expect(api_response).to_be_ok()<a name="api-response-assertions-to-be-ok">#</a>
 
-- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)>[#](https://playwright.dev/python/docs/test-assertions#api-response-assertions-to-be-ok-return)
+- returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="api-response-assertions-to-be-ok-return">#</a>
 
-Ensures the response status code is within [200..299] range.
+确保 确保响应状态码在[200..299]范围。
 
 - Sync
 
@@ -1391,65 +1393,61 @@ await expect(response).to_be_ok()
 
 
 
-
-
 # Accessibility
 
-The Accessibility class provides methods for inspecting Chromium's accessibility tree. The accessibility tree is used by assistive technology such as [screen readers](https://en.wikipedia.org/wiki/Screen_reader) or [switches](https://en.wikipedia.org/wiki/Switch_access).
+可访问性类提供了检查Chromium的可访问性树的方法。辅助技术(如屏幕阅读器[screen readers](https://en.wikipedia.org/wiki/Screen_reader)或开关[switches](https://en.wikipedia.org/wiki/Switch_access))使用可访问性树。
 
-Accessibility is a very platform-specific thing. On different platforms, there are different screen readers that might have wildly different output.
+可访问性是一个非常特定于平台的东西。在不同的平台上，不同的屏幕阅读器可能会产生非常不同的输出。
 
-Rendering engines of Chromium, Firefox and WebKit have a concept of "accessibility tree", which is then translated into different platform-specific APIs. Accessibility namespace gives access to this Accessibility Tree.
+Chromium、Firefox和WebKit的渲染引擎都有一个“可访问性树”的概念，然后这些概念被翻译成不同的特定于平台的api。可访问性命名空间提供对此可访问性树的访问权。
 
-Most of the accessibility tree gets filtered out when converting from internal browser AX Tree to Platform-specific AX-Tree or by assistive technologies themselves. By default, Playwright tries to approximate this filtering, exposing only the "interesting" nodes of the tree.
+当从内部浏览器AX树转换为特定于平台的AX- tree时，或者通过辅助技术本身，大多数可访问性树都会被过滤掉。默认情况下，剧作家会尝试近似过滤，只暴露树的“有趣”节点。
 
 - [accessibility.snapshot(**kwargs)](#accessibility-snapshot)
 
 ## accessibility.snapshot(**kwargs)<a name="accessibility-snapshot">#</a>
 
-- `interesting_only` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Prune uninteresting nodes from the tree. Defaults to `true`.<a name="accessibility-snapshot-option-interesting-only">#</a>
-- `root` \<[ElementHandle](#elementhandle)> The root DOM element for the snapshot. Defaults to the whole page.<a name="accessibility-snapshot-option-root">#</a>
+- `interesting_only` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 从树中删除无兴趣节点。默认值为`true`.<a name="accessibility-snapshot-option-interesting-only">#</a>
+- `root` \<[ElementHandle](#elementhandle)> 快照的根DOM元素。默认为整个page.<a name="accessibility-snapshot-option-root">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="accessibility-snapshot-return">#</a>
-    - `role` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> The [role](https://www.w3.org/TR/wai-aria/#usage_intro).
-    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A human readable name for the node.
-    - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> The current value of the node, if applicable.
-    - `description` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> An additional human readable description of the node, if applicable.
-    - `keyshortcuts` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Keyboard shortcuts associated with this node, if applicable.
-    - `roledescription` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A human readable alternative to the role, if applicable.
-    - `valuetext` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A description of the current value, if applicable.
-    - `disabled` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the node is disabled, if applicable.
-    - `expanded` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the node is expanded or collapsed, if applicable.
-    - `focused` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the node is focused, if applicable.
-    - `modal` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the node is [modal](https://en.wikipedia.org/wiki/Modal_window), if applicable.
-    - `multiline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the node text input supports multiline, if applicable.
-    - `multiselectable` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether more than one child can be selected, if applicable.
-    - `readonly` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the node is read only, if applicable.
-    - `required` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the node is required, if applicable.
-    - `selected` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the node is selected in its parent node, if applicable.
-    - `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)|"mixed"> Whether the checkbox is checked, or "mixed", if applicable.
-    - `pressed` \<[bool](https://docs.python.org/3/library/stdtypes.html)|"mixed"> Whether the toggle button is checked, or "mixed", if applicable.
-    - `level` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> The level of a heading, if applicable.
-    - `valuemin` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> The minimum value in a node, if applicable.
-    - `valuemax` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> The maximum value in a node, if applicable.
-    - `autocomplete` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> What kind of autocomplete is supported by a control, if applicable.
-    - `haspopup` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> What kind of popup is currently being shown for a node, if applicable.
-    - `invalid` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Whether and in what way this node's value is invalid, if applicable.
-    - `orientation` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Whether the node is oriented horizontally or vertically, if applicable.
-    - `children` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> Child nodes, if any, if applicable.
+    - `role` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 角色 [role](https://www.w3.org/TR/wai-aria/#usage_intro).
+    - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 节点的人类可读名称.
+    - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 节点的当前值.
+    - `description` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个额外的人类可读的节点描述，如果适用。
+    - `keyshortcuts` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 与此节点相关联的键盘快捷键，如果适用的话。
+    - `roledescription` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 一个人类可读的角色替代者，如果适用的话。
+    - `valuetext` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>  当前值的描述，如果适用的话。
+    - `disabled` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 如果适用，节点是否被禁用。
+    - `expanded` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 如果适用，节点是展开还是折叠。
+    - `focused` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 如果适用，节点是否被聚焦。
+    - `modal` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 如果适用，节点是否为模态。
+    - `multiline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 如果适用，节点文本输入是否支持多行。
+    - `multiselectable` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 如果适用，是否可以选择多个子节点。
+    - `readonly` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否为只读。
+    - `required` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否需要该节点。
+    - `selected` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否在其父节点中选中该节点。
+    - `checked` \<[bool](https://docs.python.org/3/library/stdtypes.html)|"mixed"> 复选框是否选中，或是否为"mixed"(如果适用)
+    - `pressed` \<[bool](https://docs.python.org/3/library/stdtypes.html)|"mixed"> 是否选中切换按钮，或如果适用，是"mixed"。
+    - `level` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 标题的级别，如果适用。
+    - `valuemin` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 节点中的最小值(如果适用)。
+    - `valuemax` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 节点中的最大值(如果适用)。
+    - `autocomplete` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 控件支持哪种类型的自动完成(如果适用)。
+    - `haspopup` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 当前节点显示的是哪种类型的弹出窗口，如果适用的话。
+    - `invalid` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 如果适用，该节点的值是否无效以及以何种方式无效。
+    - `orientation` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>如果适用，节点是水平方向还是垂直方向。
+    - `children` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>子节点，如果有，如果适用。
 
-Captures the current state of the accessibility tree. The returned object represents the root accessible node of the page.
-
-
+捕获可访问性树的当前状态。返回的对象表示页面的根可访问节点。
 
 
 
 > NOTE
 >
-> The Chromium accessibility tree contains nodes that go unused on most platforms and by most screen readers. Playwright will discard them as well for an easier to process tree, unless `interesting_only` is set to `false`.
+> Chromium的可访问性树包含了在大多数平台和大多数屏幕阅读器上未使用的节点。playwright也会为了更容易处理树而丢弃它们，除非 `interesting_only` 被设置为 `false`.
 >
 > 
 
-An example of dumping the entire accessibility tree:
+转储整个可访问性树的示例:
 
 - Sync
 
@@ -1465,7 +1463,7 @@ snapshot = await page.accessibility.snapshot()
 print(snapshot)
 ```
 
-An example of logging the focused node's name:
+记录被关注节点名称的示例:
 
 - Sync
 
@@ -1507,7 +1505,7 @@ if node:
 
 - extends: [EventEmitter](https://pyee.readthedocs.io/en/latest/#pyee.BaseEventEmitter)
 
-A Browser is created via [browser_type.launch(**kwargs)](#browser-type-launch). An example of using a [Browser](#browser) to create a [Page](#page):
+Browser 是通过 [browser_type.launch(**kwargs)](#browser-type-launch) 创建的。使用[Browser](#browser)创建[Page](#page)的例子:
 
 - Sync
 
@@ -1559,26 +1557,26 @@ asyncio.run(main())
 
 - type: \<[Browser](#browser)>
 
-Emitted when Browser gets disconnected from the browser application. This might happen because of one of the following:
+当Browser与浏览器应用程序断开连接时触发。这可能是因为以下原因之一:
 
-- Browser application is closed or crashed.
-- The [browser.close()](#browser-close) method was called.
+- Browser 程序关闭或崩溃。
+- 调用了 [browser.close()](#browser-close) 方法
 
 ## browser.close()<a name="browser-close">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-close-return">#</a>
 
-In case this browser is obtained using [browser_type.launch(**kwargs)](#browser-type-launch), closes the browser and all of its pages (if any were opened).
+如果使用 [browser_type.launch(**kwargs)](#browser-type-launch)获得此browser，则关闭browser及其所有page(如果有打开的page)。
 
-In case this browser is connected to, clears all created contexts belonging to this browser and disconnects from the browser server.
+如果这个浏览器连接到，清除所有创建的属于这个浏览器的上下文，并断开与浏览器服务器的连接。
 
-The [Browser](#browser) object itself is considered to be disposed and cannot be used anymore.
+[Browser](#browser) 对象本身被认为已被销毁，不能再使用。
 
 ## browser.contexts<a name="browser-contexts">#</a>
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[BrowserContext](#browsercontext)]><a name="browser-contexts-return">#</a>
 
-Returns an array of all open browser contexts. In a newly created browser, this will return zero browser contexts.
+返回所有打开的浏览器上下文的数组。在新创建的浏览器中，这将不返回任何浏览器上下文
 
 - Sync
 
@@ -1602,7 +1600,7 @@ print(len(browser.contexts())) # prints `1`
 
 - returns: \<[bool](https://docs.python.org/3/library/stdtypes.html)><a name="browser-is-connected-return">#</a>
 
-Indicates that the browser is connected.
+表示浏览器已连接。
 
 ## browser.new_browser_cdp_session()<a name="browser-new-browser-cdp-session">#</a>
 
@@ -1610,114 +1608,114 @@ Indicates that the browser is connected.
 
 > NOTE
 >
-> CDP Sessions are only supported on Chromium-based browsers.
+> CDP会话仅支持基于chromium的浏览器。
 >
-> Returns the newly created browser session.
+> 返回新创建的浏览器会话。
 
 ## browser.new_context(**kwargs)<a name="browser-new-context">#</a>
 
-- `accept_downloads` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to automatically download all the attachments. Defaults to `true` where all the downloads are accepted.<a name="browser-new-context-option-accept-downloads">#</a>
-- `base_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> When using [page.goto(url, **kwargs)](#page-goto), [page.route(url, handler, **kwargs)](#page-route), [page.wait_for_url(url, **kwargs)](#page-wait-for-url), [page.expect_request(url_or_predicate, **kwargs)](#page-wait-for-request), or [page.expect_response(url_or_predicate, **kwargs)](#page-wait-for-response) it takes the base URL in consideration by using the [`URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor for building the corresponding URL. Examples:
-    - baseURL: `http://localhost:3000` and navigating to `/bar.html` results in `http://localhost:3000/bar.html`
-    - baseURL: `http://localhost:3000/foo/` and navigating to `./bar.html` results in `http://localhost:3000/foo/bar.html`
-    - baseURL: `http://localhost:3000/foo` (without trailing slash) and navigating to `./bar.html` results in `http://localhost:3000/bar.html`
-- `bypass_csp` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Toggles bypassing page's Content-Security-Policy.<a name="browser-new-context-option-bypass-csp">#</a>
-- `color_scheme` \<"light"|"dark"|"no-preference"> Emulates `'prefers-colors-scheme'` media feature, supported values are `'light'`, `'dark'`, `'no-preference'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'light'`.<a name="browser-new-context-option-color-scheme">#</a>
-- `device_scale_factor` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Specify device scale factor (can be thought of as dpr). Defaults to `1`.<a name="browser-new-context-option-device-scale-factor">#</a>
-- `extra_http_headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> An object containing additional HTTP headers to be sent with every request.<a name="browser-new-context-option-extra-http-headers">#</a>
-- `forced_colors` \<"active"|"none"> Emulates `'forced-colors'` media feature, supported values are `'active'`, `'none'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'none'`.<a name="browser-new-context-option-forced-colors">#</a>
+- `accept_downloads` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否自动下载所有附件。在所有下载都被接受的地方默认为 True <a name="browser-new-context-option-accept-downloads">#</a>
+- `base_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 使用以下方法时 [page.goto(url, **kwargs)](#page-goto), [page.route(url, handler, **kwargs)](#page-route), [page.wait_for_url(url, **kwargs)](#page-wait-for-url), [page.expect_request(url_or_predicate, **kwargs)](#page-wait-for-request), or [page.expect_response(url_or_predicate, **kwargs)](#page-wait-for-response)通过使用 [`URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) 构造函数构建相应的URL:
+    - baseURL= `http://localhost:3000` 时,导航到 `/bar.html` 结果是 `http://localhost:3000/bar.html`
+    - baseURL= `http://localhost:3000/foo/` 时,导航到 `./bar.html` 结果是 `http://localhost:3000/foo/bar.html`
+    - baseURL= `http://localhost:3000/foo` 时,导航到(没有下划线) `./bar.html` 结果是 `http://localhost:3000/bar.html`
+- `bypass_csp` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 切换绕过页面的 Content-Security-Policy.<a name="browser-new-context-option-bypass-csp">#</a>
+- `color_scheme` \<"light"|"dark"|"no-preference"> 模拟`'prefers-colors-scheme'` 的媒体特性，支持的值为 `'light'`, `'dark'`, `'no-preference'`. 详情请参阅 [page.emulate_media(**kwargs)](#page-emulate-media) . 默认值为 `'light'`.<a name="browser-new-context-option-color-scheme">#</a>
+- `device_scale_factor` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 指定设备比例因子(可以认为是dpr)。默认为 `1`.<a name="browser-new-context-option-device-scale-factor">#</a>
+- `extra_http_headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 一个包含附加HTTP头的对象，每个请求都要发送.<a name="browser-new-context-option-extra-http-headers">#</a>
+- `forced_colors` \<"active"|"none"> 模拟 `'forced-colors'` 媒体特性，支持的值为 `'active'`, `'none'`. 详情请参阅[page.emulate_media(**kwargs)](#page-emulate-media) . 默认为 `'none'`.<a name="browser-new-context-option-forced-colors">#</a>
 
 > NOTE
 >
-> It's not supported in WebKit, see [here](https://bugs.webkit.org/show_bug.cgi?id=225281) in their issue tracker.
+> 它在WebKit中不支持，请在他们的问题跟踪器中查看 [here](https://bugs.webkit.org/show_bug.cgi?id=225281) .
 
 - `geolocation` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="browser-new-context-option-geolocation">#</a>
 
-    - `latitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Latitude between -90 and 90.
-    - `longitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Longitude between -180 and 180.
-    - `accuracy` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Non-negative accuracy value. Defaults to `0`.
+    - `latitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>纬度介于-90和90之间。
+    - `longitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 经度介于-180和180之间。
+    - `accuracy` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>非负精度值。默认值为 `0`.
 
-- `has_touch` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Specifies if viewport supports touch events. Defaults to false.<a name="browser-new-context-option-has-touch">#</a>
+- `has_touch` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 指定视口是否支持触摸事件。默认值为`false`.<a name="browser-new-context-option-has-touch">#</a>
 
-- `http_credentials` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Credentials for [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).<a name="browser-new-context-option-http-credentials">#</a>
+- `http_credentials` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)>  HTTP认证凭据 [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).<a name="browser-new-context-option-http-credentials">#</a>
 
     - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
     - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="browser-new-context-option-ignore-https-errors">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)>发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="browser-new-context-option-ignore-https-errors">#</a>
 
-- `is_mobile` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the `meta viewport` tag is taken into account and touch events are enabled. Defaults to `false`. Not supported in Firefox.<a name="browser-new-context-option-is-mobile">#</a>
+- `is_mobile` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否考虑 `meta viewport` 标签，是否启用触摸事件。默认值为 `false`. Firefox中不支持.<a name="browser-new-context-option-is-mobile">#</a>
 
-- `java_script_enabled` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether or not to enable JavaScript in the context. Defaults to `true`.<a name="browser-new-context-option-java-script-enabled">#</a>
+- `java_script_enabled` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否在上下文中启用JavaScript。默认值为 `true`.<a name="browser-new-context-option-java-script-enabled">#</a>
 
-- `locale` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Specify user locale, for example `en-GB`, `de-DE`, etc. Locale will affect `navigator.language` value, `Accept-Language` request header value as well as number and date formatting rules.<a name="browser-new-context-option-locale">#</a>
+- `locale` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 指定用户的本地语言环境，例如 `en-GB`, `de-DE`, 等. 区域设置将影响导航器. `navigator.language` 的值, `Accept-Language` 请求头值以及数字和日期格式规则.<a name="browser-new-context-option-locale">#</a>
 
-- `no_viewport` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Does not enforce fixed viewport, allows resizing window in the headed mode.<a name="browser-new-context-option-no-viewport">#</a>
+- `no_viewport` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 不强制固定viewport，允许在头部模式下调整窗口大小.<a name="browser-new-context-option-no-viewport">#</a>
 
-- `offline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to emulate network being offline. Defaults to `false`.<a name="browser-new-context-option-offline">#</a>
+- `offline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否仿真网络离线。默认值为 `false`.<a name="browser-new-context-option-offline">#</a>
 
-- `permissions` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> A list of permissions to grant to all pages in this context. See [browser_context.grant_permissions(permissions, **kwargs)](#browser-context-grant-permissions) for more details.<a name="browser-new-context-option-permissions">#</a>
+- `permissions` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 在此上下文中授予所有页面的权限列表。获取更多细节: [browser_context.grant_permissions(permissions, **kwargs)](#browser-context-grant-permissions) .<a name="browser-new-context-option-permissions">#</a>
 
-- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Network proxy settings to use with this context.<a name="browser-new-context-option-proxy">#</a>
+- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 在此上下文中使用的网络代理设置.<a name="browser-new-context-option-proxy">#</a>
 
-    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Proxy to be used for all requests. HTTP and SOCKS proxies are supported, for example `http://myproxy.com:3128` or `socks5://myproxy.com:3128`. Short form `myproxy.com:3128` is considered an HTTP proxy.
-    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional comma-separated domains to bypass proxy, for example `".com, chromium.org, .domain.com"`.
-    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional username to use if HTTP proxy requires authentication.
-    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional password to use if HTTP proxy requires authentication.
+    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 所有请求使用的代理。支持HTTP代理和SOCKS代理，例如: `http://myproxy.com:3128` or `socks5://myproxy.com:3128`.缩写形式 `myproxy.com:3128` 被认为是一个HTTP代理。
+    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>可选，用逗号分隔的域，绕过代理，例如 `".com, chromium.org, .domain.com"`.
+    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 可选username，当HTTP代理需要鉴权时使用。
+    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 当HTTP代理需要鉴权时可选密码。
 
     > NOTE
     >
-    > For Chromium on Windows the browser needs to be launched with the global proxy for this option to work. If all contexts override the proxy, global proxy will be never used and can be any string, for example `launch({ proxy: { server: 'http://per-context' } })`.
+    > 对于Windows上的Chromium浏览器，需要使用全局代理启动该选项才能工作。如果所有上下文覆盖了代理，全局代理将永远不会被使用，可以是任何字符串，例如: `launch({ proxy: { server: 'http://per-context' } })`.
 
-- `record_har_omit_content` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Optional setting to control whether to omit request content from the HAR. Defaults to `false`.<a name="browser-new-context-option-record-har-omit-content">#</a>
+- `record_har_omit_content` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 可选设置，控制是否从HAR忽略请求内容。默认值为`false`.<a name="browser-new-context-option-record-har-omit-content">#</a>
 
-- `record_har_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Enables [HAR](http://www.softwareishard.com/blog/har-12-spec) recording for all pages into the specified HAR file on the filesystem. If not specified, the HAR is not recorded. Make sure to call [browser_context.close()](#browser-context-close) for the HAR to be saved.<a name="browser-new-context-option-record-har-path">#</a>
+- `record_har_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 为文件系统中指定的 [HAR](http://www.softwareishard.com/blog/har-12-spec) 文件中所有页面启用HAR 记录,如果没有指定，则不会记录HAR。确保调用 [browser_context.close()](#browser-context-close) 来保存HAR.<a name="browser-new-context-option-record-har-path">#</a>
 
-- `record_video_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Enables video recording for all pages into the specified directory. If not specified videos are not recorded. Make sure to call [browser_context.close()](#browser-context-close) for videos to be saved.<a name="browser-new-context-option-record-video-dir">#</a>
+- `record_video_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 开启进入指定目录的所有页面的视频录制,如果没有指定，则不录制视频。确保调用 [browser_context.close()](#browser-context-close) 来保存视频.<a name="browser-new-context-option-record-video-dir">#</a>
 
-- `record_video_size` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Dimensions of the recorded videos. If not specified the size will be equal to `viewport` scaled down to fit into 800x800. If `viewport` is not configured explicitly the video size defaults to 800x450. Actual picture of each page will be scaled down if necessary to fit the specified size.<a name="browser-new-context-option-record-video-size">#</a>
+- `record_video_size` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 录制视频的尺寸。如果没有指定大小将等于 `viewport` 缩小到800x800。如果`viewport` 没有显式配置，视频大小默认为800x450。每个页面的实际图片将按比例缩小，如果需要，以适应指定的大小.<a name="browser-new-context-option-record-video-size">#</a>
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Video frame width.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Video frame height.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 视频帧宽度.
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 视频帧高度.
 
-- `reduced_motion` \<"reduce"|"no-preference"> Emulates `'prefers-reduced-motion'` media feature, supported values are `'reduce'`, `'no-preference'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'no-preference'`.<a name="browser-new-context-option-reduced-motion">#</a>
+- `reduced_motion` \<"reduce"|"no-preference"> 模拟`'prefers-reduced-motion'` 媒体特性，支持的值为 `'reduce'`, `'no-preference'`. 详情请参阅 [page.emulate_media(**kwargs)](#page-emulate-media) . 默认值为 `'no-preference'`.<a name="browser-new-context-option-reduced-motion">#</a>
 
-- `screen` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Emulates consistent window screen size available inside web page via `window.screen`. Is only used when the `viewport` is set.<a name="browser-new-context-option-screen">#</a>
+- `screen` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)>通过 `window.screen`在web页面中模拟一致的窗口屏幕大小. 仅在 `viewport` 设置时使用.<a name="browser-new-context-option-screen">#</a>
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page width in pixels.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page height in pixels.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面宽度(px).
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面高度(px).
 
-- `storage_state` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Populates context with given storage state. This option can be used to initialize context with logged-in information obtained via [browser_context.storage_state(**kwargs)](#browser-context-storage-state). Either a path to the file with saved storage, or an object with the following fields:<a name="browser-new-context-option-storage-state">#</a>
+- `storage_state` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)>用给定的存储状态填充上下文. 这个选项可以用来用通过 [browser_context.storage_state(**kwargs)](#browser-context-storage-state)获得的登录信息初始化上下文。可以是保存了存储空间的文件路径，也可以是包含以下字段的对象:<a name="browser-new-context-option-storage-state">#</a>
 
-    - `cookies` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> cookies to set for context
+    - `cookies` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> cookie设置上下文
         - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-        - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> domain and path are required
-        - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> domain and path are required
-        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix time in seconds.
+        - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Domain和path是必需的
+        - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Domain和path是必需的
+        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix 时间，单位为秒.
         - `httpOnly` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
         - `secure` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
-        - `sameSite` \<"Strict"|"Lax"|"None"> sameSite flag
-    - `origins` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> localStorage to set for context
+        - `sameSite` \<"Strict"|"Lax"|"None"> 相同站点标识
+    - `origins` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> localStorage 设置上下文
         - `origin` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `localStorage` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>
             - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
             - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-- `strict_selectors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> It specified, enables strict selectors mode for this context. In the strict selectors mode all operations on selectors that imply single target DOM element will throw when more than one element matches the selector. See [Locator](#locator) to learn more about the strict mode.<a name="browser-new-context-option-strict-selectors">#</a>
+- `strict_selectors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 它指定了，为这个上下文启用严格选择器模式。在严格的选择器模式中，当有多个元素匹配选择器时，所有对选择器的操作都将意味着只有一个目标DOM元素。请参阅 [Locator](#locator) 以了解更多关于严格模式.<a name="browser-new-context-option-strict-selectors">#</a>
 
-- `timezone_id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Changes the timezone of the context. See [ICU's metaZones.txt](https://cs.chromium.org/chromium/src/third_party/icu/source/data/misc/metaZones.txt?rcl=faee8bc70570192d82d2978a71e2a615788597d1) for a list of supported timezone IDs.<a name="browser-new-context-option-timezone-id">#</a>
+- `timezone_id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 修改上下文的时区。查看 [ICU's metaZones.txt](https://cs.chromium.org/chromium/src/third_party/icu/source/data/misc/metaZones.txt?rcl=faee8bc70570192d82d2978a71e2a615788597d1) 获取支持的时区id列表.<a name="browser-new-context-option-timezone-id">#</a>
 
-- `user_agent` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Specific user agent to use in this context.<a name="browser-new-context-option-user-agent">#</a>
+- `user_agent` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 在此上下文中使用的特定用户代理.<a name="browser-new-context-option-user-agent">#</a>
 
-- `viewport` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Sets a consistent viewport for each page. Defaults to an 1280x720 viewport. `no_viewport` disables the fixed viewport.<a name="browser-new-context-option-viewport">#</a>
+- `viewport` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 为每个页面设置一个一致的视口。默认为1280x720视口. `no_viewport` 禁用固定视口.<a name="browser-new-context-option-viewport">#</a>
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page width in pixels.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page height in pixels.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面宽度(px).
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面高度(px).
 
 - returns: \<[BrowserContext](#browsercontext)><a name="browser-new-context-return">#</a>
 
-Creates a new browser context. It won't share cookies/cache with other browser contexts.
+创建一个新的浏览器上下文。它不会与其他浏览器上下文共享cookie /缓存
 
 - Sync
 
@@ -1743,131 +1741,131 @@ await page.goto("https://example.com")
 
 ## browser.new_page(**kwargs)<a name="browser-new-page">#</a>
 
-- `accept_downloads` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to automatically download all the attachments. Defaults to `true` where all the downloads are accepted.<a name="browser-new-page-option-accept-downloads">#</a>
+- `accept_downloads` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否自动下载所有附件。在所有下载都被接受的地方默认为 True .<a name="browser-new-page-option-accept-downloads">#</a>
 
-- `base_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> When using [page.goto(url, **kwargs)](#page-goto), [page.route(url, handler, **kwargs)](#page-route), [page.wait_for_url(url, **kwargs)](#page-wait-for-url), [page.expect_request(url_or_predicate, **kwargs)](#page-wait-for-request), or [page.expect_response(url_or_predicate, **kwargs)](#page-wait-for-response) it takes the base URL in consideration by using the [`URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor for building the corresponding URL. Examples:<a name="browser-new-page-option-base-url">#</a>
+- `base_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 使用以下方法时 [page.goto(url, **kwargs)](#page-goto), [page.route(url, handler, **kwargs)](#page-route), [page.wait_for_url(url, **kwargs)](#page-wait-for-url), [page.expect_request(url_or_predicate, **kwargs)](#page-wait-for-request), or [page.expect_response(url_or_predicate, **kwargs)](#page-wait-for-response)通过使用 [`URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) 构造函数构建相应的URL:<a name="browser-new-page-option-base-url">#</a>
 
-    - baseURL: `http://localhost:3000` and navigating to `/bar.html` results in `http://localhost:3000/bar.html`
-    - baseURL: `http://localhost:3000/foo/` and navigating to `./bar.html` results in `http://localhost:3000/foo/bar.html`
-    - baseURL: `http://localhost:3000/foo` (without trailing slash) and navigating to `./bar.html` results in `http://localhost:3000/bar.html`
+    - baseURL= `http://localhost:3000` 时,导航到 `/bar.html` 结果是 `http://localhost:3000/bar.html`
+    - baseURL= `http://localhost:3000/foo/` 时,导航到 `./bar.html` 结果是 `http://localhost:3000/foo/bar.html`
+    - baseURL= `http://localhost:3000/foo` 时,导航到(没有下划线) `./bar.html` 结果是 `http://localhost:3000/bar.html`
 
-- `bypass_csp` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Toggles bypassing page's Content-Security-Policy.<a name="browser-new-page-option-bypass-csp">#</a>
+- `bypass_csp` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 切换绕过页面的 Content-Security-Policy.<a name="browser-new-page-option-bypass-csp">#</a>
 
-- `color_scheme` \<"light"|"dark"|"no-preference"> Emulates `'prefers-colors-scheme'` media feature, supported values are `'light'`, `'dark'`, `'no-preference'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'light'`.<a name="browser-new-page-option-color-scheme">#</a>
+- `color_scheme` \<"light"|"dark"|"no-preference"> 模拟`'prefers-colors-scheme'` 的媒体特性，支持的值为 `'light'`, `'dark'`, `'no-preference'`. 详情请参阅 [page.emulate_media(**kwargs)](#page-emulate-media) . 默认值为 `'light'`.<a name="browser-new-page-option-color-scheme">#</a>
 
-- `device_scale_factor` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Specify device scale factor (can be thought of as dpr). Defaults to `1`.<a name="browser-new-page-option-device-scale-factor">#</a>
+- `device_scale_factor` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 指定设备比例因子(可以认为是dpr)。默认为 `1`.<a name="browser-new-page-option-device-scale-factor">#</a>
 
-- `extra_http_headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> An object containing additional HTTP headers to be sent with every request.<a name="browser-new-page-option-extra-http-headers">#</a>
+- `extra_http_headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 个包含附加HTTP头的对象，每个请求都要发送.<a name="browser-new-page-option-extra-http-headers">#</a>
 
-- `forced_colors` \<"active"|"none"> Emulates `'forced-colors'` media feature, supported values are `'active'`, `'none'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'none'`.<a name="browser-new-page-option-forced-colors">#</a>
+- `forced_colors` \<"active"|"none">模拟 `'forced-colors'` 媒体特性，支持的值为 `'active'`, `'none'`. 详情请参阅[page.emulate_media(**kwargs)](#page-emulate-media) . 默认为 `'none'`.<a name="browser-new-page-option-forced-colors">#</a>
 
     > NOTE
     >
-    > It's not supported in WebKit, see [here](https://bugs.webkit.org/show_bug.cgi?id=225281) in their issue tracker.
+    > 它在WebKit中不支持，请在他们的问题跟踪器中查看 [here](https://bugs.webkit.org/show_bug.cgi?id=225281) .
 
 - `geolocation` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="browser-new-page-option-geolocation">#</a>
 
-    - `latitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Latitude between -90 and 90.
-    - `longitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Longitude between -180 and 180.
-    - `accuracy` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Non-negative accuracy value. Defaults to `0`.
+    - `latitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>纬度介于-90和90之间。
+    - `longitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 经度介于-180和180之间。
+    - `accuracy` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)>非负精度值。默认值为 `0`.
 
-- `has_touch` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Specifies if viewport supports touch events. Defaults to false.<a name="browser-new-page-option-has-touch">#</a>
+- `has_touch` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 指定视口是否支持触摸事件。默认值为false.<a name="browser-new-page-option-has-touch">#</a>
 
-- `http_credentials` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Credentials for [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).<a name="browser-new-page-option-http-credentials">#</a>
+- `http_credentials` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> HTTP认证凭据 [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).<a name="browser-new-page-option-http-credentials">#</a>
 
     - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
     - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="browser-new-page-option-ignore-https-errors">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为`false`.<a name="browser-new-page-option-ignore-https-errors">#</a>
 
-- `is_mobile` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the `meta viewport` tag is taken into account and touch events are enabled. Defaults to `false`. Not supported in Firefox.<a name="browser-new-page-option-is-mobile">#</a>
+- `is_mobile` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否考虑 `meta viewport` 标签，是否启用触摸事件。默认值为 `false`. Firefox中不支持.<a name="browser-new-page-option-is-mobile">#</a>
 
-- `java_script_enabled` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether or not to enable JavaScript in the context. Defaults to `true`.<a name="browser-new-page-option-java-script-enabled">#</a>
+- `java_script_enabled` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否在上下文中启用JavaScript。默认值为 `true`.<a name="browser-new-page-option-java-script-enabled">#</a>
 
-- `locale` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Specify user locale, for example `en-GB`, `de-DE`, etc. Locale will affect `navigator.language` value, `Accept-Language` request header value as well as number and date formatting rules.<a name="browser-new-page-option-locale">#</a>
+- `locale` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 指定用户的本地语言环境，例如 `en-GB`, `de-DE`, 等. 区域设置将影响导航器. `navigator.language` 的值, `Accept-Language` 请求头值以及数字和日期格式规则.<a name="browser-new-page-option-locale">#</a>
 
-- `no_viewport` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Does not enforce fixed viewport, allows resizing window in the headed mode.<a name="browser-new-page-option-no-viewport">#</a>
+- `no_viewport` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 不强制固定viewport，允许在头部模式下调整窗口大小.<a name="browser-new-page-option-no-viewport">#</a>
 
-- `offline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to emulate network being offline. Defaults to `false`.<a name="browser-new-page-option-offline">#</a>
+- `offline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否仿真网络离线。默认值为 `false`.<a name="browser-new-page-option-offline">#</a>
 
-- `permissions` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> A list of permissions to grant to all pages in this context. See [browser_context.grant_permissions(permissions, **kwargs)](#browser-context-grant-permissions) for more details.<a name="browser-new-page-option-permissions">#</a>
+- `permissions` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 在此上下文中授予所有页面的权限列表。获取更多细节: [browser_context.grant_permissions(permissions, **kwargs)](#browser-context-grant-permissions) .<a name="browser-new-page-option-permissions">#</a>
 
-- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Network proxy settings to use with this context.<a name="browser-new-page-option-proxy">#</a>
+- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 在此上下文中使用的网络代理设置.<a name="browser-new-page-option-proxy">#</a>
 
-    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Proxy to be used for all requests. HTTP and SOCKS proxies are supported, for example `http://myproxy.com:3128` or `socks5://myproxy.com:3128`. Short form `myproxy.com:3128` is considered an HTTP proxy.
-    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional comma-separated domains to bypass proxy, for example `".com, chromium.org, .domain.com"`.
-    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional username to use if HTTP proxy requires authentication.
-    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional password to use if HTTP proxy requires authentication.
+    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 所有请求使用的代理。支持HTTP代理和SOCKS代理，例如: `http://myproxy.com:3128` or `socks5://myproxy.com:3128`.缩写形式 `myproxy.com:3128` 被认为是一个HTTP代理.
+    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>可选，用逗号分隔的域，绕过代理，例如 `".com, chromium.org, .domain.com"`.
+    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 可选username，当HTTP代理需要鉴权时使用。
+    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 当HTTP代理需要鉴权时可选密码。
 
     > NOTE
     >
-    > For Chromium on Windows the browser needs to be launched with the global proxy for this option to work. If all contexts override the proxy, global proxy will be never used and can be any string, for example `launch({ proxy: { server: 'http://per-context' } })`.
+    > 对于Windows上的Chromium浏览器，需要使用全局代理启动该选项才能工作。如果所有上下文覆盖了代理，全局代理将永远不会被使用，可以是任何字符串，例如: `launch({ proxy: { server: 'http://per-context' } })`.
 
-- `record_har_omit_content` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Optional setting to control whether to omit request content from the HAR. Defaults to `false`.<a name="browser-new-page-option-record-har-omit-content">#</a>
+- `record_har_omit_content` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 可选设置，控制是否从HAR忽略请求内容。默认值为`false`.<a name="browser-new-page-option-record-har-omit-content">#</a>
 
-- `record_har_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Enables [HAR](http://www.softwareishard.com/blog/har-12-spec) recording for all pages into the specified HAR file on the filesystem. If not specified, the HAR is not recorded. Make sure to call [browser_context.close()](#browser-context-close) for the HAR to be saved.<a name="browser-new-page-option-record-har-path">#</a>
+- `record_har_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 为文件系统中指定的 [HAR](http://www.softwareishard.com/blog/har-12-spec) 文件中所有页面启用HAR 记录,如果没有指定，则不会记录HAR。确保调用 [browser_context.close()](#browser-context-close) 来保存HAR.<a name="browser-new-page-option-record-har-path">#</a>
 
-- `record_video_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Enables video recording for all pages into the specified directory. If not specified videos are not recorded. Make sure to call [browser_context.close()](#browser-context-close) for videos to be saved.<a name="browser-new-page-option-record-video-dir">#</a>
+- `record_video_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 开启进入指定目录的所有页面的视频录制,如果没有指定，则不录制视频。确保调用 [browser_context.close()](#browser-context-close) 来保存视频.<a name="browser-new-page-option-record-video-dir">#</a>
 
-- `record_video_size` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Dimensions of the recorded videos. If not specified the size will be equal to `viewport` scaled down to fit into 800x800. If `viewport` is not configured explicitly the video size defaults to 800x450. Actual picture of each page will be scaled down if necessary to fit the specified size.<a name="browser-new-page-option-record-video-size">#</a>
+- `record_video_size` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 录制视频的尺寸。如果没有指定大小将等于 `viewport` 缩小到800x800。如果`viewport` 没有显式配置，视频大小默认为800x450。每个页面的实际图片将按比例缩小，如果需要，以适应指定的大小.<a name="browser-new-page-option-record-video-size">#</a>
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Video frame width.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Video frame height.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 视频帧宽度.
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 视频帧高度.
 
-- `reduced_motion` \<"reduce"|"no-preference"> Emulates `'prefers-reduced-motion'` media feature, supported values are `'reduce'`, `'no-preference'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'no-preference'`.<a name="browser-new-page-option-reduced-motion">#</a>
+- `reduced_motion` \<"reduce"|"no-preference"> 模拟`'prefers-reduced-motion'` 媒体特性，支持的值为 `'reduce'`, `'no-preference'`. 详情请参阅 [page.emulate_media(**kwargs)](#page-emulate-media) . 默认值为 `'no-preference'`.<a name="browser-new-page-option-reduced-motion">#</a>
 
-- `screen` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Emulates consistent window screen size available inside web page via `window.screen`. Is only used when the `viewport` is set.<a name="browser-new-page-option-screen">#</a>
+- `screen` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 通过 `window.screen`在web页面中模拟一致的窗口屏幕大小. 仅在 `viewport` 设置时使用.<a name="browser-new-page-option-screen">#</a>
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page width in pixels.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page height in pixels.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面宽度(px).
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面高度(px).
 
-- `storage_state` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Populates context with given storage state. This option can be used to initialize context with logged-in information obtained via [browser_context.storage_state(**kwargs)](#browser-context-storage-state). Either a path to the file with saved storage, or an object with the following fields:<a name="browser-new-page-option-storage-state">#</a>
+- `storage_state` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 用给定的存储状态填充上下文. 这个选项可以用来用通过 [browser_context.storage_state(**kwargs)](#browser-context-storage-state)获得的登录信息初始化上下文。可以是保存了存储空间的文件路径，也可以是包含以下字段的对象:<a name="browser-new-page-option-storage-state">#</a>
 
-    - `cookies` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> cookies to set for context
+    - `cookies` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> cookie设置上下文
         - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-        - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> domain and path are required
-        - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> domain and path are required
-        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix time in seconds.
+        - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Domain和path是必需的
+        - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Domain和path是必需的
+        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix 时间，单位为秒
         - `httpOnly` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
         - `secure` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
-        - `sameSite` \<"Strict"|"Lax"|"None"> sameSite flag
-    - `origins` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> localStorage to set for context
+        - `sameSite` \<"Strict"|"Lax"|"None"> 相同站点标识
+    - `origins` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]> localStorage 设置上下文
         - `origin` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `localStorage` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>
             - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
             - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-- `strict_selectors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> It specified, enables strict selectors mode for this context. In the strict selectors mode all operations on selectors that imply single target DOM element will throw when more than one element matches the selector. See [Locator](#locator) to learn more about the strict mode.<a name="browser-new-page-option-strict-selectors">#</a>
+- `strict_selectors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 它指定了，为这个上下文启用严格选择器模式。在严格的选择器模式中，当有多个元素匹配选择器时，所有对选择器的操作都将意味着只有一个目标DOM元素。请参阅 [Locator](#locator) 以了解更多关于严格模式.<a name="browser-new-page-option-strict-selectors">#</a>
 
-- `timezone_id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Changes the timezone of the context. See [ICU's metaZones.txt](https://cs.chromium.org/chromium/src/third_party/icu/source/data/misc/metaZones.txt?rcl=faee8bc70570192d82d2978a71e2a615788597d1) for a list of supported timezone IDs.<a name="browser-new-page-option-timezone-id">#</a>
+- `timezone_id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 修改上下文的时区。查看 [ICU's metaZones.txt](https://cs.chromium.org/chromium/src/third_party/icu/source/data/misc/metaZones.txt?rcl=faee8bc70570192d82d2978a71e2a615788597d1) 获取支持的时区id列表.<a name="browser-new-page-option-timezone-id">#</a>
 
-- `user_agent` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Specific user agent to use in this context.<a name="browser-new-page-option-user-agent">#</a>
+- `user_agent` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 在此上下文中使用的特定用户代理.<a name="browser-new-page-option-user-agent">#</a>
 
-- `viewport` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Sets a consistent viewport for each page. Defaults to an 1280x720 viewport. `no_viewport` disables the fixed viewport.
+- `viewport` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 为每个页面设置一个一致的视口。默认为1280x720视口. `no_viewport` 禁用固定视口.
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page width in pixels.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page height in pixels.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面宽度(px).
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面高度(px).
 
 - returns: \<[Page](#page)><a name="browser-new-page-return">#</a>
 
-Creates a new page in a new browser context. Closing this page will close the context as well.
+在新的浏览器上下文中创建一个新页面。关闭此页面也将关闭上下文。
 
-This is a convenience API that should only be used for the single-page scenarios and short snippets. Production code and testing frameworks should explicitly create [browser.new_context(**kwargs)](#browser-new-context) followed by the [browser_context.new_page()](#browser-context-new-page) to control their exact life times.
+这是一个方便的API，应该只用于单页场景和简短的片段。产品代码和测试框架应该显式地创建 [browser.new_context(**kwargs)](#browser-new-context) ,然后再创建[browser_context.new_page()](#browser-context-new-page) 来控制它们的确切生命周期。
 
 ## browser.start_tracing(**kwargs)<a name="browser-start-tracing">#</a>
 
-- `page` \<[Page](#page)> Optional, if specified, tracing includes screenshots of the given page.<a name="browser-start-tracing-option-page">#</a>
-- `categories` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> specify custom categories to use instead of default.<a name="browser-start-tracing-option-categories">#</a>
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> A path to write the trace file to.<a name="browser-start-tracing-option-path">#</a>
-- `screenshots` \<[bool](https://docs.python.org/3/library/stdtypes.html)> captures screenshots in the trace.<a name="browser-start-tracing-option-screenshots">#</a>
+- `page` \<[Page](#page)> 可选，如果指定，跟踪包含给定页面的截图.<a name="browser-start-tracing-option-page">#</a>
+- `categories` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 指定要使用的自定义类别而不是默认类别.<a name="browser-start-tracing-option-categories">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 文件写入的路径.<a name="browser-start-tracing-option-path">#</a>
+- `screenshots` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 捕获跟踪中的屏幕截图.<a name="browser-start-tracing-option-screenshots">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-start-tracing-return">#</a>
 
 > NOTE
 >
-> This API controls [Chromium Tracing](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool) which is a low-level chromium-specific debugging tool. API to control [Playwright Tracing](https://playwright.dev/python/docs/trace-viewer) could be found [here](#tracing).
+> 这个API控制 [Chromium Tracing](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool) 这是一个低级别的Chromium专用调试工具。控制 [Playwright Tracing](https://playwright.dev/python/docs/trace-viewer) 的API可以在[这里](#tracing)找到.
 >
-> You can use [browser.start_tracing(**kwargs)](#browser-start-tracing) and [browser.stop_tracing()](#browser-stop-tracing) to create a trace file that can be opened in Chrome DevTools performance panel.
+> 你可以使用 [browser.start_tracing(**kwargs)](#browser-start-tracing) 和[browser.stop_tracing()](#browser-stop-tracing) 来创建一个可以在Chrome DevTools性能面板中打开的跟踪文件.
 
 - Sync
 
@@ -1891,15 +1889,15 @@ await browser.stop_tracing()
 
 > NOTE
 >
-> This API controls [Chromium Tracing](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool) which is a low-level chromium-specific debugging tool. API to control [Playwright Tracing](https://playwright.dev/python/docs/trace-viewer) could be found [here](#tracing).
+> 这个API控制 [Chromium Tracing](https://www.chromium.org/developers/how-tos/trace-event-profiling-tool) 这是一个低级别的Chromium专用调试工具。控制 [Playwright Tracing](https://playwright.dev/python/docs/trace-viewer) 的API可以在[这里](#tracing)找到.
 >
-> Returns the buffer with trace data.
+> 返回带有跟踪数据的缓冲区.
 
 ## browser.version<a name="browser-version">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="browser-version-return">#</a>
 
-Returns the browser version.
+返回浏览器版本
 
 
 
@@ -1907,11 +1905,11 @@ Returns the browser version.
 
 - extends: [EventEmitter](https://pyee.readthedocs.io/en/latest/#pyee.BaseEventEmitter)
 
-BrowserContexts provide a way to operate multiple independent browser sessions.
+BrowserContexts 提供了一种操作多个独立浏览器会话的方法。
 
-If a page opens another page, e.g. with a `window.open` call, the popup will belong to the parent page's browser context.
+如果一个页面打开另一个页面，例如with a `window.open` call，弹出窗口将属于父页面的浏览器上下文。
 
-Playwright allows creating "incognito" browser contexts with [browser.new_context(**kwargs)](#browser-new-context) method. "Incognito" browser contexts don't write any browsing data to disk.
+Playwright 允许使用 browser.new_context(**kwargs)方法创建“Incognito”浏览器上下文。“Incognito”浏览器上下文不会将任何浏览数据写入磁盘。
 
 - Sync
 
@@ -1943,9 +1941,11 @@ await context.close()
 
 > NOTE
 >
-> Only works with Chromium browser's persistent context.
->
-> Emitted when new background page is created in the context.
+> 仅适用于Chromium 浏览器的持久上下文。
+
+
+
+当在上下文中创建新的后台页面时触发。
 
 - Sync
 
@@ -1965,19 +1965,19 @@ background_page = await context.wait_for_event("backgroundpage")
 
 - type: \<[BrowserContext](#browsercontext)>
 
-Emitted when Browser context gets closed. This might happen because of one of the following:
+当浏览器上下文关闭时触发。这可能是因为以下原因之一:
 
-- Browser context is closed.
-- Browser application is closed or crashed.
-- The [browser.close()](#browser-close) method was called.
+- 关闭浏览器上下文.
+- 浏览器应用程序关闭或崩溃.
+- 调用了 [browser.close()](#browser-close) 方法.
 
 ## browser_context.on("page")<a name="browser-context-event-page">#</a>
 
 - type: \<[Page](#page)>
 
-The event is emitted when a new Page is created in the BrowserContext. The page may still be loading. The event will also fire for popup pages. See also [page.on("popup")](#page-event-popup) to receive events about popups relevant to a specific page.
+当在BrowserContext中创建一个新的Page时，会触发该事件。页面可能仍在加载中。该事件也将为弹出页面而触发。请参见[page.on("popup")](#page-event-popup) 接收与特定页面相关的关于弹出窗口的事件.
 
-The earliest moment that page is available is when it has navigated to the initial url. For example, when opening a popup with `window.open('http://example.com')`, this event will fire when the network request to "[http://example.com"](http://example.com"/) is done and its response has started loading in the popup.
+该页面可用的最早时刻是当它已导航到初始url。例如，当用`window.open('http://example.com')`, 打开一个弹出窗口时，这个事件将在网络请求"[http://example.com"](http://example.com"/) 完成并在弹出窗口中开始加载响应时触发.
 
 - Sync
 
@@ -1999,37 +1999,37 @@ print(await page.evaluate("location.href"))
 
 > NOTE
 >
-> Use [page.wait_for_load_state(**kwargs)](#page-wait-for-load-state) to wait until the page gets to a particular state (you should not need it in most cases).
+> 使用[page.wait_for_load_state(**kwargs)](#page-wait-for-load-state) 等待页面到达特定的状态(在大多数情况下不需要它).
 
 ## browser_context.on("request")<a name="browser-context-event-request">#</a>
 
 - type: \<[Request](#request)>
 
-Emitted when a request is issued from any pages created through this context. The [request](#request) object is read-only. To only listen for requests from a particular page, use [page.on("request")](#page-event-request).
+当从通过此上下文创建的任何页面发出请求时触发。请求对象是只读的。要只监听来自特定页面的请求，请使用 [page.on("request")](#page-event-request).
 
-In order to intercept and mutate requests, see [browser_context.route(url, handler, **kwargs)](#browser-context-route) or [page.route(url, handler, **kwargs)](#page-route).
+为了拦截和修改请求，请参阅 [browser_context.route(url, handler, **kwargs)](#browser-context-route) or [page.route(url, handler, **kwargs)](#page-route).
 
 ## browser_context.on("requestfailed")<a name="browser-context-event-request-failed">#</a>
 
 - type: \<[Request](#request)>
 
-Emitted when a request fails, for example by timing out. To only listen for failed requests from a particular page, use [page.on("requestfailed")](#page-event-request-failed).
+当请求失败时触发，例如超时。要只监听来自特定页面的失败请求，请使用 [page.on("requestfailed")](#page-event-request-failed).
 
 > NOTE
 >
-> HTTP Error responses, such as 404 or 503, are still successful responses from HTTP standpoint, so request will complete with [browser_context.on("requestfinished")](#browser-context-event-request-finished) event and not with [browser_context.on("requestfailed")](#browser-context-event-request-failed).
+> HTTP错误响应，如404或503，从HTTP的角度来看，仍然是成功的响应，因此请求将完成[browser_context.on("requestfinished")](#browser-context-event-request-finished)事件，而不是 [browser_context.on("requestfailed")](#browser-context-event-request-failed).
 
 ## browser_context.on("requestfinished")<a name="browser-context-event-request-finished">#</a>
 
 - type: \<[Request](#request)>
 
-Emitted when a request finishes successfully after downloading the response body. For a successful response, the sequence of events is `request`, `response` and `requestfinished`. To listen for successful requests from a particular page, use [page.on("requestfinished")](#page-event-request-finished).
+在下载响应体后，请求成功完成时触发。对于一个成功的响应，事件序列是 `request`, `response` and `requestfinished`. 要监听来自特定页面的成功请求，请使用 [page.on("requestfinished")](#page-event-request-finished).
 
 ## browser_context.on("response")<a name="browser-context-event-response">#</a>
 
 - type: \<[Response](#response)>
 
-Emitted when [response](#response) status and headers are received for a request. For a successful response, the sequence of events is `request`, `response` and `requestfinished`. To listen for response events from a particular page, use [page.on("response")](#page-event-response).
+当收到请求的响应状态和报头时触发。对于一个成功的响应，事件序列是 `request`, `response` and `requestfinished`. 要监听来自特定页面的响应事件，请使用 [page.on("response")](#page-event-response).
 
 ## browser_context.on("serviceworker")<a name="browser-context-event-service-worker">#</a>
 
@@ -2037,25 +2037,41 @@ Emitted when [response](#response) status and headers are received for a request
 
 > NOTE
 >
-> Service workers are only supported on Chromium-based browsers.
+> Service worker只支持基于chrome的浏览器.
 >
-> Emitted when new service worker is created in the context.
+> 当在上下文中创建新的 service worker 时触发.
 
 ## browser_context.add_cookies(cookies)<a name="browser-context-add-cookies">#</a>
 
 - `cookies` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="browser-context-add-cookies-option-cookies">#</a>
     - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
     - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-    - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> either url or domain / path are required. Optional.
-    - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> either url or domain / path are required Optional.
-    - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> either url or domain / path are required Optional.
-    - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix time in seconds. Optional.
-    - `httpOnly` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Optional.
-    - `secure` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Optional.
-    - `sameSite` \<"Strict"|"Lax"|"None"> Optional.
+    - `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>  完整的URL(带协议),   url 和( domain / path) 之间必选其一.
+    - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 域(与path一起使用),不需要加协议.    url 和( domain / path) 之间必选其一.
+    - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 路径(与domain 一起使用),前面需要加`/`.     url 和( domain / path) 之间必选其一.
+    - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix 时间，单位为秒。可选的.
+    - `httpOnly` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 可选的.
+    - `secure` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 可选的.
+    - `sameSite` \<"Strict"|"Lax"|"None">   <“严格”|“宽松”|“没有”>可选的.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-add-cookies-return">#</a>
 
-Adds cookies into this browser context. All pages within this context will have these cookies installed. Cookies can be obtained via [browser_context.cookies(**kwargs)](#browser-context-cookies).
+将cookie添加到此浏览器上下文中。这个上下文中的所有页面都将安装这些cookie。cookie可以通过[browser_context.cookies(**kwargs)](#browser-context-cookies) 获取.
+
+```python
+# cookie_object like
+{
+    'name': 'aaa', 
+    'value': '132456', 
+    'domain': 'httpbin.org', 
+    'path': '/cookies'
+}
+# or
+{
+    'name': 'aaa', 
+    'value': '132456', 
+    'url': 'http://httpbin.org/cookies', 
+}
+```
 
 - Sync
 
@@ -2071,18 +2087,18 @@ await browser_context.add_cookies([cookie_object1, cookie_object2])
 
 ## browser_context.add_init_script(**kwargs)<a name="browser-context-add-init-script">#</a>
 
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to the JavaScript file. If `path` is a relative path, then it is resolved relative to the current working directory. Optional.<a name="browser-context-add-init-script-option-path">#</a>
-- `script` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Script to be evaluated in all pages in the browser context. Optional.<a name="browser-context-add-init-script-option-script">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> JavaScript 文件的路径. 如果`path` 是一个相对路径，那么它是相对于当前工作目录解析的。可选的.<a name="browser-context-add-init-script-option-path">#</a>
+- `script` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 在浏览器上下文中所有页面中执行的脚本。可选的.<a name="browser-context-add-init-script-option-script">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-add-init-script-return">#</a>
 
-Adds a script which would be evaluated in one of the following scenarios:
+添加一个脚本，该脚本将在以下场景之一中进行评估:
 
-- Whenever a page is created in the browser context or is navigated.
-- Whenever a child frame is attached or navigated in any page in the browser context. In this case, the script is evaluated in the context of the newly attached frame.
+- 当在浏览器上下文中创建或导航页面时.
+- 当在浏览器上下文中的任何页面中附加或导航一个子框架时。在这种情况下，脚本将在新附加的框架的上下文中执行.
 
-The script is evaluated after the document was created but before any of its scripts were run. This is useful to amend the JavaScript environment, e.g. to seed `Math.random`.
+在创建文档之后，但在运行文档的任何脚本之前，对脚本进行计算。这对于修改JavaScript环境是很有用的，例如 `Math.random`.
 
-An example of overriding `Math.random` before the page loads:
+一个重写 `Math.random`的例子。页面加载前:
 
 ```js
 // preload.js
@@ -2105,7 +2121,7 @@ await browser_context.add_init_script(path="preload.js")
 
 > NOTE
 >
-> The order of evaluation of multiple scripts installed via [browser_context.add_init_script(**kwargs)](#browser-context-add-init-script) and [page.add_init_script(**kwargs)](#page-add-init-script) is not defined.
+> 通过 [browser_context.add_init_script(**kwargs)](#browser-context-add-init-script) and [page.add_init_script(**kwargs)](#page-add-init-script) 安装的多个脚本的计算顺序没有定义.
 
 ## browser_context.background_pages<a name="browser-context-background-pages">#</a>
 
@@ -2113,27 +2129,27 @@ await browser_context.add_init_script(path="preload.js")
 
 > NOTE
 >
-> Background pages are only supported on Chromium-based browsers.
+> 背景页面仅支持基于chrome的浏览器.
 >
-> All existing background pages in the context.
+> 所有现有的背景页在上下文中.
 
 ## browser_context.browser<a name="browser-context-browser">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Browser](#browser)><a name="browser-context-browser-return">#</a>
 
-Returns the browser instance of the context. If it was launched as a persistent context null gets returned.
+返回上下文的浏览器实例。如果它作为持久上下文启动，则返回null.
 
 ## browser_context.clear_cookies()<a name="browser-context-clear-cookies">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-clear-cookies-return">#</a>
 
-Clears context cookies.
+清除上下文 cookies.
 
 ## browser_context.clear_permissions()<a name="browser-context-clear-permissions">#</a>
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-clear-permissions-return">#</a>
 
-Clears all permission overrides for the browser context.
+清除浏览器上下文的所有权限覆盖.
 
 - Sync
 
@@ -2157,35 +2173,35 @@ context.clear_permissions()
 
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-close-return">#</a>
 
-Closes the browser context. All the pages that belong to the browser context will be closed.
+关闭浏览器上下文。属于浏览器上下文的所有页面都将被关闭.
 
 > NOTE
 >
-> The default browser context cannot be closed.
+> 无法关闭默认的浏览器上下文.
 
 ## browser_context.cookies(**kwargs)<a name="browser-context-cookies">#</a>
 
-- `urls` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Optional list of URLs.<a name="browser-context-cookies-option-urls">#</a>
+- `urls` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 可选url列表.<a name="browser-context-cookies-option-urls">#</a>
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]><a name="browser-context-cookies-return">#</a>
     - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
     - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
     - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
     - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-    - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix time in seconds.
+    - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix 时间，单位为秒.
     - `httpOnly` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
     - `secure` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
-    - `sameSite` \<"Strict"|"Lax"|"None">
+    - `sameSite` \<"Strict"|"Lax"|"None">   <“严格”|“宽松”|“没有”>
 
-If no URLs are specified, this method returns all cookies. If URLs are specified, only cookies that affect those URLs are returned.
+如果没有指定url，则此方法返回所有cookie。如果指定了url，则只返回影响这些url的cookie.
 
 ## browser_context.expect_event(event, **kwargs)<a name="browser-context-wait-for-event">#</a>
 
-- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Event name, same one would pass into `browserContext.on(event)`.<a name="browser-context-wait-for-event-option-event">#</a>
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Receives the event data and resolves to truthy value when the waiting should resolve.<a name="browser-context-wait-for-event-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="browser-context-wait-for-event-option-timeout">#</a>
+- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 事件名称，相同的一个将传递给 `browserContext.on(event)`.<a name="browser-context-wait-for-event-option-event">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 接收事件数据，并在等待应该被解析时解析为 True .<a name="browser-context-wait-for-event-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为 `30000` (30 seconds). 传入`0` 禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) 来更改.<a name="browser-context-wait-for-event-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)><a name="browser-context-wait-for-event-return">#</a>
 
-Waits for event to fire and passes its value into the predicate function. Returns when the predicate returns truthy value. Will throw an error if the context closes before the event is fired. Returns the event data value.
+等待事件触发，并将其值传递给谓词函数。当谓词返回 True 时返回。如果上下文在触发事件之前关闭，则将抛出一个错误。返回事件数据值.
 
 - Sync
 
@@ -2205,26 +2221,26 @@ page = await event_info.value
 
 ## browser_context.expect_page(**kwargs)<a name="browser-context-wait-for-page">#</a>
 
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Page](#page)]:[bool](https://docs.python.org/3/library/stdtypes.html)> Receives the [Page](#page) object and resolves to truthy value when the waiting should resolve.<a name="browser-context-wait-for-page-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="browser-context-wait-for-page-option-timeout">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Page](#page)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 接收 [Page](#page) 对象，并在等待应该解决时解析为 True .<a name="browser-context-wait-for-page-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为 `30000` (30 seconds). 传入`0` 禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) 来更改.<a name="browser-context-wait-for-page-option-timeout">#</a>
 - returns: \<[EventContextManager](https://docs.python.org/3/reference/datamodel.html#context-managers)[[Page](#page)]><a name="browser-context-wait-for-page-return">#</a>
 
-Performs action and waits for a new [Page](#page) to be created in the context. If predicate is provided, it passes [Page](#page) value into the `predicate` function and waits for `predicate(event)` to return a truthy value. Will throw an error if the context closes before new [Page](#page) is created.
+执行操作并等待在上下文中创建一个新的 [Page](#page) 如果提供了predicate，它将 [Page](#page) 值传递给 `predicate` 函数，并等待 `predicate(event)` 返回一个真值。如果上下文在创建新页面之前关闭，将抛出一个错误.
 
 ## browser_context.expose_binding(name, callback, **kwargs)<a name="browser-context-expose-binding">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the function on the window object.<a name="browser-context-expose-binding-option-name">#</a>
-- `callback` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Callback function that will be called in the Playwright's context.<a name="browser-context-expose-binding-option-callback">#</a>
-- `handle` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to pass the argument as a handle, instead of passing by value. When passing a handle, only one argument is supported. When passing by value, multiple arguments are supported.<a name="browser-context-expose-binding-option-handle">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> window对象上的函数名.<a name="browser-context-expose-binding-option-name">#</a>
+- `callback` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 在 playwright 的上下文中被调用的回调函数.<a name="browser-context-expose-binding-option-callback">#</a>
+- `handle` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否将参数作为句柄传递，而不是按值传递。当传递句柄时，只支持一个参数。当传递值时，支持多个参数.<a name="browser-context-expose-binding-option-handle">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-expose-binding-return">#</a>
 
-The method adds a function called `name` on the `window` object of every frame in every page in the context. When called, the function executes `callback` and returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) which resolves to the return value of `callback`. If the `callback` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), it will be awaited.
+该方法在上下文中每一页的每一帧的窗口对象上添加一个名为name的函数。当被调用时，函数执行回调并返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) ,该Promise解析为回调的返回值。如果回调返回一个Promise，它将被等待
 
-The first argument of the `callback` function contains information about the caller: `{ browserContext: BrowserContext, page: Page, frame: Frame }`.
+`callback`函数的第一个参数包含调用者的信息: `{ browserContext: BrowserContext, page: Page, frame: Frame }`.
 
-See [page.expose_binding(name, callback, **kwargs)](#page-expose-binding) for page-only version.
+查看仅用于页面版本的 [page.expose_binding(name, callback, **kwargs)](#page-expose-binding).
 
-An example of exposing page URL to all frames in all pages in the context:
+一个将页面URL暴露给上下文中所有页面中的所有帧的例子:
 
 - Sync
 
@@ -2281,7 +2297,7 @@ async def main():
 asyncio.run(main())
 ```
 
-An example of passing an element handle:
+传递元素句柄的例子:
 
 - Sync
 
@@ -2317,17 +2333,17 @@ await page.set_content("""
 
 ## browser_context.expose_function(name, callback)<a name="browser-context-expose-function">#</a>
 
-- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Name of the function on the window object.<a name="browser-context-expose-function-option-name">#</a>
-- `callback` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Callback function that will be called in the Playwright's context.<a name="browser-context-expose-function-option-callback">#</a>
+- `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> window对象上的函数名.<a name="browser-context-expose-function-option-name">#</a>
+- `callback` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 在 playwright 的上下文中被调用的回调函数.<a name="browser-context-expose-function-option-callback">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-expose-function-return">#</a>
 
-The method adds a function called `name` on the `window` object of every frame in every page in the context. When called, the function executes `callback` and returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) which resolves to the return value of `callback`.
+该方法在上下文中每一页的每一帧的窗口对象上添加一个名为name的函数。当被调用时，函数执行回调并返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) ,该Promise解析为回调的返回值.
 
-If the `callback` returns a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), it will be awaited.
+如果回调返回一个 [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise),它将被等待.
 
-See [page.expose_function(name, callback)](#page-expose-function) for page-only version.
+查看仅页面版本的[page.expose_function(name, callback)](#page-expose-function) .
 
-An example of adding a `sha256` function to all pages in the context:
+在上下文中为所有页面添加一个`sha256` 函数的例子:
 
 - Sync
 
@@ -2400,64 +2416,64 @@ asyncio.run(main())
 
 ## browser_context.grant_permissions(permissions, **kwargs)<a name="browser-context-grant-permissions">#</a>
 
-- `permissions` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> A permission or an array of permissions to grant. Permissions can be one of the following values:<a name="browser-context-grant-permissions-option-permissions">#</a>
-    - `'geolocation'`
+- `permissions` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 要授予的权限或权限数组。权限可以是以下值之一: <a name="browser-context-grant-permissions-option-permissions">#</a>
+    - `'geolocation' `		地理位置
     - `'midi'`
     - `'midi-sysex'` (system-exclusive midi)
-    - `'notifications'`
-    - `'camera'`
-    - `'microphone'`
+    - `'notifications'`      通知
+    - `'camera'`        相机
+    - `'microphone'`     麦克风
     - `'background-sync'`
-    - `'ambient-light-sensor'`
-    - `'accelerometer'`
-    - `'gyroscope'`
-    - `'magnetometer'`
+    - `'ambient-light-sensor'`    环境光传感器
+    - `'accelerometer'`       加速度计
+    - `'gyroscope' `     陀螺
+    - `'magnetometer'`   磁强计
     - `'accessibility-events'`
     - `'clipboard-read'`
     - `'clipboard-write'`
     - `'payment-handler'`
-- `origin` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> The [origin](https://developer.mozilla.org/en-US/docs/Glossary/Origin) to grant permissions to, e.g. "[https://example.com"](https://example.com"/).<a name="browser-context-grant-permissions-option-origin">#</a>
+- `origin` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>  要授予权限的[起点](https://developer.mozilla.org/en-US/docs/Glossary/Origin)，例如: "[https://example.com"](https://example.com"/).<a name="browser-context-grant-permissions-option-origin">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-grant-permissions-return">#</a>
 
-Grants specified permissions to the browser context. Only grants corresponding permissions to the given origin if specified.
+向浏览器上下文授予指定的权限。如果指定，则仅向给定的源授予相应的权限.
 
 ## browser_context.new_cdp_session(page)<a name="browser-context-new-cdp-session">#</a>
 
-- `page` \<[Page](#page)|[Frame](#frame)> Target to create new session for. For backwards-compatibility, this parameter is named `page`, but it can be a `Page` or `Frame` type.<a name="browser-context-new-cdp-session-option-page">#</a>
+- `page` \<[Page](#page)|[Frame](#frame)> 创建会话的目标。为了向后兼容，这个参数被命名为 `page`, 但它可以是一个 `Page` or `Frame` 类型.<a name="browser-context-new-cdp-session-option-page">#</a>
 - returns: \<[CDPSession](#cdpsession)><a name="browser-context-new-cdp-session-return">#</a>
 
 > NOTE
 >
-> CDP sessions are only supported on Chromium-based browsers.
+> CDP会话仅支持基于chromium的浏览器
 >
-> Returns the newly created session.
+> 返回新创建的会话.
 
 ## browser_context.new_page()<a name="browser-context-new-page">#</a>
 
 - returns: \<[Page](#page)><a name="browser-context-new-page-return">#</a>
 
-Creates a new page in the browser context.
+在浏览器上下文中创建一个新页面.
 
 ## browser_context.pages<a name="browser-context-pages">#</a>
 
 - returns: \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Page](#page)]><a name="browser-context-pages-return">#</a>
 
-Returns all open pages in the context.
+返回上下文中所有打开的页面.
 
 ## browser_context.route(url, handler, **kwargs)<a name="browser-context-route">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving [URL](https://en.wikipedia.org/wiki/URL) to match while routing. When a `base_url` via the context options was provided and the passed URL is a path, it gets merged via the [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor.<a name="browser-context-route-option-url">#</a>
-- `handler` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Route](#route), [Request](#request)]> handler function to route the request.<a name="browser-context-route-option-handler">#</a>
-- `times` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> How often a route should be used. By default it will be used every time.<a name="browser-context-route-option-times">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 一个glob模式、regex模式或谓词在路由时接收要匹配的 [URL](https://en.wikipedia.org/wiki/URL) ,当通过上下文选项提供了一个`base_url` 并且传递的URL是一个路径时，它会通过 [`new URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) 构造函数合并.<a name="browser-context-route-option-url">#</a>
+- `handler` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Route](#route), [Request](#request)]> handler函数路由请求.<a name="browser-context-route-option-handler">#</a>
+- `times` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 一个路由应该使用的频率。默认情况下，每次都会使用.<a name="browser-context-route-option-times">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-route-return">#</a>
 
-Routing provides the capability to modify network requests that are made by any page in the browser context. Once route is enabled, every request matching the url pattern will stall unless it's continued, fulfilled or aborted.
+路由提供了修改浏览器上下文中任何页面发出的网络请求的能力。一旦路由被启用，每一个匹配url模式的请求都会停止，除非它被继续、完成或中止.
 
 > NOTE
 >
-> [page.route(url, handler, **kwargs)](#page-route) will not intercept requests intercepted by Service Worker. See [this](https://github.com/microsoft/playwright/issues/1090) issue. We recommend disabling Service Workers when using request interception. Via `await context.addInitScript(() => delete window.navigator.serviceWorker);`
+> [page.route(url, handler, **kwargs)](#page-route) 不会拦截被 Service Worker 拦截的请求. 详情查看 [这个问题](https://github.com/microsoft/playwright/issues/1090) . 我们建议在使用请求拦截时禁用 Service Workers, 通过 `await context.addInitScript(() => delete window.navigator.serviceWorker);`
 
-An example of a naive handler that aborts all image requests:
+一个简单的处理程序的例子，中止所有的图像请求:
 
 - Sync
 
@@ -2479,7 +2495,7 @@ await page.goto("https://example.com")
 await browser.close()
 ```
 
-or the same snippet using a regex pattern instead:
+或者使用regex模式替换相同的代码片段:
 
 - Sync
 
@@ -2504,7 +2520,7 @@ await page.goto("https://example.com")
 await browser.close()
 ```
 
-It is possible to examine the request to decide the route action. For example, mocking all requests that contain some post data, and leaving all other requests as is:
+可以通过检查请求来决定路由操作。例如，mock所有包含post数据的请求，并保留所有其他请求的原样:
 
 - Sync
 
@@ -2528,13 +2544,13 @@ def handle_route(route):
 await context.route("/api/**", handle_route)
 ```
 
-Page routes (set up with [page.route(url, handler, **kwargs)](https://playwright.dev/python/docs/api/class-page#page-route)) take precedence over browser context routes when request matches both handlers.
+当请求同时匹配两个处理程序时,[page.route(url, handler, **kwargs)](https://playwright.dev/python/docs/api/class-page#page-route) 优先于浏览器上下文路由
 
-To remove a route with its handler you can use [browser_context.unroute(url, **kwargs)](#browser-context-unroute).
+要移除带有处理程序的路由，你可以使用 [browser_context.unroute(url, **kwargs)](#browser-context-unroute).
 
 > NOTE
 >
-> Enabling routing disables http cache.
+> 启用路由将禁用 http 缓存.
 
 ## browser_context.service_workers<a name="browser-context-service-workers">#</a>
 
@@ -2542,16 +2558,16 @@ To remove a route with its handler you can use [browser_context.unroute(url, **k
 
 > NOTE
 >
-> Service workers are only supported on Chromium-based browsers.
+> Service worker只支持基于chrome的浏览器。
 >
-> All existing service workers in the context.
+> 上下文中的所有现有服务工作者。
 
 ## browser_context.set_default_navigation_timeout(timeout)<a name="browser-context-set-default-navigation-timeout">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum navigation time in milliseconds<a name="browser-context-set-default-navigation-timeout-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大导航时间，以毫秒为单位<a name="browser-context-set-default-navigation-timeout-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-set-default-navigation-timeout-return">#</a>
 
-This setting will change the default maximum navigation time for the following methods and related shortcuts:
+此设置将改变以下方法和相关快捷方式的默认最大导航时间:
 
 - [page.go_back(**kwargs)](#page-go-back)
 - [page.go_forward(**kwargs)](#page-go-forward)
@@ -2562,39 +2578,39 @@ This setting will change the default maximum navigation time for the following m
 
 > NOTE
 >
-> [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) and [page.set_default_timeout(timeout)](#page-set-default-timeout) take priority over [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout).
+> [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout) 和 [page.set_default_timeout(timeout)](#page-set-default-timeout) 优先于 [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout).
 
 ## browser_context.set_default_timeout(timeout)<a name="browser-context-set-default-timeout">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds<a name="browser-context-set-default-timeout-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大时间(毫秒)<a name="browser-context-set-default-timeout-option-timeout">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-set-default-timeout-return">#</a>
 
-This setting will change the default maximum time for all the methods accepting `timeout` option.
+此设置将更改`所有`接受超时的方法的默认最大时间.
 
 > NOTE
 >
-> [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout), [page.set_default_timeout(timeout)](#page-set-default-timeout) and [browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout) take priority over [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).
+> [page.set_default_navigation_timeout(timeout)](#page-set-default-navigation-timeout), [page.set_default_timeout(timeout)](#page-set-default-timeout) 和[browser_context.set_default_navigation_timeout(timeout)](#browser-context-set-default-navigation-timeout) 优先于 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).
 
 ## browser_context.set_extra_http_headers(headers)<a name="browser-context-set-extra-http-headers">#</a>
 
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> An object containing additional HTTP headers to be sent with every request. All header values must be strings.<a name="browser-context-set-extra-http-headers-option-headers">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 包含每个请求发送的附加HTTP头的对象。所有头文件的值必须是字符串.<a name="browser-context-set-extra-http-headers-option-headers">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-set-extra-http-headers-return">#</a>
 
-The extra HTTP headers will be sent with every request initiated by any page in the context. These headers are merged with page-specific extra HTTP headers set with [page.set_extra_http_headers(headers)](#page-set-extra-http-headers). If page overrides a particular header, page-specific header value will be used instead of the browser context header value.
+额外的HTTP报头将与上下文中的任何页面发起的每个请求一起发送。这些标头与 [page.set_extra_http_headers(headers)](#page-set-extra-http-headers)设置的特定于页面的额外HTTP标头合并. 如果页面覆盖了特定的标题，那么将使用特定于页面的标题值，而不是浏览器上下文标题值.
 
 > NOTE
 >
-> [browser_context.set_extra_http_headers(headers)](#browser-context-set-extra-http-headers) does not guarantee the order of headers in the outgoing requests.
+> [browser_context.set_extra_http_headers(headers)](#browser-context-set-extra-http-headers) 不能保证传出请求中报头的顺序.
 
 ## browser_context.set_geolocation(geolocation)<a name="browser-context-set-geolocation">#</a>
 
 - `geolocation` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="browser-context-set-geolocation-option-geolocation">#</a>
-    - `latitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Latitude between -90 and 90.
-    - `longitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Longitude between -180 and 180.
-    - `accuracy` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Non-negative accuracy value. Defaults to `0`.
+    - `latitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 纬度介于-90和90之间.
+    - `longitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 经度介于-180和180之间.
+    - `accuracy` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 非负精度值。默认值为`0`.
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-set-geolocation-return">#</a>
 
-Sets the context's geolocation. Passing `null` or `undefined` emulates position unavailable.
+设置上下文的地理位置。传递 `null` or `undefined` 将模拟位置不可用.
 
 - Sync
 
@@ -2610,60 +2626,60 @@ await browser_context.set_geolocation({"latitude": 59.95, "longitude": 30.31667}
 
 > NOTE
 >
-> Consider using [browser_context.grant_permissions(permissions, **kwargs)](#browser-context-grant-permissions) to grant permissions for the browser context pages to read its geolocation.
+> 考虑使用 [browser_context.grant_permissions(permissions, **kwargs)](#browser-context-grant-permissions) 授予浏览器上下文页面读取其地理位置的权限.
 
 ## browser_context.set_offline(offline)<a name="browser-context-set-offline">#</a>
 
-- `offline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to emulate network being offline for the browser context.<a name="browser-context-set-offline-option-offline">#</a>
+- `offline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否为浏览器上下文模拟网络离线.<a name="browser-context-set-offline-option-offline">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-set-offline-return">#</a>
 
 ## browser_context.storage_state(**kwargs)<a name="browser-context-storage-state">#</a>
 
-- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> The file path to save the storage state to. If `path` is a relative path, then it is resolved relative to current working directory. If no path is provided, storage state is still returned, but won't be saved to the disk.<a name="browser-context-storage-state-option-path">#</a>
+- `path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 存储状态保存到的文件路径. 如果`path` 是一个相对路径，那么它是相对于当前工作目录解析的。如果没有提供路径，存储状态仍然返回，但不会保存到磁盘.<a name="browser-context-storage-state-option-path">#</a>
 - returns: \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="browser-context-storage-state-return">#</a>
     - `cookies` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>
         - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `domain` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `path` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
-        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix time in seconds.
+        - `expires` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Unix 时间，单位为秒.
         - `httpOnly` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
         - `secure` \<[bool](https://docs.python.org/3/library/stdtypes.html)>
-        - `sameSite` \<"Strict"|"Lax"|"None">
+        - `sameSite` \<"Strict"|"Lax"|"None">   <“严格”|“宽松”|“没有”>
     - `origins` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>
         - `origin` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
         - `localStorage` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)]>
             - `name` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
             - `value` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-Returns storage state for this browser context, contains current cookies and local storage snapshot.
+返回此浏览器上下文的存储状态，包含当前cookie和本地存储快照.
 
 ## browser_context.unroute(url, **kwargs)<a name="browser-context-unroute">#</a>
 
-- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> A glob pattern, regex pattern or predicate receiving [URL](https://en.wikipedia.org/wiki/URL) used to register a routing with [browser_context.route(url, handler, **kwargs)](#browser-context-route).<a name="browser-context-unroute-option-url">#</a>
-- `handler` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Route](#route), [Request](#request)]> Optional handler function used to register a routing with [browser_context.route(url, handler, **kwargs)](#browser-context-route).<a name="browser-context-unroute-option-handler">#</a>
+- `url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[Pattern](https://docs.python.org/3/library/re.html)|[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[URL](https://en.wikipedia.org/wiki/URL)]:[bool](https://docs.python.org/3/library/stdtypes.html)> 用于向[browser_context.route(url, handler, **kwargs)](#browser-context-route)注册路由的glob模式、regex模式或谓词接收url .<a name="browser-context-unroute-option-url">#</a>
+- `handler` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)[[Route](#route), [Request](#request)]> 可选处理函数，用于向 [browser_context.route(url, handler, **kwargs)](#browser-context-route) 注册路由.<a name="browser-context-unroute-option-handler">#</a>
 - returns: \<[NoneType](https://docs.python.org/3/library/constants.html#None)><a name="browser-context-unroute-return">#</a>
 
-Removes a route created with [browser_context.route(url, handler, **kwargs)](#browser-context-route). When `handler` is not specified, removes all routes for the `url`.
+移除使用 [browser_context.route(url, handler, **kwargs)](#browser-context-route) 创建的路由. 当未指定`handler` 时，删除`url`的所有路由 .
 
 ## browser_context.wait_for_event(event, **kwargs)<a name="browser-context-wait-for-event-2">#</a>
 
-- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Event name, same one typically passed into `*.on(event)`.<a name="browser-context-wait-for-event-2-option-event">#</a>
-- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> Receives the event data and resolves to truthy value when the waiting should resolve.<a name="browser-context-wait-for-event-2-option-predicate">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time to wait for in milliseconds. Defaults to `30000` (30 seconds). Pass `0` to disable timeout. The default value can be changed by using the [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout).<a name="browser-context-wait-for-event-2-option-timeout">#</a>
+- `event` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 事件名称，与通常传递给 `*.on(event)`的名称相同.<a name="browser-context-wait-for-event-2-option-event">#</a>
+- `predicate` \<[Callable](https://docs.python.org/3/library/typing.html#typing.Callable)> 接收事件数据，并在等待应该被解析时解析为真值.<a name="browser-context-wait-for-event-2-option-predicate">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 最大等待时间，单位为毫秒。默认为 `30000` (30 seconds). 传入`0`禁用超时。默认值可以通过使用 [browser_context.set_default_timeout(timeout)](#browser-context-set-default-timeout) 来更改.<a name="browser-context-wait-for-event-2-option-timeout">#</a>
 - returns: \<[Any](https://docs.python.org/3/library/typing.html#typing.Any)><a name="browser-context-wait-for-event-2-return">#</a>
 
 > NOTE
 >
-> In most cases, you should use [browser_context.expect_event(event, **kwargs)](#browser-context-wait-for-event).
+> 在大多数情况下，你应该使用 [browser_context.expect_event(event, **kwargs)](#browser-context-wait-for-event).
 >
-> Waits for given `event` to fire. If predicate is provided, it passes event's value into the `predicate` function and waits for `predicate(event)` to return a truthy value. Will throw an error if the browser context is closed before the `event` is fired.
+> 等待给定 `event` 被触发. 如果提供了 `predicate` ,它会将事件的值传递给 `predicate(event)` 并等待其返回一个真值. 如果浏览器上下文在触发事件之前关闭，则将抛出一个错误.
 
 ## browser_context.request<a name="browser-context-request">#</a>
 
 - type: \<[APIRequestContext](#apirequestcontext)>
 
-API testing helper associated with this context. Requests made with this API will use context cookies.
+与此上下文关联的API测试助手。使用此API发出的请求将使用上下文 cookie.
 
 ## browser_context.tracing<a name="browser-context-tracing">#</a>
 
@@ -2675,7 +2691,9 @@ API testing helper associated with this context. Requests made with this API wil
 
 # BrowserType
 
-BrowserType provides methods to launch a specific browser instance or connect to an existing one. The following is a typical example of using Playwright to drive automation:
+
+
+BrowserType 提供了启动特定浏览器实例或连接到现有浏览器实例的方法。下面是一个使用Playwright 驱动自动化的典型例子:
 
 - Sync
 
@@ -2716,64 +2734,64 @@ asyncio.run(main())
 
 ## browser_type.connect(ws_endpoint, **kwargs)<a name="browser-type-connect">#</a>
 
-- `ws_endpoint` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A browser websocket endpoint to connect to.<a name="browser-type-connect-option-ws-endpoint">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Additional HTTP headers to be sent with web socket connect request. Optional.<a name="browser-type-connect-option-headers">#</a>
-- `slow_mo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Slows down Playwright operations by the specified amount of milliseconds. Useful so that you can see what is going on. Defaults to 0.<a name="browser-type-connect-option-slow-mo">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds to wait for the connection to be established. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="browser-type-connect-option-timeout">#</a>
+- `ws_endpoint` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>要连接的浏览器websocket端点.<a name="browser-type-connect-option-ws-endpoint">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> websocket 连接请求发送的额外HTTP头。可选的.<a name="browser-type-connect-option-headers">#</a>
+- `slow_mo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 使 playwright 操作变慢指定的毫秒数。很有用，这样你就能知道发生了什么。默认为0.<a name="browser-type-connect-option-slow-mo">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 等待连接建立的最大时间(单位:毫秒)。默认为 `30000` (30 seconds). 传递`0` 以禁用超时.<a name="browser-type-connect-option-timeout">#</a>
 - returns: \<[Browser](#browser)><a name="browser-type-connect-return">#</a>
 
-This methods attaches Playwright to an existing browser instance.
+该方法将playwright 附加到一个现有的浏览器实例.
 
 ## browser_type.connect_over_cdp(endpoint_url, **kwargs)<a name="browser-type-connect-over-cdp">#</a>
 
-- `endpoint_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> A CDP websocket endpoint or http url to connect to. For example `http://localhost:9222/` or `ws://127.0.0.1:9222/devtools/browser/387adf4c-243f-4051-a181-46798f4a46f4`.<a name="browser-type-connect-over-cdp-option-endpoint-url">#</a>
-- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Additional HTTP headers to be sent with connect request. Optional.<a name="browser-type-connect-over-cdp-option-headers">#</a>
-- `slow_mo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Slows down Playwright operations by the specified amount of milliseconds. Useful so that you can see what is going on. Defaults to 0.<a name="browser-type-connect-over-cdp-option-slow-mo">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds to wait for the connection to be established. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="browser-type-connect-over-cdp-option-timeout">#</a>
+- `endpoint_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 要连接CDP的 websocket端点或 http url。例如 `http://localhost:9222/` or `ws://127.0.0.1:9222/devtools/browser/387adf4c-243f-4051-a181-46798f4a46f4`.<a name="browser-type-connect-over-cdp-option-endpoint-url">#</a>
+- `headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 连接请求发送的额外HTTP头。可选的.<a name="browser-type-connect-over-cdp-option-headers">#</a>
+- `slow_mo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 使 playwright 操作变慢指定的毫秒数。很有用，这样你就能知道发生了什么。默认为0.<a name="browser-type-connect-over-cdp-option-slow-mo">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 等待连接建立的最大时间(单位:毫秒)。默认为 `30000` (30 seconds). 传递`0` 以禁用超时.<a name="browser-type-connect-over-cdp-option-timeout">#</a>
 - returns: \<[Browser](#browser)><a name="browser-type-connect-over-cdp-return">#</a>
 
-This methods attaches Playwright to an existing browser instance using the Chrome DevTools Protocol.
+该方法使用Chrome DevTools协议将playwright附加到一个现有的浏览器实例.
 
-The default browser context is accessible via [browser.contexts](#browser-contexts).
+默认的浏览器上下文可以通过 [browser.contexts](#browser-contexts) 访问.
 
 > NOTE
 >
-> Connecting over the Chrome DevTools Protocol is only supported for Chromium-based browsers.
+> 通过Chrome DevTools协议连接仅支持基于Chrome的浏览器.
 
 ## browser_type.executable_path<a name="browser-type-executable-path">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="browser-type-executable-path-return">#</a>
 
-A path where Playwright expects to find a bundled browser executable.
+Playwright 希望在这个路径中找到捆绑的浏览器可执行文件.
 
 ## browser_type.launch(**kwargs)<a name="browser-type-launch">#</a>
 
-- `args` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](http://peter.sh/experiments/chromium-command-line-switches/).<a name="browser-type-launch-option-args">#</a>
-- `channel` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Browser distribution channel. Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary". Read more about using [Google Chrome and Microsoft Edge](https://playwright.dev/python/docs/browsers#google-chrome--microsoft-edge).<a name="browser-type-launch-option-channel">#</a>
-- `chromium_sandbox` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Enable Chromium sandboxing. Defaults to `false`.<a name="browser-type-launch-option-chromium-sandbox">#</a>
-- `devtools` \<[bool](https://docs.python.org/3/library/stdtypes.html)> **Chromium-only** Whether to auto-open a Developer Tools panel for each tab. If this option is `true`, the `headless` option will be set `false`.<a name="browser-type-launch-option-devtools">#</a>
-- `downloads_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> If specified, accepted downloads are downloaded into this directory. Otherwise, temporary directory is created and is deleted when browser is closed. In either case, the downloads are deleted when the browser context they were created in is closed.<a name="browser-type-launch-option-downloads-path">#</a>
-- `env` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Specify environment variables that will be visible to the browser. Defaults to `process.env`.<a name="browser-type-launch-option-env">#</a>
-- `executable_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to a browser executable to run instead of the bundled one. If `executable_path` is a relative path, then it is resolved relative to the current working directory. Note that Playwright only works with the bundled Chromium, Firefox or WebKit, use at your own risk.<a name="browser-type-launch-option-executable-path">#</a>
-- `firefox_user_prefs` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Firefox user preferences. Learn more about the Firefox user preferences at [`about:config`](https://support.mozilla.org/en-US/kb/about-config-editor-firefox).<a name="browser-type-launch-option-firefox-user-prefs">#</a>
-- `handle_sighup` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Close the browser process on SIGHUP. Defaults to `true`.<a name="browser-type-launch-option-handle-sighup">#</a>
-- `handle_sigint` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Close the browser process on Ctrl-C. Defaults to `true`.<a name="browser-type-launch-option-handle-sigint">#</a>
-- `handle_sigterm` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Close the browser process on SIGTERM. Defaults to `true`.<a name="browser-type-launch-option-handle-sigterm">#</a>
-- `headless` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to run browser in headless mode. More details for [Chromium](https://developers.google.com/web/updates/2017/04/headless-chrome) and [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode). Defaults to `true` unless the `devtools` option is `true`.<a name="browser-type-launch-option-headless">#</a>
-- `ignore_default_args` \<[bool](https://docs.python.org/3/library/stdtypes.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> If `true`, Playwright does not pass its own configurations args and only uses the ones from `args`. If an array is given, then filters out the given default arguments. Dangerous option; use with care. Defaults to `false`.<a name="browser-type-launch-option-ignore-default-args">#</a>
-- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Network proxy settings.<a name="browser-type-launch-option-proxy">#</a>
-    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Proxy to be used for all requests. HTTP and SOCKS proxies are supported, for example `http://myproxy.com:3128` or `socks5://myproxy.com:3128`. Short form `myproxy.com:3128` is considered an HTTP proxy.
-    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional comma-separated domains to bypass proxy, for example `".com, chromium.org, .domain.com"`.
-    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional username to use if HTTP proxy requires authentication.
-    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional password to use if HTTP proxy requires authentication.
-- `slow_mo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Slows down Playwright operations by the specified amount of milliseconds. Useful so that you can see what is going on.<a name="browser-type-launch-option-slow-mo">#</a>
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds to wait for the browser instance to start. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="browser-type-launch-option-timeout">#</a>
-- `traces_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> If specified, traces are saved into this directory.<a name="browser-type-launch-option-traces-dir">#</a>
+- `args` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 传递给浏览器实例的其他参数。Chrome的列表可以在[这里](http://peter.sh/experiments/chromium-command-line-switches/)找到 .<a name="browser-type-launch-option-args">#</a>
+- `channel` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 浏览器分发通道。支持的值为 "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary". 阅读更多关于使用 [Google Chrome 和 Microsoft Edge](https://playwright.dev/python/docs/browsers#google-chrome--microsoft-edge) 的方式.<a name="browser-type-launch-option-channel">#</a>
+- `chromium_sandbox` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启用Chromium 沙箱. 默认为 `false`.<a name="browser-type-launch-option-chromium-sandbox">#</a>
+- `devtools` \<[bool](https://docs.python.org/3/library/stdtypes.html)> **Chromium-only** 是否为每个选项卡自动打开开发人员工具面板。如果该选项为 `true`, 则`headless` 选项将被设为`false`.<a name="browser-type-launch-option-devtools">#</a>
+- `downloads_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 如果指定，接受的下载将被下载到此目录, 否则，将在关闭浏览器时创建并删除临时目录。在这两种情况下，当创建下载的浏览器上下文关闭时，下载就会被删除.<a name="browser-type-launch-option-downloads-path">#</a>
+- `env` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 指定浏览器可见的环境变量。默认为 `process.env`.<a name="browser-type-launch-option-env">#</a>
+- `executable_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 浏览器可执行文件的运行路径，而不是绑定文件. 如果`executable_path` 是一个相对路径，那么它是相对于当前工作目录进行解析的。请注意，playwright 只适用于捆绑的Chromium, Firefox或WebKit，使用风险自负.<a name="browser-type-launch-option-executable-path">#</a>
+- `firefox_user_prefs` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Firefox用户首选项。在[`about:config`](https://support.mozilla.org/en-US/kb/about-config-editor-firefox) 了解更多关于Firefox用户首选项的信息.<a name="browser-type-launch-option-firefox-user-prefs">#</a>
+- `handle_sighup` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 在SIGHUP上关闭浏览器进程。默认值为 `true`.<a name="browser-type-launch-option-handle-sighup">#</a>
+- `handle_sigint` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 在Ctrl-C上关闭浏览器进程。默认值为 `true`.<a name="browser-type-launch-option-handle-sigint">#</a>
+- `handle_sigterm` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 关闭SIGTERM上的浏览器进程。默认值为 `true`.<a name="browser-type-launch-option-handle-sigterm">#</a>
+- `headless` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否以无头模式运行浏览器。更多关于 [Chromium](https://developers.google.com/web/updates/2017/04/headless-chrome) and [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode) 的细节。默认为 `true` 除非 `devtools` 选项为`true`.<a name="browser-type-launch-option-headless">#</a>
+- `ignore_default_args` \<[bool](https://docs.python.org/3/library/stdtypes.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 如果为`true`, Playwright 不会传递自己的配置参数，而只使用来自 `args`的配置参数. 如果给出了数组，则过滤掉给定的默认参数。危险的选择, 小心使用。默认值为 `false`.<a name="browser-type-launch-option-ignore-default-args">#</a>
+- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 网络代理设置.<a name="browser-type-launch-option-proxy">#</a>
+    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 所有请求使用的代理。支持HTTP代理和SOCKS代理，例如:`http://myproxy.com:3128` or `socks5://myproxy.com:3128`. 缩写形式 `myproxy.com:3128` 被认为是一个HTTP代理.
+    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 可选，用逗号分隔的域，绕过代理，例如 `".com, chromium.org, .domain.com"`.
+    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 可选username，当HTTP代理需要鉴权时使用.
+    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 当HTTP代理需要鉴权时可选密码.
+- `slow_mo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 使 playwright 操作变慢指定的毫秒数。可以让您看到正在发生什么.<a name="browser-type-launch-option-slow-mo">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 浏览器实例启动的最大等待时间(单位为毫秒)。默认为 `30000` (30 seconds). 传递`0` 以禁用超时.<a name="browser-type-launch-option-timeout">#</a>
+- `traces_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 如果指定，跟踪记录将被保存到该目录.<a name="browser-type-launch-option-traces-dir">#</a>
 - returns: \<[Browser](#browser)><a name="browser-type-launch-return">#</a>
 
-Returns the browser instance.
+返回浏览器实例.
 
-You can use `ignore_default_args` to filter out `--mute-audio` from default arguments:
+你可以使用 `ignore_default_args` 从默认参数中过滤出 `--mute-audio`:
 
 - Sync
 
@@ -2791,142 +2809,142 @@ browser = await playwright.chromium.launch( # or "firefox" or "webkit".
 )
 ```
 
-> **Chromium-only** Playwright can also be used to control the Google Chrome or Microsoft Edge browsers, but it works best with the version of Chromium it is bundled with. There is no guarantee it will work with any other version. Use `executable_path` option with extreme caution.
+> **Chromium-only** Playwright 也可以用来控制谷歌Chrome或微软Edge浏览器，但它最好的版本与 Chromium 捆绑. 不能保证它能与任何其他版本一起工作。使用 `executable_path` 选项时要特别小心.
 >
-> If Google Chrome (rather than Chromium) is preferred, a [Chrome Canary](https://www.google.com/chrome/browser/canary.html) or [Dev Channel](https://www.chromium.org/getting-involved/dev-channel) build is suggested.
+> 如果 Google Chrome (而不是 Chromium) 是首选, 则建议使用 [Chrome Canary](https://www.google.com/chrome/browser/canary.html) or [Dev Channel](https://www.chromium.org/getting-involved/dev-channel) .
 >
-> Stock browsers like Google Chrome and Microsoft Edge are suitable for tests that require proprietary media codecs for video playback. See [this article](https://www.howtogeek.com/202825/what’s-the-difference-between-chromium-and-chrome/) for other differences between Chromium and Chrome. [This article](https://chromium.googlesource.com/chromium/src/+/lkgr/docs/chromium_browser_vs_google_chrome.md) describes some differences for Linux users.
+> 像 Google Chrome 和 Microsoft Edge 这样的常用浏览器适合于需要专用媒体编解码器进行视频播放的测试. Chromium and Chrome 的其他区别见[这篇文章](https://www.howtogeek.com/202825/what’s-the-difference-between-chromium-and-chrome/). [本文](https://chromium.googlesource.com/chromium/src/+/lkgr/docs/chromium_browser_vs_google_chrome.md) 描述了Linux 用户的一些差异.
 
 ## browser_type.launch_persistent_context(user_data_dir, **kwargs)<a name="browser-type-launch-persistent-context">#</a>
 
-- `user_data_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to a User Data Directory, which stores browser session data like cookies and local storage. More details for [Chromium](https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md#introduction) and [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options#User_Profile). Note that Chromium's user data directory is the **parent** directory of the "Profile Path" seen at `chrome://version`. Pass an empty string to use a temporary directory instead.<a name="browser-type-launch-persistent-context-option-user-data-dir">#</a>
+- `user_data_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 用户数据目录的路径，用于存储浏览器会话数据，如cookie和本地存储. 更多关于 [Chromium](https://chromium.googlesource.com/chromium/src/+/master/docs/user_data_dir.md#introduction) and [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Command_Line_Options#User_Profile) 的细节. 注意 Chromium 的用户数据目录是父目录的“配置文件路径” `chrome://version`. 传递一个空字符串来使用临时目录.<a name="browser-type-launch-persistent-context-option-user-data-dir">#</a>
 
-- `accept_downloads` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to automatically download all the attachments. Defaults to `true` where all the downloads are accepted.<a name="browser-type-launch-persistent-context-option-accept-downloads">#</a>
+- `accept_downloads` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否自动下载所有附件。在所有下载都被接受的地方默认为 `true` .<a name="browser-type-launch-persistent-context-option-accept-downloads">#</a>
 
-- `args` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> Additional arguments to pass to the browser instance. The list of Chromium flags can be found [here](http://peter.sh/experiments/chromium-command-line-switches/).<a name="browser-type-launch-persistent-context-option-args">#</a>
+- `args` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 传递给浏览器实例的其他参数. Chromium 标志的列表可以在[这里](http://peter.sh/experiments/chromium-command-line-switches/)找到 .<a name="browser-type-launch-persistent-context-option-args">#</a>
 
-- `base_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> When using [page.goto(url, **kwargs)](#page-goto), [page.route(url, handler, **kwargs)](#page-route), [page.wait_for_url(url, **kwargs)](#page-wait-for-url), [page.expect_request(url_or_predicate, **kwargs)](#page-wait-for-request), or [page.expect_response(url_or_predicate, **kwargs)](#page-wait-for-response) it takes the base URL in consideration by using the [`URL()`](https://developer.mozilla.org/en-US/docs/Web/API/URL/URL) constructor for building the corresponding URL. Examples:<a name="browser-type-launch-persistent-context-option-base-url">#</a>
+- `base_url` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 使用 [page.goto(url, **kwargs)](#page-goto), [page.route(url, handler, **kwargs)](#page-route), [page.wait_for_url(url, **kwargs)](#page-wait-for-url), [page.expect_request(url_or_predicate, **kwargs)](#page-wait-for-request), or [page.expect_response(url_or_predicate, **kwargs)](#page-wait-for-response) 通过使用`URL()`构造函数构建相应的URL来考虑基URL :<a name="browser-type-launch-persistent-context-option-base-url">#</a>
 
-    - baseURL: `http://localhost:3000` and navigating to `/bar.html` results in `http://localhost:3000/bar.html`
-    - baseURL: `http://localhost:3000/foo/` and navigating to `./bar.html` results in `http://localhost:3000/foo/bar.html`
-    - baseURL: `http://localhost:3000/foo` (without trailing slash) and navigating to `./bar.html` results in `http://localhost:3000/bar.html`
+    - baseURL= `http://localhost:3000` 时,导航到 `/bar.html` 的结果为 `http://localhost:3000/bar.html`
+    - baseURL= `http://localhost:3000/foo/` 时,导航到 `./bar.html` 的结果为 `http://localhost:3000/foo/bar.html`
+    - baseURL= `http://localhost:3000/foo` 时,导航到(没有下划线) `./bar.html` 的结果为`http://localhost:3000/bar.html`
 
-- `bypass_csp` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Toggles bypassing page's Content-Security-Policy.<a name="browser-type-launch-persistent-context-option-bypass-csp">#</a>
+- `bypass_csp` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 切换绕过页面的 Content-Security-Policy.<a name="browser-type-launch-persistent-context-option-bypass-csp">#</a>
 
-- `channel` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Browser distribution channel. Supported values are "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary". Read more about using [Google Chrome and Microsoft Edge](https://playwright.dev/python/docs/browsers#google-chrome--microsoft-edge).<a name="browser-type-launch-persistent-context-option-channel">#</a>
+- `channel` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 浏览器分发通道。支持的值为 "chrome", "chrome-beta", "chrome-dev", "chrome-canary", "msedge", "msedge-beta", "msedge-dev", "msedge-canary". 阅读更多关于使用 [Google Chrome 和 Microsoft Edge](https://playwright.dev/python/docs/browsers#google-chrome--microsoft-edge).<a name="browser-type-launch-persistent-context-option-channel">#</a>
 
-- `chromium_sandbox` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Enable Chromium sandboxing. Defaults to `false`.<a name="browser-type-launch-persistent-context-option-chromium-sandbox">#</a>
+- `chromium_sandbox` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 启用Chromium 沙箱. 默认为 `false`.<a name="browser-type-launch-persistent-context-option-chromium-sandbox">#</a>
 
-- `color_scheme` \<"light"|"dark"|"no-preference"> Emulates `'prefers-colors-scheme'` media feature, supported values are `'light'`, `'dark'`, `'no-preference'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'light'`.<a name="browser-type-launch-persistent-context-option-color-scheme">#</a>
+- `color_scheme` \<"light"|"dark"|"no-preference"> 模拟`'prefers-colors-scheme'` 的媒体特性，支持的值为`'light'`, `'dark'`, `'no-preference'`. 详情请参阅 : [page.emulate_media(**kwargs)](#page-emulate-media) . 默认为 `'light'`.<a name="browser-type-launch-persistent-context-option-color-scheme">#</a>
 
-- `device_scale_factor` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Specify device scale factor (can be thought of as dpr). Defaults to `1`.<a name="browser-type-launch-persistent-context-option-device-scale-factor">#</a>
+- `device_scale_factor` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 指定设备比例因子(可以认为是dpr)。默认为`1`.<a name="browser-type-launch-persistent-context-option-device-scale-factor">#</a>
 
-- `devtools` \<[bool](https://docs.python.org/3/library/stdtypes.html)> **Chromium-only** Whether to auto-open a Developer Tools panel for each tab. If this option is `true`, the `headless` option will be set `false`.<a name="browser-type-launch-persistent-context-option-devtools">#</a>
+- `devtools` \<[bool](https://docs.python.org/3/library/stdtypes.html)> **Chromium-only** 是否为每个选项卡自动打开开发人员工具面板。如果该选项为 `true`, 则 `headless` 选项将被设为`false`.<a name="browser-type-launch-persistent-context-option-devtools">#</a>
 
-- `downloads_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> If specified, accepted downloads are downloaded into this directory. Otherwise, temporary directory is created and is deleted when browser is closed. In either case, the downloads are deleted when the browser context they were created in is closed.<a name="browser-type-launch-persistent-context-option-downloads-path">#</a>
+- `downloads_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 如果指定，接受的下载将被下载到此目录, 否则，将在关闭浏览器时创建并删除临时目录。在这两种情况下，当创建下载的浏览器上下文关闭时，下载就会被删除.<a name="browser-type-launch-persistent-context-option-downloads-path">#</a>
 
-- `env` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> Specify environment variables that will be visible to the browser. Defaults to `process.env`.<a name="browser-type-launch-persistent-context-option-env">#</a>
+- `env` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)|[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)|[bool](https://docs.python.org/3/library/stdtypes.html)]> 指定浏览器可见的环境变量。默认为 `process.env`.<a name="browser-type-launch-persistent-context-option-env">#</a>
 
-- `executable_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Path to a browser executable to run instead of the bundled one. If `executable_path` is a relative path, then it is resolved relative to the current working directory. Note that Playwright only works with the bundled Chromium, Firefox or WebKit, use at your own risk.<a name="browser-type-launch-persistent-context-option-executable-path">#</a>
+- `executable_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 浏览器可执行文件的运行路径，而不是绑定文件. 如果`executable_path` 是一个相对路径，那么它是相对于当前工作目录进行解析的。请注意，playwright 只适用于捆绑的Chromium, Firefox或WebKit，使用风险自负.<a name="browser-type-launch-persistent-context-option-executable-path">#</a>
 
-- `extra_http_headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> An object containing additional HTTP headers to be sent with every request.<a name="browser-type-launch-persistent-context-option-extra-http-headers">#</a>
+- `extra_http_headers` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 一个包含附加HTTP头的对象，每个请求都要发送.<a name="browser-type-launch-persistent-context-option-extra-http-headers">#</a>
 
-- `forced_colors` \<"active"|"none"> Emulates `'forced-colors'` media feature, supported values are `'active'`, `'none'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'none'`.<a name="browser-type-launch-persistent-context-option-forced-colors">#</a>
+- `forced_colors` \<"active"|"none"> 模拟`'forced-colors'` 媒体特性，支持的值为 `'active'`, `'none'`. 详情请参阅:[page.emulate_media(**kwargs)](#page-emulate-media) . 默认为 `'none'`.<a name="browser-type-launch-persistent-context-option-forced-colors">#</a>
 
     > NOTE
     >
-    > It's not supported in WebKit, see [here](https://bugs.webkit.org/show_bug.cgi?id=225281) in their issue tracker.
+    > 它在WebKit中不支持，请在他们的[问题](https://bugs.webkit.org/show_bug.cgi?id=225281)跟踪器中查看
 
 - `geolocation` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)><a name="browser-type-launch-persistent-context-option-geolocation">#</a>
 
-    - `latitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Latitude between -90 and 90.
-    - `longitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Longitude between -180 and 180.
-    - `accuracy` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Non-negative accuracy value. Defaults to `0`.
+    - `latitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 纬度介于-90和90之间.
+    - `longitude` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 经度介于-180和180之间.
+    - `accuracy` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 非负精度值。默认值为`0`.
 
-- `handle_sighup` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Close the browser process on SIGHUP. Defaults to `true`.<a name="browser-type-launch-persistent-context-option-handle-sighup">#</a>
+- `handle_sighup` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 在SIGHUP上关闭浏览器进程。默认值为 `true`.<a name="browser-type-launch-persistent-context-option-handle-sighup">#</a>
 
-- `handle_sigint` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Close the browser process on Ctrl-C. Defaults to `true`.<a name="browser-type-launch-persistent-context-option-handle-sigint">#</a>
+- `handle_sigint` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 在Ctrl-C上关闭浏览器进程。默认值为 `true`.<a name="browser-type-launch-persistent-context-option-handle-sigint">#</a>
 
-- `handle_sigterm` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Close the browser process on SIGTERM. Defaults to `true`.<a name="browser-type-launch-persistent-context-option-handle-sigterm">#</a>
+- `handle_sigterm` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 关闭SIGTERM上的浏览器进程。默认值为 `true`.<a name="browser-type-launch-persistent-context-option-handle-sigterm">#</a>
 
-- `has_touch` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Specifies if viewport supports touch events. Defaults to false.<a name="browser-type-launch-persistent-context-option-has-touch">#</a>
+- `has_touch` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 指定视口是否支持触摸事件。默认值为` false`.<a name="browser-type-launch-persistent-context-option-has-touch">#</a>
 
-- `headless` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to run browser in headless mode. More details for [Chromium](https://developers.google.com/web/updates/2017/04/headless-chrome) and [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode). Defaults to `true` unless the `devtools` option is `true`.<a name="browser-type-launch-persistent-context-option-headless">#</a>
+- `headless` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否以无头模式运行浏览器。更多关于 [Chromium](https://developers.google.com/web/updates/2017/04/headless-chrome) and [Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Firefox/Headless_mode)的细节。默认为 `true` 除非 `devtools` 选项为 `true`.<a name="browser-type-launch-persistent-context-option-headless">#</a>
 
-- `http_credentials` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Credentials for [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).<a name="browser-type-launch-persistent-context-option-http-credentials">#</a>
+- `http_credentials` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> HTTP认证凭据 [HTTP authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication).<a name="browser-type-launch-persistent-context-option-http-credentials">#</a>
 
     - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
     - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)>
 
-- `ignore_default_args` \<[bool](https://docs.python.org/3/library/stdtypes.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> If `true`, Playwright does not pass its own configurations args and only uses the ones from `args`. If an array is given, then filters out the given default arguments. Dangerous option; use with care. Defaults to `false`.<a name="browser-type-launch-persistent-context-option-ignore-default-args">#</a>
+- `ignore_default_args` \<[bool](https://docs.python.org/3/library/stdtypes.html)|[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 如果为`true`, 不会传递自己的配置参数，而只使用来自 `args`的配置参数。如果给出了数组，则过滤掉给定的默认参数。危险的选择, 小心使用。默认值为 `false`.<a name="browser-type-launch-persistent-context-option-ignore-default-args">#</a>
 
-- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to ignore HTTPS errors when sending network requests. Defaults to `false`.<a name="browser-type-launch-persistent-context-option-ignore-https-errors">#</a>
+- `ignore_https_errors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 发送网络请求时是否忽略HTTPS错误。默认值为 `false`.<a name="browser-type-launch-persistent-context-option-ignore-https-errors">#</a>
 
-- `is_mobile` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether the `meta viewport` tag is taken into account and touch events are enabled. Defaults to `false`. Not supported in Firefox.<a name="browser-type-launch-persistent-context-option-is-mobile">#</a>
+- `is_mobile` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否考虑 `meta viewport` 标签，是否启用触摸事件。默认值为`false`。Firefox中不支持.<a name="browser-type-launch-persistent-context-option-is-mobile">#</a>
 
-- `java_script_enabled` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether or not to enable JavaScript in the context. Defaults to `true`.<a name="browser-type-launch-persistent-context-option-java-script-enabled">#</a>
+- `java_script_enabled` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否在上下文中启用JavaScript。默认值为 `true`.<a name="browser-type-launch-persistent-context-option-java-script-enabled">#</a>
 
-- `locale` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Specify user locale, for example `en-GB`, `de-DE`, etc. Locale will affect `navigator.language` value, `Accept-Language` request header value as well as number and date formatting rules.<a name="browser-type-launch-persistent-context-option-locale">#</a>
+- `locale` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 指定用户的本地语言环境，例如 `en-GB`, `de-DE`, 等。区域设置将影响 `navigator.language` 的值, `Accept-Language` 请求头值以及数字和日期格式规则.<a name="browser-type-launch-persistent-context-option-locale">#</a>
 
-- `no_viewport` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Does not enforce fixed viewport, allows resizing window in the headed mode.<a name="browser-type-launch-persistent-context-option-no-viewport">#</a>
+- `no_viewport` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 不强制固定viewport，允许在头部模式下调整窗口大小.<a name="browser-type-launch-persistent-context-option-no-viewport">#</a>
 
-- `offline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Whether to emulate network being offline. Defaults to `false`.<a name="browser-type-launch-persistent-context-option-offline">#</a>
+- `offline` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 是否仿真网络离线。默认值为 `false`.<a name="browser-type-launch-persistent-context-option-offline">#</a>
 
-- `permissions` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> A list of permissions to grant to all pages in this context. See [browser_context.grant_permissions(permissions, **kwargs)](#browser-context-grant-permissions) for more details.<a name="browser-type-launch-persistent-context-option-permissions">#</a>
+- `permissions` \<[List](https://docs.python.org/3/library/typing.html#typing.List)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)]> 在此上下文中授予所有页面的权限列表。详细常看: [browser_context.grant_permissions(permissions, **kwargs)](#browser-context-grant-permissions).<a name="browser-type-launch-persistent-context-option-permissions">#</a>
 
-- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Network proxy settings.<a name="browser-type-launch-persistent-context-option-proxy">#</a>
+- `proxy` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 网络代理设置.<a name="browser-type-launch-persistent-context-option-proxy">#</a>
 
-    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Proxy to be used for all requests. HTTP and SOCKS proxies are supported, for example `http://myproxy.com:3128` or `socks5://myproxy.com:3128`. Short form `myproxy.com:3128` is considered an HTTP proxy.
-    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional comma-separated domains to bypass proxy, for example `".com, chromium.org, .domain.com"`.
-    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional username to use if HTTP proxy requires authentication.
-    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Optional password to use if HTTP proxy requires authentication.
+    - `server` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 所有请求使用的代理。支持HTTP代理和SOCKS代理，例如:`http://myproxy.com:3128` or `socks5://myproxy.com:3128`. 缩写 `myproxy.com:3128` 被认为是一个HTTP代理.
+    - `bypass` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 可选，用逗号分隔的域，绕过代理，例如 `".com, chromium.org, .domain.com"`.
+    - `username` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 可选username，当HTTP代理需要鉴权时使用.
+    - `password` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 当HTTP代理需要鉴权时可选密码.
 
-- `record_har_omit_content` \<[bool](https://docs.python.org/3/library/stdtypes.html)> Optional setting to control whether to omit request content from the HAR. Defaults to `false`.<a name="browser-type-launch-persistent-context-option-record-har-omit-content">#</a>
+- `record_har_omit_content` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 可选设置，控制是否从HAR忽略请求内容。默认值为 `false`.<a name="browser-type-launch-persistent-context-option-record-har-omit-content">#</a>
 
-- `record_har_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Enables [HAR](http://www.softwareishard.com/blog/har-12-spec) recording for all pages into the specified HAR file on the filesystem. If not specified, the HAR is not recorded. Make sure to call [browser_context.close()](#browser-context-close) for the HAR to be saved.<a name="browser-type-launch-persistent-context-option-record-har-path">#</a>
+- `record_har_path` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 为文件系统中指定的 [HAR](http://www.softwareishard.com/blog/har-12-spec) 文件中所有页面启用HAR记录. 如果没有指定，则不会记录HAR。确保调用 [browser_context.close()](#browser-context-close) 来保存HAR.<a name="browser-type-launch-persistent-context-option-record-har-path">#</a>
 
-- `record_video_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> Enables video recording for all pages into the specified directory. If not specified videos are not recorded. Make sure to call [browser_context.close()](#browser-context-close) for videos to be saved.<a name="browser-type-launch-persistent-context-option-record-video-dir">#</a>
+- `record_video_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 开启进入指定目录的所有页面的视频录制. 如果没有指定，则不录制视频。确保调用 [browser_context.close()](#browser-context-close) 来保存视频.<a name="browser-type-launch-persistent-context-option-record-video-dir">#</a>
 
-- `record_video_size` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Dimensions of the recorded videos. If not specified the size will be equal to `viewport` scaled down to fit into 800x800. If `viewport` is not configured explicitly the video size defaults to 800x450. Actual picture of each page will be scaled down if necessary to fit the specified size.<a name="browser-type-launch-persistent-context-option-record-video-size">#</a>
+- `record_video_size` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 录制视频的尺寸。如果没有指定大小将等于 `viewport` 缩小到800x800。如果 `viewport` 没有显式配置，视频大小默认为800x450。每个页面的实际图片将按比例缩小，如果需要，以适应指定的大小.<a name="browser-type-launch-persistent-context-option-record-video-size">#</a>
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Video frame width.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Video frame height.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 视频帧宽度.
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 视频帧高度.
 
-- `reduced_motion` \<"reduce"|"no-preference"> Emulates `'prefers-reduced-motion'` media feature, supported values are `'reduce'`, `'no-preference'`. See [page.emulate_media(**kwargs)](#page-emulate-media) for more details. Defaults to `'no-preference'`.<a name="browser-type-launch-persistent-context-option-reduced-motion">#</a>
+- `reduced_motion` \<"reduce"|"no-preference"> 模拟`'prefers-reduced-motion'` 媒体特性，支持的值为 `'reduce'`, `'no-preference'`. 详情请参阅[page.emulate_media(**kwargs)](#page-emulate-media).  默认为 `'no-preference'`.<a name="browser-type-launch-persistent-context-option-reduced-motion">#</a>
 
-- `screen` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Emulates consistent window screen size available inside web page via `window.screen`. Is only used when the `viewport` is set.
+- `screen` \<[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 通过 `window.screen`.在web页面中模拟一致的窗口屏幕大小。仅在设置 `viewport` 时使用.
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page width in pixels.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page height in pixels.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面宽度(px).
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面高度(px).
 
-- `slow_mo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Slows down Playwright operations by the specified amount of milliseconds. Useful so that you can see what is going on.<a name="browser-type-launch-persistent-context-option-slow-mo">#</a>
+- `slow_mo` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 使 playwright 操作变慢指定的毫秒数。可以让您看到正在发生什么.<a name="browser-type-launch-persistent-context-option-slow-mo">#</a>
 
-- `strict_selectors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> It specified, enables strict selectors mode for this context. In the strict selectors mode all operations on selectors that imply single target DOM element will throw when more than one element matches the selector. See [Locator](#locator) to learn more about the strict mode.<a name="browser-type-launch-persistent-context-option-strict-selectors">#</a>
+- `strict_selectors` \<[bool](https://docs.python.org/3/library/stdtypes.html)> 它指定了，为这个上下文启用严格选择器模式。在严格的选择器模式中，当有多个元素匹配选择器时，所有对选择器的操作都将意味着只有一个目标DOM元素。请参阅 [Locator](#locator) 以了解更多关于严格模式.<a name="browser-type-launch-persistent-context-option-strict-selectors">#</a>
 
-- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> Maximum time in milliseconds to wait for the browser instance to start. Defaults to `30000` (30 seconds). Pass `0` to disable timeout.<a name="browser-type-launch-persistent-context-option-timeout">#</a>
+- `timeout` \<[float](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 浏览器实例启动的最大等待时间(单位为毫秒)。默认为 `30000` (30 seconds). 传递`0` 以禁用超时.<a name="browser-type-launch-persistent-context-option-timeout">#</a>
 
-- `timezone_id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Changes the timezone of the context. See [ICU's metaZones.txt](https://cs.chromium.org/chromium/src/third_party/icu/source/data/misc/metaZones.txt?rcl=faee8bc70570192d82d2978a71e2a615788597d1) for a list of supported timezone IDs.<a name="browser-type-launch-persistent-context-option-timezone-id">#</a>
+- `timezone_id` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 修改上下文的时区。查看 [ICU's metaZones.txt](https://cs.chromium.org/chromium/src/third_party/icu/source/data/misc/metaZones.txt?rcl=faee8bc70570192d82d2978a71e2a615788597d1) 获取支持的时区id列表.<a name="browser-type-launch-persistent-context-option-timezone-id">#</a>
 
-- `traces_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> If specified, traces are saved into this directory.<a name="browser-type-launch-persistent-context-option-traces-dir">#</a>
+- `traces_dir` \<[Union](https://docs.python.org/3/library/typing.html#typing.Union)[[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str), [pathlib.Path](https://realpython.com/python-pathlib/)]> 如果指定，跟踪记录将被保存到该目录.<a name="browser-type-launch-persistent-context-option-traces-dir">#</a>
 
-- `user_agent` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> Specific user agent to use in this context.<a name="browser-type-launch-persistent-context-option-user-agent">#</a>
+- `user_agent` \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)> 在此上下文中使用的特定用户代理.<a name="browser-type-launch-persistent-context-option-user-agent">#</a>
 
-- `viewport` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> Sets a consistent viewport for each page. Defaults to an 1280x720 viewport. `no_viewport` disables the fixed viewport.<a name="browser-type-launch-persistent-context-option-viewport">#</a>
+- `viewport` \<[NoneType](https://docs.python.org/3/library/constants.html#None)|[Dict](https://docs.python.org/3/library/typing.html#typing.Dict)> 为每个页面设置一个一致的视口。默认为1280x720视口. `no_viewport`禁用固定视口.<a name="browser-type-launch-persistent-context-option-viewport">#</a>
 
-    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page width in pixels.
-    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> page height in pixels.
+    - `width` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面宽度(px).
+    - `height` \<[int](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)> 页面高度(px).
 
 - returns: \<[BrowserContext](#browsercontext)><a name="browser-type-launch-persistent-context-return">#</a>
 
-Returns the persistent browser context instance.
+返回持久的浏览器上下文实例.
 
-Launches browser that uses persistent storage located at `user_data_dir` and returns the only context. Closing this context will automatically close the browser.
+启动浏览器，使用位于 `user_data_dir` 的持久存储，并返回唯一的上下文。关闭此上下文将自动关闭浏览器.
 
 ## browser_type.name<a name="browser-type-name">#</a>
 
 - returns: \<[str](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)><a name="browser-type-name-return">#</a>
 
-Returns browser name. For example: `'chromium'`, `'webkit'` or `'firefox'`.
+返回浏览器的名称。例如: `'chromium'`, `'webkit'` or `'firefox'`.
 
 
 
