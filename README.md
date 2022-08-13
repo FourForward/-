@@ -154,6 +154,12 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 
 
+## python 相关杂项
+
+[Pyinstaller 打包 Pyzbar 运行闪退解决方案](./python/Pyinstaller打包Pyzbar解决方案.md)
+
+
+
 
 # 前端相关
 
@@ -205,6 +211,10 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 ### [pycharm非常规操作](./python/pycharm非常规操作.md)
 
  
+
+# 网工相关
+
+[在局域网中共享打印机的几种方式](./网工/局域网内共享打印机.md)
 
 # 杂项
 

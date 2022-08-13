@@ -349,8 +349,8 @@ datetime.now([tz])	# 返回一个表示当前本地时间的datetime对象，如
 >>> datetime.datetime(2021, 10, 6, 0, 29, 30, 47878)
 datetime.utcnow()	# 返回一个当前utc时间的datetime对象；#格林威治时间
 
-datetime.fromtimestamp(timestamp[, tz])	# 根据时间戮创建一个datetime对象，参数tz指定时区信息；
-datetime.utcfromtimestamp(timestamp)	# 时间戮创建一个datetime对象；
+datetime.fromtimestamp(timestamp[, tz])	# 根据时间戳创建一个datetime对象，参数tz指定时区信息；
+datetime.utcfromtimestamp(timestamp)	# 时间戳创建一个datetime对象；
 
 # date和time，创建一个datetime对象；
 datetime.combine(date, time)

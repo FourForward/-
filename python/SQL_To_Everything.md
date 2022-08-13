@@ -152,7 +152,7 @@ Products.objects.values()
 
 ```python
 # pandas
-products
+products计价货币v关于9ikmn
 ```
 
 
