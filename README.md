@@ -218,8 +218,8 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # 杂项
 
-- [在ppt中展示百度 echars 图表](./python/PPT中展示Echarts图表.md)
-- [esp32-cam 面部识别门禁系统](./python/esp32cam人脸识别门禁系统.md)
-- [华为鸿蒙深度解析——兴业证券](./information/华为鸿蒙深度解析.pdf)
-- [关于奖金压缩的一种算法](./python/关于奖金压缩的一种算法.md)
+- [在ppt中展示百度 echars 图表](./杂项/PPT中展示Echarts图表.md)
+- [esp32-cam 面部识别门禁系统](./杂项/esp32cam人脸识别门禁系统.md)
+- [华为鸿蒙深度解析——兴业证券](./杂项/information/华为鸿蒙深度解析.pdf)
+- [关于奖金压缩的一种算法](./杂项/关于奖金压缩的一种算法.md)
 
