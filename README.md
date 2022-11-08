@@ -24,7 +24,7 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 ### [常用函数](./python/Python常用函数.md)
 
-### [pyton黑魔法](./python/python黑魔法.md)
+### [python黑魔法](./python/python黑魔法.md)
 
 ### [python标准库官方文档](https://docs.python.org/3/library/functions.html)
 
@@ -49,7 +49,17 @@ sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 
 
-### [Redis](./python/redis基础教程.md)
+### Redis
+
+#### [Redis 基础教程](./python/redis基础教程.md)
+
+#### [Redis 原理讲解 - 数据结构](./python/Redis原理讲解 - 数据结构.md)
+
+#### [Redis 原理讲解 - 配置策略](./python/Redis 配置-策略.md)
+
+#### [Redis 原理讲解 - 特殊场景及技巧](./python/Redis 特殊场景及技巧.md)
+
+
 
 ## ③  并发编程
 
